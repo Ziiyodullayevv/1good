@@ -9,7 +9,7 @@ export default function MainNavigation() {
         <Logo />
 
         <nav>
-          <ul className='flex items-center text-lg gap-20'>
+          <ul className='flex items-center text-xl gap-20'>
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -49,7 +49,7 @@ export default function MainNavigation() {
           </ul>
         </nav>
 
-        <Button className='h-[60px] rounded-xl text-lg px-5 cursor-pointer'>
+        <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
           Login / Sign Up
         </Button>
       </div>

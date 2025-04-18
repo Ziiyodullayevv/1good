@@ -10,6 +10,7 @@
   --font-montserrat: var(--montserrat);
   --color-v1: var(--v1);
   --color-v2: var(--v2);
+  --color-v3: var(--v3);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -50,6 +51,7 @@
 :root {
   --v1: #9897ae;
   --v2: #f3f3f3;
+  --v3: #292a32;
   --montserrat: 'Montserrat', sans-serif;
   --space-grotesk: 'Space Grotesk', sans-serif;
 
@@ -126,9 +128,26 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background font-space-grotesk text-foreground;
+    @apply bg-background text-xl font-space-grotesk text-foreground;
   }
   .section-container {
     @apply max-w-[1440px] px-[30px] md:px-[50px] lg:px-[100px] mx-auto;
   }
+
+  .btn-v1 {
+    @apply !h-[60px] hover:!bg-v1/70 !cursor-pointer !bg-v1 !rounded-xl !text-black !font-semibold !px-5 !text-lg;
+  }
+
+  .btn-v2 {
+    @apply !h-[60px] !cursor-pointer !rounded-xl  !font-semibold !px-5 !text-lg;
+  }
+
+  .section-title {
+    @apply text-4xl whitespace-nowrap py-1 items-start inline-block bg-black text-white px-3 rounded-lg;
+  }
+}
+
+.box-shadow {
+  border: 1px solid black;
+  box-shadow: 0 5px 0 black;
 }
