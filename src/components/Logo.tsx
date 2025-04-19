@@ -7,3 +7,7 @@ export default function Logo() {
     </Link>
   );
 }
+declare module './Carousel' {
+  const Carousel: React.FC;
+  export default Carousel;
+}
