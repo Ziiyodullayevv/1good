@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className='pt-10 text-lg text-white'>
       <div className='section-container'>
-        <div className='bg-black p-10 rounded-t-4xl'>
+        <div className='bg-black p-10 px-15 rounded-t-[45px]'>
           <div className='flex items-center gap-20'>
             <Link to={'/'}>
               <span className='text-3xl font-montserrat font-bold text-white'>
