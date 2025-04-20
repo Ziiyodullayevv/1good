@@ -50,10 +50,11 @@
 }
 
 :root {
-  --v1: #9897ae;
+  --v1: #c6c5dd;
   --v2: #f3f3f3;
   --v3: #292a32;
   --v4: #191a23;
+
   --montserrat: 'Montserrat', sans-serif;
   --space-grotesk: 'Space Grotesk', sans-serif;
 
