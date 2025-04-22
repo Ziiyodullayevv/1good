@@ -12,9 +12,9 @@ export const hero = {
     image: '/services.svg',
   },
   useCases: {
-    title: 'Together for Success',
+    title: 'Solving Freelance Challenges',
     description:
-      'At 1good, we believe great things happen when the right peopleconnect. Our platform empowers freelancers and clients to collaborate efficiently and confidently—backed by smart tools, clear agreements, and secure payments.',
-    image: '/about-us.svg',
+      'Discover how 1good tackles the biggest obstacles for freelancers and clients, ensuring smooth and trusted collaboration every time.',
+    image: '/usecases.svg',
   },
 };
