@@ -1,3 +1,11 @@
+import SectionHero from '../components/SectionHero';
+import { hero } from '../mock/data';
+
 export default function UseCases() {
-  return <div>UseCases</div>;
+  const { useCases } = hero;
+  return (
+    <>
+      <SectionHero data={useCases} />
+    </>
+  );
 }

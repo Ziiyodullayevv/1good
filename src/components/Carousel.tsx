@@ -14,12 +14,12 @@ const testimonials = [
     title: 'Marketing Director at XYZ Corp',
   },
   {
-    text: `"Positivus helped our startup scale quickly by handling all our digital marketing. Their communication and results were both excellent."`,
+    text: `"I had learned frontend development, but finding real clients was difficult. I created a profile on 1good.uz and listed my services. One client posted a project — they needed a landing page. Communication was smooth and secure. That’s how I landed a few more projects."`,
     name: 'Jane Doe',
     title: 'Founder of Startup Co',
   },
   {
-    text: `"Thanks to Positivus, we saw a 200% increase in organic traffic. Their team is professional, efficient, and a joy to work with."`,
+    text: `"I had learned frontend development, but finding real clients was difficult. I created a profile on 1good.uz and listed my services. One client posted a project — they needed a landing page. Communication was smooth and secure. That’s how I landed a few more projects."`,
     name: 'Michael Brown',
     title: 'SEO Manager at Web Solutions',
   },
@@ -35,7 +35,7 @@ export default function TestimonialCarousel() {
   }, []);
 
   return (
-    <div className='bg-black relative mt-20 text-white rounded-[45px] py-20 px-4'>
+    <div className='bg-black relative mt-20 text-white rounded-[45px] py-20'>
       <div className='max-w-7xl mx-auto'>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -61,7 +61,7 @@ export default function TestimonialCarousel() {
             <SwiperSlide key={idx}>
               <div className='relative min-h-[280px] flex flex-col justify-between'>
                 <div className='mb-13 text-lg bg-v4 font-thin p-[50px] rounded-[45px] text-white'>
-                  <p className='relative'>
+                  <p className='relative leading-tight'>
                     {item.text}
                     <span className=' absolute bg-v4 rotate-45 bottom-[-70px] w-[40px] left-0 -z-[10] inline-block h-[40px]'></span>
                   </p>
