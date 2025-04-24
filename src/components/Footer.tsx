@@ -1,8 +1,10 @@
 import { Link, NavLink } from 'react-router';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t } = useTranslation('common');
   return (
     <footer className='pt-10 text-lg text-white'>
       <div className='section-container'>
@@ -15,13 +17,13 @@ export default function Footer() {
             </Link>
             <nav className='text-white flex gap-5 text-lg'>
               <NavLink className={'underline'} to={'/about'}>
-                About Us
+                {t('about')}
               </NavLink>
               <NavLink className={'underline'} to={'/services'}>
-                Services
+                {t('services')}
               </NavLink>
               <NavLink className={'underline'} to={'/usecases'}>
-                Use Cases
+                {t('useCases')}
               </NavLink>
             </nav>
 
@@ -35,29 +37,26 @@ export default function Footer() {
           <div className='grid grid-cols-12 gap-10 mt-20 my-9'>
             <div className='flex col-span-5 flex-col gap-3 justify-center items-start'>
               <h2 className='text-2xl bg-v1 inline-block text-black rounded-lg px-3 py-1'>
-                Contact us:
+                {t('contactUs')}:
               </h2>
-              <p>Email: info@positivus.com</p>
-              <p>Phone: 555-567-8901</p>
-              <p>
-                Address: 1234 Main St <br /> Moonstone City, Stardust State
-                12345
-              </p>
+              <p>{t('email')}: info@positivus.com</p>
+              <p>{t('phone')}: 555-567-8901</p>
+              <p>{t('address')}: IT Park</p>
             </div>
 
             <div className='grid grid-cols-2 items-center col-span-7 gap-3 bg-v3 px-8 rounded-2xl py-10'>
               <Input
                 className='!text-lg px-5 placeholder:text-lg h-[60px] rounded-lg'
-                placeholder='Email'
+                placeholder={t('email')}
               />
-              <Button className='btn-v1'>Subscribe to news</Button>
+              <Button className='btn-v1'>{t('btnText')}</Button>
             </div>
           </div>
 
           <div className='flex border-t pt-10 border-white border-solid gap-10'>
-            <p>© 2025 1good . All Rights Reserved.</p>
+            <p>{t('reserved')}</p>
             <Link className='underline' to={'/'}>
-              Privacy Policy
+              {t('privacyPolicy')}
             </Link>
           </div>
         </div>

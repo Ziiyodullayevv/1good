@@ -3,10 +3,9 @@ import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-// Foydalanuvchi birinchi marta kelsa, 'uz' tilini o‘rnatamiz
 const DEFAULT_LANGUAGE = 'ru';
 
-// localStorage'da til yo‘q bo‘lsa, avtomatik 'uz' ni saqlaymiz
+// localStorage'da til yo‘q bo‘lsa, avtomatik 'ru' ni saqlaymiz
 const savedLanguage = localStorage.getItem('i18nextLng');
 if (!savedLanguage) {
   localStorage.setItem('i18nextLng', DEFAULT_LANGUAGE);
@@ -22,7 +21,7 @@ i18n
     load: 'languageOnly',
     debug: false,
 
-    ns: ['home', 'about', 'contact'],
+    ns: ['home', 'about', 'services', 'usecases', 'common'],
     defaultNS: 'home',
 
     backend: {

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { cn } from '../lib/utils';
 import SectionTitle from './SectionTitle';
 
@@ -6,40 +7,19 @@ type Journey = {
   year: number;
   title: string;
   description: string;
-};
-
-const journey = [
-  {
-    id: '1',
-    year: 2025,
-    title: 'Full Expansion in Uzbekistan',
-    description:
-      'In 2025, 1good launches fully in Uzbekistan with AI and human freelancers, connecting users with secure payments and AI tools. By year-end, we expand across Central Asia with local support.',
-  },
-  {
-    id: '2',
-    year: 2026,
-    title: 'Better Collaboration',
-    description:
-      'By 2026, 1good adds multilingual dashboards (Kazakh, Turkmen, Tajik, Kirgiz) and messaging tools for seamless communication across Central Asia.',
-  },
-  {
-    id: '3',
-    year: 2026,
-    title: 'Eurasian Growth',
-    description:
-      'In 2027, 1good scales to Eurasia, adding new payment options and AI tools to support diverse projects with our 5% commission model.',
-  },
-  {
-    id: '4',
-    year: 2027,
-    title: 'Global Reach',
-    description:
-      'By 2028, 1good goes global, connecting freelancers and clients worldwide with secure, AI-driven collaboration.',
-  },
-];
+}[];
 
 export default function Journey() {
+  const { t } = useTranslation('about');
+  const journeyData = t('journeyComp.journeyData', {
+    returnObjects: true,
+  }) as Journey;
+
+  if (!Array.isArray(journeyData)) {
+    console.warn('journeyData is not an array:', journeyData);
+    return null;
+  }
+
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
@@ -50,7 +30,7 @@ export default function Journey() {
         />
 
         <div className='flex mt-20 flex-col gap-20'>
-          {journey.map(({ id, year, title, description }: Journey) => (
+          {journeyData.map(({ id, year, title, description }) => (
             <div
               key={id}
               className={cn(

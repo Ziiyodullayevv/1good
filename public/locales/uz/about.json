@@ -1,0 +1,106 @@
+{
+  "heroComp": {
+    "title": "Together for Success",
+    "subTitle": "At 1good, we believe great things happen when the right people connect. Our platform empowers freelancers and clients to collaborate efficiently and confidently—backed by smart tools, clear agreements, and secure payments."
+  },
+  "buildingComp": {
+    "title": "What We’re Building Together",
+    "subTitle": "A vision-focused section showing ambition and values instead of past numbers.",
+    "buildingData": [
+      {
+        "id": "1",
+        "iconType": "Building2",
+        "description": "100% Focus on fair, transparent collaboration"
+      },
+      {
+        "id": "2",
+        "iconType": "Star",
+        "description": "Open platform for freelancers & businesses worldwide"
+      },
+      {
+        "id": "3",
+        "iconType": "FileSignature",
+        "description": "Contracts, milestones & reviews you can trust"
+      },
+      {
+        "id": "4",
+        "iconType": "Users",
+        "description": "Built by creatives, engineers & project pros"
+      },
+      {
+        "id": "5",
+        "iconType": "Trophy",
+        "description": "Your success is our mission"
+      }
+    ]
+  },
+  "journeyComp": {
+    "title": "Our Journey",
+    "subTitle": "From humble beginnings to industry leadership, discover how 1good has grown to drive success for businesses around the world.",
+    "journeyData": [
+      {
+        "id": "1",
+        "year": 2025,
+        "title": "Full Expansion in Uzbekistan",
+        "description": "In 2025, 1good launches fully in Uzbekistan with AI and human freelancers, connecting users with secure payments and AI tools. By year-end, we expand across Central Asia with local support."
+      },
+      {
+        "id": "2",
+        "year": 2026,
+        "title": "Better Collaboration",
+        "description": "By 2026, 1good adds multilingual dashboards (Kazakh, Turkmen, Tajik, Kirgiz) and messaging tools for seamless communication across Central Asia."
+      },
+      {
+        "id": "3",
+        "year": 2026,
+        "title": "Eurasian Growth",
+        "description": "In 2027, 1good scales to Eurasia, adding new payment options and AI tools to support diverse projects with our 5% commission model."
+      },
+      {
+        "id": "4",
+        "year": 2027,
+        "title": "Global Reach",
+        "description": "By 2028, 1good goes global, connecting freelancers and clients worldwide with secure, AI-driven collaboration."
+      }
+    ]
+  },
+  "coreComp": {
+    "title": "Core Values",
+    "subTitle": "At the heart of everything we do are our core values:",
+    "coreData": [
+      {
+        "id": "1",
+        "title": "Trust First",
+        "description": "We prioritize trust in every interaction. Our Escrow system and transparent processes ensure freelancers and clients feel secure, building a foundation for lasting partnerships.",
+        "image": null
+      },
+      {
+        "id": "2",
+        "title": "Innovation Always",
+        "description": "We embrace innovation to empower our users. By integrating AI tools for project briefs and contracts, we’re redefining how freelancers and clients collaborate efficiently.",
+        "image": "/core1.svg"
+      },
+      {
+        "id": "3",
+        "title": "Collaboration",
+        "description": "We champion partnerships that work for everyone. 1good creates a fair environment with transparent processes, ensuring freelancers and clients succeed together on equal terms.",
+        "image": "/core2.svg"
+      },
+      {
+        "id": "4",
+        "title": "Transparency",
+        "description": "We open doors for all. With Credits for Clients , 1good makes freelancing accessible, helping both sides grow and achieve their goals.",
+        "image": null
+      }
+    ]
+  },
+  "founderComp": {
+    "title": "“At 1good, we make freelancing secure, simple, and empowering for all.”",
+    "subTitle": "— Shohjahon Sokhibov, Co-Founder of 1good"
+  },
+  "joinComp": {
+    "title": "Join Our Team",
+    "subTitle": "At 1good, we thrive on innovation and collaboration. We're always looking for passionate individuals to join our team and help businesses grow. Ready to make an impact?",
+    "btnText": "Explore Careers"
+  }
+}

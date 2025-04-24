@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 export default function Founder() {
+  const { t } = useTranslation('about');
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
@@ -10,12 +13,9 @@ export default function Founder() {
           />
           <div>
             <h2 className='font-semibold max-w-[529px] text-[41px]'>
-              “At 1good, we make freelancing secure, simple, and empowering for
-              all.”
+              {t('founderComp.title')}
             </h2>
-            <h5 className='text-2xl mt-24'>
-              — Shohjahon Sokhibov, Co-Founder of 1good
-            </h5>
+            <h5 className='text-2xl mt-24'>{t('founderComp.subTitle')}</h5>
           </div>
         </div>
       </div>

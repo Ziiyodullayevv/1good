@@ -1,0 +1,55 @@
+{
+  "heroComp": {
+    "title": "Seamless Freelance Collaboration",
+    "subTitle": "Connect with talented freelancers or clients in Uzbekistan, using tools designed to ensure trust and efficiency every step of the way."
+  },
+  "escowComp": {
+    "title1": "Escrow for",
+    "title2": "Safe Transactions",
+    "subTitle": "With 1good’s Escrow system, payments are held securely until the project is approved. Freelancers get paid reliably, and clients only release funds when satisfied—building trust effortlessly.",
+    "btnText": "Sign up"
+  },
+
+  "weWorkComp": {
+    "title": "How We Work: SEO Process",
+    "subTitle": "Our step-by-step SEO process ensures your website ranks higher, attracts more traffic, and drives lasting results.",
+    "weWorkData": [
+      {
+        "id": "01",
+        "title": "Project Setup",
+        "description": "Clients start by posting their project needs—defining the scope, budget, and timeline. Our AI Assistant helps create a clear brief to attract the right freelancers."
+      },
+      {
+        "id": "02",
+        "title": "Proposal Matching",
+        "description": "Freelancers submit proposals tailored to the project. Clients review these offers, comparing skills and rates to find the best match for their needs."
+      },
+      {
+        "id": "03",
+        "title": "Agreement Creation",
+        "description": "Once a freelancer is chosen, our platform generates a legally binding contract with project details, ensuring both parties are aligned and protected."
+      },
+      {
+        "id": "04",
+        "title": "Secure Payment",
+        "description": "Clients deposit funds into Escrow, keeping payments safe until the project is complete. This builds trust, knowing freelancers will be paid upon approval."
+      },
+      {
+        "id": "05",
+        "title": "Collaboration & Delivery",
+        "description": "Freelancers and clients work together using our dashboard to track progress. Once the work is submitted, clients review and approve the deliverables."
+      },
+      {
+        "id": "06",
+        "title": "Payment Release",
+        "description": "After approval, funds are released from Escrow to the freelancers. Both parties can leave feedback to build trust for future projects."
+      }
+    ]
+  },
+  "rankComp": {
+    "title": "Ready to Elevate Your Search Rankings?",
+    "subTitle": "Join a platform that makes collaboration secure and simple.",
+    "description": "At 1good, we’re here to help freelancers and clients succeed with Escrow payments, AI-driven tools, and flexible financing options like Credits. Whether you’re hiring talent or offering your skills, let’s make your next project a success.",
+    "btnText": "Begin Your Journey"
+  }
+}

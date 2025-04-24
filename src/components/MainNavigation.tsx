@@ -2,15 +2,16 @@ import { NavLink } from 'react-router';
 import { Button } from './ui/button';
 import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 export default function MainNavigation() {
+  const { t } = useTranslation('common');
   return (
     <header className='section-container'>
       <div className='flex justify-between py-5 items-center'>
-        <Logo />
-
-        <nav>
-          <ul className='flex items-center text-xl gap-20'>
+        <nav className='flex gap-20 items-center'>
+          <Logo />
+          <ul className='flex items-center text-xl gap-8'>
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -20,7 +21,7 @@ export default function MainNavigation() {
                 }
                 to={'/about'}
               >
-                About Us
+                {t('about')}
               </NavLink>
             </li>
             <li>
@@ -32,7 +33,7 @@ export default function MainNavigation() {
                 }
                 to={'/services'}
               >
-                Services
+                {t('services')}
               </NavLink>
             </li>
             <li>
@@ -44,7 +45,7 @@ export default function MainNavigation() {
                 }
                 to={'/usecases'}
               >
-                Use Cases
+                {t('useCases')}
               </NavLink>
             </li>
           </ul>
@@ -53,7 +54,7 @@ export default function MainNavigation() {
         <div className='flex justify-start gap-5'>
           <LanguageSwitcher />
           <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
-            Login / Sign Up
+            {t('auth')}
           </Button>
         </div>
       </div>
