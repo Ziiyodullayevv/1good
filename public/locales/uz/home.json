@@ -1,0 +1,157 @@
+{
+  "heroComp": {
+    "title": "1good bilan Ishonch Yarating, Aqlli Ishlang",
+    "subTitle": "O'zbekiston va undan tashqaridagi frilanserlar va mijozlarni xavfsiz to'lovlar, sun'iy intellekt asosida ishlovchi loyihalar tavsiflari, va tezkor shartnomalar orqali bog'lovchi ishonchli platforma.",
+    "btnText": "Ro'yxatdan o'tish"
+  },
+  "servicesComp": {
+    "title": "Xizmatlar",
+    "subTitle": "1good'da biz mijozlar va frilanserlar o'rtasida ishonch va samaradorlikni ta'minlash uchun bir nechta xizmatlarni taklif etamiz. Muvaffaqiyatingizgni qanday qo'llab-quvvatlashimizni bilib oling:",
+    "btnText": "Ko'proq bilish",
+    "servicesData": [
+      {
+        "title1": "Xavfsiz To'lovlar",
+        "title2": "Escrow orqali",
+        "image": "service1.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Sun'iy intellekt yordamida",
+        "title2": "Loyiha Aniqligi",
+        "image": "service2.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Tezkor",
+        "title2": "Shartnomalar",
+        "image": "service3.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Moslashuvchan",
+        "title2": "Kreditlar",
+        "image": "service4.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Loyihalarni",
+        "title2": "Oson Boshqarish",
+        "image": "service5.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Shaffof",
+        "title2": "Fikrlar",
+        "image": "service6.svg",
+        "url": "/"
+      }
+    ]
+  },
+  "freelanceComp": {
+    "title": "Frilans tajribangizni o'zgartirishga tayyormisiz?",
+    "subTitle": "1good orqali siz xavfsiz to'lovlar, sun'iy intellekt vositalari va moslashuvchan moliyaviy imkoniyatlar bilan loyihalaringizni yanada kuchaytirishingiz mumkin. Keling, frilansni siz uchun qulay qilamiz!",
+    "btnText": "Bugun boshlang"
+  },
+  "caseComp": {
+    "title": "Loyiha namunalari",
+    "subTitle": "O'zbekistondagi frilanserlar va mijozlar 1good platformasi yordamida qanday muvaffaqiyatga erishayotganini ko'ring.",
+    "btnText": "Ko'proq bilish",
+    "caseData": [
+      {
+        "description": "Kichik nonvoyxona 1good.uz orqali ideal SMM va dizayner frilanserni topgach, ijtimoiy tarmoqlardagi auditoriya va onlayn buyurtmalari 30%ga oshdi",
+        "url": "/"
+      },
+      {
+        "description": "Tech-startap 1good.uz bilan dasturchi frilanserni topib, o'z MVPsini atigi bir haftada yaratdi va ishga tushirdi-vaqt va byudjetni tejagan holda",
+        "url": "/"
+      },
+      {
+        "description": "Universitet talabasining tarjima bo'yicha bilimlari 1good.uz yordamida doimiy daromad manbaiga aylandi-u o'qishi bilan ish o'rtasida muvozanatni saqlab qoldi",
+        "url": "/"
+      }
+    ]
+  },
+  "worksComp": {
+    "title": "1good Qanday Ishlaydi",
+    "subTitle": "Frilanserlar va Mijozlarni bog'lovchi oddiy jarayon",
+    "worksData": [
+      {
+        "id": "01",
+        "title": "Loyihangizni Joylang",
+        "description": "Avvalo loyihangizga nima kerakligini yozing. Qisqa shakldagi formaga loyiha haqidagi ma'lumotlarni ya'ni byudjet, muddat kabilarni kiriting, platformamiz siz uchun mos frilanserlarni topadi."
+      },
+      {
+        "id": "02",
+        "title": "Takliflarni Qabul qiling",
+        "description": "Frilanserlar sizning loyihangizni ko'rib chiqishadi va maxsus takliflar yuborishadi. Ehtiyojlaringizga eng mos keladiganini topish uchun ularning ko'rsatkichlarini ko'rib chiqing."
+      },
+      {
+        "id": "03",
+        "title": "Frilanseringizni Tanlang",
+        "description": "Takliflarni solishtiring va sizga eng mos frilanserni tanlang. Profilini va uning sharhlarini tekshiring, ishonch bilan ish boshlang."
+      },
+      {
+        "id": "04",
+        "title": "Hamkorlikda ishlang",
+        "description": "Bizning sun'iy intellekt tomonidan yaratilgan loyiha brifinglari va tezkor shartnomalardan foydalanib frilanser bilan muammosiz hamkorlik qiling. Boshqaruv paneli orqali jarayonnikuzatib boring, har bir qadamda aniqlikka ishonch hosil qiling."
+      },
+      {
+        "id": "05",
+        "title": "Ishni Tekshiring",
+        "description": "Frilanser ishni topshirgach uni ko'rib chiqing va sizning talablaringizga mosligini tekshiring. Kerak bo'lsa tuzatishlar so'rashingiz mumkin, yoki tasdiqlab keyingi bosqichga o'ting."
+      },
+      {
+        "id": "06",
+        "title": "To'lovni Yakunlang",
+
+        "description": "Tasdiqlangandan so'ng, mablag' Escrow tizimidan frilanserga o'tkaziladi. xavfsiz va tashvishsiz to'lovlardan rohatlaning- bu har ikki tomon uchun himoyani kafolatlaydi."
+      }
+    ]
+  },
+  "reviewsComp": {
+    "title": "Sharhlar",
+    "subTitle": "Mijozlarimiz nima deydi: xizmatlarimiz haqida fikrlarni o'qing",
+    "reviewsData": [
+      {
+        "text": "“Bizga tarjimon zudlik bilan kerak edi. Jarayon tez, xavfsiz va asab buzilishlarisiz oʻtdi. Pul xavfsiz hisobda saqlanganligi tufayli, biz natijani ko'rmagunimizcha to'lov amalga oshirilmasligiga ishonch hosil qildik. Tavsiya qilaman!”",
+        "name": "Iskandar",
+        "title": "NGO koordinatori"
+      },
+      {
+        "text": "“Kichik biznes egasi sifatida, barcha summani birdaniga to'lolmasdim.Kredit tizimi yordamida darhol grafik dizayner topdim, va to'lovni bo'lib to'ladim. Bu kompaniyamni qurishga yordam berdi.”",
+        "name": "Dilbar",
+        "title": "Marketing Menejer"
+      },
+      {
+        "text": "“Menda startap idea bor edi, lekin qanday qilib yaxshi izohlashni bilmasdim. AI yordamchisi menga ideal loyiha tavsifini yozishda yordam berdi. 3 kun ichida, menda MVP dasturchi ishlay boshladi. Super qulay!”",
+        "name": "Rustam",
+        "title": "Startup Asoschi"
+      },
+      {
+        "text": "“1good.uzdagi men eng yoqtirgan jihat-adolatlilik. Mijozlar nima uchun pul to'layotganini aniq bilishadi, va men esa qachon va qanday to'lanishini bilaman. Bu O'zbekistondagi frilanserlar uchun qoidalarni o'zgartirdi.”",
+        "name": "Nilufar",
+        "title": "Kontent Yozuvchi"
+      },
+      {
+        "text": "“Men backend dasturchiman, va ushbu platforma orqali birinchi katta summali loyihamni oldim. Avtomatik shartnoma men va mijozga ishinch berdi. Ishni tugatdim, va to'lov osonlik bilan o'tdi.”",
+        "name": "Azamat",
+        "title": "Node.js Dasturchi"
+      },
+      {
+        "text": "“1good.uzdan oldin, mijoz talablarini tushunishda qiynalardim. lekin hozir, loyiha tavsiflarini AI yordamchi amalga oshirayotgani sababli, har doim bilaman mendan nima kutilayotganini. Escrow tizimi menga xotirjamlik beradi, endi to'lov ortidan quvish shart emas.”",
+        "name": "Ziyoda",
+        "title": " UI/UX Dizayner"
+      }
+    ]
+  },
+  "contactComp": {
+    "title": "Biz bilan bog'laning",
+    "subTitle": "Biz bilan bog'laning: Sizning talablaringizni muhokama qilamiz",
+    "radio1": "Salom ayting",
+    "radio2": "Taklif oling",
+    "fullName": "Ism",
+    "email": "Elektron pochta manzili",
+    "message": "Xabar",
+    "btnText": "Xabar yuboring"
+  }
+}

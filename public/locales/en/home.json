@@ -1,0 +1,156 @@
+{
+  "heroComp": {
+    "title": "Build Trust, Work Smart with 1good",
+    "subTitle": "Your go-to platform for secure payments, AI-driven project briefs, and instant contracts—connecting freelancers and clients in Uzbekistan and beyond.",
+    "btnText": "Sign up"
+  },
+  "servicesComp": {
+    "title": "Services",
+    "subTitle": "At 1good, we offer a range of services to ensure trust and efficiency in freelancing for both freelancers and clients. Explore how we support your success:",
+    "btnText": "Learn more",
+    "servicesData": [
+      {
+        "title1": "Secure Payments",
+        "title2": "with Escrow",
+        "image": "service1.svg",
+        "url": "/"
+      },
+      {
+        "title1": "AI-Powered",
+        "title2": "Project Clarity",
+        "image": "service2.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Instant",
+        "title2": "Contracts",
+        "image": "service3.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Flexible",
+        "title2": "Credits",
+        "image": "service4.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Easy",
+        "title2": "Manage projects",
+        "image": "service5.svg",
+        "url": "/"
+      },
+      {
+        "title1": "Transparent ",
+        "title2": "Feedbacks",
+        "image": "service6.svg",
+        "url": "/"
+      }
+    ]
+  },
+  "freelanceComp": {
+    "title": "Ready to Transform Your Freelance Experience?",
+    "subTitle": "Discover how 1good can empower your projects with secure payments, AI-driven tools, and flexible financing. Let’s make freelancing work for you!",
+    "btnText": "Get Started Today"
+  },
+  "caseComp": {
+    "title": "Case Studies",
+    "subTitle": "See how freelancers and clients in Uzbekistan are thriving with 1good’s secure, efficient platform.",
+    "btnText": "Learn more",
+    "caseData": [
+      {
+        "description": "A small bakery grew their social media reach and boosted online orders by 30% after finding the perfect SMM and design freelancers through 1good.uz",
+        "url": "/"
+      },
+      {
+        "description": "A tech startup built and launched their MVP in just one week by hiring a freelance developer directly from 1good.uz — saving both time and budget",
+        "url": "/"
+      },
+      {
+        "description": "A university student transformed her language skills into consistent freelance income by offering translation services on 1good.uz — without leaving her studies",
+        "url": "/"
+      }
+    ]
+  },
+  "worksComp": {
+    "title": "How 1good Works ",
+    "subTitle": "A Simple Process to Connect Freelancers and Clients Seamlessly",
+    "worksData": [
+      {
+        "id": "01",
+        "title": " Post Your Project",
+        "description": "Start by sharing your project needs. Fill out a quick form with details like the scope, budget, and timeline, and let our platform find the right freelancers for you."
+      },
+      {
+        "id": "02",
+        "title": "Get Proposals",
+        "description": "Freelancers will review your project and submit tailored proposals. Browse through their offers, including their rates and timelines, to find the best match for your needs."
+      },
+      {
+        "id": "03",
+        "title": "Choose Your Freelancer",
+        "description": "Compare proposals and select the freelancer who fits your vision. Review their profiles and past feedback to make an informed decision, then hire with confidence."
+      },
+      {
+        "id": "04",
+        "title": "Work Together",
+        "description": "Collaborate smoothly with your freelancer using our AI-generated project briefs and instant contracts. Stay in sync through our dashboard and ensure clarity at every step."
+      },
+      {
+        "id": "05",
+        "title": "Review the Work",
+        "description": "Once the freelancer submits their work, review the deliverables to ensure they meet your expectations. Request revisions if needed, or approve the project to move forward."
+      },
+      {
+        "id": "06",
+        "title": "Finalize Payment",
+        "description": "After approval, funds are released from Escrow to the freelancer. Enjoy secure, hassle-free payments that protect both parties every time."
+      }
+    ]
+  },
+  "reviewsComp": {
+    "title": "Reviews",
+    "subTitle": "Hear from our clients: read reviews about our services",
+    "reviewsData": [
+      {
+        "text": "“We needed a translator urgently. The process was fast, secure, and stress-free. Having the money held in escrow made us confident we’d get results before releasing payment. Highly recommend!”",
+        "name": "Iskandar",
+        "title": "NGO Coordinator"
+      },
+      {
+        "text": "“As a small business owner, I couldn’t afford to pay everything upfront. The credit system let me hire a graphic designer immediately and pay in parts. It made launching my campaign possible.”",
+        "name": "Dilbar",
+        "title": "Marketing Manager"
+      },
+      {
+        "text": "“I had a startup idea but didn’t know how to explain it well. The AI assistant helped me write a perfect project brief. In just 3 days, I had a developer building my MVP. Super smooth!”",
+        "name": "Rustam",
+        "title": "Startup Founder"
+      },
+      {
+        "text": "“What I love most about 1good is the fairness. Clients know what they’re paying for, and I know exactly when and how I’ll be paid. It’s a game-changer for freelancers in Uzbekistan.”",
+        "name": "Nilufar",
+        "title": "Content Writer"
+      },
+      {
+        "text": "“I’m a backend developer, and this platform helped me get my first paid gig. The automated contract gave both me and the client confidence. I finished the job, and the payment came through smoothly.”",
+        "name": "Azamat",
+        "title": "Node.js Developer"
+      },
+      {
+        "text": "“Before 1good.uz, I struggled with unclear client requirements. But now, with the AI assistant guiding project descriptions, I always know what’s expected. The escrow system gives me peace of mind—no more chasing payments.”",
+        "name": "Ziyoda",
+        "title": " UI/UX Designer"
+      }
+    ]
+  },
+  "contactComp": {
+    "title": "Contact Us",
+    "subTitle": "Connect with Us: Let's Discuss Your Digital Marketing Needs",
+    "radio1": "Say Hi",
+    "radio2": "Get a Quote",
+    "fullName": "Name",
+    "email": "Email",
+    "message": "Message",
+    "btnText": "Send Message"
+  }
+}

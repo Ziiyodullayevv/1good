@@ -6,24 +6,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useRef, useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const testimonials = [
-  {
-    text: `"I had learned frontend development, but finding real clients was difficult. I created a profile on 1good.uz and listed my services. One client posted a project — they needed a landing page. Communication was smooth and secure. That’s how I landed a few more projects."`,
-    name: 'John Smith',
-    title: 'Marketing Director at XYZ Corp',
-  },
-  {
-    text: `"I had learned frontend development, but finding real clients was difficult. I created a profile on 1good.uz and listed my services. One client posted a project — they needed a landing page. Communication was smooth and secure. That’s how I landed a few more projects."`,
-    name: 'Jane Doe',
-    title: 'Founder of Startup Co',
-  },
-  {
-    text: `"I had learned frontend development, but finding real clients was difficult. I created a profile on 1good.uz and listed my services. One client posted a project — they needed a landing page. Communication was smooth and secure. That’s how I landed a few more projects."`,
-    name: 'Michael Brown',
-    title: 'SEO Manager at Web Solutions',
-  },
-];
+type Reviews = {
+  text: string;
+  name: string;
+  title: string;
+}[];
 
 export default function TestimonialCarousel() {
   const prevRef = useRef(null);
@@ -33,6 +22,11 @@ export default function TestimonialCarousel() {
   useEffect(() => {
     setSwiperReady(true); // dom tayyor bo‘lgach navigation ishlasin
   }, []);
+
+  const { t } = useTranslation();
+  const reviewsData = t('reviewsComp.reviewsData', {
+    returnObjects: true,
+  }) as Reviews;
 
   return (
     <div className='bg-black relative mt-20 text-white rounded-[45px] py-20'>
@@ -57,18 +51,18 @@ export default function TestimonialCarousel() {
           }}
           className='testimonial-swiper'
         >
-          {testimonials.map((item, idx) => (
+          {reviewsData.map(({ text, name, title }, idx) => (
             <SwiperSlide key={idx}>
               <div className='relative min-h-[280px] flex flex-col justify-between'>
                 <div className='mb-13 text-lg bg-v4 font-thin p-[50px] rounded-[45px] text-white'>
                   <p className='relative leading-tight'>
-                    {item.text}
+                    {text}
                     <span className=' absolute bg-v4 rotate-45 bottom-[-70px] w-[40px] left-0 -z-[10] inline-block h-[40px]'></span>
                   </p>
                 </div>
                 <div className='px-[60px] text-xl'>
-                  <p className='text-v4 font-medium'>{item.name}</p>
-                  <p className='text-v2'>{item.title}</p>
+                  <p className='text-v4 font-medium'>{name}</p>
+                  <p className='text-v2'>{title}</p>
                 </div>
               </div>
             </SwiperSlide>

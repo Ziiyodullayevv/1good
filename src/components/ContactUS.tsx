@@ -4,15 +4,17 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
+import { useTranslation } from 'react-i18next';
 
 export default function ContactUS() {
+  const { t } = useTranslation();
   return (
     <section className='py-10 text-lg sm:py-20'>
       <div className='section-container'>
         <SectionTitle
           variant='bg-v2 text-black'
-          title='Contact Us'
-          description="Connect with Us: Let's Discuss Your Digital Marketing Needs"
+          title={t('contactComp.title')}
+          description={t('contactComp.subTitle')}
           className='max-w-[350px]'
         />
 
@@ -27,50 +29,52 @@ export default function ContactUS() {
               <div className='flex items-center font-medium space-x-2'>
                 <RadioGroupItem value='option-one' id='option-one' />
                 <Label className='text-lg' htmlFor='option-one'>
-                  Say Hi
+                  {t('contactComp.radio1')}
                 </Label>
               </div>
               <div className='flex items-center space-x-2'>
                 <RadioGroupItem value='option-two' id='option-two' />
                 <Label className='text-lg' htmlFor='option-two'>
-                  Get a Quote
+                  {t('contactComp.radio2')}
                 </Label>
               </div>
             </RadioGroup>
 
             <div className='mt-10'>
               <Label htmlFor='text-one' className='text-base'>
-                Name
+                {t('contactComp.fullName')}
               </Label>
               <Input
                 id='text-one'
                 className='border px-7 text-lg placeholder:text-lg bg-white rounded-[14px] h-[58px] mt-2 border-black'
                 type='text'
-                placeholder='Name'
+                placeholder={t('contactComp.fullName')}
               />
             </div>
 
             <div className='mt-10'>
               <Label htmlFor='text-one' className='text-base'>
-                Email*
+                {t('contactComp.email')}*
               </Label>
               <Input
                 id='text-one'
                 className='border px-7 text-lg placeholder:text-lg bg-white rounded-[14px] h-[58px] mt-2 border-black'
                 type='text'
-                placeholder='Email'
+                placeholder={t('contactComp.email')}
               />
             </div>
 
             <div className='mt-10'>
-              <Label className='text-base'>Message*</Label>
+              <Label className='text-base'>{t('contactComp.message')}*</Label>
               <Textarea
                 className='bg-white text-lg h-[190px] rounded-[14px] placeholder:text-lg border mt-2 border-black'
-                placeholder='Message'
+                placeholder={t('contactComp.message')}
               />
             </div>
 
-            <Button className='btn-v2 w-full mt-10'>Send Message</Button>
+            <Button className='btn-v2 w-full mt-10'>
+              {t('contactComp.btnText')}
+            </Button>
           </div>
         </div>
       </div>

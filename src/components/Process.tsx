@@ -4,52 +4,29 @@ import {
   DisclosurePanel,
 } from '@headlessui/react';
 import SectionTitle from './SectionTitle';
+import { useTranslation } from 'react-i18next';
+
+type Works = {
+  id: string;
+  title: string;
+  description: string;
+}[];
 
 export default function Process() {
-  const faqList = [
-    {
-      question: 'Consultation',
-      answer:
-        'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
-    },
-    {
-      question: 'Research and Strategy Development',
-      answer:
-        'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
-    },
-    {
-      question: 'Implementation',
-      answer:
-        'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
-    },
-    {
-      question: 'Monitoring and Optimization',
-      answer:
-        'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
-    },
-    {
-      question: 'Reporting and Communication',
-      answer:
-        'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
-    },
-    {
-      question: 'Continual Improvement',
-      answer:
-        'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements..',
-    },
-  ];
+  const { t } = useTranslation();
+  const works = t('worksComp.worksData', { returnObjects: true }) as Works;
   return (
     <section className='py-20'>
       <div className='section-container'>
         <SectionTitle
-          title='Our Working Process '
-          description='Step-by-Step Guide to Achieving Your Business Goals'
-          className='max-w-[292px]'
+          title={t('worksComp.title')}
+          description={t('worksComp.subTitle')}
+          className='max-w-[400px]'
         />
 
         <div className=' w-full flex flex-col gap-8 mt-20'>
-          {faqList.map((item, index) => (
-            <Disclosure as='div' defaultOpen={index === 0} key={index}>
+          {works.map(({ id, title, description }, index) => (
+            <Disclosure as='div' defaultOpen={index === 0} key={id}>
               {({ open }) => (
                 <div
                   className={`p-12 rounded-[45px] box-shadow transition-colors duration-300 ${
@@ -61,7 +38,7 @@ export default function Process() {
                       <span className='text-6xl'>
                         {(index + 1).toString().padStart(2, '0')}
                       </span>
-                      {item.question}
+                      {title}
                     </span>
 
                     <div className='w-[58px] h-[58px] rounded-full bg-white flex justify-center items-center border border-black'>
@@ -73,7 +50,7 @@ export default function Process() {
                   </DisclosureButton>
 
                   <DisclosurePanel className='mt-10 text-lg border-t border-black pt-10'>
-                    {item.answer}
+                    {description}
                   </DisclosurePanel>
                 </div>
               )}

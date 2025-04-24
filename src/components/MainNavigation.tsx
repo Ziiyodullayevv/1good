@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router';
 import { Button } from './ui/button';
 import Logo from './Logo';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function MainNavigation() {
   return (
@@ -49,9 +50,12 @@ export default function MainNavigation() {
           </ul>
         </nav>
 
-        <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
-          Login / Sign Up
-        </Button>
+        <div className='flex justify-start gap-5'>
+          <LanguageSwitcher />
+          <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
+            Login / Sign Up
+          </Button>
+        </div>
       </div>
     </header>
   );
