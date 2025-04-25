@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import SectionTitle from './SectionTitle';
 
 type WeWork = {
@@ -6,57 +7,22 @@ type WeWork = {
   description: string;
 };
 
-const data = [
-  {
-    id: '01',
-    title: 'Project Setup',
-    description:
-      'Clients start by posting their project needs—defining the scope, budget, and timeline. Our AI Assistant helps create a clear brief to attract the right freelancers.',
-  },
-  {
-    id: '02',
-    title: 'Proposal Matching',
-    description:
-      'Freelancers submit proposals tailored to the project. Clients review these offers, comparing skills and rates to find the best match for their needs.',
-  },
-  {
-    id: '03',
-    title: 'Agreement Creation',
-    description:
-      'Once a freelancer is chosen, our platform generates a legally binding contract with project details, ensuring both parties are aligned and protected.',
-  },
-  {
-    id: '04',
-    title: 'Secure Payment',
-    description:
-      'Clients deposit funds into Escrow, keeping payments safe until the project is complete. This builds trust, knowing freelancers will be paid upon approval.',
-  },
-  {
-    id: '05',
-    title: 'Collaboration & Delivery',
-    description:
-      'Freelancers and clients work together using our dashboard to track progress. Once the work is submitted, clients review and approve the deliverables.',
-  },
-  {
-    id: '06',
-    title: 'Payment Release',
-    description:
-      'After approval, funds are released from Escrow to the freelancers.  Both parties can leave feedback to build trust for future projects.',
-  },
-];
-
 export default function WeWork() {
+  const { t } = useTranslation('services');
+  const weWorkData = t('weWorkComp.weWorkData', {
+    returnObjects: true,
+  }) as WeWork[];
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
         <SectionTitle
-          title='How We Work: SEO Process'
-          description='Our step-by-step SEO process ensures your website ranks higher, attracts more traffic, and drives lasting results.'
+          title={t('weWorkComp.title')}
+          description={t('weWorkComp.subTitle')}
           className='max-w-[550px]'
         />
 
         <div className='flex mt-20 gap-10 flex-col'>
-          {data.map(({ id, title, description }: WeWork) => (
+          {weWorkData.map(({ id, title, description }) => (
             <div
               key={id}
               className='flex gap-10 items-center bg-v2 rounded-[45px] p-15'

@@ -24,8 +24,8 @@ export default function Journey() {
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
         <SectionTitle
-          title='Our Journey'
-          description='From humble beginnings to industry leadership, discover how 1good has grown to drive success for businesses around the world.'
+          title={t('journeyComp.title')}
+          description={t('journeyComp.subTitle')}
           className='max-w-[660px]'
         />
 

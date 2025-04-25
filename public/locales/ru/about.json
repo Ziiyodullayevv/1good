@@ -1,106 +1,107 @@
 {
   "heroComp": {
-    "title": "Together for Success",
-    "subTitle": "At 1good, we believe great things happen when the right people connect. Our platform empowers freelancers and clients to collaborate efficiently and confidently—backed by smart tools, clear agreements, and secure payments."
+    "title": "Вместе к успеху",
+    "subTitle": "В 1good мы верим, что великие дела происходят, когда правильные люди объединяются. Наша платформа помогает фрилансерам и клиентам эффективно и уверенно сотрудничать с помощью умных инструментов, четких соглашений и безопасных платежей."
   },
   "buildingComp": {
-    "title": "What We’re Building Together",
-    "subTitle": "A vision-focused section showing ambition and values instead of past numbers.",
+    "title": "Что мы создаём вместе",
+    "subTitle": "Раздел, ориентированный на будущее: ценности и амбиции вместо прошлых цифр.",
     "buildingData": [
       {
         "id": "1",
         "iconType": "Building2",
-        "description": "100% Focus on fair, transparent collaboration"
+        "description": "100% фокус на честное и прозрачное сотрудничество"
       },
       {
         "id": "2",
         "iconType": "Star",
-        "description": "Open platform for freelancers & businesses worldwide"
+        "description": "Открытая платформа для фрилансеров и бизнеса по всему миру"
       },
       {
         "id": "3",
         "iconType": "FileSignature",
-        "description": "Contracts, milestones & reviews you can trust"
+        "description": "Контракты, этапы и отзывы, которым можно доверять"
       },
       {
         "id": "4",
         "iconType": "Users",
-        "description": "Built by creatives, engineers & project pros"
+        "description": "Создано креативщиками, инженерами и профи управления проектами"
       },
       {
         "id": "5",
         "iconType": "Trophy",
-        "description": "Your success is our mission"
+        "description": "Ваш успех — наша миссия"
       }
     ]
   },
   "journeyComp": {
-    "title": "Our Journey",
-    "subTitle": "From humble beginnings to industry leadership, discover how 1good has grown to drive success for businesses around the world.",
+    "title": "Наш путь",
+    "subTitle": "От скромного начала до лидерства в индустрии — узнайте, как 1good помогает бизнесам по всему миру достигать успеха.",
     "journeyData": [
       {
         "id": "1",
         "year": 2025,
-        "title": "Full Expansion in Uzbekistan",
-        "description": "In 2025, 1good launches fully in Uzbekistan with AI and human freelancers, connecting users with secure payments and AI tools. By year-end, we expand across Central Asia with local support."
+        "title": "Полноценный запуск в Узбекистане",
+        "description": "В 2025 году 1good полностью запускается в Узбекистане, объединяя ИИ и живых фрилансеров. К концу года мы расширяемся по Центральной Азии с локальной поддержкой."
       },
       {
         "id": "2",
         "year": 2026,
-        "title": "Better Collaboration",
-        "description": "By 2026, 1good adds multilingual dashboards (Kazakh, Turkmen, Tajik, Kirgiz) and messaging tools for seamless communication across Central Asia."
+        "title": "Лучшее сотрудничество",
+        "description": "В 2026 году мы добавим мультиязычные панели (казахский, туркменский, таджикский, киргизский) и мессенджер для легкого общения в регионе."
       },
       {
         "id": "3",
-        "year": 2026,
-        "title": "Eurasian Growth",
-        "description": "In 2027, 1good scales to Eurasia, adding new payment options and AI tools to support diverse projects with our 5% commission model."
+        "year": 2027,
+        "title": "Рост в Евразии",
+        "description": "В 2027 году 1good выходит на евразийский рынок, внедряя новые способы оплаты и ИИ-инструменты, сохраняя нашу модель 5% комиссии."
       },
       {
         "id": "4",
-        "year": 2027,
-        "title": "Global Reach",
-        "description": "By 2028, 1good goes global, connecting freelancers and clients worldwide with secure, AI-driven collaboration."
+        "year": 2028,
+        "title": "Глобальное присутствие",
+        "description": "К 2028 году 1good выходит на глобальный рынок, объединяя фрилансеров и клиентов по всему миру с безопасным, ИИ-управляемым сотрудничеством."
       }
     ]
   },
   "coreComp": {
-    "title": "Core Values",
-    "subTitle": "At the heart of everything we do are our core values:",
+    "title": "Наши ключевые ценности",
+    "subTitle": "В основе всего, что мы делаем, лежат следующие ценности:",
     "coreData": [
       {
         "id": "1",
-        "title": "Trust First",
-        "description": "We prioritize trust in every interaction. Our Escrow system and transparent processes ensure freelancers and clients feel secure, building a foundation for lasting partnerships.",
+        "title": "Доверие прежде всего",
+        "description": "Мы строим отношения на доверии. Система Escrow и прозрачные процессы делают сотрудничество безопасным и надёжным.",
         "image": null
       },
       {
         "id": "2",
-        "title": "Innovation Always",
-        "description": "We embrace innovation to empower our users. By integrating AI tools for project briefs and contracts, we’re redefining how freelancers and clients collaborate efficiently.",
+        "title": "Инновации всегда",
+        "description": "Мы внедряем инновации, чтобы усиливать наших пользователей. ИИ-инструменты для брифов и контрактов меняют подход к фрилансу.",
         "image": "/core1.svg"
       },
       {
         "id": "3",
-        "title": "Collaboration",
-        "description": "We champion partnerships that work for everyone. 1good creates a fair environment with transparent processes, ensuring freelancers and clients succeed together on equal terms.",
+        "title": "Сотрудничество",
+        "description": "Мы создаем условия, в которых выигрывают все. 1good поддерживает честную среду для эффективной совместной работы.",
         "image": "/core2.svg"
       },
       {
         "id": "4",
-        "title": "Transparency",
-        "description": "We open doors for all. With Credits for Clients , 1good makes freelancing accessible, helping both sides grow and achieve their goals.",
+        "title": "Прозрачность",
+        "description": "Мы открываем возможности для всех. С кредитами для клиентов 1good делает фриланс доступным и честным.",
         "image": null
       }
     ]
   },
   "founderComp": {
-    "title": "“At 1good, we make freelancing secure, simple, and empowering for all.”",
-    "subTitle": "— Shohjahon Sokhibov, Co-Founder of 1good"
+    "title": "“В 1good мы делаем фриланс безопасным, простым и вдохновляющим для всех.”",
+    "subTitle": "— Шохжахон Сохибов, соучредитель 1good"
   },
   "joinComp": {
-    "title": "Join Our Team",
-    "subTitle": "At 1good, we thrive on innovation and collaboration. We're always looking for passionate individuals to join our team and help businesses grow. Ready to make an impact?",
-    "btnText": "Explore Careers"
+    "title": "Присоединяйтесь к нашей команде",
+
+    "subTitle": "В 1good мы развиваемся благодаря инновациям и сотрудничеству. Мы всегда рады видеть в команде увлечённых людей, готовых помогать бизнесам расти. Готовы изменить мир к лучшему?",
+    "btnText": "Посмотреть вакансии"
   }
 }

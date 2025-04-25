@@ -32,8 +32,8 @@ export default function Building() {
       <div className='section-container'>
         <SectionTitle
           className='max-w-[459px]'
-          title='What We’re Building Together'
-          description='A vision-focused section showing ambition and values instead of past numbers.'
+          title={t('buildingComp.title')}
+          description={t('buildingComp.subTitle')}
         />
 
         <div className='grid mt-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>

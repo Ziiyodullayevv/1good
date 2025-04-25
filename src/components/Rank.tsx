@@ -1,24 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 
 export default function Rank() {
+  const { t } = useTranslation('services');
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
         <div className='flex justify-between gap-5 items-center box-shadow p-15 rounded-[45px]'>
           <div className=''>
-            <h2 className='text-3xl pb-7 border-b border-black'>
-              Ready to Elevate Your Search Rankings?
+            <h2 className='text-3xl font-semibold pb-7 border-b border-black'>
+              {t('rankComp.title')}
             </h2>
-            <p className='mt-7'>
-              At 1good, we’re here to help freelancers and clients succeed with
-              Escrow payments, AI-driven tools, and flexible financing options
-              like Credits. Whether you’re hiring talent or offering your
-              skills, let’s make your next project a success.
-            </p>
-            <h3 className='font-bold py-8 '>
-              Join a platform that makes collaboration secure and simple.
-            </h3>
-            <Button className='btn-v1'>Begin Your Journey</Button>
+            <p className='mt-7'>{t('rankComp.description')}</p>
+            <h3 className='font-bold py-8'>{t('rankComp.subTitle')}</h3>
+            <Button className='btn-v1'>{t('rankComp.btnText')}</Button>
           </div>
 
           <img src='/rank.svg' alt='rank banner' />

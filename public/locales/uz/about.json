@@ -1,106 +1,106 @@
 {
   "heroComp": {
-    "title": "Together for Success",
-    "subTitle": "At 1good, we believe great things happen when the right people connect. Our platform empowers freelancers and clients to collaborate efficiently and confidently—backed by smart tools, clear agreements, and secure payments."
+    "title": "Muvaffaqiyat sari Birgalikda",
+    "subTitle": "1good platformasida biz to‘g‘ri odamlar birlashganda katta ishlar ro‘y berishiga ishonamiz. Platformamiz frilanserlar va mijozlarga aqlli vositalar, aniq kelishuvlar va xavfsiz to‘lovlar bilan ishonchli hamkorlikni ta’minlaydi."
   },
   "buildingComp": {
-    "title": "What We’re Building Together",
-    "subTitle": "A vision-focused section showing ambition and values instead of past numbers.",
+    "title": "Qanday Platforma yaratmoqdamiz",
+    "subTitle": "Ushbu Bo'lim maqsadlar va qadriyatlarni ko'rsatadi, eski raqamlarni emas.",
     "buildingData": [
       {
         "id": "1",
         "iconType": "Building2",
-        "description": "100% Focus on fair, transparent collaboration"
+        "description": "E'tibor 100% shaffof va adolatli hamkorlikda"
       },
       {
         "id": "2",
         "iconType": "Star",
-        "description": "Open platform for freelancers & businesses worldwide"
+        "description": "Dunyo bo'ylab frilanserlar & mijozlar uchun ochiq platforma "
       },
       {
         "id": "3",
         "iconType": "FileSignature",
-        "description": "Contracts, milestones & reviews you can trust"
+        "description": "Ishonchli shartnomalar, bosqichlar & sharhlar"
       },
       {
         "id": "4",
         "iconType": "Users",
-        "description": "Built by creatives, engineers & project pros"
+        "description": "Ijodkorlar, muhandislar & loyiha mutaxassislari tomonidan yaratilgan"
       },
       {
         "id": "5",
         "iconType": "Trophy",
-        "description": "Your success is our mission"
+        "description": "Sizning muvaffaqiyatingiz-bizning missiyamiz"
       }
     ]
   },
   "journeyComp": {
-    "title": "Our Journey",
-    "subTitle": "From humble beginnings to industry leadership, discover how 1good has grown to drive success for businesses around the world.",
+    "title": "Bizning Sayohatimiz",
+    "subTitle": "Oddiy boshlanishdan to sohada yetakchilikka qadar - 1good qanday qilib butun dunyo bo'ylab bizneslarga muvaffaqiyat olib kelayoganini bilib oling.",
     "journeyData": [
       {
         "id": "1",
         "year": 2025,
-        "title": "Full Expansion in Uzbekistan",
-        "description": "In 2025, 1good launches fully in Uzbekistan with AI and human freelancers, connecting users with secure payments and AI tools. By year-end, we expand across Central Asia with local support."
+        "title": "O'zbekistonda to'liq ishga tushirish",
+        "description": "2025-yilda 1good O'zbekistonda Sun'iy intellekt va frilanserlar bilan to'liq ishga tushdi. Yil oxiriga kelib, biz Markaziy Osiyo bo'yicha kengayamiz."
       },
       {
         "id": "2",
         "year": 2026,
-        "title": "Better Collaboration",
-        "description": "By 2026, 1good adds multilingual dashboards (Kazakh, Turkmen, Tajik, Kirgiz) and messaging tools for seamless communication across Central Asia."
+        "title": "Yaxshiroq Hamkorlik",
+        "description": "2026-yilda 1good ko'p tilli boshqaruv paneli (qzoq, turkman, tojik, qirg'iz) va tezkor xabar almashish funksiyalarini ishga tushiradi."
       },
       {
         "id": "3",
-        "year": 2026,
-        "title": "Eurasian Growth",
-        "description": "In 2027, 1good scales to Eurasia, adding new payment options and AI tools to support diverse projects with our 5% commission model."
+        "year": 2027,
+        "title": "Yevroosiyoda Rivojlanish ",
+        "description": "2027-yilda 1good yevroosiyoga kengayadi, yangi to'lov variantlari va AI vositalar bilan 5% komissiya modeli asosida turli loyihalarni qo'llab-quvvatlaydi."
       },
       {
         "id": "4",
-        "year": 2027,
-        "title": "Global Reach",
-        "description": "By 2028, 1good goes global, connecting freelancers and clients worldwide with secure, AI-driven collaboration."
+        "year": 2028,
+        "title": "Global miqyosda ishlash",
+        "description": "2028-yilga kelib, 1good global miqyosda o'rin egallaydi - Butun dunyo frilanserlari va mijozlarini xavfsiz, sun'iy intellekt yordamida hamkorlik bilan bog'laydi."
       }
     ]
   },
   "coreComp": {
-    "title": "Core Values",
-    "subTitle": "At the heart of everything we do are our core values:",
+    "title": "Asosiy Qadriyatlarimiz",
+    "subTitle": "Barcha ishlarimizning yuragida quyidagi qadriyatlarimiz turadi:",
     "coreData": [
       {
         "id": "1",
-        "title": "Trust First",
-        "description": "We prioritize trust in every interaction. Our Escrow system and transparent processes ensure freelancers and clients feel secure, building a foundation for lasting partnerships.",
+        "title": "Avvalo Ishonch",
+        "description": "Har bir aloqada ishonch ustuvor. Bizning Escrow tizim va Shaffof jarayonlar frilanserlar va mijozlarga ishonch hissini beradi, bu esa mustahkam hamkorlik poydevorini yaratadi.",
         "image": null
       },
       {
         "id": "2",
-        "title": "Innovation Always",
-        "description": "We embrace innovation to empower our users. By integrating AI tools for project briefs and contracts, we’re redefining how freelancers and clients collaborate efficiently.",
+        "title": "Doimiy Innovatsiya",
+        "description": "Biz foydalanuvchilarimizga kuch beruvchi innovatsiyalarni qo'llaymiz. Loyihalar uchun Sun'iy intellekt vositalar va shartnomalarni joriy qilish qilish orqali hamkorlik jarayonlarini yanada takomillashtiramiz.",
         "image": "/core1.svg"
       },
       {
         "id": "3",
-        "title": "Collaboration",
-        "description": "We champion partnerships that work for everyone. 1good creates a fair environment with transparent processes, ensuring freelancers and clients succeed together on equal terms.",
+        "title": "Hamkorlik",
+        "description": "Biz hammaga mos keladigan hamkorlikni taqdim etamiz. 1good shaffof jarayonlar orqali adolatli muhit yaratadi, bu esa frilanserlar va mijozlarga birgalikda muvaffaqiyatga erishishga imkon beradi.",
         "image": "/core2.svg"
       },
       {
         "id": "4",
-        "title": "Transparency",
-        "description": "We open doors for all. With Credits for Clients , 1good makes freelancing accessible, helping both sides grow and achieve their goals.",
+        "title": "Shaffoflik",
+        "description": "Biz hammaga imkoniyat eshiklarini ochamiz. Mijozlar uchun Kreditlar orqali har ikki tomonning rivojlanishi va maqsadlariga erishishiga yordam beradi. 1good frilansingni hamma uchun moslaydi.",
         "image": null
       }
     ]
   },
   "founderComp": {
-    "title": "“At 1good, we make freelancing secure, simple, and empowering for all.”",
+    "title": "“1good'da biz frilansingni xavfsiz, qulay va kuch beruvchi qilamiz.”",
     "subTitle": "— Shohjahon Sokhibov, Co-Founder of 1good"
   },
   "joinComp": {
-    "title": "Join Our Team",
-    "subTitle": "At 1good, we thrive on innovation and collaboration. We're always looking for passionate individuals to join our team and help businesses grow. Ready to make an impact?",
-    "btnText": "Explore Careers"
+    "title": "Jamoamizga qo'shiling",
+    "subTitle": "1good'da biz innovatsiya va hamkorlik orqali rivojlanamiz. Biz har doim bizneslarga o'sishga yordam beradigan fidokor insonlarni jamoamizga taklif qilamiz. O'zgarish qilishga tayyormisiz?",
+    "btnText": "Bo'sh ish o'rinlarini ko'rish"
   }
 }

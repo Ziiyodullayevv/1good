@@ -1,21 +1,28 @@
+import { useTranslation } from 'react-i18next';
 import Ideas from '../components/Ideas';
 import Payment from '../components/Payment';
 import SectionHero from '../components/SectionHero';
 import Testimonials from '../components/Testimonials';
-import { hero } from '../mock/data';
+import Solve from '../components/Solve';
 
 export default function UseCases() {
-  const { useCases } = hero;
+  const { t } = useTranslation('cases');
+  const cases = {
+    title: t('heroComp.title'),
+    description: t('heroComp.description'),
+    image: 'usecases.svg',
+  };
   return (
     <>
-      <SectionHero data={useCases} />
+      <SectionHero data={cases} />
       <Payment />
+      <Solve />
       <Testimonials />
       <Ideas
         className='bg-v1'
-        title='Let’s Build Your Freelance Success'
-        description='Reach out today to discover how 1good can connect you with trusted freelancers or clients in Uzbekistan, using secure payments and AI tools to make every project a win.'
-        btnText='Get Started Now'
+        title={t('successComp.title')}
+        description={t('successComp.subTitle')}
+        btnText={t('successComp.btnText')}
       />
     </>
   );

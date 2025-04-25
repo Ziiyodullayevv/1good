@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className='flex border-t pt-10 border-white border-solid gap-10'>
+          <div className='flex border-t pt-10 border-white/30 border-solid gap-10'>
             <p>{t('reserved')}</p>
             <Link className='underline' to={'/'}>
               {t('privacyPolicy')}

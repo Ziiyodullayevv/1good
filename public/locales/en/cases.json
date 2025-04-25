@@ -1,0 +1,67 @@
+{
+  "heroComp": {
+    "title": "Solving Freelance Challenges",
+    "description": "Discover how 1good tackles the biggest obstacles for freelancers and clients, ensuring smooth and trusted collaboration every time."
+  },
+  "paymentComp": {
+    "title": "Overcoming Payment Uncertainty",
+    "subTitle": "No More Payment Risks",
+    "description": "Freelancers often face delayed or unpaid work, while clients worry about paying for incomplete projects. 1good’s Escrow system ensures funds are secure until the job is done, protecting both sides and building trust.",
+    "btnText": "Sign up",
+    "paymentData": [
+      {
+        "value": "96%",
+        "description": "Growth IT freelancers in 2024"
+      },
+      {
+        "value": "86.8%",
+        "description": "rising freelancers in 2024"
+      },
+      {
+        "value": "527,000",
+        "description": "Active legal entities"
+      },
+      {
+        "value": "200,000+",
+        "description": "Specialist shortage"
+      }
+    ]
+  },
+  "chellangesComp": {
+    "title": "Challenges We Solve",
+    "subTitle": "Understand the freelance struggles 1good tackles for a better experience.",
+    "linkText": "Learn more",
+    "chellangesCompData": [
+      {
+        "title": "Unclear Project Expectations",
+        "description": "Clients often struggle to define project needs, leading to misunderstandings. 1good’s AI Assistant creates clear, detailed briefs, ensuring freelancers and clients start on the same page."
+      },
+      {
+        "title": "Payment Delays for Freelancers",
+        "description": "Freelancers frequently face delayed or unpaid work, causing financial stress. With 1good’s Escrow system, funds are secured upfront and released only after approval, guaranteeing timely payment."
+      },
+      {
+        "title": "Budget Constraints",
+        "description": "Clients may lack funds to hire talent immediately, delaying projects. 1good’s Credits allow clients to start projects now and pay over time, while freelancers get paid upfront."
+      },
+      {
+        "title": "Legal Risks in Agreements",
+        "description": "Without proper contracts, both parties face legal risks and disputes. 1good’s AI generates instant, legally binding contracts, protecting freelancers and clients from uncertainty."
+      },
+      {
+        "title": "Lack of Collaboration Tools",
+        "description": "Poor communication tools lead to project delays and misaligned goals. 1good provides a dashboard to track progress, share updates, and collaborate seamlessly in one place."
+      },
+      {
+        "title": "Trust Issues in Freelancing",
+        "description": "Both freelancers and clients worry about reliability and quality. 1good’s feedback system builds trust by letting users rate and review each other, ensuring confidence in every collaboration."
+      }
+    ]
+  },
+
+  "successComp": {
+    "title": "Let’s Build Your Freelance Success",
+    "subTitle": "Reach out today to discover how 1good can connect you with trusted freelancers or clients in Uzbekistan, using secure payments and AI tools to make every project a win.",
+    "btnText": "Get Started Now"
+  }
+}

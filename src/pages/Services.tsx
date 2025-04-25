@@ -14,7 +14,7 @@ export default function Services() {
   };
   return (
     <>
-      <SectionHero data={services} className='max-w-[453px]' />
+      <SectionHero data={services} className='max-w-[550px]' />
       <Escrow />
       <WeWork />
       <Cases />

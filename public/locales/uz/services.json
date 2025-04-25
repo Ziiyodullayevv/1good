@@ -1,55 +1,55 @@
 {
   "heroComp": {
-    "title": "Seamless Freelance Collaboration",
-    "subTitle": "Connect with talented freelancers or clients in Uzbekistan, using tools designed to ensure trust and efficiency every step of the way."
+    "title": "Frilanserlar bilan ishonchli hamkorlik",
+    "subTitle": "O‘zbekistondagi iqtidorli frilanserlar yoki mijozlar bilan bog‘laning — har bir bosqichda ishonch va samaradorlikni ta’minlaydigan vositalar yordamida."
   },
   "escowComp": {
-    "title1": "Escrow for",
-    "title2": "Safe Transactions",
-    "subTitle": "With 1good’s Escrow system, payments are held securely until the project is approved. Freelancers get paid reliably, and clients only release funds when satisfied—building trust effortlessly.",
-    "btnText": "Sign up"
+    "title1": "Escrow orqali",
+    "title2": "Xavfsiz To'lovlar",
+    "subTitle": "1good’ning Escrow tizimi bilan to‘lovlar loyiha tasdiqlanguncha xavfsiz saqlanadi. Freelancerlar ishonchli tarzda haq olishadi, mijozlar esa faqat qoniqqanidan so‘ng mablag‘ni yechib berishadi — bu esa ishonchni tabiiy shakllantiradi.",
+    "btnText": "Ro'yxatdan o'tish"
   },
 
   "weWorkComp": {
-    "title": "How We Work: SEO Process",
-    "subTitle": "Our step-by-step SEO process ensures your website ranks higher, attracts more traffic, and drives lasting results.",
+    "title": "Biz qanday ishlaymiz: SEO jarayoni",
+    "subTitle": "Bosqichma-bosqich SEO strategiyamiz profilingiz reytingini oshiradi, ko‘proq tashrif buyuruvchilarni jalb qiladi va uzoq muddatli natijalar beradi.",
     "weWorkData": [
       {
         "id": "01",
-        "title": "Project Setup",
-        "description": "Clients start by posting their project needs—defining the scope, budget, and timeline. Our AI Assistant helps create a clear brief to attract the right freelancers."
+        "title": "Loyihani Boshlash",
+        "description": "Mijozlar loyiha talablari, byudjet va muddatni belgilab e’lon qilishadi. Bizning sun’iy intellekt yordamchimiz aniq topshiriq yaratishda yordam beradi."
       },
       {
         "id": "02",
-        "title": "Proposal Matching",
-        "description": "Freelancers submit proposals tailored to the project. Clients review these offers, comparing skills and rates to find the best match for their needs."
+        "title": "Takliflar Tanlovi",
+        "description": "Frilanserlar loyiha uchun moslashtirilgan takliflar yuborishadi. Mijozlar ularni ko‘rib chiqib, eng mos narx va ko‘nikmalar asosida tanlov qilishadi."
       },
       {
         "id": "03",
-        "title": "Agreement Creation",
-        "description": "Once a freelancer is chosen, our platform generates a legally binding contract with project details, ensuring both parties are aligned and protected."
+        "title": "Shartnoma Tuzish",
+        "description": "Frilanserlar tanlangach, platforma ikki tomon manfaatlarini himoya qiluvchi rasmiy shartnomani avtomatik yaratadi."
       },
       {
         "id": "04",
-        "title": "Secure Payment",
-        "description": "Clients deposit funds into Escrow, keeping payments safe until the project is complete. This builds trust, knowing freelancers will be paid upon approval."
+        "title": "Xavfsiz to‘lov",
+        "description": "Mijozlar mablag‘ni Escrow hisobiga o‘tkazishadi. Mablag‘ loyiha yakunlanguncha saqlanadi va bu ishonchni mustahkamlaydi."
       },
       {
         "id": "05",
-        "title": "Collaboration & Delivery",
-        "description": "Freelancers and clients work together using our dashboard to track progress. Once the work is submitted, clients review and approve the deliverables."
+        "title": "Hamkorlik & Yetkazib berish",
+        "description": "Frilanserlar va mijozlar bizning boshqaruv paneli orqali ishlashadi. Ish topshirilgach, mijoz uni ko‘rib chiqadi va tasdiqlaydi.."
       },
       {
         "id": "06",
-        "title": "Payment Release",
-        "description": "After approval, funds are released from Escrow to the freelancers. Both parties can leave feedback to build trust for future projects."
+        "title": "To'lovni Amalga oshirish",
+        "description": "Mijoz tasdiqlagach, mablag‘ frilanserga o‘tkaziladi. Har ikki tomon izoh qoldirishi mumkin — bu kelajakdagi loyihalarda ishonchni oshiradi."
       }
     ]
   },
   "rankComp": {
-    "title": "Ready to Elevate Your Search Rankings?",
-    "subTitle": "Join a platform that makes collaboration secure and simple.",
-    "description": "At 1good, we’re here to help freelancers and clients succeed with Escrow payments, AI-driven tools, and flexible financing options like Credits. Whether you’re hiring talent or offering your skills, let’s make your next project a success.",
-    "btnText": "Begin Your Journey"
+    "title": "Reytinglaringizni ko'tarishga harakat qilyapsizmi?",
+    "subTitle": "Xavfsiz va qulay hamkorlikni ta’minlovchi platformaga qo‘shiling.",
+    "description": "1good platformasida biz freelancerlar va mijozlarning muvaffaqiyatli ishlashiga ko‘maklashamiz — bunga Escrow to‘lovlari, sun’iy intellektga asoslangan qulay vositalar va Credits kabi moslashuvchan moliyaviy imkoniyatlar orqali erishamiz. Agar siz iste’dod izlayotgan bo‘lsangiz yoki o‘z ko‘nikmalaringizni taklif qilayotgan bo‘lsangiz — keling, keyingi loyihangizni birgalikda muvaffaqiyatli qilaylik",
+    "btnText": "Sayohatingizni boshlang"
   }
 }

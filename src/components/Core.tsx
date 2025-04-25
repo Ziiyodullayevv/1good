@@ -22,8 +22,8 @@ export default function Core() {
     <section className='py-10 text-lg sm:py-20'>
       <div className='section-container'>
         <SectionTitle
-          title='Core Values'
-          description='At the heart of everything we do are our core values:'
+          title={t('coreComp.title')}
+          description={t('coreComp.subTitle')}
           className='max-w-[320px]'
         />
 
