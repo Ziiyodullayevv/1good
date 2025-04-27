@@ -14,8 +14,8 @@ export default function SectionTitle({
   variant,
 }: Props) {
   return (
-    <div className='flex items-start gap-10'>
-      <h2 className={cn('section-title', variant)}>{title}</h2>
+    <div className='flex flex-col text-center sm:text-start lg:flex-row items-start gap-10'>
+      <h2 className={cn('section-title mx-auto sm:mx-0', variant)}>{title}</h2>
       <p className={cn('max-w-[798px] text-xl', className)}>{description}</p>
     </div>
   );

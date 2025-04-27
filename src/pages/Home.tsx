@@ -18,7 +18,7 @@ export default function Home() {
         description={t('freelanceComp.subTitle')}
         btnText={t('freelanceComp.btnText')}
       />
-      <Cases />
+      {/* <Cases /> */}
       <Process />
       <Testimonials />
       <ContactUS />

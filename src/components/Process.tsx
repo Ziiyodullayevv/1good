@@ -16,7 +16,7 @@ export default function Process() {
   const { t } = useTranslation();
   const works = t('worksComp.worksData', { returnObjects: true }) as Works;
   return (
-    <section className='py-20'>
+    <section className='py-10 sm:py-20'>
       <div className='section-container'>
         <SectionTitle
           title={t('worksComp.title')}
@@ -24,24 +24,28 @@ export default function Process() {
           className='max-w-[400px]'
         />
 
-        <div className=' w-full flex flex-col gap-8 mt-20'>
+        <div className=' w-full flex flex-col gap-8 mt-10 sm:mt-20'>
           {works.map(({ id, title, description }, index) => (
             <Disclosure as='div' defaultOpen={index === 0} key={id}>
               {({ open }) => (
                 <div
-                  className={`p-12 rounded-[45px] box-shadow transition-colors duration-300 ${
+                  className={`p-8 sm:p-12 rounded-[45px] box-shadow transition-colors duration-300 ${
                     open ? 'bg-v1' : 'bg-v2'
                   }`}
                 >
-                  <DisclosureButton className='group flex w-full items-center justify-between'>
-                    <span className='text-3xl flex items-center gap-5 shrink-0 font-medium'>
-                      <span className='text-6xl'>
-                        {(index + 1).toString().padStart(2, '0')}
+                  <DisclosureButton className='group flex w-full gap-3 sm:gap-5 items-center justify-between'>
+                    <div>
+                      <span className='text-3xl flex items-center gap-3 sm:gap-5 shrink-0 text-start font-medium'>
+                        <span className='text-3xl md:text-6xl'>
+                          {(index + 1).toString().padStart(2, '0')}
+                        </span>
+                        <span className='text-base sm:text-lg md:text-3xl'>
+                          {title}
+                        </span>
                       </span>
-                      {title}
-                    </span>
+                    </div>
 
-                    <div className='w-[58px] h-[58px] rounded-full bg-white flex justify-center items-center border border-black'>
+                    <div className='w-[30px] shrink-0 p-2 h-[30px] md:w-[58px] md:h-[58px] rounded-full bg-white flex justify-center items-center border border-black'>
                       <img
                         src={open ? '-.svg' : '+.svg'}
                         alt={open ? 'minus icon' : 'plus icon'}
@@ -49,7 +53,7 @@ export default function Process() {
                     </div>
                   </DisclosureButton>
 
-                  <DisclosurePanel className='mt-10 text-lg border-t border-black pt-10'>
+                  <DisclosurePanel className='mt-10 border-t border-black pt-10'>
                     {description}
                   </DisclosurePanel>
                 </div>

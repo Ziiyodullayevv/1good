@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 export default function RootLayout() {
   return (
     <>
-      <MainNavigation />
+      {/* <MainNavigation /> */}
       <main className='min-h-[calc(100vh-100px)]'>
         <Outlet />
       </main>
