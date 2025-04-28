@@ -5,17 +5,19 @@ export default function Founder() {
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
-        <div className='bg-black relative flex justify-end text-white rounded-[45px] p-15'>
+        <div className='bg-black relative flex xl:justify-end text-white rounded-[45px] p-8 sm:p-15'>
           <img
-            className='absolute left-0 top-[-100px]'
+            className='absolute  w-[150px] sm:w-[300px] md:block -z-0 xl:left-0 bottom-0 right-0 sm:top-[-40px] lg:top-[-100px]'
             src='/about-us-focus.svg'
             alt='about-us focus image'
           />
-          <div>
-            <h2 className='font-semibold max-w-[529px] text-[41px]'>
+          <div className='relative z-10'>
+            <h2 className='font-semibold max-w-[529px] text-xl sm:text-2xl lg:text-[41px]'>
               {t('founderComp.title')}
             </h2>
-            <h5 className='text-2xl mt-24'>{t('founderComp.subTitle')}</h5>
+            <h5 className=' sm:text-lg lg:text-2xl mt-24'>
+              {t('founderComp.subTitle')}
+            </h5>
           </div>
         </div>
       </div>

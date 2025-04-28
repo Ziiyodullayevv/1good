@@ -30,11 +30,11 @@ export default function Services() {
             >
               <div className='flex flex-col gap-25'>
                 <div>
-                  <h3 className='section-title text-2xl sm:text-3xl'>
+                  <h3 className='section-title text-xl sm:text-3xl'>
                     {title1}
                   </h3>
                   <br />
-                  <h3 className='section-title text-2xl sm:text-3xl'>
+                  <h3 className='section-title text-xl sm:text-3xl'>
                     {title2}
                   </h3>
                 </div>

@@ -23,7 +23,7 @@ export default function Ideas({
             className
           )}
         >
-          <h3 className='text-2xl sm:text-3xl max-w-[650px] font-semibold'>
+          <h3 className='text-xl sm:text-3xl max-w-[650px] font-semibold'>
             {title}
           </h3>
           <p className='max-w-[500px] sm:text-lg'>{description}</p>

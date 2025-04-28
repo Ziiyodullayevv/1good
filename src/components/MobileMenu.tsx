@@ -11,11 +11,21 @@ import { NavLink } from 'react-router';
 import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
+import { useState } from 'react';
 
 export default function MobileMenu() {
   const { t } = useTranslation('common');
+
+  // Sheetning ochiq yoki yopiq holatini saqlash uchun state
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Sheetni yopish uchun funksiya
+  const handleLinkClick = () => {
+    setIsOpen(false); // Sheetni yopish
+  };
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger className='cursor-pointer'>
         <AlignLeft className='size-8 hidden md:block' />
         <AlignJustify className='size-8 md:hidden' />
@@ -27,7 +37,10 @@ export default function MobileMenu() {
           </SheetTitle>
           <SheetDescription asChild>
             <nav className='flex flex-col gap-3 !text-black !text-lg mt-5'>
-              <Button className='btn-v2 md:hidden w-full !h-[55px]'>
+              <Button
+                className='btn-v2 md:hidden w-full !h-[55px]'
+                onClick={handleLinkClick}
+              >
                 {t('auth')}
               </Button>
 
@@ -38,6 +51,7 @@ export default function MobileMenu() {
                     : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
                 }
                 to={'/'}
+                onClick={handleLinkClick} // Sheetni yopish
               >
                 {t('home')}
               </NavLink>
@@ -48,6 +62,7 @@ export default function MobileMenu() {
                     : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
                 }
                 to={'/about'}
+                onClick={handleLinkClick} // Sheetni yopish
               >
                 {t('about')}
               </NavLink>
@@ -59,6 +74,7 @@ export default function MobileMenu() {
                     : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
                 }
                 to={'/services'}
+                onClick={handleLinkClick} // Sheetni yopish
               >
                 {t('services')}
               </NavLink>
@@ -70,6 +86,7 @@ export default function MobileMenu() {
                     : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
                 }
                 to={'/usecases'}
+                onClick={handleLinkClick} // Sheetni yopish
               >
                 {t('useCases')}
               </NavLink>

@@ -52,7 +52,9 @@ export default function Footer() {
                 className='!text-lg px-5 placeholder:text-lg h-[60px] rounded-lg'
                 placeholder={t('email')}
               />
-              <Button className='btn-v1'>{t('btnText')}</Button>
+              <Button style={{ fontSize: 10 }} className='btn-v1'>
+                {t('btnText')}
+              </Button>
             </div>
           </div>
 

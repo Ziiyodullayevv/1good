@@ -136,15 +136,23 @@
   }
 
   .btn-v1 {
-    @apply !h-[60px] hover:!bg-v1/70 !cursor-pointer !bg-v1 rounded-xl !text-black !font-semibold !px-5 !text-lg;
+    @apply !min-h-[60px] hover:!bg-v1/70 !cursor-pointer !bg-v1 rounded-xl !text-black !font-semibold !px-5 !text-sm;
   }
 
   .btn-v2 {
-    @apply !h-[60px] !cursor-pointer !rounded-xl !font-semibold !px-5 !text-lg;
+    @apply !h-[60px] !cursor-pointer !rounded-xl !font-semibold !px-5 !text-sm sm:!text-lg;
   }
 
   .section-title {
-    @apply text-3xl sm:text-4xl whitespace-nowrap py-1 items-start inline-block bg-black text-white px-3 rounded-lg;
+    @apply !text-2xl sm:text-4xl py-1 items-start inline-block bg-black text-white px-3 rounded-lg;
+  }
+
+  .custom-shadow {
+    @apply xl:border border-black xl:shadow-[0_5px_0_black];
+  }
+
+  .custom-shadow-reverse {
+    @apply shadow-[0_5px_0_black] xl:shadow-none;
   }
 }
 

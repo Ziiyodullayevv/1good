@@ -6,17 +6,23 @@ export default function Rank() {
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
-        <div className='flex justify-between gap-5 items-center box-shadow p-15 rounded-[45px]'>
-          <div className=''>
-            <h2 className='text-3xl font-semibold pb-7 border-b border-black'>
+        <div className='flex flex-col lg:flex-row justify-between items-center gap-10 sm:gap-5 box-shadow p-8 sm:p-15 rounded-[45px]'>
+          <div className='text-center sm:text-left'>
+            <h2 className='text-2xl sm:text-3xl font-semibold pb-5 sm:pb-7 border-b border-black inline-block'>
               {t('rankComp.title')}
             </h2>
-            <p className='mt-7'>{t('rankComp.description')}</p>
-            <h3 className='font-bold py-8'>{t('rankComp.subTitle')}</h3>
-            <Button className='btn-v1'>{t('rankComp.btnText')}</Button>
+            <p className='mt-5 sm:mt-7'>{t('rankComp.description')}</p>
+            <h3 className='font-bold py-6 sm:py-8'>{t('rankComp.subTitle')}</h3>
+            <Button className='btn-v1 w-full sm:w-auto'>
+              {t('rankComp.btnText')}
+            </Button>
           </div>
 
-          <img src='/rank.svg' alt='rank banner' />
+          <img
+            className='w-full max-w-[400px] sm:max-w-[500px]'
+            src='/rank.svg'
+            alt='rank banner'
+          />
         </div>
       </div>
     </section>

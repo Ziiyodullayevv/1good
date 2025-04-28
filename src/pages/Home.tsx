@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-// import Cases from '../components/Cases';
+import Cases from '../components/Cases';
 import ContactUS from '../components/ContactUS';
 import Hero from '../components/Hero';
 import Ideas from '../components/Ideas';
@@ -18,7 +18,7 @@ export default function Home() {
         description={t('freelanceComp.subTitle')}
         btnText={t('freelanceComp.btnText')}
       />
-      {/* <Cases /> */}
+      <Cases />
       <Process />
       <Testimonials />
       <ContactUS />

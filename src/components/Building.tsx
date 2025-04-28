@@ -36,9 +36,13 @@ export default function Building() {
           description={t('buildingComp.subTitle')}
         />
 
-        <div className='grid mt-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
+        {/* GRID o‘rniga FLEX */}
+        <div className='flex flex-wrap xl:flex-nowrap justify-center gap-x-0 gap-y-5 mt-10 sm:mt-20'>
           {buildingData.map(({ id, description, iconType }) => (
-            <div key={id}>
+            <div
+              key={id}
+              className='w-[250px] sm:w-[250px] flex flex-col items-center'
+            >
               <span className='h-[40px] rounded-t-3xl w-full inline-block border border-b-transparent border-black'></span>
               <div className='px-5 text-center'>
                 <div className='flex justify-center'>{iconMap[iconType]}</div>

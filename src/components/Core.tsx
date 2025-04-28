@@ -27,19 +27,27 @@ export default function Core() {
           className='max-w-[320px]'
         />
 
-        <div className='grid mt-20 grid-cols-2 gap-10'>
+        <div className='grid mt-10 sm:mt-20 grid-cols-1 xl:grid-cols-2 gap-10'>
           {coreData.map(({ id, title, description, image }) => (
             <div
               key={id}
-              className='flex min-h-[400px] gap-2 box-shadow rounded-[45px] p-12 '
+              className='flex gap-8 flex-wrap sm:flex-nowrap min-h-[400px] sm:gap-2 box-shadow rounded-[45px] p-8 sm:p-12'
             >
               <div>
-                <h3 className='text-3xl border-b border-black pb-6 font-bold'>
+                <h3 className='text-2xl sm:text-3xl border-b border-black pb-6 font-bold'>
                   {title}
                 </h3>
-                <p className='mt-6'>{description}</p>
+                <p className='mt-6 text-base sm:text-lg'>{description}</p>
               </div>
-              {image && <img src={image} alt='core values banner' />}
+              {image && (
+                <div className='flex sm:block shrink-0 justify-center sm:justify-start w-full sm:w-auto'>
+                  <img
+                    className='w-full'
+                    src={image ?? ''}
+                    alt='core values banner'
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
