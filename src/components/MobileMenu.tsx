@@ -18,7 +18,7 @@ export default function MobileMenu() {
     <Sheet>
       <SheetTrigger className='cursor-pointer'>
         <AlignLeft className='size-8 hidden md:block' />
-        <AlignJustify className='size-8 hidden md:block' />
+        <AlignJustify className='size-8 md:hidden' />
       </SheetTrigger>
       <SheetContent side='left'>
         <SheetHeader>
