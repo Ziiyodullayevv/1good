@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
       <PopoverTrigger asChild>
         <Button
           variant='outline'
-          className='h-[60px] cursor-pointer rounded-xl w-[70px]'
+          className='h-[60px] cursor-pointer shadow-none border-none rounded-xl w-[70px]'
           size='icon'
         >
           <Languages className='size-7' />

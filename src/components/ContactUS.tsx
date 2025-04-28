@@ -18,7 +18,7 @@ export default function ContactUS() {
           className='max-w-[370px]'
         />
 
-        <div className='bg-v2 relative z-10 overflow-hidden rounded-[45px] p-10 sm:p-15 mt-6 sm:mt-20'>
+        <div className='bg-v2 relative z-10 overflow-hidden rounded-[45px] p-7 sm:p-15 mt-6 sm:mt-20'>
           <img
             className='absolute hidden md:block right-[-330px]'
             src='contactUs.svg'
@@ -28,13 +28,13 @@ export default function ContactUS() {
             <RadioGroup className='flex gap-5' defaultValue='option-one'>
               <div className='flex items-center font-medium space-x-2'>
                 <RadioGroupItem value='option-one' id='option-one' />
-                <Label className='sm:text-lg' htmlFor='option-one'>
+                <Label className='text-sm sm:text-lg' htmlFor='option-one'>
                   {t('contactComp.radio1')}
                 </Label>
               </div>
               <div className='flex items-center space-x-2'>
                 <RadioGroupItem value='option-two' id='option-two' />
-                <Label className='sm:text-lg' htmlFor='option-two'>
+                <Label className='text-sm sm:text-lg' htmlFor='option-two'>
                   {t('contactComp.radio2')}
                 </Label>
               </div>

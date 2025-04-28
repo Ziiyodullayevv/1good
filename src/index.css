@@ -136,7 +136,7 @@
   }
 
   .btn-v1 {
-    @apply !h-[60px] hover:!bg-v1/70 !cursor-pointer !bg-v1 !rounded-xl !text-black !font-semibold !px-5 !text-lg;
+    @apply !h-[60px] hover:!bg-v1/70 !cursor-pointer !bg-v1 rounded-xl !text-black !font-semibold !px-5 !text-lg;
   }
 
   .btn-v2 {

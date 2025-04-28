@@ -3,15 +3,19 @@ import { Button } from './ui/button';
 import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import MobileMenu from './MobileMenu';
 
 export default function MainNavigation() {
   const { t } = useTranslation('common');
   return (
     <header className='section-container'>
-      <div className='flex justify-between py-5 items-center'>
-        <nav className='flex gap-20 items-center'>
+      <div className='flex xl:text-sm justify-between py-5 items-center'>
+        <nav className='flex gap-7 xl:gap-10 items-center'>
           <Logo />
-          <ul className='flex items-center text-xl gap-8'>
+          <div className='h-full hidden md:flex items-center xl:hidden'>
+            <MobileMenu />
+          </div>
+          <ul className='hidden xl:flex items-center text-xl gap-8'>
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -51,11 +55,16 @@ export default function MainNavigation() {
           </ul>
         </nav>
 
-        <div className='flex justify-start gap-5'>
+        <div className='hidden md:flex justify-start gap-5'>
           <LanguageSwitcher />
           <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
             {t('auth')}
           </Button>
+        </div>
+
+        <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>
+          <LanguageSwitcher />
+          <MobileMenu />
         </div>
       </div>
     </header>

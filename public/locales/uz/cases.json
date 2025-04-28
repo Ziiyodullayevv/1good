@@ -1,0 +1,67 @@
+{
+  "heroComp": {
+    "title": "Frilanserlikdagi Muammolarga Yechim",
+    "description": "1good frilanserlar va mijozlar duch keladigan asosiy muammolarni qanday hal qilishini ko'ring, ishonchli va qulay hamkorlik bizda doim kafolatlangan."
+  },
+  "paymentComp": {
+    "title": "To'lovdagi Noaniqlikni Bartaraf etish ",
+    "subTitle": "Endi to'lov xavflari yo'q",
+    "description": "Frilanserlar tez-tez to'lov kechikishi yoki umuman to'lanmaslik holatlariga duch keladi, mijozlar esa yakunlanmagan loyihalar uchun to'lov qilishdan xavotirda. 1good'ning Escrow tizimi mablag'larni ish bajarilguniga qadar xavfsiz saqlaydi, bu ikki tomon uchun ham himoya va ishonch yaratadi.",
+    "btnText": "Ro'yxatdan o'tish",
+    "paymentData": [
+      {
+        "percentage": "96%",
+        "description": "2024-yilda IT frilanserlari o'sishi"
+      },
+      {
+        "percentage": "86.8%",
+        "description": "2024-yilda frilanserlar soni oshishi"
+      },
+      {
+        "value": "527,000",
+        "description": "Faol yuridik shaxslar"
+      },
+      {
+        "value": "200,000+",
+        "description": "Mutaxassislar yetishmovchiligi"
+      }
+    ]
+  },
+  "chellangesComp": {
+    "title": "Bizning yechimlarimiz",
+    "subTitle": "1good frilans qiyinchiliklarini tushunib, yaxshi tajriba uchun kurashadi.",
+    "linkText": "Ko'proq bilish",
+    "chellangesCompData": [
+      {
+        "title": "Loyiha Talablari Noaniqligi",
+        "description": "Mijozlar ko'pincha loyiha ehtiyojlarini aniqlashda qiynaladi, bu esa tushunmovchiliklarga sabab bo'ladi.1good'ning AI yordamchisi aniq, batafsil ko'rsatmalar yaratadi, bu esa frilanserlar va mijozlarning hamfikrlikda boshlashini ta'minlaydi."
+      },
+      {
+        "title": "Frilanserlar uchun Kechikkan To'lovlar",
+        "description": "To'lovlar kechikishi yoki umuman amalga oshmasligi frilanserlar uchun moliyaviy bosimga sabab bo'ladi.1good'ning Escrow tizimi bilan mablag'lar xavfsizligi oldindan kafolatlanadi va faqat ish tasdiqlangach to'lov amalga oshiriladi, bu o'z vaqtida to'lovni kafolatlaydi."
+      },
+      {
+        "title": "Moliyaviy Cheklovlar",
+        "description": "Mijozlarda kerakli frilanserni darhol yollashga yetarli mablag' bo'lmasligi loyihani kechiktiradi.1good'ning Kredit tizimi orqali mijozlar loyihalarni shu ondayoq boshlashi va keyinchalik to'lovni amalga oshirish imkoniga ega, frilanserlar esa oldindan to'lov oladi."
+      },
+      {
+        "title": "Shartnomalardagi Huquqiy Xavflar",
+        "description": "To'g'ri shartnomalarsiz har ikki tomon nizolar va xatarlarga duch keladi.1good'ning AI tizimi tez va qonuniy shartnomalarni avtomatik yaratadi va ikki tomonni ham himoya qiladi."
+      },
+      {
+        "title": "Hamkorlik vositalar Yetishmovchiligi",
+        "description": "Sifatsiz aloqa vositalari loyiha kechikishi va nomutanosib maqsadlarga olib keladi. 1good yagona boshqaruv paneli orqali loyihani kuzatish, yangilanishlar almashish va birgalikda ishlashni qulay qiladi."
+      },
+      {
+        "title": "Frilansda Ishonchsizlik",
+        "description": "Frilanserlar ham, Mijozlar ham ishonchlilik va sifatdan xavotirda. 1fikr-mulohazalar tizimi foydalanuvchilarga bir-birini baholash va sharhlash imkonini berib, ishonchni mustahkamlaydi.."
+      }
+    ]
+  },
+
+  "successComp": {
+    "title": "Frilansdagi Muvaffaqiyat yo'lingizni boshlang",
+    "subTitle": "Bugunoq bog‘laning va 1good sizni O‘zbekistondagi ishonchli frilanserlar yoki mijozlar bilan qanday bog‘lay olishini, xavfsiz to‘lovlar va AI vositalari bilan har bir loyihani qanday g‘alabaga aylantirishini bilib oling.",
+    "btnText": "Hoziroq boshlang"
+  }
+}
