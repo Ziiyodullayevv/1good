@@ -4,6 +4,10 @@ import About from '../pages/About';
 import Services from '../pages/Services';
 import UseCases from '../pages/UseCases';
 import Home from '../pages/Home';
+import Auth from '../components/Auth';
+import SignIn from '../components/SignIn';
+import AuthLayout from '../layouts/AuthLayout';
+import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +18,21 @@ export const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'services', element: <Services /> },
       { path: 'usecases', element: <UseCases /> },
+    ],
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      { index: true, element: <Auth /> },
+      {
+        path: 'signup',
+        element: <SignUp />,
+      },
+      {
+        path: 'signin',
+        element: <SignIn />,
+      },
     ],
   },
 ]);

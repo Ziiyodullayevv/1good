@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { Button } from './ui/button';
 import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -57,9 +57,11 @@ export default function MainNavigation() {
 
         <div className='hidden md:flex justify-start gap-5'>
           <LanguageSwitcher />
-          <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
-            {t('auth')}
-          </Button>
+          <Link to={'/auth'}>
+            <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
+              {t('auth')}
+            </Button>
+          </Link>
         </div>
 
         <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>

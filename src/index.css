@@ -143,10 +143,6 @@
     @apply !h-[60px] !cursor-pointer !rounded-xl !font-semibold !px-5 !text-sm sm:!text-lg;
   }
 
-  .section-title {
-    @apply !text-2xl sm:text-4xl py-1 items-start inline-block bg-black text-white px-3 rounded-lg;
-  }
-
   .custom-shadow {
     @apply xl:border border-black xl:shadow-[0_5px_0_black];
   }

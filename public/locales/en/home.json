@@ -12,36 +12,42 @@
       {
         "title1": "Secure Payments",
         "title2": "with Escrow",
+        "description": "Our Escrow system ensures every transaction is safe. Clients deposit funds upfront, and freelancers receive payment only after the work is approved, giving both sides peace of mind.",
         "image": "service1.svg",
         "url": "/"
       },
       {
         "title1": "AI-Powered",
         "title2": "Project Clarity",
+        "description": "Create detailed project briefs effortlessly with our AI Assistant. Answer simple questions, and get a clear roadmap that keeps freelancers and clients on the same page from day one.",
         "image": "service2.svg",
         "url": "/"
       },
       {
         "title1": "Instant",
         "title2": "Contracts",
+        "description": "Generate professional, legally binding contracts with a few clicks. Our AI tailors agreements to your project, complete with e-signatures, so you can start working faster.",
         "image": "service3.svg",
         "url": "/"
       },
       {
         "title1": "Flexible",
         "title2": "Credits",
+        "description": "Need talent but short on funds? Use 1good Credits to start projects today and repay over time, while freelancers get paid upfront—minus our 5% commission.",
         "image": "service4.svg",
         "url": "/"
       },
       {
         "title1": "Easy",
         "title2": "Manage projects",
+        "description": "Keep track of milestones, approvals, and payments in one place. Our intuitive dashboard helps freelancers and clients stay organized and focused on success.",
         "image": "service5.svg",
         "url": "/"
       },
       {
         "title1": "Transparent ",
         "title2": "Feedbacks",
+        "description": "Share and receive feedback after every project. Build your reputation with transparent reviews, helping freelancers stand out and clients find trusted talent.",
         "image": "service6.svg",
         "url": "/"
       }
