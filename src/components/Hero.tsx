@@ -8,7 +8,7 @@ export default function Hero() {
       <div className='section-container'>
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           <div>
-            <h1 className='text-4xl sm:text-5xl max-w-[450px] md:max-w-[1000px] xl:text-6xl font-semibold'>
+            <h1 className='text-4xl font-montserrat sm:text-5xl max-w-[450px] md:max-w-[1000px] xl:text-6xl font-semibold'>
               {t('heroComp.title')}
             </h1>
             <img className='md:hidden mt-9' src='hero.svg' alt='hero banner' />

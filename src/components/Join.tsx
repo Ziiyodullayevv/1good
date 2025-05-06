@@ -18,7 +18,7 @@ export default function Join() {
           </div>
 
           <div className='flex justify-center sm:justify-start w-full'>
-            <img src='/public/join.svg' alt='join team image' />
+            <img src='join.svg' alt='join team image' />
           </div>
         </div>
       </div>
