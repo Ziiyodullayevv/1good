@@ -1,55 +1,54 @@
 {
   "heroComp": {
-    "title": "Frilanserlar bilan ishonchli hamkorlik",
-    "subTitle": "O‘zbekistondagi iqtidorli frilanserlar yoki mijozlar bilan bog‘laning — har bir bosqichda ishonch va samaradorlikni ta’minlaydigan vositalar yordamida."
+    "title": "Muammosiz Frilans Hamkorligi",
+    "subTitle": "Har bir bosqichda ishonch va samaradorlikni kafolatlaydigan qulay vositalar yordamida O'zbekistondagi iqtidorli frilanserlar va mijozlar bilan oson bog'laning."
   },
   "escowComp": {
-    "title1": "Escrow orqali",
+    "title1": "Escrow bilan",
     "title2": "Xavfsiz To'lovlar",
-    "subTitle": "1good’ning Escrow tizimi bilan to‘lovlar loyiha tasdiqlanguncha xavfsiz saqlanadi. Freelancerlar ishonchli tarzda haq olishadi, mijozlar esa faqat qoniqqanidan so‘ng mablag‘ni yechib berishadi — bu esa ishonchni tabiiy shakllantiradi.",
+    "subTitle": "1good'ning Escrow tizimi bilan to'lovlar loyiha tasdiqlanmaguncha xavfsiz saqlanadi. Freelancerlar ishonchli tarzda haq olishadi, mijozlar esa faqat qoniqish bildirgach to'lovni tasdiqlashadi — bu esa ishonchli hamkorlikni ta'minlaydi.",
     "btnText": "Ro'yxatdan o'tish"
   },
-
   "weWorkComp": {
     "title": "Biz qanday ishlaymiz: SEO jarayoni",
-    "subTitle": "Bosqichma-bosqich SEO strategiyamiz profilingiz reytingini oshiradi, ko‘proq tashrif buyuruvchilarni jalb qiladi va uzoq muddatli natijalar beradi.",
+    "subTitle": "Bosqichma-bosqich SEO strategiyamiz profilingiz reytingini oshiradi, ko'proq tashrif buyuruvchilarni jalb qiladi va uzoq muddatli natijalar beradi.",
     "weWorkData": [
       {
         "id": "01",
-        "title": "Loyihani Boshlash",
-        "description": "Mijozlar loyiha talablari, byudjet va muddatni belgilab e’lon qilishadi. Bizning sun’iy intellekt yordamchimiz aniq topshiriq yaratishda yordam beradi."
+        "title": "Loyiha Yaratish",
+        "description": "Mijozlar loyiha ehtiyojlarini-byudjet, muddatlarni aniqlab joylashtiradi. Bizning Sun'iy intellekt yordamchimiz aniq loyiha tafsilotini yaratib to'g'ri frilanserlarni jalb qilishga ko'maklashadi."
       },
       {
         "id": "02",
-        "title": "Takliflar Tanlovi",
-        "description": "Frilanserlar loyiha uchun moslashtirilgan takliflar yuborishadi. Mijozlar ularni ko‘rib chiqib, eng mos narx va ko‘nikmalar asosida tanlov qilishadi."
+        "title": "Takliflarni Moslash",
+        "description": "Frilanserlar loyiha talablariga moslashtirilgan takliflar taqdim etadi. Mijozlar takliflarni ko'rib chiqib, ko'nikmalar va narxlarini taqqoslab, o'z ehtiyojlariga eng mos keladigan frilanserni tanlaydi."
       },
       {
         "id": "03",
         "title": "Shartnoma Tuzish",
-        "description": "Frilanserlar tanlangach, platforma ikki tomon manfaatlarini himoya qiluvchi rasmiy shartnomani avtomatik yaratadi."
+        "description": "Frilanser tanlangach, platforma loyiha tafsilotlariga muvofiq ikki tomon manfaatlarini himoya qiluvchi huquqiy kuchga ega shartnomani avtomatik yaratadi."
       },
       {
         "id": "04",
-        "title": "Xavfsiz to‘lov",
-        "description": "Mijozlar mablag‘ni Escrow hisobiga o‘tkazishadi. Mablag‘ loyiha yakunlanguncha saqlanadi va bu ishonchni mustahkamlaydi."
+        "title": "Xavfsiz to'lov",
+        "description": "Mijozlar mablag'ni Escrow hisobiga o'tkazishadi. Mablag' loyiha yakunlanguncha saqlanadi va bu ishonchni mustahkamlaydi."
       },
       {
         "id": "05",
         "title": "Hamkorlik & Yetkazib berish",
-        "description": "Frilanserlar va mijozlar bizning boshqaruv paneli orqali ishlashadi. Ish topshirilgach, mijoz uni ko‘rib chiqadi va tasdiqlaydi.."
+        "description": "Frilanserlar va mijozlar bizning boshqaruv panel orqali birgalikda ishlashadi. Ish topshirilgach, mijoz uni ko'rib chiqadi va tasdiqlaydi."
       },
       {
         "id": "06",
-        "title": "To'lovni Amalga oshirish",
-        "description": "Mijoz tasdiqlagach, mablag‘ frilanserga o‘tkaziladi. Har ikki tomon izoh qoldirishi mumkin — bu kelajakdagi loyihalarda ishonchni oshiradi."
+        "title": "To'lovni Tasdiqlash",
+        "description": "Mijoz tasdiqlagach, mablag' Escrow tizimi orqali frilanserga o'tkaziladi. Har ikki tomon kelajakdagi hamkorlik loyihalar uchun ishonchni mustahkamlash maqsadida izoh qoldirishlari mumkin."
       }
     ]
   },
   "rankComp": {
-    "title": "Reytinglaringizni ko'tarishga harakat qilyapsizmi?",
-    "subTitle": "Xavfsiz va qulay hamkorlikni ta’minlovchi platformaga qo‘shiling.",
-    "description": "1good platformasida biz freelancerlar va mijozlarning muvaffaqiyatli ishlashiga ko‘maklashamiz — bunga Escrow to‘lovlari, sun’iy intellektga asoslangan qulay vositalar va Credits kabi moslashuvchan moliyaviy imkoniyatlar orqali erishamiz. Agar siz iste’dod izlayotgan bo‘lsangiz yoki o‘z ko‘nikmalaringizni taklif qilayotgan bo‘lsangiz — keling, keyingi loyihangizni birgalikda muvaffaqiyatli qilaylik",
+    "title": "Reytinglaringizni oshirishga harakat qilyapsizmi?",
+    "subTitle": "Hamkorlikni xavfsiz va qulay qilish uchun platformadan ro'yxatdan o'ting",
+    "description": "1good'da biz freelancerlar va mijozlarga Escrow to'lovlari, Sun'iy intellekt vositalari va Kreditlar kabi moslashuvchan moliyaviy imkoniyatlar bilan yordam beramiz. Siz iqtidor izlayapsizmi yoki o'z ko'nikmalaringizni taklif qilmoqchimisiz, keling, keyingi loyihangizni muvaffaqiyatli qiling.",
     "btnText": "Sayohatingizni boshlang"
   }
 }

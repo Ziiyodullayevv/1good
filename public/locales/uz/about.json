@@ -1,106 +1,107 @@
 {
   "heroComp": {
     "title": "Muvaffaqiyat sari Birgalikda",
-    "subTitle": "1good platformasida biz to‘g‘ri odamlar birlashganda katta ishlar ro‘y berishiga ishonamiz. Platformamiz frilanserlar va mijozlarga aqlli vositalar, aniq kelishuvlar va xavfsiz to‘lovlar bilan ishonchli hamkorlikni ta’minlaydi."
+    "subTitle": "1good'da, biz to'g'ri insonlar birlashganda ajoyib natijalar sodir bo'lishiga ishonamiz.Platformamiz aqlli vositalar, aniq kelishuvlar va xavfsiz to‘lovlar yordamida frilanserlar va mijozlarga ishonchli va samarali hamkorlik qilish imkonini beradi."
   },
   "buildingComp": {
-    "title": "Qanday Platforma yaratmoqdamiz",
-    "subTitle": "Ushbu Bo'lim maqsadlar va qadriyatlarni ko'rsatadi, eski raqamlarni emas.",
+    "title": "Birgalikda Qurayotgan Kelajak",
+    "subTitle": "Yangi imkoniyatlar va ishonchli hamkorlikni yaratish uchun birgalikda intilamiz.",
     "buildingData": [
       {
         "id": "1",
         "iconType": "Building2",
-        "description": "E'tibor 100% shaffof va adolatli hamkorlikda"
+        "description": "100% adolatli va shaffof hamkorlik"
       },
       {
         "id": "2",
         "iconType": "Star",
-        "description": "Dunyo bo'ylab frilanserlar & mijozlar uchun ochiq platforma "
+        "description": "Frilanserlar & mijozlar uchun ochiq global platforma "
       },
       {
         "id": "3",
         "iconType": "FileSignature",
-        "description": "Ishonchli shartnomalar, bosqichlar & sharhlar"
+        "description": "Ishonchli shartnomalar, bosqichlar & fikrlar"
       },
       {
         "id": "4",
         "iconType": "Users",
-        "description": "Ijodkorlar, muhandislar & loyiha mutaxassislari tomonidan yaratilgan"
+        "description": "Ijodkorlar, muhandislar & loyiha mutaxassislari yaratgan"
       },
       {
         "id": "5",
         "iconType": "Trophy",
-        "description": "Sizning muvaffaqiyatingiz-bizning missiyamiz"
+        "description": "Muvaffaqiyatingiz-bizning maqsadimiz"
       }
     ]
   },
   "journeyComp": {
-    "title": "Bizning Sayohatimiz",
-    "subTitle": "Oddiy boshlanishdan to sohada yetakchilikka qadar - 1good qanday qilib butun dunyo bo'ylab bizneslarga muvaffaqiyat olib kelayoganini bilib oling.",
+    "title": "Bizning Yo'limiz",
+    "subTitle": "Kichik qadamlardan yetuklikka qadar - 1good dunyo bo'ylab bizneslarga qanday ta'sir o'tkazishini bilib oling .",
     "journeyData": [
       {
         "id": "1",
         "year": 2025,
-        "title": "O'zbekistonda to'liq ishga tushirish",
-        "description": "2025-yilda 1good O'zbekistonda Sun'iy intellekt va frilanserlar bilan to'liq ishga tushdi. Yil oxiriga kelib, biz Markaziy Osiyo bo'yicha kengayamiz."
+        "title": "O'zbekistonda to'liq faoliyat boshlash",
+        "description": "2025-yilda 1good O'zbekiston bozorida to'liq ish boshlaydi. Platforma sun'iy intellekt va malakali frilanserlar kuchini birlashtirib, foydalanuvchilarni xavfsiz to'lovlar va zamonaviy AI vositalari bilan bog'laydi. Yil yakuniga qadar esa biz Markaziy Osiyoning boshqa mamlakatlariga ham kengayib, har bir hudud uchun mahalliy yordamni yo'lga qo'yamiz."
       },
       {
         "id": "2",
         "year": 2026,
-        "title": "Yaxshiroq Hamkorlik",
-        "description": "2026-yilda 1good ko'p tilli boshqaruv paneli (qzoq, turkman, tojik, qirg'iz) va tezkor xabar almashish funksiyalarini ishga tushiradi."
+        "title": "Erkin Hamkorlik Muhiti",
+        "description": "2026-yilga kelib, 1good platformasi Qozog'iston, Turkmaniston, Tojikiston va Qirg'izistondagi foydalanuvchilar uchun ko'p tilli boshqaruv panellari va yangi xabar almashish vositalarini joriy etadi. Bu esa Markaziy Osiyo bo'ylab freelancer va mijozlar o'rtasida uzluksiz, qulay muloqotni ta'minlaydi."
       },
       {
         "id": "3",
         "year": 2027,
         "title": "Yevroosiyoda Rivojlanish ",
-        "description": "2027-yilda 1good yevroosiyoga kengayadi, yangi to'lov variantlari va AI vositalar bilan 5% komissiya modeli asosida turli loyihalarni qo'llab-quvvatlaydi."
+        "description": "2027-yilda 1good Yevroosiyoga kengayadi, yangi to'lov usullari va AI vositalar bilan 5% komissiya modeli asosida turli loyihalarni qo'llab-quvvatlaydi."
       },
       {
         "id": "4",
         "year": 2028,
-        "title": "Global miqyosda ishlash",
-        "description": "2028-yilga kelib, 1good global miqyosda o'rin egallaydi - Butun dunyo frilanserlari va mijozlarini xavfsiz, sun'iy intellekt yordamida hamkorlik bilan bog'laydi."
+        "title": "Global Kengayish",
+        "description": "2028-yilga kelib, 1good global miqyosda o'rin egallaydi - Butun dunyo frilanserlari va mijozlarini xavfsiz, sun'iy intellekt asosidagi hamkorlik bilan bog'laydi."
       }
     ]
   },
   "coreComp": {
-    "title": "Asosiy Qadriyatlarimiz",
-    "subTitle": "Barcha ishlarimizning yuragida quyidagi qadriyatlarimiz turadi:",
+    "title": "Asosiy Qadriyatlar",
+    "subTitle": "Barcha ishlarimizning asosi bo'lgan qadriyatlarimiz:",
     "coreData": [
       {
         "id": "1",
         "title": "Avvalo Ishonch",
-        "description": "Har bir aloqada ishonch ustuvor. Bizning Escrow tizim va Shaffof jarayonlar frilanserlar va mijozlarga ishonch hissini beradi, bu esa mustahkam hamkorlik poydevorini yaratadi.",
+        "description": "Har bir hamkorlikda ishonch ustuvor. Escrow tizimi va ochiq jarayonlarimiz frilanserlar va mijozlarga ishonch hissini beradi, bu esa mustahkam hamkorlik poydevorini yaratadi.",
         "image": null
       },
       {
         "id": "2",
         "title": "Doimiy Innovatsiya",
-        "description": "Biz foydalanuvchilarimizga kuch beruvchi innovatsiyalarni qo'llaymiz. Loyihalar uchun Sun'iy intellekt vositalar va shartnomalarni joriy qilish qilish orqali hamkorlik jarayonlarini yanada takomillashtiramiz.",
+        "description": "Biz foydalanuvchilarning imkoniyatlarini kengaytirish uchun yangiliklarga doim ochiqmiz. Sun'iy intellekt asosidagi loyiha tavsiflari va avtomatik shartnomalar orqali frilanserlar va mijozlar o'rtasidagi hamkorlikni yanada tezkor va samarali qilamiz.",
         "image": "/core1.svg"
       },
       {
         "id": "3",
         "title": "Hamkorlik",
-        "description": "Biz hammaga mos keladigan hamkorlikni taqdim etamiz. 1good shaffof jarayonlar orqali adolatli muhit yaratadi, bu esa frilanserlar va mijozlarga birgalikda muvaffaqiyatga erishishga imkon beradi.",
+        "description": "Biz hammaga mos keladigan hamkorlikni taqdim etamiz. 1good adolatli va ochiq tizim asosida ishlaydi, bu esa frilanserlar va mijozlarga birgalikda muvaffaqiyatga erishishga imkon beradi.",
         "image": "/core2.svg"
       },
       {
         "id": "4",
         "title": "Shaffoflik",
-        "description": "Biz hammaga imkoniyat eshiklarini ochamiz. Mijozlar uchun Kreditlar orqali har ikki tomonning rivojlanishi va maqsadlariga erishishiga yordam beradi. 1good frilansingni hamma uchun moslaydi.",
+        "description": "Biz hammaga imkoniyat eshiklarini ochamiz. 1good mijozlar uchun kredit tizimi orqali frilansingni hamma uchun qulay qiladi, ikki tomonning ham rivojlanishi va maqsadlariga erishishini qo'llab-quvvatlaydi",
         "image": null
       }
     ]
   },
   "founderComp": {
-    "title": "“1good'da biz frilansingni xavfsiz, qulay va kuch beruvchi qilamiz.”",
+    "title": "“1good'da biz frilansingni xavfsiz, qulay va samarali qilamiz.”",
     "subTitle": "— Shohjahon Sokhibov, Co-Founder of 1good"
   },
   "joinComp": {
     "title": "Jamoamizga qo'shiling",
-    "subTitle": "1good'da biz innovatsiya va hamkorlik orqali rivojlanamiz. Biz har doim bizneslarga o'sishga yordam beradigan fidokor insonlarni jamoamizga taklif qilamiz. O'zgarish qilishga tayyormisiz?",
-    "btnText": "Bo'sh ish o'rinlarini ko'rish"
+
+    "subTitle": "1good’da biz yangilik va hamkorlikka asoslanib rivojlanamiz. Bizga qo‘shilishga tayyor, bizneslarga ta’sir o‘tkazishga ishtiyoqmand odamlarni izlayapmiz. Siz tayyormisiz?",
+    "btnText": "Karyera yo'lingizni kashf eting"
   }
 }

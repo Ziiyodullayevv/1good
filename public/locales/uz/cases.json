@@ -1,6 +1,6 @@
 {
   "heroComp": {
-    "title": "Frilanserlikdagi Muammolarga Yechim",
+    "title": "Frilans Muammolariga Yechim",
     "description": "1good frilanserlar va mijozlar duch keladigan asosiy muammolarni qanday hal qilishini ko'ring, ishonchli va qulay hamkorlik bizda doim kafolatlangan."
   },
   "paymentComp": {
@@ -61,7 +61,7 @@
 
   "successComp": {
     "title": "Frilansdagi Muvaffaqiyat yo'lingizni boshlang",
-    "subTitle": "Bugunoq bog‘laning va 1good sizni O‘zbekistondagi ishonchli frilanserlar yoki mijozlar bilan qanday bog‘lay olishini, xavfsiz to‘lovlar va AI vositalari bilan har bir loyihani qanday g‘alabaga aylantirishini bilib oling.",
+    "subTitle": "Bugunoq bog‘laning va 1good sizni O‘zbekistondagi ishonchli frilanserlar yoki mijozlar bilan qanday bog‘lay olishini, xavfsiz to‘lovlar va Sun'iy intellekt vositalari bilan har bir loyihani muvaffaqiyatga qanday aylantirishini bilib oling.",
     "btnText": "Hoziroq boshlang"
   }
 }

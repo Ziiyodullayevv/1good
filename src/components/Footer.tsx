@@ -39,10 +39,10 @@ export default function Footer() {
               <h2 className='text-2xl bg-v1 inline-block text-black rounded-lg px-3 py-1'>
                 {t('contactUs')}:
               </h2>
-              <p>{t('email')}: info@positivus.com</p>
+              <p>{t('email')}: info@1good.com</p>
               <p>
                 {t('phone')}:{' '}
-                <span className='whitespace-nowrap'>555-567-8901</span>
+                <span className='whitespace-nowrap'>+998 50 780 37 69</span>
               </p>
               <p>{t('address')}: IT Park</p>
             </div>

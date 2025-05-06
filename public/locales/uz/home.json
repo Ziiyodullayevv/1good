@@ -1,23 +1,23 @@
 {
   "heroComp": {
-    "title": "1good bilan Ishonch Yarating, Aqlli Ishlang",
-    "subTitle": "O'zbekiston va undan tashqaridagi frilanserlar va mijozlarni xavfsiz to'lovlar, sun'iy intellekt asosida ishlovchi loyihalar tavsiflari, va tezkor shartnomalar orqali bog'lovchi ishonchli platforma.",
+    "title": "1good bilan Ishonch Yarating, Samarali Ishlang",
+    "subTitle": "Xavfiz to'lovlar, sun'iy intellekt asosida loyiha tafsilotlari va tezkor shartnomalar orqali O'zbekiston va  uning atrofidagi frilanserlar va mijozlarni bog'lovchi platforma.",
     "btnText": "Ro'yxatdan o'tish"
   },
   "servicesComp": {
     "title": "Xizmatlar",
-    "subTitle": "1good'da biz mijozlar va frilanserlar o'rtasida ishonch va samaradorlikni ta'minlash uchun bir nechta xizmatlarni taklif etamiz. Muvaffaqiyatingizgni qanday qo'llab-quvvatlashimizni bilib oling:",
-    "btnText": "Ko'proq bilish",
+    "subTitle": "1good platformasida biz frilanserlar va mijozlar o'rtasida ishonch va samaradorlikni oshiruvchi xizmatlar taklif etamiz.Muvaffaqiyatingizga qanday hissa qo'shayotganimizni bilib oling:",
+    "btnText": "Ko'proq bilish ",
     "servicesData": [
       {
-        "title1": "Xavfsiz To'lovlar",
-        "title2": "Escrow orqali",
+        "title1": "Escrow bilan ",
+        "title2": "Xavfsiz To'lovlar",
         "image": "service1.svg",
         "url": "/"
       },
       {
-        "title1": "Sun'iy intellekt yordamida",
-        "title2": "Loyiha Aniqligi",
+        "title1": "Sun'iy intellekt bilan",
+        "title2": "Aniq Loyiha",
         "image": "service2.svg",
         "url": "/"
       },
@@ -34,13 +34,13 @@
         "url": "/"
       },
       {
-        "title1": "Loyihalarni",
-        "title2": "Oson Boshqarish",
+        "title1": "Qulay",
+        "title2": "Loyiha boshqaruvi",
         "image": "service5.svg",
         "url": "/"
       },
       {
-        "title1": "Shaffof",
+        "title1": "Ochiq",
         "title2": "Fikrlar",
         "image": "service6.svg",
         "url": "/"
@@ -49,31 +49,31 @@
   },
   "freelanceComp": {
     "title": "Frilans tajribangizni o'zgartirishga tayyormisiz?",
-    "subTitle": "1good orqali siz xavfsiz to'lovlar, sun'iy intellekt vositalari va moslashuvchan moliyaviy imkoniyatlar bilan loyihalaringizni yanada kuchaytirishingiz mumkin. Keling, frilansni siz uchun qulay qilamiz!",
-    "btnText": "Bugun boshlang"
+    "subTitle": "1good loyihalaringizni Xavfsiz To'lovlar, Sun'iy Intellekt vositalari va Moslashuvchan Kreditlar bilan qanday rivojlantirishini bilib oling. Frilansingni yanada samarali qilaylik!",
+    "btnText": "Hozir boshlang "
   },
   "caseComp": {
-    "title": "Loyiha namunalari",
-    "subTitle": "O'zbekistondagi frilanserlar va mijozlar 1good platformasi yordamida qanday muvaffaqiyatga erishayotganini ko'ring.",
+    "title": "Tajriba Tahlillari",
+    "subTitle": "O'zbekistondagi frilanserlar va mijozlar ishonchli va samarali 1good platformasi orqali qanday muvaffaqiyatga erishayotganini ko‘ring.",
     "btnText": "Ko'proq bilish",
     "caseData": [
       {
-        "description": "Kichik nonvoyxona 1good.uz orqali ideal SMM va dizayner frilanserni topgach, ijtimoiy tarmoqlardagi auditoriya va onlayn buyurtmalari 30%ga oshdi",
+        "description": "Kichik nonvoyxona 1good.uz orqali tajribali SMM va Dizayner frilanserlarni topgach, ijtimoiy tarmoqdagi auditoriya va onlayn buyurtmalari 30%ga oshdi",
         "url": "/"
       },
       {
-        "description": "Tech-startap 1good.uz bilan dasturchi frilanserni topib, o'z MVPsini atigi bir haftada yaratdi va ishga tushirdi-vaqt va byudjetni tejagan holda",
+        "description": "Tech-startup 1good.uz bilan dasturchi frilanserni topib, o'z MVPsini atigi bir haftada yaratdi va ishga tushirdi, vaqt va byudjetni tejadi.",
         "url": "/"
       },
       {
-        "description": "Universitet talabasining tarjima bo'yicha bilimlari 1good.uz yordamida doimiy daromad manbaiga aylandi-u o'qishi bilan ish o'rtasida muvozanatni saqlab qoldi",
+        "description": "Universitet talabasining tarjima bo'yicha bilimlari 1good.uz yordamida doimiy daromad manbaiga aylandi. U o'qishi va ishi o'rtasida muvozanatni saqlab qoldi",
         "url": "/"
       }
     ]
   },
   "worksComp": {
-    "title": "1good Qanday Ishlaydi",
-    "subTitle": "Frilanserlar va Mijozlarni bog'lovchi oddiy jarayon",
+    "title": "1good Qanday Ishlaydi ",
+    "subTitle": "Frilanserlar va Mijozlarni muammosiz bog'lovchi oddiy jarayon",
     "worksData": [
       {
         "id": "01",
@@ -93,7 +93,7 @@
       {
         "id": "04",
         "title": "Hamkorlikda ishlang",
-        "description": "Bizning sun'iy intellekt tomonidan yaratilgan loyiha brifinglari va tezkor shartnomalardan foydalanib frilanser bilan muammosiz hamkorlik qiling. Boshqaruv paneli orqali jarayonnikuzatib boring, har bir qadamda aniqlikka ishonch hosil qiling."
+        "description": "Bizning sun'iy intellekt tomonidan yaratilgan loyiha tafsilotlari va tezkor shartnomalardan foydalanib frilanser bilan muammosiz hamkorlik qiling. Boshqaruv paneli orqali jarayonni kuzatib boring, har bir qadamda aniqlikka ishonch hosil qiling."
       },
       {
         "id": "05",
@@ -104,7 +104,7 @@
         "id": "06",
         "title": "To'lovni Yakunlang",
 
-        "description": "Tasdiqlangandan so'ng, mablag' Escrow tizimidan frilanserga o'tkaziladi. xavfsiz va tashvishsiz to'lovlardan rohatlaning- bu har ikki tomon uchun himoyani kafolatlaydi."
+        "description": "Tasdiqlangandan so'ng, mablag' Escrow tizimidan frilanserga o'tkaziladi. Xavfsiz va xavotirsiz to'lovlardan zavqlaning- bu har ikki tomon uchun himoyani kafolatlaydi."
       }
     ]
   },
