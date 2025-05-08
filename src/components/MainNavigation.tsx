@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { Button } from './ui/button';
 import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -6,22 +6,23 @@ import { useTranslation } from 'react-i18next';
 import MobileMenu from './MobileMenu';
 
 export default function MainNavigation() {
+  const navigate = useNavigate();
   const { t } = useTranslation('common');
   return (
-    <header className='section-container'>
-      <div className='flex xl:text-sm justify-between py-5 items-center'>
-        <nav className='flex gap-7 xl:gap-10 items-center'>
+    <header className='section-container sticky top-0 bg-white z-999 border-b'>
+      <div className='flex xl:text-sm justify-between py-3 items-center'>
+        <nav className='flex gap-5 xl:gap-7 items-center'>
           <Logo />
           <div className='h-full hidden md:flex items-center xl:hidden'>
             <MobileMenu />
           </div>
-          <ul className='hidden xl:flex items-center text-xl gap-8'>
+          <ul className='hidden xl:flex items-center text-lg'>
             <li>
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 inline-block leading-[44px] rounded-lg h-[44px] px-3'
-                    : 'h-[44px] px-3'
+                    ? 'bg-v2 flex justify-center items-center rounded-lg h-12 px-3'
+                    : 'h-12 px-3'
                 }
                 to={'/about'}
               >
@@ -32,8 +33,8 @@ export default function MainNavigation() {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 inline-block leading-[44px] rounded-lg h-[44px] px-3'
-                    : 'h-[44px] px-3'
+                    ? 'bg-v2 flex justify-center items-center rounded-lg h-12 px-3'
+                    : 'h-12 px-3'
                 }
                 to={'/services'}
               >
@@ -44,8 +45,8 @@ export default function MainNavigation() {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 inline-block leading-[44px] rounded-lg h-[44px] px-3'
-                    : 'h-[44px] px-3'
+                    ? 'bg-v2 flex  justify-center items-center rounded-lg h-12 px-3'
+                    : 'h-12 px-3'
                 }
                 to={'/usecases'}
               >
@@ -55,13 +56,21 @@ export default function MainNavigation() {
           </ul>
         </nav>
 
-        <div className='hidden md:flex justify-start gap-5'>
+        <div className='hidden md:flex justify-start gap-3'>
+          <Button
+            onClick={() => navigate('auth')}
+            className='h-12 rounded-xl bg-transparent text-black shadow-none hover:bg-transparent text-base px-2 cursor-pointer'
+          >
+            Log in
+          </Button>
+
+          <Button
+            onClick={() => navigate('auth')}
+            className='h-12 rounded-xl text-base px-5 cursor-pointer'
+          >
+            Sign up
+          </Button>
           <LanguageSwitcher />
-          <Link to={'/auth'}>
-            <Button className='h-[60px] rounded-xl text-xl px-5 cursor-pointer'>
-              {t('auth')}
-            </Button>
-          </Link>
         </div>
 
         <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>

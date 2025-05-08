@@ -8,9 +8,9 @@ export default function AuthNavigation() {
     navigate(-1);
   };
   return (
-    <header>
+    <header className='bg-white border-b'>
       <div className='section-container'>
-        <nav className='flex py-5  items-center justify-between'>
+        <nav className='flex py-3 items-center justify-between'>
           <ArrowLeft onClick={goBack} className='size-9 cursor-pointer' />
           <Logo />
         </nav>

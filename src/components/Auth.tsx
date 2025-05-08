@@ -71,7 +71,7 @@ const icons = [
     <path
       fill='none'
       vector-effect='non-scaling-stroke'
-      stroke='var(--icon-color, #001e00)'
+      stroke='var(--v3, #001e00)'
       stroke-linecap='round'
       stroke-linejoin='round'
       stroke-width='1.5'
@@ -80,7 +80,7 @@ const icons = [
     <path
       fill='none'
       vector-effect='non-scaling-stroke'
-      stroke='var(--icon-color, #001e00)'
+      stroke='var(--v3, #001e00)'
       stroke-linecap='round'
       stroke-linejoin='round'
       stroke-width='1.5'
@@ -93,7 +93,7 @@ const icons = [
       y2='17.29'
       fill='none'
       vector-effect='non-scaling-stroke'
-      stroke='var(--icon-color, #001e00)'
+      stroke='var(--v3, #001e00)'
       stroke-linecap='round'
       stroke-linejoin='round'
       stroke-width='1.5'
@@ -104,7 +104,7 @@ const icons = [
       r='2.73'
       fill='none'
       vector-effect='non-scaling-stroke'
-      stroke='var(--icon-color, #001e00)'
+      stroke='var(--v3, #001e00)'
       stroke-linecap='round'
       stroke-linejoin='round'
       stroke-width='1.5'
@@ -112,7 +112,7 @@ const icons = [
     <path
       fill='none'
       vector-effect='non-scaling-stroke'
-      stroke='var(--icon-color, #001e00)'
+      stroke='var(--v3, #001e00)'
       stroke-linecap='round'
       stroke-linejoin='round'
       stroke-width='1.5'
@@ -128,7 +128,7 @@ const icons = [
   >
     <path
       vector-effect='non-scaling-stroke'
-      stroke='var(--icon-color, #001e00)'
+      stroke='var(--v3, #001e00)'
       stroke-linecap='round'
       stroke-linejoin='round'
       stroke-width='1.5'
@@ -154,13 +154,11 @@ export default function Auth() {
       : 'Create Account';
 
   return (
-    <section className='py-10 sm:py-20'>
+    <section className='py-8 sm:py-10'>
       <div className='auth-container'>
-        <h1 className='text-center font-semibold text-4xl'>
-          {t('authComp.title')}
-        </h1>
+        <h1 className='text-center text-4xl'>{t('authComp.title')}</h1>
 
-        <div className='grid gap-7 sm:gap-10 mt-10 sm:mt-20 grid-cols-1 sm:grid-cols-2'>
+        <div className='grid gap-7 sm:gap-10 mt-10 sm:mt-10 grid-cols-1 sm:grid-cols-2'>
           {authOptions.map(({ title }, index) => (
             <div
               key={index}
@@ -172,7 +170,7 @@ export default function Auth() {
               }`}
             >
               <div className='flex w-full items-center justify-between'>
-                <div className='size-14 inline-block'>{icons[index]}</div>
+                <div className='size-10 inline-block'>{icons[index]}</div>
                 <div className='w-full flex justify-end'>
                   <RadioGroup className='block'>
                     <RadioGroupItem
@@ -183,7 +181,7 @@ export default function Auth() {
                   </RadioGroup>
                 </div>
               </div>
-              <div className='flex mt-7 flex-col items-start gap-25'>
+              <div className='flex mt-5 flex-col items-start gap-25'>
                 <h2 className='text-xl font-semibold sm:text-2xl rounded-xl py-1 px-3 inline-block'>
                   {title}
                 </h2>
@@ -192,7 +190,7 @@ export default function Auth() {
           ))}
         </div>
 
-        <div className='flex gap-5 justify-center flex-col items-center mt-15'>
+        <div className='flex gap-5 justify-center flex-col items-center mt-10'>
           <Button
             onClick={() => {
               if (selectedIndex !== null) {
@@ -200,8 +198,10 @@ export default function Auth() {
               }
             }}
             className={cn(
-              'h-12 text-base cursor-pointer',
-              selectedIndex === null ? 'opacity-50 cursor-not-allowed' : ''
+              'h-12 text-base px-7 cursor-pointer',
+              selectedIndex === null
+                ? 'cursor-not-allowed hover:bg-v2 text-black/40 bg-v2'
+                : ''
             )}
           >
             {buttonLabel}

@@ -12,6 +12,8 @@
   --color-v2: var(--v2);
   --color-v3: var(--v3);
   --color-v4: var(--v4);
+  --color-v5: var(--v5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -54,6 +56,7 @@
   --v2: #f3f3f3;
   --v3: #292a32;
   --v4: #191a23;
+  --v5: #e8e8e8;
   --montserrat: 'Montserrat', sans-serif;
   --space-grotesk: 'Space Grotesk', sans-serif;
   --radius: 0.625rem;
@@ -129,7 +132,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-base sm:text-lg lg:text-xl font-space-grotesk text-foreground;
+    @apply bg-background text-base sm:text-lg lg:text-lg font-space-grotesk text-foreground;
   }
   .section-container {
     @apply max-w-[1440px] px-7 md:px-12 lg:px-20 mx-auto;

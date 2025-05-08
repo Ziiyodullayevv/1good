@@ -25,17 +25,17 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover defaultOpen open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant='outline'
-          className='h-[60px] cursor-pointer shadow-none border-none rounded-xl w-[70px]'
+          className='h-12 cursor-pointer bg-v5 shadow-none border-none rounded-xl w-[50px]'
           size='icon'
         >
-          <Languages className='size-7' />
+          <Languages className='size-6' />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-44 p-2'>
+      <PopoverContent className='w-44 mt-2 p-2'>
         <div className='flex flex-col gap-1'>
           {languages.map((lang) => (
             <Button
