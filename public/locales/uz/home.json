@@ -10,38 +10,44 @@
     "btnText": "Ko'proq bilish ",
     "servicesData": [
       {
-        "title1": "Escrow bilan ",
-        "title2": "Xavfsiz To'lovlar",
+        "title1": "Secure Payments",
+        "title2": "with Escrow",
+        "description": "Escrow tizimimiz har bir kelishuv xavfsizligini kafolatlaydi. Mijozlar mablag'larni oldindan kiritadilar, frilanserlar esa ish tasdiqlangandan keyin mablag'ni olishadi, bu esa ikkala tomon uchun tinchlikni ta'minlaydi.",
         "image": "service1.svg",
         "url": "/"
       },
       {
-        "title1": "Sun'iy intellekt bilan",
-        "title2": "Aniq Loyiha",
+        "title1": "AI-Powered",
+        "title2": "Project Clarity",
+        "description": "Loyiha ma'lumotlarini osonlik bilan yaratish uchun Sun'iy intellekt yordamchimizdan foydalaning. Faqat bir nechta oddiy savolga javob bering va frilanserlar bilan mijozlarni birinchi kundan boshlab bir xil sahifada ushlab turadigan aniq yo'l xaritasini oling.",
         "image": "service2.svg",
         "url": "/"
       },
       {
-        "title1": "Tezkor",
-        "title2": "Shartnomalar",
+        "title1": "Instant",
+        "title2": "Contracts",
+        "description": "Bir necha marta bosish orqali professional, huquqiy kuchga ega shartnomalarni yarating. Bizning AI tizimimiz sizning loyihangizga mos keladigan elektron imzolar bilan kelishuvlarni tayyorlaydi, shunda ishni tezroq boshlashingiz mumkin.",
         "image": "service3.svg",
         "url": "/"
       },
       {
-        "title1": "Moslashuvchan",
-        "title2": "Kreditlar",
+        "title1": "Flexible",
+        "title2": "Credits",
+        "description": "Talant kerak, lekin mablag' yetishmayaptimi? 1good Kreditlarini ishlatib, loyihalarni hoziroq boshlang va qulay bo'lib to'lash imkoniyatiga ega bo'ling, frilanserlarga to'lov o'z vaqtida yetkazildi..",
         "image": "service4.svg",
         "url": "/"
       },
       {
-        "title1": "Qulay",
-        "title2": "Loyiha boshqaruvi",
+        "title1": "Easy",
+        "title2": "Manage projects",
+        "description": "Barcha muhim bosqichlar, tasdiqlar va to'lovlar jarayonini bir joyda kuzatib boring. Bizning qulay boshqaruv panelimiz frilanserlar va mijozlarga tartibni saqlash va muvaffaqiyatga erishishda yordam beradi.",
         "image": "service5.svg",
         "url": "/"
       },
       {
-        "title1": "Ochiq",
-        "title2": "Fikrlar",
+        "title1": "Transparent ",
+        "title2": "Feedbacks",
+        "description": "Loyiha yakunida fikr almashish. Ochiq baholar bilan reytingni oshiring, bu frilanserlarga ajralib turishga, mijozlarga esa ishonchli mutaxassislarni topishga yordam beradi.",
         "image": "service6.svg",
         "url": "/"
       }
