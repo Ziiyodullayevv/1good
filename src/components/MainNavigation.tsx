@@ -84,14 +84,13 @@ export default function MainNavigation() {
             >
               Log in
             </Button> */}
-
+            <LanguageSwitcher />
             <Button
               onClick={() => navigate('auth')}
               className='h-12 rounded-xl text-base px-5 cursor-pointer'
             >
               {t('auth')}
             </Button>
-            <LanguageSwitcher />
           </div>
 
           <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>
