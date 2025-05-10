@@ -10,11 +10,11 @@
     "btnText": "Ro'yxatdan o'tish",
     "paymentData": [
       {
-        "percentage": "96%",
+        "value": "96%",
         "description": "2024-yilda IT frilanserlari o'sishi"
       },
       {
-        "percentage": "86.8%",
+        "value": "86.8%",
         "description": "2024-yilda frilanserlar soni oshishi"
       },
       {

@@ -40,7 +40,7 @@ export default function Journey() {
               )}
             >
               {/* Year */}
-              <div className='flex items-center gap-2'>
+              <div className='flex gap-2'>
                 <img src='/star.svg' alt='icon' className='w-8 md:hidden h-8' />
                 <h3 className='text-4xl md:text-6xl font-bold text-center md:text-start'>
                   {year}

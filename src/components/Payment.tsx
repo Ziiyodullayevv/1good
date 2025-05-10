@@ -21,9 +21,13 @@ export default function Payment() {
         <div className='bg-v1 flex flex-col lg:grid lg:grid-cols-2 items-center rounded-[30px] p-8 sm:p-15 gap-10'>
           {/* Left Content */}
           <div className='text-center lg:text-left'>
-            <h2 className='section-title text-2xl sm:text-3xl'>{title1}</h2>
+            <h2 className='text-2xl sm:text-4xl py-1  inline bg-black text-white px-3 rounded-lg'>
+              {title1}
+            </h2>
             <br />
-            <h2 className='section-title text-2xl sm:text-3xl'>{title2}</h2>
+            <h2 className='text-2xl sm:text-4xl py-1  inline bg-black text-white px-3 rounded-lg'>
+              {title2}
+            </h2>
             <h3 className='py-6 sm:py-10 text-xl sm:text-3xl'>
               {t('paymentComp.subTitle')}
             </h3>

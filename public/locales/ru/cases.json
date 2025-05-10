@@ -10,11 +10,11 @@
     "btnText": "Регистрация",
     "paymentData": [
       {
-        "percentage": "96%",
+        "value": "96%",
         "description": "Рост IT-фрилансеров в 2024 году"
       },
       {
-        "percentage": "86.8%",
+        "value": "86.8%",
         "description": "Увеличение количества фрилансеров в 2024 году"
       },
       {

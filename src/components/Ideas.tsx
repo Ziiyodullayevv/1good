@@ -19,15 +19,15 @@ export default function Ideas({
       <div className='section-container'>
         <div
           className={cn(
-            'bg-v2 relative flex gap-9 items-start px-10 py-10 sm:px-15 sm:py-0 flex-col justify-center min-h-[360px] rounded-[45px]',
+            'bg-v2 relative flex gap-9 items-start py-10 sm:px-15 sm:py-0 flex-col justify-center rounded-[45px]',
             className
           )}
         >
-          <h3 className='text-xl sm:text-3xl max-w-[650px] font-semibold'>
+          <h3 className='text-xl mt-10 sm:text-3xl max-w-[650px] font-semibold'>
             {title}
           </h3>
-          <p className='max-w-[500px] sm:text-lg'>{description}</p>
-          <Button className='btn-v2 w-full sm:w-auto'>{btnText}</Button>
+          <p className='max-w-[600px] sm:text-lg'>{description}</p>
+          <Button className='btn-v2 w-full sm:w-auto mb-10'>{btnText}</Button>
 
           <img
             className='absolute hidden lg:block right-[100px]'

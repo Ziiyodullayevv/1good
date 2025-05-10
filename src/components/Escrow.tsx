@@ -6,20 +6,20 @@ export default function Escrow() {
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
-        <div className='flex flex-col md:flex-row gap-10 md:gap-20 bg-v1 p-8 md:p-15 rounded-[45px] box-shadow'>
+        <div className='flex flex-col lg:flex-row gap-10 md:gap-20 bg-v1 p-8 md:p-15 rounded-[45px] box-shadow'>
           {/* Chap tomon */}
-          <div className='flex items-start gap-3 md:gap-8'>
+          <div className='flex shrink-0 items-start gap-3 md:gap-8'>
             <img
               className='w-[20px] sm:w-auto'
               src='/star.svg'
               alt='star icon'
             />
             <div>
-              <h2 className='section-title text-xl sm:text-3xl'>
+              <h2 className='text-2xl sm:text-4xl py-1  inline bg-black text-white px-3 rounded-lg'>
                 {t('escowComp.title1')}
               </h2>
               <br />
-              <h2 className='section-title text-xl sm:text-3xl'>
+              <h2 className='text-2xl sm:text-4xl py-1  inline bg-black text-white px-3 rounded-lg'>
                 {t('escowComp.title2')}
               </h2>
             </div>
