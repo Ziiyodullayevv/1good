@@ -6,16 +6,14 @@ export default function Hero() {
   return (
     <section className='py-10'>
       <div className='section-container'>
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+        <div className='grid grid-cols-1 items-center gap-4 md:grid-cols-2'>
           <div>
-            <h1 className='text-4xl font-montserrat sm:text-5xl max-w-[450px] md:max-w-[1000px] xl:text-6xl font-semibold'>
+            <h1 className='text-3xl sm:text-4xl max-w-[450px] md:max-w-[1000px] xl:text-5xl font-semibold'>
               {t('heroComp.title')}
             </h1>
             <img className='md:hidden mt-9' src='hero.svg' alt='hero banner' />
-            <p className='font-montserrat py-9 max-w-[768px]'>
-              {t('heroComp.subTitle')}
-            </p>
-            <Button className='font-montserrat w-full md:w-auto h-[60px] px-8 rounded-xl cursor-pointer text-xl'>
+            <p className='py-9 max-w-[768px]'>{t('heroComp.subTitle')}</p>
+            <Button className='w-full md:w-auto h-[60px] px-8 rounded-xl cursor-pointer text-xl'>
               {t('heroComp.btnText')}
             </Button>
           </div>

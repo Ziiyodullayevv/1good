@@ -4,50 +4,70 @@ import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import MobileMenu from './MobileMenu';
+import { useEffect, useState } from 'react';
+import { cn } from '../lib/utils';
 
 export default function MainNavigation() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navigate = useNavigate();
   const { t } = useTranslation('common');
   return (
-    <header className='h-18 sticky bg-white top-0 z-50 border-b'>
+    <header
+      className={cn(
+        'h-18 sticky z-50 bg-white border-b top-0',
+        scrolled
+          ? 'border-b transition-all duration-300 border-black/10'
+          : 'border-transparent'
+      )}
+    >
       <div className='section-container h-full'>
         <div className='flex xl:text-sm h-full justify-between items-center'>
-          <nav className='flex gap-5 h-full xl:gap-7 items-center'>
+          <nav className='flex gap-5 h-full xl:gap-8 items-center'>
             <Logo />
             <div className='hidden md:flex items-center xl:hidden'>
               <MobileMenu />
             </div>
             <ul className='hidden h-full xl:flex gap-4 items-center text-lg'>
-              <li className='h-full'>
+              <li>
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? 'flex justify-center items-center border-b border-black h-full'
-                      : 'h-full flex justify-center hover:text-v6 transition-colors duration-100 items-center'
+                      ? 'flex justify-center items-center bg-v2 h-12 rounded-xl px-3'
+                      : 'h-12 flex justify-center rounded-xl hover:text-v6 px-3 transition-colors duration-100 items-center'
                   }
                   to={'/about'}
                 >
                   {t('about')}
                 </NavLink>
               </li>
-              <li className='h-full'>
+              <li>
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? 'flex justify-center items-center border-b border-black h-full'
-                      : 'h-full flex justify-center items-center transition-colors duration-100 hover:text-v6'
+                      ? 'flex justify-center items-center bg-v2 h-12 rounded-xl px-3'
+                      : 'h-12 flex justify-center rounded-xl hover:text-v6 px-3 transition-colors duration-100 items-center'
                   }
                   to={'/services'}
                 >
                   {t('services')}
                 </NavLink>
               </li>
-              <li className='h-full'>
+              <li>
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? 'flex justify-center items-center border-b border-black h-full'
-                      : 'h-full flex justify-center hover:text-v6 transition-colors duration-100 items-center'
+                      ? 'flex justify-center items-center bg-v2 h-12 rounded-xl px-3'
+                      : 'h-12 flex justify-center rounded-xl hover:text-v6 px-3 transition-colors duration-100 items-center'
                   }
                   to={'/usecases'}
                 >
@@ -58,18 +78,18 @@ export default function MainNavigation() {
           </nav>
 
           <div className='hidden md:flex justify-start gap-3'>
-            <Button
+            {/* <Button
               onClick={() => navigate('auth')}
               className='h-12 rounded-xl bg-transparent text-black shadow-none hover:bg-transparent text-base px-2 cursor-pointer'
             >
               Log in
-            </Button>
+            </Button> */}
 
             <Button
               onClick={() => navigate('auth')}
               className='h-12 rounded-xl text-base px-5 cursor-pointer'
             >
-              Sign up
+              {t('auth')}
             </Button>
             <LanguageSwitcher />
           </div>
