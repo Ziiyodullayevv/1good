@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
+import Logo from './Logo';
 
 export default function Footer() {
   const { t } = useTranslation('common');
@@ -10,11 +11,7 @@ export default function Footer() {
       <div className='section-container'>
         <div className='bg-black sm:py-10 sm:px-15 rounded-t-[45px]'>
           <div className='flex flex-wrap items-center gap-10 lg:gap-20'>
-            <Link to={'/'}>
-              <span className='text-3xl font-montserrat font-bold text-white'>
-                1good
-              </span>
-            </Link>
+            <Logo dark='dark' />
             <nav className='text-white flex-wrap flex gap-5 text-lg'>
               <NavLink className={'underline'} to={'/about'}>
                 {t('about')}
