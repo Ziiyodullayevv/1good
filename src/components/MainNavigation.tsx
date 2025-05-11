@@ -86,7 +86,7 @@ export default function MainNavigation() {
             </Button> */}
             <LanguageSwitcher />
             <Button
-              onClick={() => navigate('auth')}
+              onClick={() => navigate('coming-soon')}
               className='h-12 rounded-xl text-base px-5 cursor-pointer'
             >
               {t('auth')}
@@ -94,7 +94,6 @@ export default function MainNavigation() {
           </div>
 
           <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>
-            <LanguageSwitcher />
             <MobileMenu />
           </div>
         </div>

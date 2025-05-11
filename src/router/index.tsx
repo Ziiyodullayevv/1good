@@ -4,10 +4,11 @@ import About from '../pages/About';
 import Services from '../pages/Services';
 import UseCases from '../pages/UseCases';
 import Home from '../pages/Home';
-import Auth from '../components/Auth';
-import SignIn from '../components/SignIn';
+// import Auth from '../components/Auth';
+// import SignIn from '../components/SignIn';
 import AuthLayout from '../layouts/AuthLayout';
-import SignUp from '../components/SignUp';
+import ComingSoon from '../components/ComingSoon';
+// import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
   {
@@ -21,18 +22,18 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/auth',
+    path: '/coming-soon',
     element: <AuthLayout />,
     children: [
-      { index: true, element: <Auth /> },
-      {
-        path: 'signup',
-        element: <SignUp />,
-      },
-      {
-        path: 'signin',
-        element: <SignIn />,
-      },
+      { index: true, element: <ComingSoon /> },
+      // {
+      //   path: 'signup',
+      //   element: <SignUp />,
+      // },
+      // {
+      //   path: 'signin',
+      //   element: <SignIn />,
+      // },
     ],
   },
 ]);

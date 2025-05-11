@@ -12,6 +12,7 @@ import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function MobileMenu() {
   const { t } = useTranslation('common');
@@ -36,19 +37,25 @@ export default function MobileMenu() {
             <Logo />
           </SheetTitle>
           <SheetDescription asChild>
-            <nav className='flex flex-col gap-3 !text-black !text-lg mt-5'>
-              <Button
-                className='btn-v2 md:hidden w-full !h-[55px]'
-                onClick={handleLinkClick}
-              >
-                {t('auth')}
-              </Button>
-
+            <nav className='flex flex-col gap-3 !text-black mt-5'>
+              <div className='flex w-full gap-2'>
+                <div className='w-full'>
+                  <Button
+                    className='md:hidden rounded-2xl w-full h-12'
+                    onClick={handleLinkClick}
+                  >
+                    {t('auth')}
+                  </Button>
+                </div>
+                <div>
+                  <LanguageSwitcher />
+                </div>
+              </div>
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 items-center flex leading-[44px] rounded-lg h-[55px] px-3'
-                    : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
+                    ? 'bg-v2 w-full items-center flex leading-12 rounded-lg h-12 px-4'
+                    : 'items-center flex leading-12 rounded-lg h-12 px-4'
                 }
                 to={'/'}
                 onClick={handleLinkClick} // Sheetni yopish
@@ -58,8 +65,8 @@ export default function MobileMenu() {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 items-center flex leading-[44px] rounded-lg h-[55px] px-3'
-                    : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
+                    ? 'bg-v2 items-center flex leading-12 rounded-lg h-12 px-4'
+                    : 'items-center flex leading-12 rounded-lg h-12 px-4'
                 }
                 to={'/about'}
                 onClick={handleLinkClick} // Sheetni yopish
@@ -70,8 +77,8 @@ export default function MobileMenu() {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 items-center flex leading-[44px] rounded-lg h-[55px] px-3'
-                    : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
+                    ? 'bg-v2 items-center flex leading-12 rounded-lg h-12 px-4'
+                    : 'items-center flex leading-12 rounded-lg h-12 px-4'
                 }
                 to={'/services'}
                 onClick={handleLinkClick} // Sheetni yopish
@@ -82,8 +89,8 @@ export default function MobileMenu() {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? 'bg-v2 items-center flex leading-[44px] rounded-lg h-[55px] px-3'
-                    : 'items-center flex leading-[44px] rounded-lg h-[55px] px-3'
+                    ? 'bg-v2 items-center flex leading-12 rounded-lg h-12 px-4'
+                    : 'items-center flex leading-12 rounded-lg h-12 px-4'
                 }
                 to={'/usecases'}
                 onClick={handleLinkClick} // Sheetni yopish
