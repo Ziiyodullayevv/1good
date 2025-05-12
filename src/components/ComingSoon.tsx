@@ -16,7 +16,7 @@ export default function ComingSoon() {
             className='h-12 text-base placeholder:text-base'
             placeholder='Enter your Email'
           />
-          <Button className='bg-v1 text-black cursor-pointer h-12 text-base'>
+          <Button className='bg-v1 hover:bg-v1 text-black cursor-pointer h-12 text-base'>
             Subscribe
           </Button>
         </div>
