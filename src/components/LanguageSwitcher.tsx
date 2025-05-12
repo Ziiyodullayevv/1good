@@ -4,9 +4,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Button } from '@/components/ui/button';
 import { Languages } from 'lucide-react';
 import i18n from '@/i18n';
+import { cn } from '../lib/utils';
 
 const languages = [
   { code: 'uz', label: 'O‘zbekcha', emoji: 'UZ' },
@@ -25,28 +25,29 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <Popover defaultOpen open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant='outline'
-          className='h-12 cursor-pointer bg-v5 shadow-none border-none rounded-xl w-[50px]'
-          size='icon'
+        <button
+          className='h-12 flex justify-center items-center cursor-pointer bg-v5 shadow-none border-none rounded-xl w-[50px]'
+          // size='icon'
         >
           <Languages className='size-6' />
-        </Button>
+        </button>
       </PopoverTrigger>
       <PopoverContent side='bottom' className='w-44 z-50 mt-2 p-2'>
         <div className='flex flex-col gap-1'>
           {languages.map((lang) => (
-            <Button
+            <button
               key={lang.code}
-              variant={currentLang === lang.code ? 'default' : 'ghost'}
               onClick={() => handleChangeLanguage(lang.code)}
-              className='h-[50px] justify-start text-lg max-w-[200px] w-full'
+              className={cn(
+                'h-[50px] justify-start rounded-sm text-lg max-w-[200px] w-full',
+                currentLang === lang.code ? 'bg-black text-white' : undefined
+              )}
             >
               <span className='mr-2'>{lang.emoji}</span>
               {lang.label}
-            </Button>
+            </button>
           ))}
         </div>
       </PopoverContent>
