@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Popover,
   PopoverContent,
@@ -24,6 +24,22 @@ const LanguageSwitcher = () => {
     setOpen(false); // Til tanlangach, popover yopiladi
   };
 
+  const [align, setAlign] = useState<'center' | 'end'>('center');
+
+  useEffect(() => {
+    const updateAlign = () => {
+      const isMobile = window.innerWidth < 640; // sm breakpoint
+      setAlign(isMobile ? 'end' : 'center');
+    };
+
+    updateAlign(); // Boshlanishda chaqiramiz
+    window.addEventListener('resize', updateAlign); // Ekran o'zgarishiga quloq tutamiz
+
+    return () => {
+      window.removeEventListener('resize', updateAlign); // Cleanup
+    };
+  }, []);
+
   return (
     <Popover defaultOpen open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -35,7 +51,7 @@ const LanguageSwitcher = () => {
           <Languages className='size-6' />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-44 mt-2 p-2'>
+      <PopoverContent side='bottom' align={align} className='w-44 mt-2 p-2'>
         <div className='flex flex-col gap-1'>
           {languages.map((lang) => (
             <Button

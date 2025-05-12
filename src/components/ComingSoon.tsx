@@ -7,7 +7,7 @@ export default function ComingSoon() {
       <div className='auth-container text-center'>
         <div className='flex flex-col gap-5'>
           <h1 className='text-3xl sm:text-5xl font-semibold'>Coming Soon</h1>
-          <p>We,re working on somethin awesome</p>
+          <p>We,re working on something awesome!</p>
         </div>
 
         <div className='flex flex-col sm:flex-row mt-15 gap-3'>

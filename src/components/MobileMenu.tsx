@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { AlignJustify, AlignLeft } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
@@ -24,6 +24,8 @@ export default function MobileMenu() {
   const handleLinkClick = () => {
     setIsOpen(false); // Sheetni yopish
   };
+
+  const navigate = useNavigate();
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -42,7 +44,10 @@ export default function MobileMenu() {
                 <div className='w-full'>
                   <Button
                     className='md:hidden rounded-2xl w-full h-12'
-                    onClick={handleLinkClick}
+                    onClick={() => {
+                      handleLinkClick();
+                      navigate('coming-soon');
+                    }}
                   >
                     {t('auth')}
                   </Button>

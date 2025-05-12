@@ -7,7 +7,7 @@ export default function Founder() {
       <div className='section-container'>
         <div className='bg-black relative flex xl:justify-end text-white rounded-[45px] p-8 sm:p-15'>
           <img
-            className='absolute  w-[150px] sm:w-[300px] md:block -z-0 xl:left-0 bottom-0 right-0 sm:top-[-40px] lg:top-[-100px]'
+            className='absolute w-[150px] sm:w-[300px] lg:w-[400px] md:block -z-0 xl:left-0 bottom-0 right-0 sm:top-[-40px] lg:top-[-100px]'
             src='/about-us-focus.svg'
             alt='about-us focus image'
           />

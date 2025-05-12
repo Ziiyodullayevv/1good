@@ -19,7 +19,7 @@ export default function Ideas({
       <div className='section-container'>
         <div
           className={cn(
-            'bg-v2 relative flex gap-9 items-start py-10 sm:px-15 sm:py-0 flex-col justify-center rounded-[45px]',
+            'bg-v2 relative flex gap-9 items-start px-10 sm:py-0 sm:px-15 flex-col justify-center rounded-[45px]',
             className
           )}
         >
