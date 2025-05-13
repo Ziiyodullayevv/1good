@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router';
 
 type PaymentData = {
   description: string;
@@ -7,6 +8,7 @@ type PaymentData = {
 };
 
 export default function Payment() {
+  const navigate = useNavigate();
   const { t } = useTranslation('cases');
   const paymentData = t('paymentComp.paymentData', {
     returnObjects: true,
@@ -34,7 +36,10 @@ export default function Payment() {
             <p className='text-base sm:text-lg'>
               {t('paymentComp.description')}
             </p>
-            <Button className='btn-v2 mt-8 sm:mt-10 w-full sm:w-[250px]'>
+            <Button
+              onClick={() => navigate('/coming-soon')}
+              className='btn-v2 mt-8 sm:mt-10 w-full sm:w-[250px]'
+            >
               {t('paymentComp.btnText')}
             </Button>
           </div>

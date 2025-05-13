@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router';
 
 export default function Hero() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   return (
     <section className='py-10'>
@@ -13,7 +15,10 @@ export default function Hero() {
             </h1>
             <img className='md:hidden mt-9' src='hero.svg' alt='hero banner' />
             <p className='py-9 max-w-[768px]'>{t('heroComp.subTitle')}</p>
-            <Button className='w-full md:w-auto h-[60px] px-8 rounded-xl cursor-pointer text-xl'>
+            <Button
+              onClick={() => navigate('coming-soon')}
+              className='w-full md:w-auto h-[60px] px-8 rounded-xl cursor-pointer text-xl'
+            >
               {t('heroComp.btnText')}
             </Button>
           </div>

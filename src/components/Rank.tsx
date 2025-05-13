@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router';
 
 export default function Rank() {
   const { t } = useTranslation('services');
+  const navigate = useNavigate();
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
@@ -13,7 +15,10 @@ export default function Rank() {
             </h2>
             <p className='mt-5 sm:mt-7'>{t('rankComp.description')}</p>
             <h3 className='font-bold py-6 sm:py-8'>{t('rankComp.subTitle')}</h3>
-            <Button className='btn-v1 w-full sm:w-auto'>
+            <Button
+              onClick={() => navigate('/coming-soon')}
+              className='btn-v1 w-full sm:w-auto'
+            >
               {t('rankComp.btnText')}
             </Button>
           </div>

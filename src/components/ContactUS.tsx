@@ -5,8 +5,11 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
 export default function ContactUS() {
+  const navigate = useNavigate();
+
   const { t } = useTranslation();
   return (
     <section className='py-10 sm:py-20'>
@@ -72,7 +75,10 @@ export default function ContactUS() {
               />
             </div>
 
-            <Button className='btn-v2 w-full mt-6 sm:mt-10'>
+            <Button
+              onClick={() => navigate('coming-soon')}
+              className='btn-v2 w-full mt-6 sm:mt-10'
+            >
               {t('contactComp.btnText')}
             </Button>
           </div>

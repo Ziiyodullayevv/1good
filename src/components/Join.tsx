@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router';
 
 export default function Join() {
   const { t } = useTranslation('about');
+  const navigate = useNavigate();
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
@@ -12,7 +14,10 @@ export default function Join() {
               {t('joinComp.title')}
             </h3>
             <p className='max-w-[700px]'>{t('joinComp.subTitle')}</p>
-            <Button className='btn-v2 w-full sm:w-auto'>
+            <Button
+              onClick={() => navigate('/coming-soon')}
+              className='btn-v2 w-full sm:w-auto'
+            >
               {t('joinComp.btnText')}
             </Button>
           </div>

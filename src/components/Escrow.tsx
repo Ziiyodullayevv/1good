@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router';
 import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
 
 export default function Escrow() {
   const { t } = useTranslation('services');
+  const navigate = useNavigate();
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
@@ -28,7 +30,10 @@ export default function Escrow() {
           {/* O'ng tomon */}
           <div className='flex flex-col gap-10 md:gap-20 justify-between'>
             <p className='max-w-full'>{t('escowComp.subTitle')}</p>
-            <Button className='btn-v2 w-full md:w-auto'>
+            <Button
+              onClick={() => navigate('/coming-soon')}
+              className='btn-v2 w-full md:w-auto'
+            >
               {t('escowComp.btnText')}
             </Button>
           </div>

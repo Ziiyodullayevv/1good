@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import { cn } from '../lib/utils';
 import { Button } from './ui/button';
 
@@ -14,6 +15,7 @@ export default function Ideas({
   btnText,
   className,
 }: Props) {
+  const navigate = useNavigate();
   return (
     <section className='py-10 sm:py-20'>
       <div className='section-container'>
@@ -27,7 +29,12 @@ export default function Ideas({
             {title}
           </h3>
           <p className='max-w-[600px] sm:text-lg'>{description}</p>
-          <Button className='btn-v2 w-full sm:w-auto mb-10'>{btnText}</Button>
+          <Button
+            onClick={() => navigate('/coming-soon')}
+            className='btn-v2 w-full sm:w-auto mb-10'
+          >
+            {btnText}
+          </Button>
 
           <img
             className='absolute hidden lg:block right-[100px]'
