@@ -1,7 +1,7 @@
 {
   "heroComp": {
     "title": "Muvaffaqiyat sari Birgalikda",
-    "subTitle": "1good'da, biz to'g'ri insonlar birlashganda ajoyib natijalar sodir bo'lishiga ishonamiz.Platformamiz aqlli vositalar, aniq kelishuvlar va xavfsiz to‘lovlar yordamida frilanserlar va mijozlarga ishonchli va samarali hamkorlik qilish imkonini beradi."
+    "subTitle": "1good'da, biz to'g'ri insonlar birlashganda ajoyib natijalar sodir bo'lishiga ishonamiz.Platformamiz aqlli vositalar, aniq kelishuvlar va xavfsiz to'lovlar yordamida frilanserlar va mijozlarga ishonchli va samarali hamkorlik qilish imkonini beradi."
   },
   "buildingComp": {
     "title": "Birgalikda Qurayotgan Kelajak",
@@ -48,13 +48,13 @@
         "id": "2",
         "year": 2026,
         "title": "Erkin Hamkorlik Muhiti",
-        "description": "2026-yilga kelib, 1good platformasi Qozog'iston, Turkmaniston, Tojikiston va Qirg'izistondagi foydalanuvchilar uchun ko'p tilli boshqaruv panellari va yangi xabar almashish vositalarini joriy etadi. Bu esa Markaziy Osiyo bo'ylab freelancer va mijozlar o'rtasida uzluksiz, qulay muloqotni ta'minlaydi."
+        "description": "2026-yilga kelib, 1good platformasi Qozog'iston, Turkmaniston, Tojikiston va Qirg'izistondagi foydalanuvchilar uchun ko'p tilli boshqaruv panellari va yangi xabar almashish vositalarini joriy etadi. Bu esa Markaziy Osiyo bo'ylab frilanser va mijozlar o'rtasida uzluksiz, qulay muloqotni ta'minlaydi."
       },
       {
         "id": "3",
         "year": 2027,
         "title": "Yevroosiyoda Rivojlanish ",
-        "description": "2027-yilda 1good Yevroosiyoga kengayadi, yangi to'lov usullari va AI vositalar bilan 5% komissiya modeli asosida turli loyihalarni qo'llab-quvvatlaydi."
+        "description": "2027-yilda 1good Yevroosiyoda faoliyatini kengaytirib, turli loyihalarni qo'llab-quvvatlash uchun yangi to'lov usullari va sun'iy intellekt vositalarini joriy etadi."
       },
       {
         "id": "4",
@@ -65,12 +65,12 @@
     ]
   },
   "coreComp": {
-    "title": "Asosiy Qadriyatlar",
+    "title": "Qadriyatlar",
     "subTitle": "Barcha ishlarimizning asosi bo'lgan qadriyatlarimiz:",
     "coreData": [
       {
         "id": "1",
-        "title": "Avvalo Ishonch",
+        "title": "Ishonch",
         "description": "Har bir hamkorlikda ishonch ustuvor. Escrow tizimi va ochiq jarayonlarimiz frilanserlar va mijozlarga ishonch hissini beradi, bu esa mustahkam hamkorlik poydevorini yaratadi.",
         "image": null
       },
@@ -95,13 +95,13 @@
     ]
   },
   "founderComp": {
-    "title": "“1good'da biz frilansingni xavfsiz, qulay va samarali qilamiz.”",
-    "subTitle": "— Shohjahon Sokhibov, Co-Founder of 1good"
+    "title": "“1good'da biz Frilansni xavfsiz, qulay va samarali qilamiz.”",
+    "subTitle": "— Shohjahon Sohibov, Co-Founder of 1good"
   },
   "joinComp": {
     "title": "Jamoamizga qo'shiling",
 
-    "subTitle": "1good’da biz yangilik va hamkorlikka asoslanib rivojlanamiz. Bizga qo‘shilishga tayyor, bizneslarga ta’sir o‘tkazishga ishtiyoqmand odamlarni izlayapmiz. Siz tayyormisiz?",
+    "subTitle": "1good'da biz yangilik va hamkorlikka asoslanib rivojlanamiz. Biz bilan birlashishga tayyor, bizneslarga ta'sir o'tkazishga ishtiyoqmand odamlarni izlayapmiz. Siz tayyormisiz?",
     "btnText": "Karyera yo'lingizni kashf eting"
   }
 }

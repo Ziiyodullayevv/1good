@@ -51,8 +51,8 @@ export default function Payment() {
                 key={index}
                 className='flex flex-col p-5 sm:p-6 text-center justify-center items-center w-full sm:w-[180px] h-[150px] sm:h-[180px] bg-white rounded-[20px]'
               >
-                <h3 className='text-3xl sm:text-4xl'>{value}</h3>
-                <p className='mt-2 sm:mt-3 text-sm sm:text-base'>
+                <h3 className='text-xl sm:text-2xl'>{value}</h3>
+                <p className='mt-2 sm:mt-1 text-sm sm:text-base'>
                   {description}
                 </p>
               </div>

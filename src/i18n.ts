@@ -21,7 +21,15 @@ i18n
     load: 'languageOnly',
     debug: false,
 
-    ns: ['home', 'about', 'services', 'usecases', 'common', 'auth'],
+    ns: [
+      'home',
+      'about',
+      'services',
+      'usecases',
+      'common',
+      'auth',
+      'coming-soon',
+    ],
     defaultNS: 'home',
 
     backend: {

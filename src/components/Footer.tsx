@@ -3,6 +3,7 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
+import { Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const { t } = useTranslation('common');
@@ -25,9 +26,23 @@ export default function Footer() {
             </nav>
 
             <div className='flex gap-3 items-center'>
-              <img src='linkedin.svg' alt='linkiden icon' />
-              <img src='facebook.svg' alt='facebook icon' />
-              <img src='twitter.svg' alt='twitter icon' />
+              <a
+                href='https://www.instagram.com/1good.uz/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex group justify-center items-center w-11 h-11 rounded-full bg-white'
+              >
+                <Instagram className='text-black fill-white group-hover:text-white group-hover:fill-black transition-all duration-500' />
+              </a>
+
+              <a
+                href='https://www.instagram.com/1good.uz/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='rounded-full group inline-flex justify-center items-center bg-white w-11 h-11'
+              >
+                <Linkedin className='text-black fill-white group-hover:text-white group-hover:fill-black transition-all duration-500' />
+              </a>
             </div>
           </div>
 

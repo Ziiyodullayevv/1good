@@ -13,7 +13,7 @@ export default function Join() {
             <h3 className='text-xl sm:text-3xl font-semibold'>
               {t('joinComp.title')}
             </h3>
-            <p className='max-w-[700px]'>{t('joinComp.subTitle')}</p>
+            <p>{t('joinComp.subTitle')}</p>
             <Button
               onClick={() => navigate('/coming-soon')}
               className='btn-v2 w-full sm:w-auto'

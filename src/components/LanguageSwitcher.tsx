@@ -1,48 +1,42 @@
+'use client';
+
 import { useState } from 'react';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { Languages } from 'lucide-react';
 import i18n from '@/i18n';
 import { cn } from '../lib/utils';
 
 const languages = [
-  { code: 'uz', label: 'O‘zbekcha', emoji: 'UZ' },
-  { code: 'ru', label: 'Русский', emoji: 'RU' },
-  { code: 'en', label: 'English', emoji: 'US' },
+  { code: 'uz', label: 'O‘zbekcha', emoji: '🇺🇿' },
+  { code: 'ru', label: 'Русский', emoji: '🇷🇺' },
+  { code: 'en', label: 'English', emoji: '🇺🇸' },
 ];
 
 const LanguageSwitcher = () => {
   const [currentLang, setCurrentLang] = useState(i18n.language);
-  const [open, setOpen] = useState(false); // Popover holati
 
   const handleChangeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     setCurrentLang(lng);
-    setOpen(false); // Til tanlangach, popover yopiladi
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <button
-          className='h-12 flex justify-center items-center cursor-pointer bg-v5 shadow-none border-none rounded-xl w-[50px]'
-          // size='icon'
-        >
-          <Languages className='size-6' />
-        </button>
-      </PopoverTrigger>
-      <PopoverContent side='bottom' className='w-44 z-50 mt-2 p-2'>
+    <Popover className='relative'>
+      <PopoverButton className='h-12 w-[50px] flex justify-center items-center cursor-pointer bg-v5 border-none rounded-xl'>
+        <Languages className='size-6' />
+      </PopoverButton>
+
+      <PopoverPanel className='absolute z-50 mt-2 w-44 right-0 bg-white rounded-lg shadow-lg p-2'>
         <div className='flex flex-col gap-1'>
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleChangeLanguage(lang.code)}
               className={cn(
-                'h-[50px] justify-start rounded-sm text-lg max-w-[200px] w-full',
-                currentLang === lang.code ? 'bg-black text-white' : undefined
+                'h-[50px] flex items-center px-4 justify-start rounded-sm text-lg w-full',
+                currentLang === lang.code
+                  ? 'bg-black text-white'
+                  : 'hover:bg-gray-100'
               )}
             >
               <span className='mr-2'>{lang.emoji}</span>
@@ -50,7 +44,7 @@ const LanguageSwitcher = () => {
             </button>
           ))}
         </div>
-      </PopoverContent>
+      </PopoverPanel>
     </Popover>
   );
 };
