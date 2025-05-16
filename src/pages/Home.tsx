@@ -54,7 +54,20 @@ export default function Home() {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Freelance Services',
+            name: 'About',
+            item: 'https://www.1good.uz/about',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'Services',
+            item: 'https://www.1good.uz/services',
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: 'Use Cases',
+            item: 'https://www.1good.uz/usecases',
           },
         ],
       },

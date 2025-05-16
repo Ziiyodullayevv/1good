@@ -22,15 +22,16 @@ export default function About() {
     '@graph': [
       {
         '@type': 'WebPage',
-        '@id': 'https://www.1good.uz/about',
-        url: 'https://www.1good.uz/about',
-        name: t('heroComp.title'),
+        '@id': 'https://www.1good.uz/',
+        url: 'https://www.1good.uz/',
+        name: '1good - First AI-powered freelancing platform in Uzbekistan',
         isPartOf: {
           '@id': 'https://www.1good.uz/#website',
         },
         datePublished: '2025-02-01T00:00:00+00:00',
         dateModified: now,
-        description: t('heroComp.subTitle'),
+        description:
+          '1good is a freelance company that develops based on innovation and collaboration. Join us to impact business.',
         breadcrumb: {
           '@id': 'https://www.1good.uz/#breadcrumb',
         },
@@ -38,7 +39,7 @@ export default function About() {
         potentialAction: [
           {
             '@type': 'ReadAction',
-            target: ['https://www.1good.uz/about'],
+            target: ['https://www.1good.uz/'],
           },
         ],
       },
@@ -55,8 +56,20 @@ export default function About() {
           {
             '@type': 'ListItem',
             position: 2,
-            name: t('heroComp.title'),
+            name: 'About',
             item: 'https://www.1good.uz/about',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'Services',
+            item: 'https://www.1good.uz/services',
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: 'Use Cases',
+            item: 'https://www.1good.uz/usecases',
           },
         ],
       },

@@ -23,47 +23,31 @@ export default function UseCases() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Service',
-        '@id': 'https://www.1good.uz/services#service',
-        name: t('heroComp.title'),
-        description: t('heroComp.subTitle'),
-        url: 'https://www.1good.uz/services',
-        provider: {
-          '@type': 'Organization',
-          name: '1good',
-          url: 'https://www.1good.uz',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://www.1good.uz/assets/logo.png',
-          },
-        },
-        serviceType: 'Freelance and IT Services',
-        availableChannel: {
-          '@type': 'ServiceChannel',
-          serviceUrl: 'https://www.1good.uz/services',
-        },
-        areaServed: 'Worldwide',
-        datePublished: '2025-02-01T00:00:00+00:00',
-        dateModified: now,
-      },
-      {
         '@type': 'WebPage',
-        '@id': 'https://www.1good.uz/services#webpage',
-        url: 'https://www.1good.uz/services',
-        name: t('heroComp.title'),
+        '@id': 'https://www.1good.uz/',
+        url: 'https://www.1good.uz/',
+        name: '1good - First AI-powered freelancing platform in Uzbekistan',
         isPartOf: {
           '@id': 'https://www.1good.uz/#website',
         },
-        description: t('heroComp.subTitle'),
         datePublished: '2025-02-01T00:00:00+00:00',
         dateModified: now,
+        description:
+          '1good is a freelance company that develops based on innovation and collaboration. Join us to impact business.',
         breadcrumb: {
-          '@id': 'https://www.1good.uz/services#breadcrumb',
+          '@id': 'https://www.1good.uz/#breadcrumb',
         },
+        inLanguage: 'en-US',
+        potentialAction: [
+          {
+            '@type': 'ReadAction',
+            target: ['https://www.1good.uz/'],
+          },
+        ],
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': 'https://www.1good.uz/services#breadcrumb',
+        '@id': 'https://www.1good.uz/#breadcrumb',
         itemListElement: [
           {
             '@type': 'ListItem',
@@ -74,8 +58,20 @@ export default function UseCases() {
           {
             '@type': 'ListItem',
             position: 2,
-            name: t('heroComp.title'),
+            name: 'About',
+            item: 'https://www.1good.uz/about',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'Services',
             item: 'https://www.1good.uz/services',
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: 'Use Cases',
+            item: 'https://www.1good.uz/usecases',
           },
         ],
       },
