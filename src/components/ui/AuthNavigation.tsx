@@ -17,7 +17,7 @@ export default function AuthNavigation({ className }: Props) {
 
   console.log(pathname);
   return (
-    <header className='bg-v2 sticky z-100 top-0 border-b'>
+    <header className='bg-white sticky z-100 top-0 border-b'>
       <div className='section-container'>
         <nav
           className={cn('flex py-3 items-center justify-between', className)}

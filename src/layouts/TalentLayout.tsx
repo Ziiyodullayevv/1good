@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 
 export default function TalentLayout() {
   return (
-    <div className='bg-v2'>
+    <div className='bg-v7'>
       <AuthNavigation className='flex-row-reverse' />
 
       <main className='min-h-[calc(100vh-200px)]'>

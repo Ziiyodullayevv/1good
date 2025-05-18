@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
     element: <TalentLayout />,
     children: [
       { index: true, element: <Talent /> },
-      { path: ':id', element: <TalentProfilePage /> },
+      { path: ':slug', element: <TalentProfilePage /> },
       // {
       //   path: 'signup',
       //   element: <SignUp />,
