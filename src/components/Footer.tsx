@@ -4,11 +4,14 @@ import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
 import { Instagram, Linkedin } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 export default function Footer() {
   const { t } = useTranslation('common');
   return (
-    <footer className='pt-10 bg-black sm:bg-transparent text-lg text-white'>
+    <footer
+      className={cn('pt-10 bg-black sm:bg-transparent text-lg text-white')}
+    >
       <div className='section-container'>
         <div className='bg-black sm:py-10 sm:px-15 rounded-t-[45px]'>
           <div className='flex flex-wrap items-center gap-10 lg:gap-20'>

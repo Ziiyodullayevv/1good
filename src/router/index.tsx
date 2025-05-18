@@ -8,6 +8,9 @@ import Home from '../pages/Home';
 // import SignIn from '../components/SignIn';
 import AuthLayout from '../layouts/AuthLayout';
 import ComingSoon from '../components/ComingSoon';
+import Talent from '../components/Talent';
+import TalentLayout from '../layouts/TalentLayout';
+import TalentProfilePage from '../components/TalentSingle';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -26,6 +29,22 @@ export const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       { index: true, element: <ComingSoon /> },
+      // {
+      //   path: 'signup',
+      //   element: <SignUp />,
+      // },
+      // {
+      //   path: 'signin',
+      //   element: <SignIn />,
+      // },
+    ],
+  },
+  {
+    path: '/talent',
+    element: <TalentLayout />,
+    children: [
+      { index: true, element: <Talent /> },
+      { path: ':id', element: <TalentProfilePage /> },
       // {
       //   path: 'signup',
       //   element: <SignUp />,

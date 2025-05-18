@@ -1,17 +1,34 @@
 import { ArrowLeft } from 'lucide-react';
 import Logo from '../Logo';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import { cn } from '../../lib/utils';
+import { Button } from './button';
 
-export default function AuthNavigation() {
+type Props = {
+  className?: string;
+};
+
+export default function AuthNavigation({ className }: Props) {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
+
+  console.log(pathname);
   return (
-    <header className='bg-white sticky top-0 border-b'>
+    <header className='bg-v2 sticky z-100 top-0 border-b'>
       <div className='section-container'>
-        <nav className='flex py-3 items-center justify-between'>
-          <ArrowLeft onClick={goBack} className='size-9 cursor-pointer' />
+        <nav
+          className={cn('flex py-3 items-center justify-between', className)}
+        >
+          {pathname === '/talent' ? (
+            <Button className='sm:text-lg h-12 px-4 rounded-xl cursor-pointer'>
+              Profile
+            </Button>
+          ) : (
+            <ArrowLeft onClick={goBack} className='size-9 cursor-pointer' />
+          )}
           <Logo />
         </nav>
       </div>
