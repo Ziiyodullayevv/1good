@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router';
+import { Resend } from 'resend';
 
 export default function ComingSoon() {
   const navigate = useNavigate();
@@ -40,12 +41,12 @@ export default function ComingSoon() {
 
     setIsLoading(true);
 
-    const telegramBotToken = '7831395863:AAEOoA1pAoyGoAdkAs4Buasj87JDT08YnuE'; // <-- Tokeningizni kiriting
+    const telegramBotToken = '7831395863:AAEOoA1pAoyGoAdkAs4Buasj87JDT08YnuE'; // <-- Token
     const chatIds = ['961047307', '7424803565']; // <-- Chat ID lar
-
     const message = `📧 Yangi email: ${email} \n ${formattedNow}`;
 
     try {
+      // 1. Telegramga yuborish
       await Promise.all(
         chatIds.map((chatId) =>
           fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
@@ -61,6 +62,23 @@ export default function ComingSoon() {
         )
       );
 
+      // 2. Resend orqali email yuborish
+      const resend = new Resend(
+        import.meta.env.VITE_RESEND_API_KEY ||
+          're_gZyzxRTj_Lb1ejt3CetC3NgEKYufFcZst'
+      );
+      try {
+        await resend.emails.send({
+          from: 'ComingSoon <you@resend.dev>',
+          to: email,
+          subject: 'Thanks for subscribing!',
+          html: `<p>Thank you for subscribing to our updates. We'll notify you when we launch!</p>`,
+        });
+      } catch (emailError) {
+        console.error('Resend email error:', emailError);
+      }
+
+      // Toast ko‘rsatish
       toast(<h3 className='text-base'>{t('thankYouMessage')}</h3>, {
         description: <p className='text-black'>{formattedNow}</p>,
         action: {
@@ -70,8 +88,6 @@ export default function ComingSoon() {
       });
 
       setEmail('');
-
-      // 1.5 soniya kutib, bosh sahifaga yo‘naltirish
       setTimeout(() => {
         navigate('/');
       }, 1500);
