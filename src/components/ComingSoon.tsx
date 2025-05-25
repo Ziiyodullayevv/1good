@@ -3,8 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router';
 
 export default function ComingSoon() {
+  const navigate = useNavigate();
   const now = new Date();
 
   const formattedNow = now.toLocaleString('en-US', {
@@ -26,7 +28,7 @@ export default function ComingSoon() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      toast(<h3 className='text-base'></h3>, {
+      toast(<h3 className='text-base'>{t('error_empty')}</h3>, {
         description: <p className='text-black'>{formattedNow}</p>,
         action: {
           label: 'Undo',
@@ -66,7 +68,13 @@ export default function ComingSoon() {
           onClick: () => console.log('Undo'),
         },
       });
+
       setEmail('');
+
+      // 1.5 soniya kutib, bosh sahifaga yo‘naltirish
+      setTimeout(() => {
+        navigate('/');
+      }, 1500);
     } catch (error) {
       console.error('Xatolik:', error);
       toast(<h3 className='text-base'>{t('errorMessage')}</h3>, {
