@@ -2,7 +2,6 @@ import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const API_URL = 'https://673841334eb22e24fca75190.mockapi.io/api/v1/developers';
 
@@ -67,14 +66,17 @@ export default function TalentProfilePage() {
     <div className='min-h-screen py-10 sm:py-20'>
       <div className='section-container space-y-10'>
         {/* Header Card */}
-        <Card className='p-8'>
+        <Card className='p-15'>
           <div className='grid md:grid-cols-2 gap-8'>
             {/* Avatar */}
             <div className='flex justify-center items-center'>
-              <Avatar className='w-full h-[300px]'>
-                <AvatarImage src={developer.avatar} alt={developer.name} />
-                <AvatarFallback>{developer.name[0]}</AvatarFallback>
-              </Avatar>
+              <img
+                className='rounded-lg'
+                src={
+                  'https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D'
+                }
+                alt=''
+              />
             </div>
 
             {/* Info */}

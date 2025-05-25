@@ -3,5 +3,9 @@
   "description": "Yangi imkoniyatlar yaratmoqdamiz!",
   "placeholder": "Email manzilingizni kiriting",
   "buttonText": "Obuna bo'lish",
-  "footer": "Birinchilardan bo'ling!"
+  "footer": "Birinchilardan bo'ling!",
+  "thankYouMessage": "Obuna bo‘lganingiz uchun rahmat!",
+  "errorMessage": "Xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+  "error_empty": "Emailingizni kiriting",
+  "loading": "Yuborilmoqda..."
 }

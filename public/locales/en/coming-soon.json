@@ -3,5 +3,9 @@
   "description": "We're working on something awesome!",
   "placeholder": "Enter your Email",
   "buttonText": "Subscribe",
-  "footer": "Be the first to know when we launch!"
+  "footer": "Be the first to know when we launch!",
+  "thankYouMessage": "Thank you for subscribing!",
+  "errorMessage": "There was an error subscribing. Please try again later.",
+  "error_empty": "Please enter your email",
+  "loading": "Sending..."
 }
