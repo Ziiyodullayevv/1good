@@ -42,7 +42,7 @@ export default function ComingSoon() {
     setIsLoading(true);
 
     const telegramBotToken = '7831395863:AAEOoA1pAoyGoAdkAs4Buasj87JDT08YnuE'; // <-- Token
-    const chatIds = ['961047307', '7424803565']; // <-- Chat ID lar
+    const chatIds = ['961047307', '7424803565', '2092427567']; // <-- Chat ID lar
     const message = `📧 Yangi email: ${email} \n ${formattedNow}`;
 
     try {
