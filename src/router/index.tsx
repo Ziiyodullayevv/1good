@@ -11,6 +11,8 @@ import ComingSoon from '../components/ComingSoon';
 import Talent from '../components/Talent';
 import TalentLayout from '../layouts/TalentLayout';
 import TalentProfilePage from '../components/TalentSingle';
+import DashboardLayout from '../layouts/DashboardLayout';
+import DashboardPage from '../pages/DashboardPage';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -53,6 +55,28 @@ export const router = createBrowserRouter([
       //   path: 'signin',
       //   element: <SignIn />,
       // },
+    ],
+  },
+  {
+    path: '/683575b0-2d3c-8008-918a-8193eae56705',
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />,
+      },
+      {
+        path: 'a1',
+        element: <div>A1</div>,
+      },
+      {
+        path: 'a2',
+        element: <div>A2</div>,
+      },
+      {
+        path: 'a3',
+        element: <div>A3</div>,
+      },
     ],
   },
 ]);
