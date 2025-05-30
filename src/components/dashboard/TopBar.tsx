@@ -7,11 +7,21 @@ import { Link } from 'react-router';
 type Props = {
   isSidebarOpen: boolean;
   setIsSidebarOpen: (value: boolean) => void;
+  scrolled: boolean;
 };
 
-export default function TopBar({ isSidebarOpen, setIsSidebarOpen }: Props) {
+export default function TopBar({
+  isSidebarOpen,
+  scrolled,
+  setIsSidebarOpen,
+}: Props) {
   return (
-    <div className='h-[58px] bg-v2 top-0 sticky flex items-center px-5 justify-between'>
+    <div
+      className={cn(
+        'h-[58px] bg-v2 top-0 sticky transition-all border-b border-b-transparent duration-200 flex items-center px-5 justify-between',
+        scrolled ? 'border-b border-b-gray-200' : undefined
+      )}
+    >
       {/* Left  */}
       <div className='flex items-center gap-2'>
         <button

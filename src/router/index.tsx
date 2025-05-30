@@ -66,16 +66,24 @@ export const router = createBrowserRouter([
         element: <DashboardPage />,
       },
       {
-        path: 'a1',
+        path: 'my-projects',
         element: <div>A1</div>,
       },
       {
-        path: 'a2',
+        path: 'analytics',
         element: <div>A2</div>,
       },
       {
-        path: 'a3',
+        path: 'messages',
         element: <div>A3</div>,
+      },
+      {
+        path: 'contracts',
+        element: <div>A4</div>,
+      },
+      {
+        path: 'settings',
+        element: <div>A5</div>,
       },
     ],
   },
