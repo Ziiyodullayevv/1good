@@ -7,19 +7,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
+import Banner from './Banner';
 
 export default function Dashboard() {
   return (
     <section className='text-base'>
       <div className='bg-white rounded-xl overflow-hidden'>
         {/* Banner  */}
-        <div className='h-25 overflow-hidden'>
-          <img
-            className='w-full'
-            src='/profile-banner.jpg'
-            alt='profile banner'
-          />
-        </div>
+        <Banner />
 
         {/* Main  */}
         <div className='p-8'>

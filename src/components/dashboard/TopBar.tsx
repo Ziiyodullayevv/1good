@@ -18,7 +18,7 @@ export default function TopBar({
   return (
     <div
       className={cn(
-        'h-[58px] bg-v2 top-0 sticky transition-all border-b border-b-transparent duration-200 flex items-center px-5 justify-between',
+        'h-[58px] bg-v2 top-0 z-50 sticky transition-all border-b border-b-transparent duration-200 flex items-center px-5 justify-between',
         scrolled ? 'border-b border-b-gray-200' : undefined
       )}
     >
@@ -27,7 +27,7 @@ export default function TopBar({
         <button
           onClick={() => setIsSidebarOpen(true)}
           className={cn(
-            'hover:bg-v9/10 group  shrink-0 rounded-sm flex justify-center items-center h-[38px] w-[38px] font-bold cursor-pointer transition-all ease-in-out transform',
+            'hover:bg-v9/10 group shrink-0 rounded-sm flex justify-center items-center h-[38px] w-[38px] font-bold cursor-pointer transition-all ease-in-out transform',
             isSidebarOpen
               ? 'opacity-100 scale-0 pointer-events-none'
               : 'opacity-100 duration-500 scale-100'
@@ -39,7 +39,7 @@ export default function TopBar({
         <h2
           className={cn(
             'transition-all font-medium duration-300',
-            isSidebarOpen ? 'ml-[-40px]' : 'ml-0'
+            isSidebarOpen ? 'ml-[-46px]' : 'ml-0'
           )}
         >
           Welcome, Umar

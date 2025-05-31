@@ -13,6 +13,10 @@ import TalentProfilePage from '../components/talents/TalentSingle';
 import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardPage from '../pages/DashboardPage';
 import TalentPage from '../pages/TalentPage';
+import MyProjects from '../components/dashboard/MyProjects';
+import Contracts from '../components/dashboard/Contracts';
+import Settings from '../components/dashboard/Settings';
+import Analytics from '../components/dashboard/Analytics';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -67,11 +71,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'my-projects',
-        element: <div>A1</div>,
+        element: <MyProjects />,
       },
       {
         path: 'analytics',
-        element: <div>A2</div>,
+        element: <Analytics />,
       },
       {
         path: 'messages',
@@ -79,11 +83,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'contracts',
-        element: <div>A4</div>,
+        element: <Contracts />,
       },
       {
         path: 'settings',
-        element: <div>A5</div>,
+        element: <Settings />,
       },
     ],
   },
