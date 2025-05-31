@@ -17,6 +17,7 @@ import MyProjects from '../components/dashboard/MyProjects';
 import Contracts from '../components/dashboard/Contracts';
 import Settings from '../components/dashboard/Settings';
 import Analytics from '../components/dashboard/Analytics';
+import Messages from '../components/dashboard/Messages';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -79,7 +80,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'messages',
-        element: <div>A3</div>,
+        element: <Messages />,
       },
       {
         path: 'contracts',
