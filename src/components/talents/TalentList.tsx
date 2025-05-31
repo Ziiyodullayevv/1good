@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import { Badge } from './ui/badge';
 import slugify from 'slugify';
 import { useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Badge } from '../ui/badge';
 
 type Developer = {
   id: string;

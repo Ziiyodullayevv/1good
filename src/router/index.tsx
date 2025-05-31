@@ -8,11 +8,11 @@ import Home from '../pages/Home';
 // import SignIn from '../components/SignIn';
 import AuthLayout from '../layouts/AuthLayout';
 import ComingSoon from '../components/ComingSoon';
-import Talent from '../components/Talent';
 import TalentLayout from '../layouts/TalentLayout';
-import TalentProfilePage from '../components/TalentSingle';
+import TalentProfilePage from '../components/talents/TalentSingle';
 import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardPage from '../pages/DashboardPage';
+import TalentPage from '../pages/TalentPage';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
     path: '/talent',
     element: <TalentLayout />,
     children: [
-      { index: true, element: <Talent /> },
+      { index: true, element: <TalentPage /> },
       { path: ':slug', element: <TalentProfilePage /> },
       // {
       //   path: 'signup',
