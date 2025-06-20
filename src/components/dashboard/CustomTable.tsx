@@ -40,7 +40,7 @@ export default function CustomTable({ data }: CustomTableProps) {
               <TableCell className='!w-[250px] !whitespace-wrap'>
                 {title}
               </TableCell>
-              <TableCell className='whitespace-nowrap  text-gray-500'>
+              <TableCell className='whitespace-nowrap text-gray-500'>
                 {clientName}
               </TableCell>
               <TableCell className='whitespace-nowrap text-gray-500'>

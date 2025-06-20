@@ -71,6 +71,7 @@ export default function Sidebar({
           <NavLink
             to={'/dashboard'}
             end
+            onClick={onClose}
             className={({ isActive }) =>
               isActive
                 ? 'flex items-center text-base bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
@@ -83,6 +84,7 @@ export default function Sidebar({
         </li>
         <li>
           <NavLink
+            onClick={onClose}
             to={'my-projects'}
             className={({ isActive }) =>
               isActive
@@ -96,6 +98,7 @@ export default function Sidebar({
         </li>
         <li>
           <NavLink
+            onClick={onClose}
             to={'analytics'}
             className={({ isActive }) =>
               isActive
@@ -110,6 +113,7 @@ export default function Sidebar({
 
         <li>
           <NavLink
+            onClick={onClose}
             to={'messages'}
             className={({ isActive }) =>
               isActive
@@ -124,6 +128,7 @@ export default function Sidebar({
 
         <li>
           <NavLink
+            onClick={onClose}
             to={'contracts'}
             className={({ isActive }) =>
               isActive
@@ -138,6 +143,7 @@ export default function Sidebar({
 
         <li>
           <NavLink
+            onClick={onClose}
             to={'settings'}
             className={({ isActive }) =>
               isActive

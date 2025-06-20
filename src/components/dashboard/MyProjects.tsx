@@ -38,9 +38,9 @@ export default function MyProjects() {
         />
 
         {/* Project Lists  */}
-        <div className='p-8'>
-          <Tabs defaultValue='active' className='w-full'>
-            <TabsList className='border-b flex gap-10 p-0 h-[45px] bg-transparent w-full justify-start shadow-none rounded-none'>
+        <div className='sm:p-8'>
+          <Tabs defaultValue='active' className='w-full mt-5 sm:mt-0 px-4'>
+            <TabsList className='border-b flex text-sm gap-5 sm:gap-10 p-0 h-[45px] bg-transparent w-full justify-start shadow-none rounded-none'>
               <TabsTrigger value='active'>Active</TabsTrigger>
               <TabsTrigger value='complated'>Complated</TabsTrigger>
               <TabsTrigger value='pending'>Pending</TabsTrigger>
@@ -51,7 +51,7 @@ export default function MyProjects() {
             <TabsContent value='pending'>pending</TabsContent> */}
           </Tabs>
 
-          <div className='mt-5'>
+          <div className='sm:mt-5'>
             <CustomTable data={data} />
           </div>
         </div>

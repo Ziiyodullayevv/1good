@@ -7,25 +7,33 @@ export default function Settings() {
     <div className='bg-white text-base min-h-[calc(100vh-80px)] rounded-xl overflow-hidden'>
       <Banner title='Settings' />
 
-      <div className='p-8'>
+      <div className='p-4 sm:p-8'>
         {/* Payment metods  */}
         <div>
-          <h3 className='text-lg items-center font-semibold'>Payment Method</h3>
+          <h3 className='text-base sm:text-lg items-center font-medium sm:font-semibold'>
+            Payment Method
+          </h3>
           <div className='flex gap-3 my-4'>
             <div className='w-12 rounded-lg flex justify-center items-center h-12 bg-v2'>
               <Plus />
             </div>
 
             <div>
-              <h4 className='font-medium'>Add payout method</h4>
-              <span className='text-gray-500'>Bank account</span>
+              <h4 className='font-medium text-sm sm:text-base'>
+                Add payout method
+              </h4>
+              <span className='text-gray-500 text-sm sm:text-base'>
+                Bank account
+              </span>
             </div>
           </div>
         </div>
 
         {/* Buttons group */}
         <div className='my-5'>
-          <h3 className='text-lg items-center font-semibold'>Language</h3>
+          <h3 className='font-base sm:text-lg items-center font-medium sm:font-semibold'>
+            Language
+          </h3>
           <div className='flex gap-3 my-4'>
             <Button
               className='h-11 rounded-lg shadow-none cursor-pointer'
@@ -52,8 +60,10 @@ export default function Settings() {
 
         {/* Support  */}
         <div className='my-5'>
-          <h3 className='text-lg items-center font-semibold'>Support</h3>
-          <div className='flex cursor-pointer text-gray-500 hover:text-black justify-between mt-3 w-full'>
+          <h3 className='text-base sm:text-lg items-center font-medium sm:font-semibold'>
+            Support
+          </h3>
+          <div className='flex text-sm cursor-pointer text-gray-500 hover:text-black justify-between mt-3 w-full'>
             <span>Contact Support</span>
             <ChevronRight className='size-4' />
           </div>

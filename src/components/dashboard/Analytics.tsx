@@ -12,31 +12,38 @@ export default function Analytics() {
       />
 
       {/* Analytics main  */}
-      <div className='p-8'>
+      <div className='p-4 sm:p-8'>
         {/* Analytics cards  */}
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='grid text-sm sm:text-base grid-cols-1 sm:grid-cols-3 gap-4'>
           <div className='bg-v2 p-5 rounded-lg'>
             <h4>Total Earnings</h4>
-            <h3 className='text-2xl mt-2 font-semibold'>$12,500</h3>
+            <h3 className='text-xl sm:text-2xl mt-2 font-semibold'>$12,500</h3>
           </div>
 
           <div className='bg-v2 p-5 rounded-lg'>
             <h4>Completed Jobs</h4>
-            <h3 className='text-2xl mt-2 font-semibold'>75</h3>
+            <h3 className='text-xl sm:text-2xl mt-2 font-semibold'>75</h3>
           </div>
 
           <div className='bg-v2 p-5 rounded-lg'>
             <h4>Average Client Rating</h4>
-            <h3 className='text-2xl mt-2 font-semibold'>4.8</h3>
+            <h3 className='text-xl sm:text-2xl mt-2 font-semibold'>4.8</h3>
           </div>
         </div>
+
         {/* Earnings Trends  */}
-        <h3 className='text-xl font-bold my-5'>Earnings Trends</h3>
-        <div className='grid grid-cols-2 gap-5'>
+        <h3 className='text-lg sm:text-xl font-semibold sm:font-bold my-5'>
+          Earnings Trends
+        </h3>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-5'>
           <div>
-            <span className='text-gray-700'>Weekly Earnings</span>
-            <h4 className='text-3xl font-bold my-3'>$1,200</h4>
-            <div className='text-sm inline-flex items-center gap-3'>
+            <span className='text-gray-700 text-sm sm:text-base'>
+              Weekly Earnings
+            </span>
+            <h4 className='text-2xl sm:text-3xl font-bold my-1 sm:my-3'>
+              $1,200
+            </h4>
+            <div className='text-xs sm:text-sm inline-flex items-center gap-3'>
               <span className='text-gray-500'>Last 7 Days</span>
               <span className='text-green-400'>+15%</span>
             </div>
@@ -48,9 +55,13 @@ export default function Analytics() {
 
           {/* two pointer  */}
           <div>
-            <span className='text-gray-700'>Monthly Earnings</span>
-            <h4 className='text-3xl font-bold my-3'>$1,200</h4>
-            <div className='text-sm inline-flex items-center gap-3'>
+            <span className='text-gray-700 text-sm sm:text-base'>
+              Monthly Earnings
+            </span>
+            <h4 className='text-2xl sm:text-3xl font-bold my-1 sm:my-3'>
+              $1,200
+            </h4>
+            <div className='text-xs sm:text-sm inline-flex items-center gap-3'>
               <span className='text-gray-500'>Last 30 Days</span>
               <span className='text-red-400'>-5%</span>
             </div>
@@ -62,13 +73,17 @@ export default function Analytics() {
         </div>
 
         {/* Job Completion Trends */}
-        <h3 className='text-xl font-bold my-5'>Job Completion Trends</h3>
-        <div className='grid grid-cols-2 gap-5'>
+        <h3 className='text-lg  sm:text-xl font-semibold sm:font-bold my-5'>
+          Job Completion Trends
+        </h3>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-5'>
           {/* two pointer  */}
-          <div>
-            <span className='text-gray-700'>Weekly Jobs Completed</span>
-            <h4 className='text-3xl font-bold my-3'>10</h4>
-            <div className='text-sm inline-flex items-center gap-3'>
+          <div className='order-2 sm:order-1'>
+            <span className='text-gray-700 text-sm sm:text-base'>
+              Weekly Jobs Completed
+            </span>
+            <h4 className='text-2xl sm:text-3xl font-bold my-1 sm:my-3'>10</h4>
+            <div className='text-xs sm:text-sm inline-flex items-center gap-3'>
               <span className='text-gray-500'>Last 7 Days</span>
               <span className='text-green-400'>+20%</span>
             </div>
@@ -78,10 +93,12 @@ export default function Analytics() {
             </div>
           </div>
 
-          <div>
-            <span className='text-gray-700'>Monthly Jobs Completed</span>
-            <h4 className='text-3xl font-bold my-3'>30</h4>
-            <div className='text-sm inline-flex items-center gap-3'>
+          <div className='order-1 sm:order-2'>
+            <span className='text-gray-700 text-sm sm:text-base'>
+              Monthly Jobs Completed
+            </span>
+            <h4 className='text-2xl sm:text-3xl font-bold my-1 sm:my-3'>30</h4>
+            <div className='text-xs sm:text-sm inline-flex items-center gap-3'>
               <span className='text-gray-500'>Last 30 Days</span>
               <span className='text-green-400'>+10%</span>
             </div>

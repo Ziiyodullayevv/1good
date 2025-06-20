@@ -51,7 +51,7 @@ export default function Dashboard() {
               <Label htmlFor='full-name'>Full Name</Label>
               <Input
                 id='full-name'
-                className='h-12 mt-3 bg-v2 border-none shadow-none'
+                className='h-12 placeholder:text-sm sm:placeholder:text-base mt-3 bg-v2 border-none shadow-none'
                 placeholder='Your First Name'
               />
             </div>
@@ -60,7 +60,7 @@ export default function Dashboard() {
               <Label htmlFor='nick-name'>Nick Name</Label>
               <Input
                 id='nick-name'
-                className='h-12 mt-3 bg-v2 border-none shadow-none'
+                className='h-12 placeholder:text-sm sm:placeholder:text-base mt-3 bg-v2 border-none shadow-none'
                 placeholder='Your First Name'
               />
             </div>
