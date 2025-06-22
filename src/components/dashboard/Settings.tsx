@@ -4,7 +4,7 @@ import { Button } from '../ui/button';
 
 export default function Settings() {
   return (
-    <div className='bg-white text-base min-h-[calc(100vh-80px)] rounded-xl overflow-hidden'>
+    <div className='bg-white text-base min-h-[calc(100vh-72px)] sm:min-h-[calc(100vh-80px)] rounded-xl overflow-hidden'>
       <Banner title='Settings' />
 
       <div className='p-4 sm:p-8'>
