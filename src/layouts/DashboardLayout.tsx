@@ -8,6 +8,7 @@ export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [scrolled, setScrolled] = useState(false);
 
+  // scrolled control
   useEffect(() => {
     const element = document.querySelector('.topbar');
     if (!element) return;
@@ -24,6 +25,13 @@ export default function Layout() {
     return () => {
       element.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  // mobile-desktop isSidebarOpen controller
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 1024;
+    setIsSidebarOpen(!isMobile);
   }, []);
 
   return (
@@ -46,7 +54,7 @@ export default function Layout() {
         />
 
         {/* Main content */}
-        <main className=' px-3 md:px-5 pb-3 md:pb-5 max-w-[1440px] mx-auto'>
+        <main className='px-3 md:px-5 pb-3 md:pb-5 max-w-[1440px] mx-auto'>
           <Outlet />
         </main>
       </div>
