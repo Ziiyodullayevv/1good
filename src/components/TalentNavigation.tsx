@@ -1,14 +1,18 @@
 import { Link, NavLink } from 'react-router';
 import logo from '@/assets/images/logo-dark.svg';
 import Notification from './talents/Notification';
+import MobileNavigation from './talents/MobileNavigation';
 
 export default function TalentNavigation() {
   return (
     <header className='sticky bg-white h-[55px] border z-50 top-0'>
       <div className='section-container h-full'>
         <div className='flex h-full items-center justify-between'>
-          <div className='flex h-full items-center'>
-            <div className='flex gap-7'>
+          <div className='md:hidden block'>
+            <MobileNavigation />
+          </div>
+          <div className='hidden md:flex h-full items-center'>
+            <nav className='flex gap-7'>
               <img className='w-[70px]' src={logo} alt='img' />
               <NavLink className={'hover:text-v9'} to={''}>
                 Find work
@@ -25,7 +29,7 @@ export default function TalentNavigation() {
               <NavLink className={'hover:text-v9'} to={'/dashboard/messages'}>
                 Messages
               </NavLink>
-            </div>
+            </nav>
           </div>
 
           <div className='flex gap-3 items-center'>

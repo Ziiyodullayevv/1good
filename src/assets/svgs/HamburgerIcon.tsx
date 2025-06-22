@@ -1,7 +1,7 @@
 import { cn } from '../../lib/utils';
 
 type Props = {
-  className: string;
+  className?: string;
 };
 
 export default function HamburgerIcon({ className }: Props) {

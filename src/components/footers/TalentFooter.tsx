@@ -11,7 +11,7 @@ export default function TalentFooter() {
   return (
     <footer className='py-20 border-t'>
       <div className='section-container'>
-        <div className='flex justify-between'>
+        <div className='flex flex-wrap gap-10 justify-between'>
           <div>
             <img className='w-[70px]' src={logo} alt='logo' />
 
