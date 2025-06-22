@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 import TopBar from '../components/dashboard/TopBar';
 
 export default function Layout() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   // scrolled control
@@ -30,8 +30,8 @@ export default function Layout() {
   // mobile-desktop isSidebarOpen controller
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 1024;
-    setIsSidebarOpen(!isMobile);
+    const isMobile = window.innerWidth > 1024;
+    setIsSidebarOpen(isMobile);
   }, []);
 
   return (
@@ -42,7 +42,7 @@ export default function Layout() {
         className={cn(
           'transition-all topbar duration-300 overflow-auto bg-v2',
           isSidebarOpen
-            ? ' w-full lg:w-[calc(100%-260px)] top-0 right-0 bottom-0 absolute'
+            ? ' w-full md:w-[calc(100%-260px)] top-0 right-0 bottom-0 absolute'
             : 'w-full h-full top-0 right-0 bottom-0 absolute'
         )}
       >

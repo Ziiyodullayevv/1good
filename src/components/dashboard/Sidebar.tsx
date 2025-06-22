@@ -39,12 +39,18 @@ export default function Sidebar({
     };
   }, []);
 
+  const handleCloseIfMobile = (): void => {
+    if (window.innerWidth < 640) {
+      onClose();
+    }
+  };
+
   return (
     <>
       {isOpen && (
         <div
-          onClick={onClose}
-          className='fixed top-0 left-0 w-full h-full bg-black/30 z-[99]'
+          onClick={handleCloseIfMobile}
+          className='fixed block sm:hidden top-0 left-0 w-full h-full bg-black/30 z-[99]'
         />
       )}
       <div
@@ -78,7 +84,7 @@ export default function Sidebar({
             <NavLink
               to={'/dashboard'}
               end
-              onClick={onClose}
+              onClick={handleCloseIfMobile}
               className={({ isActive }) =>
                 isActive
                   ? 'flex items-center text-base bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
@@ -91,7 +97,7 @@ export default function Sidebar({
           </li>
           <li>
             <NavLink
-              onClick={onClose}
+              onClick={handleCloseIfMobile}
               to={'my-projects'}
               className={({ isActive }) =>
                 isActive
@@ -105,7 +111,7 @@ export default function Sidebar({
           </li>
           <li>
             <NavLink
-              onClick={onClose}
+              onClick={handleCloseIfMobile}
               to={'analytics'}
               className={({ isActive }) =>
                 isActive
@@ -120,7 +126,7 @@ export default function Sidebar({
 
           <li>
             <NavLink
-              onClick={onClose}
+              onClick={handleCloseIfMobile}
               to={'messages'}
               className={({ isActive }) =>
                 isActive
@@ -135,7 +141,7 @@ export default function Sidebar({
 
           <li>
             <NavLink
-              onClick={onClose}
+              onClick={handleCloseIfMobile}
               to={'contracts'}
               className={({ isActive }) =>
                 isActive
@@ -150,7 +156,7 @@ export default function Sidebar({
 
           <li>
             <NavLink
-              onClick={onClose}
+              onClick={handleCloseIfMobile}
               to={'settings'}
               className={({ isActive }) =>
                 isActive
