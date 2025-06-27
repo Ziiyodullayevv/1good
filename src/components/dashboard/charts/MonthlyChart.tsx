@@ -33,15 +33,13 @@ export default function MonthlyChart() {
   });
 
   return (
-    <div>
-      <div id='chart'>
-        <ReactApexChart
-          options={state.options}
-          series={state.series}
-          type='bar'
-          height={250}
-        />
-      </div>
+    <div className='bg-v2/30 rounded-lg mt-2' id='chart'>
+      <ReactApexChart
+        options={state.options}
+        series={state.series}
+        type='bar'
+        height={250}
+      />
     </div>
   );
 }

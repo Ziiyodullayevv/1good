@@ -17,7 +17,7 @@ export default function Dashboard() {
         <Banner />
 
         {/* Main  */}
-        <div className='p-4 sm:p-8'>
+        <div className='p-4 sm:p-8 min-h-[calc(100vh-72px)]'>
           {/* Profile  */}
           <div className='sm:flex items-center justify-between gap-4'>
             <div className='flex items-center gap-4'>

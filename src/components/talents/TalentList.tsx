@@ -67,33 +67,33 @@ export default function TalentList() {
             <div
               onClick={() => handleClick(name, id)}
               key={id}
-              className='bg-white flex flex-col gap-40 rounded-xl p-5  cursor-pointer hover:bg-v8 transition-all duration-300'
+              className='bg-white flex border flex-col justify-between gap-40 rounded-xl p-5  cursor-pointer hover:bg-v8 transition-all duration-300'
             >
               <div className='flex justify-between gap-3'>
                 <div>
-                  <h3 className='text-lg sm:text-2xl font-bold'>{name}</h3>
+                  <h3 className='text-lg sm:text-xl font-semibold'>{name}</h3>
                   <p className='text-sm sm:text-base'>{role}</p>
                 </div>
 
-                <div className='w-13 h-13 bg-v7 overflow-hidden rounded-full'>
+                <div className='w-13 h-13 bg-v2 text-sm overflow-hidden rounded-full'>
                   <img src={avatar} alt='image' />
                 </div>
               </div>
 
               <div className='flex flex-col gap-3'>
                 <div className='flex flex-wrap gap-2'>
-                  <Badge className='bg-v7 flex justify-center items-center gap-1 rounded-full px-3 py-1 text-black font-normal text-sm sm:text-base'>
+                  <Badge className='bg-v2 flex justify-center items-center gap-1 rounded-full px-3 py-1 text-gray-700 font-normal text-sm'>
                     <img src='/talent-stars.svg' alt='image' />
                     <span>{level}</span>
                   </Badge>
-                  <Badge className='bg-v7 flex justify-center items-center gap-1 rounded-full px-3 py-1 text-black font-normal text-sm sm:text-base'>
+                  <Badge className='bg-v2 flex justify-center items-center gap-1 rounded-full px-3 py-1 text-gray-700 font-normal text-sm'>
                     <img src='/talent-location.svg' alt='image' />
                     <span>{location}</span>
                   </Badge>
                 </div>
-                <Badge className='bg-v7 flex justify-center items-center gap-1 rounded-full px-3 py-1 text-black font-normal text-sm sm:text-base'>
+                <Badge className='bg-v2 flex justify-center items-center gap-1 rounded-full px-3 py-1 text-gray-700 font-normal text-sm'>
                   <img src='/talent-salary.svg' alt='image' />
-                  <span>{salary}</span>
+                  <span>${salary}</span>
                 </Badge>
               </div>
             </div>

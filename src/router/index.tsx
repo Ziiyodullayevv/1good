@@ -18,6 +18,12 @@ import Contracts from '../components/dashboard/Contracts';
 import Settings from '../components/dashboard/Settings';
 import Analytics from '../components/dashboard/Analytics';
 import Messages from '../components/dashboard/Messages';
+import CreditsPage from '../pages/CreditsPage';
+import CreditsLayout from '../layouts/CreditsLayout';
+import ApplyForClient from '../components/credits/ApplyForClient';
+import OrderPage from '../pages/OrderPage';
+import OrderSinglePage from '../pages/OrderSinglePage';
+import OrderLayout from '../layouts/OrderLayout';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -52,14 +58,6 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <TalentPage /> },
       { path: ':slug', element: <TalentProfilePage /> },
-      // {
-      //   path: 'signup',
-      //   element: <SignUp />,
-      // },
-      // {
-      //   path: 'signin',
-      //   element: <SignIn />,
-      // },
     ],
   },
   {
@@ -90,6 +88,22 @@ export const router = createBrowserRouter([
         path: 'settings',
         element: <Settings />,
       },
+    ],
+  },
+  {
+    path: '/credits',
+    element: <CreditsLayout />,
+    children: [
+      { index: true, element: <CreditsPage /> },
+      { path: 'apply-for-credits', element: <ApplyForClient /> },
+    ],
+  },
+  {
+    path: '/order',
+    element: <OrderLayout />,
+    children: [
+      { index: true, element: <OrderPage /> },
+      { path: ':slug', element: <OrderSinglePage /> },
     ],
   },
 ]);

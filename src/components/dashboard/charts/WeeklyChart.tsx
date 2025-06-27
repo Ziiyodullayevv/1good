@@ -25,6 +25,9 @@ const WeeklyChart: React.FC = () => {
         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false,
+        },
       },
 
       stroke: {
@@ -57,12 +60,13 @@ const WeeklyChart: React.FC = () => {
   });
 
   return (
-    <div>
+    <div className='bg-v2/30 mt-2 rounded-lg'>
       <ReactApexChart
         options={state.options}
         series={state.series}
         type='line'
         height={250}
+        width={'100%'}
       />
     </div>
   );

@@ -6,22 +6,19 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '../ui/input';
-import TalentList from './TalentList';
+import OrderList from './OrderList';
 
-export default function Talent() {
+export default function Order() {
   return (
     <section className='py-10'>
       <div className='section-container'>
         <div className='flex flex-col'>
           <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 justify-between'>
-            <h2 className='text-2xl font-semibold'>Talants</h2>
+            <h2 className='text-2xl font-semibold'>Order List</h2>
             <div className='flex overflow-auto gap-2 sm:gap-5'>
               <Select>
-                <SelectTrigger className='shadow-none border !rounded-lg text-black'>
-                  <SelectValue
-                    className='placehoder:text-gray-500 text-base'
-                    placeholder='Jobs'
-                  />
+                <SelectTrigger className='shadow-none !border !rounded-lg text-black'>
+                  <SelectValue className='text-base' placeholder='Level' />
                 </SelectTrigger>
                 <SelectContent align='end' side='bottom'>
                   <SelectItem value='light'>Senior</SelectItem>
@@ -31,25 +28,19 @@ export default function Talent() {
               </Select>
 
               <Select>
-                <SelectTrigger className='shadow-none border !rounded-lg text-black'>
-                  <SelectValue
-                    className='placehoder:text-gray-500 text-base'
-                    placeholder='Level'
-                  />
+                <SelectTrigger className='shadow-none !border !rounded-lg text-black'>
+                  <SelectValue className='text-base' placeholder='Price' />
                 </SelectTrigger>
                 <SelectContent align='end' side='bottom'>
-                  <SelectItem value='light'>Senior</SelectItem>
-                  <SelectItem value='dark'>Meddle</SelectItem>
-                  <SelectItem value='system'>Junior</SelectItem>
+                  <SelectItem value='light'>$100 - $500</SelectItem>
+                  <SelectItem value='dark'>$500 - $1000</SelectItem>
+                  <SelectItem value='system'>$1000 - $2000</SelectItem>
                 </SelectContent>
               </Select>
 
               <Select>
-                <SelectTrigger className='shadow-none border !rounded-lg text-black'>
-                  <SelectValue
-                    className='placehoder:text-gray-500 text-base'
-                    placeholder='Location'
-                  />
+                <SelectTrigger className='shadow-none !border !rounded-lg text-black'>
+                  <SelectValue className='text-base' placeholder='Location' />
                 </SelectTrigger>
                 <SelectContent align='end' side='bottom'>
                   <SelectItem value='light'>Tashkent, Uzbekistan</SelectItem>
@@ -60,11 +51,11 @@ export default function Talent() {
             </div>
           </div>
           <Input
-            className='mt-5 h-12 shadow-none px-4 rounded-lg sm:rounded-xl bg-white border sm:placeholder:placehoder:text-gray-500 text-base'
+            className='mt-5 h-12 shadow-none border px-4 rounded-lg sm:rounded-xl bg-white sm:placeholder:text-base'
             placeholder='Search...'
           />
         </div>
-        <TalentList />
+        <OrderList />
       </div>
     </section>
   );
