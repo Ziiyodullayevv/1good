@@ -10,7 +10,7 @@ import TalentList from './TalentList';
 
 export default function Talent() {
   return (
-    <section className='py-10'>
+    <section className='py-10 bg-v2'>
       <div className='section-container'>
         <div className='flex flex-col'>
           <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 justify-between'>
