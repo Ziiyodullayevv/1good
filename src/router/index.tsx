@@ -85,17 +85,13 @@ export const router = createBrowserRouter([
         element: <Contracts />,
       },
       {
+        path: 'credits',
+        element: <CreditsPage />,
+      },
+      {
         path: 'settings',
         element: <Settings />,
       },
-    ],
-  },
-  {
-    path: '/credits',
-    element: <CreditsLayout />,
-    children: [
-      { index: true, element: <CreditsPage /> },
-      { path: 'apply-for-credits', element: <ApplyForClient /> },
     ],
   },
   {

@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router';
-import CloseIcon from '../../assets/svgs/CloseIcon';
+import CloseIcon from '@/assets/svgs/CloseIcon';
 import {
   ChartPie,
+  CreditCard,
   FileText,
   Folder,
-  LayoutDashboard,
   MessageCircle,
   Settings,
+  UserRoundPen,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { cn } from '../../lib/utils';
-import XIcon from '../../assets/svgs/XIcon';
+import { cn } from '@/lib/utils';
+import XIcon from '@/assets/svgs/XIcon';
 
 export default function Sidebar({
   onClose,
@@ -91,7 +92,7 @@ export default function Sidebar({
                   : 'flex items-center rounded-md transition-all hover:bg-v9/10 hover:text-v9 text-base font-normal gap-2 p-2 text-black'
               }
             >
-              <LayoutDashboard className='size-4.5' />
+              <UserRoundPen className='size-4.5' />
               Profile
             </NavLink>
           </li>
@@ -136,6 +137,21 @@ export default function Sidebar({
             >
               <MessageCircle className='size-4.5' />
               Messages
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              onClick={handleCloseIfMobile}
+              to={'credits'}
+              className={({ isActive }) =>
+                isActive
+                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
+                  : 'flex font-normal transition-all rounded-md hover:bg-v9/10 hover:text-v9 items-center gap-2 p-2 text-black'
+              }
+            >
+              <CreditCard className='size-4.5' />
+              Credits
             </NavLink>
           </li>
 

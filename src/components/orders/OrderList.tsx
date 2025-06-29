@@ -89,9 +89,6 @@ export default function OrderList() {
                 Bilingual Customer Service Representative (English-Spanish)
                 Based…
               </h2>
-              <p className='text-sm my-5 text-gray-400'>
-                Fixed-price ‐ Posted 15 days ago
-              </p>
 
               <div className='flex my-5 gap-8'>
                 <div>
@@ -121,9 +118,13 @@ export default function OrderList() {
                 </span>
               </div>
 
-              <button className='h-9 text-sm cursor-pointer hover:opacity-90 px-4 bg-v9 text-white rounded-lg'>
-                See more
-              </button>
+              <div className='flex items-end justify-between'>
+                <button className='h-9 text-sm cursor-pointer hover:opacity-90 px-4 bg-v9 text-white rounded-lg'>
+                  See more
+                </button>
+
+                <p className='text-sm text-gray-500'>15 day ago</p>
+              </div>
             </div>
           ))}
     </div>
