@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router';
-import logo from '@/assets/images/logo-dark.svg';
+import logo from '@/assets/images/common/logo-dark.svg';
 import Notification from './talents/Notification';
 import MobileNavigation from './talents/MobileNavigation';
 

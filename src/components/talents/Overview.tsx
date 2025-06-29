@@ -1,6 +1,15 @@
 import { Rate } from 'antd';
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 
+const skills = [
+  'Graphic Design',
+  'Branding',
+  'Illustration',
+  'Adobe Creative Suite',
+  'Logo Design',
+  'Visual Communication',
+];
+
 export default function Overview() {
   return (
     <div>
@@ -18,30 +27,15 @@ export default function Overview() {
       {/* Skills part  */}
       <div className='my-5 flex flex-col gap-3'>
         <h2 className='text-base md:text-2xl font-semibold'>Skills</h2>
-        <div className='flex flex-wrap gap-1 md:gap-3'>
-          <span className='text-xs bg-v2 px-3 py-1 rounded-full font-normal'>
-            Graphic Design
-          </span>
-
-          <span className='text-xs bg-v2 px-3 py-1 rounded-full font-normal'>
-            Branding
-          </span>
-
-          <span className='text-xs bg-v2 px-3 py-1 rounded-full font-normal'>
-            Illustration
-          </span>
-
-          <span className='text-xs bg-v2 px-3 py-1 rounded-full font-normal'>
-            Adobe Creative Suite
-          </span>
-
-          <span className='text-xs bg-v2 px-3 py-1 rounded-full font-normal'>
-            Logo Design
-          </span>
-
-          <span className='text-xs bg-v2 px-3 py-1 rounded-full font-normal'>
-            Visual Communication
-          </span>
+        <div className='flex flex-wrap max-w-[500px] gap-1 md:gap-3'>
+          {skills.map((skill, index) => (
+            <span
+              key={index}
+              className='text-sm text-gray-700 bg-v2 px-3 py-2 rounded-full font-normal'
+            >
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
 

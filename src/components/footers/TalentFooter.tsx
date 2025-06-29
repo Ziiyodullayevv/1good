@@ -1,4 +1,4 @@
-import logo from '@/assets/images/logo-dark.svg';
+import logo from '@/assets/images/common/logo-dark.svg';
 
 import { FaLinkedin } from 'react-icons/fa6';
 import { FaTelegram } from 'react-icons/fa6';

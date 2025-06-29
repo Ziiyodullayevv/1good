@@ -2,6 +2,7 @@ import FoundIcon from '../../assets/svgs/FoundIcon';
 import ProjectIcon from '../../assets/svgs/ProjectIcon';
 import UsersIcon from '../../assets/svgs/UsersIcon';
 import Banner from '../dashboard/Banner';
+import cridetsBanner from '@/assets/images/cridets/cridetsBanner.png';
 
 const features = [
   {
@@ -31,11 +32,14 @@ export default function Credits() {
         <Banner title='Credits' />
 
         <div className='p-4 sm:p-8 min-h-[calc(100vh-72px)]'>
-          <div className="p-10 bg-[url('https://cdn.bcs-express.ru/article-head/15178.jpg')] min-h-[450px] bg-no-repeat bg-cover rounded-2xl">
-            <h1 className='text-4xl font-semibold'>
+          <div
+            className='p-10 bg-no-repeat bg-cover rounded-2xl'
+            style={{ backgroundImage: `url(${cridetsBanner})` }}
+          >
+            <h1 className='text-4xl max-w-[400px] font-semibold'>
               Get credits for your writing projects
             </h1>
-            <p className='mt-4'>
+            <p className='mt-4 max-w-[500px]'>
               Apply for credits to fund your writing projects on Writely. Access
               a pool of talented writers and get high-quality content without
               upfront costs.
@@ -65,7 +69,7 @@ export default function Credits() {
             ))}
           </div>
 
-          <div className='my-10 text-center'>
+          <div className='mt-10 text-center'>
             <h2 className='text-3xl font-semibold'>Ready to get started?</h2>
             <p className='my-2'>
               Apply for Writely Credits today and unlock a world of writing
