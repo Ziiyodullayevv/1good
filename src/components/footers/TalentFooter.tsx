@@ -31,25 +31,20 @@ export default function TalentFooter() {
 
           <div className='flex gap-10'>
             <ul className='flex flex-col gap-2 text-base text-normal text-black/70'>
-              <h4 className='font-semibold mb-2 text-black/80'>Talents</h4>
+              <h4 className='font-semibold mb-2 text-black/80'>Freelancer</h4>
               <li>
                 <Link className='hover:underline' to={''}>
-                  Projects
+                  Platform
                 </Link>
               </li>
               <li>
                 <Link className='hover:underline' to={''}>
-                  Services
+                  Find Work
                 </Link>
               </li>
               <li>
                 <Link className='hover:underline' to={''}>
-                  Use Cases
-                </Link>
-              </li>
-              <li>
-                <Link className='hover:underline' to={''}>
-                  Contact
+                  Find Freelancers
                 </Link>
               </li>
             </ul>

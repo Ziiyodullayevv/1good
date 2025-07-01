@@ -24,6 +24,7 @@ import CreditsPage from '../pages/CreditsPage';
 import OrderPage from '../pages/OrderPage';
 import OrderSinglePage from '../pages/OrderSinglePage';
 import OrderLayout from '../layouts/OrderLayout';
+import Portfolio from '../components/dashboard/Portfolio';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <DashboardPage />,
+      },
+      {
+        path: 'portfolio',
+        element: <Portfolio />,
       },
       {
         path: 'my-projects',

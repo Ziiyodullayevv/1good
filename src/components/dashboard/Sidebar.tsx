@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router';
 import CloseIcon from '@/assets/svgs/CloseIcon';
 import {
+  BriefcaseBusiness,
   ChartPie,
   CreditCard,
   FileText,
@@ -96,6 +97,22 @@ export default function Sidebar({
               Profile
             </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              onClick={handleCloseIfMobile}
+              to={'portfolio'}
+              className={({ isActive }) =>
+                isActive
+                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
+                  : 'flex font-normal transition-all rounded-md hover:bg-v9/10 hover:text-v9 items-center gap-2 p-2 text-black'
+              }
+            >
+              <BriefcaseBusiness className='size-4.5' />
+              My Portfolio
+            </NavLink>
+          </li>
+
           <li>
             <NavLink
               onClick={handleCloseIfMobile}

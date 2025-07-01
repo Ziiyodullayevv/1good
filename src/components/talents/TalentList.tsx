@@ -75,7 +75,7 @@ export default function TalentList() {
                   <p className='text-sm sm:text-base'>{role}</p>
                 </div>
 
-                <div className='w-13 h-13 bg-v2 text-sm overflow-hidden rounded-full'>
+                <div className='w-13 shrink-0 h-13 bg-v2 text-sm overflow-hidden rounded-full'>
                   <img src={avatar} alt='image' />
                 </div>
               </div>
