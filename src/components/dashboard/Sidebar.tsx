@@ -14,6 +14,50 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import XIcon from '@/assets/svgs/XIcon';
 
+const navItems = [
+  {
+    to: '/dashboard',
+    label: 'Profile',
+    icon: <UserRoundPen className='size-4.5' />,
+    exact: true,
+  },
+  {
+    to: 'portfolio',
+    label: 'Portfolio',
+    icon: <BriefcaseBusiness className='size-4.5' />,
+  },
+  {
+    to: 'my-projects',
+    label: 'My Projects',
+    icon: <Folder className='size-4.5' />,
+  },
+  {
+    to: 'analytics',
+    label: 'Analytics',
+    icon: <ChartPie className='size-4.5' />,
+  },
+  {
+    to: 'messages',
+    label: 'Messages',
+    icon: <MessageCircle className='size-4.5' />,
+  },
+  {
+    to: 'credits',
+    label: 'Credits',
+    icon: <CreditCard className='size-4.5' />,
+  },
+  {
+    to: 'contracts',
+    label: 'Contracts',
+    icon: <FileText className='size-4.5' />,
+  },
+  {
+    to: 'settings',
+    label: 'Settings',
+    icon: <Settings className='size-4.5' />,
+  },
+];
+
 export default function Sidebar({
   onClose,
   isOpen,
@@ -82,125 +126,23 @@ export default function Sidebar({
 
         {/* Sidebar menyu yoki linklar */}
         <ul className='p-4'>
-          <li>
-            <NavLink
-              to={'/dashboard'}
-              end
-              onClick={handleCloseIfMobile}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center text-base bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex items-center rounded-md transition-all hover:bg-v9/10 hover:text-v9 text-base font-normal gap-2 p-2 text-black'
-              }
-            >
-              <UserRoundPen className='size-4.5' />
-              Profile
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'portfolio'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex font-normal transition-all rounded-md hover:bg-v9/10 hover:text-v9 items-center gap-2 p-2 text-black'
-              }
-            >
-              <BriefcaseBusiness className='size-4.5' />
-              My Portfolio
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'my-projects'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex font-normal transition-all hover:bg-v9/10 hover:text-v9 rounded-md items-center gap-2 p-2 text-black'
-              }
-            >
-              <Folder className='size-4.5' />
-              My Projects
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'analytics'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex font-normal transition-all hover:bg-v9/10 hover:text-v9 rounded-md items-center gap-2 p-2 text-black'
-              }
-            >
-              <ChartPie className='size-4.5' />
-              Analytics
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'messages'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex font-normal transition-all rounded-md hover:bg-v9/10 hover:text-v9 items-center gap-2 p-2 text-black'
-              }
-            >
-              <MessageCircle className='size-4.5' />
-              Messages
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'credits'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex font-normal transition-all rounded-md hover:bg-v9/10 hover:text-v9 items-center gap-2 p-2 text-black'
-              }
-            >
-              <CreditCard className='size-4.5' />
-              Credits
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'contracts'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex items-center rounded-md hover:bg-v9/10 hover:text-v9 font-normal gap-2 p-2 text-black'
-              }
-            >
-              <FileText className='size-4.5' />
-              Contracts
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={handleCloseIfMobile}
-              to={'settings'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'flex items-center bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
-                  : 'flex items-center rounded-md hover:bg-v9/10 hover:text-v9 font-normal gap-2 p-2 text-black'
-              }
-            >
-              <Settings className='size-4.5' />
-              Settings
-            </NavLink>
-          </li>
+          {navItems.map(({ to, label, icon, exact }, index) => (
+            <li key={index}>
+              <NavLink
+                to={to}
+                end={exact}
+                onClick={handleCloseIfMobile}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'flex items-center text-base bg-v9/5 text-v9 gap-2 p-2 rounded-md font-normal'
+                    : 'flex items-center rounded-md transition-all hover:bg-v9/10 hover:text-v9 text-base font-normal gap-2 p-2 text-black'
+                }
+              >
+                {icon}
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         <div className='h-[58px] border-t flex items-center px-3 border-t-v2 absolute left-0 bottom-0 bg-white w-full'>

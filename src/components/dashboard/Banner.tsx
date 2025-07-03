@@ -1,4 +1,6 @@
-import { Button } from '../ui/button';
+import { useLocation } from 'react-router';
+import CreateProject from './CreateProject';
+import CreatePortfolio from './CreatePortfolio';
 
 type BannerProps = {
   title?: string;
@@ -11,6 +13,11 @@ export default function Banner({
   description,
   buttonText,
 }: BannerProps) {
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  console.log(pathname);
+
   return (
     <div className='min-h-20 px-4 sm:px-8 sm:h-25 justify-between relative flex items-center overflow-hidden'>
       <div>
@@ -32,9 +39,11 @@ export default function Banner({
 
       {buttonText && (
         <div className='relative z-10'>
-          <Button className='bg-v9 hover:bg-v9/80 cursor-pointer text-white px-4 h-10 rounded-lg'>
-            {buttonText}
-          </Button>
+          {pathname === '/dashboard/portfolio' ? (
+            <CreatePortfolio buttonText={buttonText} />
+          ) : pathname === '/dashboard/my-projects' ? (
+            <CreateProject buttonText={buttonText} />
+          ) : null}
         </div>
       )}
     </div>

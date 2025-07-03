@@ -34,7 +34,8 @@ export default function MyProjects() {
       <div>
         <Banner
           title='My Projects'
-          description='Manage your active, completed, and pending projects.'
+          // description='Manage your active, completed, and pending projects.'
+          buttonText='Create New Project'
         />
 
         {/* Project Lists  */}
