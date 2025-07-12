@@ -20,13 +20,21 @@ export default function Talent() {
                 <SelectTrigger className='shadow-none border !rounded-lg text-black'>
                   <SelectValue
                     className='placehoder:text-gray-500 text-base'
-                    placeholder='Jobs'
+                    placeholder='Years of experience'
                   />
                 </SelectTrigger>
-                <SelectContent align='end' side='bottom'>
-                  <SelectItem value='light'>Senior</SelectItem>
-                  <SelectItem value='dark'>Meddle</SelectItem>
-                  <SelectItem value='system'>Junior</SelectItem>
+                <SelectContent
+                  className='font-poppins'
+                  align='end'
+                  side='bottom'
+                >
+                  <SelectItem value='light'>1 year</SelectItem>
+                  <SelectItem value='light'>2 year</SelectItem>
+                  <SelectItem value='light'>3 year</SelectItem>
+                  <SelectItem value='light'>4 year</SelectItem>
+                  <SelectItem value='light'>5 year</SelectItem>
+                  <SelectItem value='light'>6-10 years</SelectItem>
+                  <SelectItem value='light'>More than 10 years</SelectItem>
                 </SelectContent>
               </Select>
 
@@ -34,13 +42,19 @@ export default function Talent() {
                 <SelectTrigger className='shadow-none border !rounded-lg text-black'>
                   <SelectValue
                     className='placehoder:text-gray-500 text-base'
-                    placeholder='Level'
+                    placeholder='Rating'
                   />
                 </SelectTrigger>
-                <SelectContent align='end' side='bottom'>
-                  <SelectItem value='light'>Senior</SelectItem>
-                  <SelectItem value='dark'>Meddle</SelectItem>
-                  <SelectItem value='system'>Junior</SelectItem>
+                <SelectContent
+                  className='font-poppins'
+                  align='end'
+                  side='bottom'
+                >
+                  <SelectItem value='1'>★☆☆☆☆ (1 Star)</SelectItem>
+                  <SelectItem value='2'>★★☆☆☆ (2 Stars)</SelectItem>
+                  <SelectItem value='3'>★★★☆☆ (3 Stars)</SelectItem>
+                  <SelectItem value='4'>★★★★☆ (4 Stars)</SelectItem>
+                  <SelectItem value='5'>★★★★★ (5 Stars)</SelectItem>
                 </SelectContent>
               </Select>
 
@@ -48,13 +62,20 @@ export default function Talent() {
                 <SelectTrigger className='shadow-none border !rounded-lg text-black'>
                   <SelectValue
                     className='placehoder:text-gray-500 text-base'
-                    placeholder='Location'
+                    placeholder='Freelancer level'
                   />
                 </SelectTrigger>
-                <SelectContent align='end' side='bottom'>
-                  <SelectItem value='light'>Tashkent, Uzbekistan</SelectItem>
-                  <SelectItem value='dark'>Dubai</SelectItem>
-                  <SelectItem value='system'>New York, USA</SelectItem>
+                <SelectContent
+                  className='font-poppins'
+                  align='end'
+                  side='bottom'
+                >
+                  <SelectItem value='entry'>Entry Level</SelectItem>
+                  <SelectItem value='intermediate'>Intermediate</SelectItem>
+                  <SelectItem value='expert'>Expert</SelectItem>
+                  <SelectItem value='top-rated'>Top Rated</SelectItem>
+                  <SelectItem value='top-rated-plus'>Top Rated Plus</SelectItem>
+                  <SelectItem value='rising-talent'>Rising Talent</SelectItem>
                 </SelectContent>
               </Select>
             </div>

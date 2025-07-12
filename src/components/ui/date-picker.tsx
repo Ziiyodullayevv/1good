@@ -35,7 +35,7 @@ export function DatePickerDemo({ value, onChange }: DatePickerDemoProps) {
         <Button
           variant='outline'
           data-empty={!date}
-          className='data-[empty=true]:text-muted-foreground relative h-12 bg-v2 border-none shadow-none mt-3 w-full z-[9999] justify-start text-left font-normal'
+          className='data-[empty=true]:text-muted-foreground relative h-10 bg-v2 border-none shadow-none mt-3 w-full z-[9999] justify-start text-left font-normal'
         >
           <CalendarIcon className='mr-2 h-4 w-4' />
           {date ? format(date, 'PPP') : <span>Select Date</span>}

@@ -1,296 +1,230 @@
-'use client';
-
 import {
   Button,
   Dialog,
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
-  Input,
 } from '@headlessui/react';
-import React, { useState, useCallback } from 'react';
+import { useState } from 'react';
+import { FilePenLine, X } from 'lucide-react';
+import { Input } from '../ui/input';
 import { Label } from '../ui/label';
-import { MultiSelect, type Option } from '@/components/ui/multi-select';
 import { Textarea } from '../ui/textarea';
+import { MultiSelect, frameworks } from '@/components/ui/multi-select';
 import { DatePickerDemo } from '../ui/date-picker';
-import { X } from 'lucide-react';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { projectSchema, ProjectFormData } from '@/lib/zodSchemas';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { message } from 'antd';
+import ShimmerText from '../ui/shimmerText';
+import { GeneralTooltip } from '../ui/generalTooltip';
 
-const frameworks: Option[] = [
-  { value: 'next.js', label: 'Next.js' },
-  { value: 'sveltekit', label: 'SvelteKit' },
-  { value: 'nuxt.js', label: 'Nuxt.js' },
-  { value: 'remix', label: 'Remix' },
-  { value: 'astro', label: 'Astro' },
-  { value: 'wordpress', label: 'WordPress' },
-  { value: 'express.js', label: 'Express.js' },
-  { value: 'nest.js', label: 'Nest.js' },
-];
+interface Props {
+  buttonText: string;
+  initialData?: ProjectFormData & { id: string };
+}
 
-export default function CreateProject({ buttonText }: { buttonText: string }) {
+export default function CreateProject({ buttonText, initialData }: Props) {
+  const isEdit = Boolean(initialData);
   const [isOpen, setIsOpen] = useState(false);
-
-  const [title, setTitle] = useState('');
-  const [budget, setBudget] = useState<number | ''>('');
-  const [description, setDescription] = useState('');
-  const [summary, setSummary] = useState('');
-  const [deadline, setDeadline] = useState<Date | null>(null);
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([]);
-
-  const [formErrors, setFormErrors] = useState<{
-    title?: string;
-    budget?: string;
-    description?: string;
-    summary?: string;
-    deadline?: string;
-  }>({});
-
-  const clearError = (field: keyof typeof formErrors) => {
-    setFormErrors((prev) => ({ ...prev, [field]: undefined }));
-  };
-
+  const [messageApi, contextHolder] = message.useMessage();
   const queryClient = useQueryClient();
 
-  const createProject = async (data: any) => {
-    const res = await fetch(
-      'https://673841334eb22e24fca75190.mockapi.io/api/v1/futbol',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }
-    );
-
-    if (!res.ok) throw new Error('Failed to create project');
-    return res.json();
-  };
-
-  const mutation = useMutation({
-    mutationFn: createProject,
-    onSuccess: () => {
-      setIsOpen(false);
-      setTitle('');
-      setBudget('');
-      setDescription('');
-      setSummary('');
-      setDeadline(null);
-      setSelectedFrameworks([]);
-      setFormErrors({});
-
-      queryClient.invalidateQueries({ queryKey: ['projects'] });
-    },
-    onError: (error: any) => {
-      alert(error.message || 'Something went wrong');
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ProjectFormData>({
+    resolver: zodResolver(projectSchema),
+    defaultValues: {
+      title: initialData?.title ?? '',
+      budget: initialData?.budget ?? 0,
+      description: initialData?.description ?? '',
+      summary: initialData?.summary ?? '',
+      deadline: initialData?.deadline
+        ? new Date(initialData.deadline)
+        : undefined,
+      skills: initialData?.skills ?? [],
     },
   });
 
-  const validate = () => {
-    const errors: typeof formErrors = {};
-    if (!title.trim()) errors.title = 'Title is required';
-    if (budget === '' || Number(budget) <= 0)
-      errors.budget = 'Budget is required';
-    if (!description.trim()) errors.description = 'Description is required';
-    if (!summary.trim()) errors.summary = 'Summary is required';
-    if (!deadline) errors.deadline = 'Deadline is required';
+  const notify = (type: 'success' | 'error') =>
+    messageApi.open({
+      type,
+      content: isEdit ? 'Project updated!' : 'Project created!',
+    });
 
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
+  const mutation = useMutation({
+    mutationFn: async (data: ProjectFormData) => {
+      const url = isEdit
+        ? `https://673841334eb22e24fca75190.mockapi.io/api/v1/futbol/${initialData!.id}`
+        : 'https://673841334eb22e24fca75190.mockapi.io/api/v1/futbol';
+      const method = isEdit ? 'PUT' : 'POST';
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          deadline: data.deadline ? data.deadline.toISOString() : null,
+        }),
+      });
+      if (!res.ok) throw new Error('Failed to save project');
+      return res.json();
+    },
+    onSuccess: () => {
+      notify('success');
+      queryClient.invalidateQueries({ queryKey: ['orders'] });
+      reset();
+      setIsOpen(false);
+    },
+    onError: () => {
+      notify('error');
+    },
+  });
+
+  const onSubmit: SubmitHandler<ProjectFormData> = (data) => {
+    mutation.mutate(data);
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    const payload = {
-      title,
-      budget: Number(budget),
-      description,
-      summary,
-      deadline: deadline?.toISOString(),
-      skills: selectedFrameworks,
-    };
-
-    mutation.mutate(payload);
-  };
-
-  const handleFrameworksChange = useCallback((values: string[]) => {
-    setSelectedFrameworks(values);
-  }, []);
 
   return (
     <>
-      <Button
-        onClick={() => setIsOpen(true)}
-        className='bg-v9 hover:bg-v9/80 cursor-pointer text-white px-4 h-10 rounded-lg'
-      >
-        {buttonText}
-      </Button>
+      {contextHolder}
+      {isEdit ? (
+        <GeneralTooltip content='Edit'>
+          <Button
+            onClick={() => setIsOpen(true)}
+            className='bg-v9 flex justify-center items-center text-white h-8 w-8 p-0.5 rounded-full'
+          >
+            <FilePenLine className='w-4 h-4' />
+          </Button>
+        </GeneralTooltip>
+      ) : (
+        <Button
+          onClick={() => setIsOpen(true)}
+          className='bg-v9 px-4 h-10 rounded-lg text-white'
+        >
+          {buttonText}
+        </Button>
+      )}
 
       <Dialog
         open={isOpen}
-        as='div'
-        className='relative text-base font-poppins z-[999] bg-black focus:outline-none'
         onClose={() => setIsOpen(false)}
-        __demoMode
+        className='relative z-[999]'
       >
-        <DialogBackdrop className='fixed inset-0 backdrop-blur-xs bg-black/30' />
+        <DialogBackdrop className='fixed inset-0 bg-black/30 backdrop-blur-sm' />
         <div className='fixed inset-0 z-[999] w-screen overflow-y-auto'>
           <div className='flex min-h-full items-center justify-center p-4'>
-            <DialogPanel
-              transition
-              className='w-full relative max-w-[800px] rounded-2xl bg-white p-8'
-            >
-              <div
+            <DialogPanel className='w-full font-poppins max-w-2xl bg-white rounded-2xl p-8 relative'>
+              <button
                 onClick={() => setIsOpen(false)}
-                className='absolute cursor-pointer right-6 top-6 rounded-full flex justify-center items-center w-10 h-10 bg-v2 z-[9999]'
+                className='absolute top-4 right-4 p-2 rounded-full hover:bg-v2'
               >
                 <X />
-              </div>
+              </button>
 
-              <DialogTitle as='h3' className='text-2xl font-medium'>
-                Create New Project
+              <DialogTitle className='text-2xl font-medium mb-4'>
+                {isEdit ? 'Edit Project' : 'Create New Project'}
               </DialogTitle>
 
-              <form onSubmit={handleSubmit} className='mt-4'>
-                <div className='grid sm:grid-cols-2 gap-6 mt-8'>
-                  {/* Title */}
-                  <div>
-                    <Label htmlFor='title'>Project Title</Label>
-                    <Input
-                      id='title'
-                      value={title}
-                      onChange={(e) => {
-                        setTitle(e.target.value);
-                        clearError('title');
-                      }}
-                      className={`h-12 w-full px-4 rounded-lg mt-3 bg-v2 ${
-                        formErrors.title
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                      placeholder='e.g. Blog Post on Sustainable Living'
-                    />
-                    {formErrors.title && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.title}
+              <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
+                {[
+                  { name: 'title', label: 'Project Title', type: 'text' },
+                  { name: 'budget', label: 'Budget', type: 'number' },
+                  {
+                    name: 'description',
+                    label: 'Description',
+                    type: 'textarea',
+                  },
+                  { name: 'summary', label: 'Summary', type: 'textarea' },
+                ].map((f) => (
+                  <div key={f.name}>
+                    <Label htmlFor={f.name}>{f.label}</Label>
+                    {f.type === 'textarea' ? (
+                      <Textarea
+                        id={f.name}
+                        {...register(f.name as keyof ProjectFormData)}
+                        className='bg-v2 shadow-none h-24 mt-2'
+                      />
+                    ) : (
+                      <Input
+                        id={f.name}
+                        type={f.type}
+                        {...register(
+                          f.name as keyof ProjectFormData,
+                          f.type === 'number'
+                            ? { valueAsNumber: true }
+                            : undefined
+                        )}
+                        className='bg-v2 shadow-none mt-2 h-10'
+                      />
+                    )}
+                    {errors[f.name as keyof ProjectFormData] && (
+                      <p className='text-red-500 text-sm mt-1'>
+                        {errors[f.name as keyof ProjectFormData]?.message}
                       </p>
                     )}
                   </div>
+                ))}
 
-                  {/* Budget */}
-                  <div>
-                    <Label htmlFor='budget'>Budget</Label>
-                    <Input
-                      id='budget'
-                      type='number'
-                      min={0}
-                      max={100000}
-                      value={budget}
-                      onChange={(e) => {
-                        setBudget(e.target.value ? Number(e.target.value) : '');
-                        clearError('budget');
-                      }}
-                      className={`h-12 w-full px-4 rounded-lg mt-3 bg-v2 ${
-                        formErrors.budget
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                      placeholder='e.g. $500 - $1000'
-                    />
-                    {formErrors.budget && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.budget}
-                      </p>
+                <div>
+                  <Label htmlFor='deadline'>Deadline</Label>
+                  <Controller
+                    name='deadline'
+                    control={control}
+                    render={({ field }) => (
+                      <DatePickerDemo
+                        value={field.value}
+                        onChange={field.onChange}
+                      />
                     )}
-                  </div>
-
-                  {/* Description */}
-                  <div>
-                    <Label htmlFor='description'>Project Description</Label>
-                    <Textarea
-                      id='description'
-                      value={description}
-                      onChange={(e) => {
-                        setDescription(e.target.value);
-                        clearError('description');
-                      }}
-                      placeholder='Describe the project goals and expectations'
-                      className={`h-[150px] mt-3 bg-v2 shadow-none rounded-lg ${
-                        formErrors.description
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                    />
-                    {formErrors.description && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.description}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Summary */}
-                  <div>
-                    <Label htmlFor='summary'>Summary</Label>
-                    <Textarea
-                      id='summary'
-                      value={summary}
-                      onChange={(e) => {
-                        setSummary(e.target.value);
-                        clearError('summary');
-                      }}
-                      placeholder='Write a short summary (optional)'
-                      className={`h-[150px] mt-3 bg-v2 shadow-none rounded-lg ${
-                        formErrors.summary
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                    />
-                    {formErrors.summary && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.summary}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Deadline */}
-                  <div>
-                    <Label htmlFor='deadline'>Deadline</Label>
-                    <DatePickerDemo
-                      value={deadline}
-                      onChange={(value) => {
-                        setDeadline(value);
-                        clearError('deadline');
-                      }}
-                    />
-                    {formErrors.deadline && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.deadline}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Skills */}
-                  <div>
-                    <Label>Skills Required</Label>
-                    <MultiSelect
-                      options={frameworks}
-                      selected={selectedFrameworks}
-                      onChange={handleFrameworksChange}
-                      placeholder='e.g. SEO, AI Writing, Copywriting'
-                      className='w-full mt-3'
-                    />
-                  </div>
+                  />
+                  {errors.deadline && (
+                    <p className='text-red-500 text-sm mt-1'>
+                      {errors.deadline.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <Button
-                    type='submit'
-                    className='bg-v9  w-full mt-5 hover:bg-v9/80 text-base cursor-pointer text-white px-6 h-12 rounded-lg'
-                    disabled={mutation.isPending}
-                  >
-                    {mutation.isPending ? 'Submitting...' : 'Submit Project'}
-                  </Button>
+                  <Label htmlFor='skills'>Skills</Label>
+                  <Controller
+                    name='skills'
+                    control={control}
+                    render={({ field }) => (
+                      <MultiSelect
+                        options={frameworks}
+                        selected={field.value}
+                        onChange={field.onChange}
+                        className='mt-2 h-10 w-full'
+                      />
+                    )}
+                  />
+                  {errors.skills && (
+                    <p className='text-red-500 text-sm mt-1'>
+                      {errors.skills.message}
+                    </p>
+                  )}
                 </div>
+
+                <Button
+                  type='submit'
+                  disabled={mutation.isPending}
+                  className='bg-v9 w-full text-base h-10 text-white font-medium rounded-md relative'
+                >
+                  {mutation.isPending ? (
+                    <ShimmerText
+                      text={isEdit ? 'Updating...' : 'Submitting...'}
+                    />
+                  ) : isEdit ? (
+                    'Update Project'
+                  ) : (
+                    'Submit Project'
+                  )}
+                </Button>
               </form>
             </DialogPanel>
           </div>

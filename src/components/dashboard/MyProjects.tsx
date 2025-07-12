@@ -2,32 +2,6 @@ import { Tabs, TabsList, TabsTrigger } from '../ui/tabs';
 import Banner from './Banner';
 import CustomTable from './CustomTable';
 
-const data = [
-  {
-    id: '1',
-    title: 'Website Redesign for Local Bakery',
-    clientName: 'Sarah Johnson',
-    deadline: '2024-08-15',
-    status: 'In Progress',
-    action: 'View Details',
-  },
-  {
-    id: '2',
-    title: 'Mobile App Development for Fitness Tracker',
-    clientName: 'David Lee',
-    deadline: '2024-08-15',
-    status: 'In Progress',
-    action: 'View Details',
-  },
-  {
-    id: '3',
-    title: 'Content Marketing Strategy for E-commerce Store',
-    clientName: 'Emily Chen',
-    deadline: '2024-08-15',
-    status: 'In Progress',
-    action: 'View Details',
-  },
-];
 export default function MyProjects() {
   return (
     <div className='bg-white text-base min-h-[calc(100vh-72px)] sm:min-h-[calc(100vh-80px)] rounded-xl overflow-hidden'>
@@ -53,7 +27,7 @@ export default function MyProjects() {
           </Tabs>
 
           <div className='sm:mt-5'>
-            <CustomTable data={data} />
+            <CustomTable />
           </div>
         </div>
       </div>

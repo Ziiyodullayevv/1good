@@ -77,53 +77,56 @@ export default function OrderList() {
               <Skeleton className='h-9 w-28 rounded-md mt-4' />
             </div>
           ))
-        : data.map(({ id, title, summary, budget, skills }) => (
-            <div
-              onClick={() => handleClick(title, id)}
-              key={id}
-              className='bg-white flex flex-col justify-between rounded-xl p-5 cursor-pointer border shadow-none transition-all duration-300'
-            >
-              <div>
-                <h2 className='font-medium line-clamp-2 text-lg leading-6 hover:text-v9'>
-                  {title}
-                </h2>
+        : data
+            ?.slice()
+            .reverse()
+            ?.map(({ id, title, summary, budget, skills }) => (
+              <div
+                onClick={() => handleClick(title, id)}
+                key={id}
+                className='bg-white flex flex-col justify-between rounded-xl p-5 cursor-pointer border shadow-none transition-all duration-300'
+              >
+                <div>
+                  <h2 className='font-medium line-clamp-2 text-lg leading-6 hover:text-v9'>
+                    {title}
+                  </h2>
 
-                <div className='flex my-5 gap-8'>
-                  <div>
-                    <h5 className='font-medium text-base'>${budget}</h5>
-                    <p className='text-gray-400 text-xs'>Fixed-price</p>
+                  <div className='flex my-5 gap-8'>
+                    <div>
+                      <h5 className='font-medium text-base'>${budget}</h5>
+                      <p className='text-gray-400 text-xs'>Fixed-price</p>
+                    </div>
+                    <div>
+                      <h5 className='font-medium text-base'>Intermediate</h5>
+                      <p className='text-xs text-gray-400'>Experience level</p>
+                    </div>
                   </div>
-                  <div>
-                    <h5 className='font-medium text-base'>Intermediate</h5>
-                    <p className='text-xs text-gray-400'>Experience level</p>
+
+                  <p className='my-4 line-clamp-2 text-base'>{summary}</p>
+                </div>
+
+                <div>
+                  <div className='my-5 flex flex-wrap gap-2 text-gray-700'>
+                    {Array.isArray(skills) &&
+                      skills.map((skill, index) => (
+                        <span
+                          key={index}
+                          className='bg-v2 capitalize text-xs px-3 py-2.5 rounded-full'
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                  </div>
+
+                  <div className='flex items-end justify-between'>
+                    <button className='h-9 text-sm cursor-pointer hover:opacity-90 px-4 bg-v9 text-white rounded-lg'>
+                      See more
+                    </button>
+                    <p className='text-sm text-gray-500'>15 days ago</p>
                   </div>
                 </div>
-
-                <p className='my-4 line-clamp-2 text-base'>{summary}</p>
               </div>
-
-              <div>
-                <div className='my-5 flex flex-wrap gap-2 text-gray-700'>
-                  {Array.isArray(skills) &&
-                    skills.map((skill, index) => (
-                      <span
-                        key={index}
-                        className='bg-v2 capitalize text-xs px-3 py-2.5 rounded-full'
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                </div>
-
-                <div className='flex items-end justify-between'>
-                  <button className='h-9 text-sm cursor-pointer hover:opacity-90 px-4 bg-v9 text-white rounded-lg'>
-                    See more
-                  </button>
-                  <p className='text-sm text-gray-500'>15 days ago</p>
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
     </div>
   );
 }

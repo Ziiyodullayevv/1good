@@ -4,36 +4,63 @@ import {
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
-  Input,
 } from '@headlessui/react';
 import { useState } from 'react';
+import { X } from 'lucide-react';
+import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
-import { X } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { portfolioSchema, PortfolioFormData } from '@/lib/zodSchemas';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'sonner';
+import { message } from 'antd';
+import FileUpload from '../ui/fileUpload';
+import { cn } from '../../lib/utils';
+import ShimmerText from '../ui/shimmerText';
+
+interface CreatePortfolioProps {
+  buttonText: string;
+  initialData?: PortfolioFormData & { id?: string };
+  onSuccess?: () => void;
+}
 
 export default function CreatePortfolio({
   buttonText,
-}: {
-  buttonText: string;
-}) {
+  initialData,
+  onSuccess,
+}: CreatePortfolioProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [formErrors, setFormErrors] = useState<{
-    title?: string;
-    description?: string;
-    imageUrl?: string;
-  }>({});
+  const queryClient = useQueryClient();
+  const [messageApi, contextHolder] = message.useMessage();
 
-  const clearError = (field: keyof typeof formErrors) => {
-    setFormErrors((prev) => ({ ...prev, [field]: undefined }));
+  const isEditMode = Boolean(initialData?.id);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<PortfolioFormData>({
+    resolver: zodResolver(portfolioSchema),
+    defaultValues: initialData || {
+      title: '',
+      description: '',
+      imageUrl: '',
+    },
+  });
+
+  const success = () => {
+    messageApi.open({
+      type: 'success',
+      content: isEditMode
+        ? 'Portfolio successfully updated!'
+        : 'Portfolio successfully created!',
+    });
   };
 
-  const queryClient = useQueryClient();
-
-  const createProject = async (data: any) => {
+  const createProject = async (data: PortfolioFormData) => {
     const res = await fetch(
       'https://673870e84eb22e24fca7ef0c.mockapi.io/api/v1/portfolio',
       {
@@ -46,162 +73,148 @@ export default function CreatePortfolio({
     return res.json();
   };
 
+  const updateProject = async (data: PortfolioFormData & { id: string }) => {
+    const res = await fetch(
+      `https://673870e84eb22e24fca7ef0c.mockapi.io/api/v1/portfolio/${data.id}`,
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }
+    );
+    if (!res.ok) throw new Error('Failed to update portfolio');
+    return res.json();
+  };
+
   const mutation = useMutation({
-    mutationFn: createProject,
-    onSuccess: () => {
-      setIsOpen(false);
-      setTitle('');
-      setDescription('');
-      setImageUrl('');
-      setFormErrors({});
-      queryClient.invalidateQueries({ queryKey: ['projects'] });
+    mutationFn: async (data: PortfolioFormData) => {
+      if (isEditMode && initialData?.id) {
+        return updateProject({ ...data, id: initialData.id });
+      }
+      return createProject(data);
     },
-    onError: (error: any) => {
-      alert(error.message || 'Something went wrong');
+    onSuccess: () => {
+      success();
+      queryClient.invalidateQueries({ queryKey: ['projects'] });
+      setIsOpen(false);
+      reset();
+      onSuccess?.(); // parentga bildirish
+    },
+    onError: (error: unknown) => {
+      const message =
+        error && typeof error === 'object' && 'message' in error
+          ? (error as { message?: string }).message
+          : 'Something went wrong';
+      toast.error(message);
     },
   });
 
-  const validate = () => {
-    const errors: typeof formErrors = {};
-    if (!title.trim()) errors.title = 'Title is required';
-    if (!description.trim()) errors.description = 'Description is required';
-    if (!imageUrl.trim()) errors.imageUrl = 'Image URL is required';
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    const payload = {
-      title,
-      description,
-      image: imageUrl,
-    };
-
-    mutation.mutate(payload);
-  };
+  const formFields: {
+    name: keyof PortfolioFormData;
+    label: string;
+    type: 'text' | 'textarea';
+  }[] = [
+    { name: 'title', label: 'Project Title', type: 'text' },
+    { name: 'description', label: 'Description', type: 'textarea' },
+    { name: 'imageUrl', label: 'Image URL', type: 'text' },
+  ];
 
   return (
-    <>
+    <div className='font-poppins'>
+      {contextHolder}
       <Button
         onClick={() => setIsOpen(true)}
-        className='bg-v9 hover:bg-v9/80 cursor-pointer text-white px-4 h-10 rounded-lg'
+        className={cn(
+          'cursor-pointer',
+          isEditMode
+            ? 'bg-v9 h-8 text-white px-3 min-w-[80px] rounded-md'
+            : 'bg-v9 hover:bg-v9/80 text-white px-4 h-10 rounded-lg'
+        )}
       >
         {buttonText}
       </Button>
 
       <Dialog
         open={isOpen}
-        as='div'
-        className='relative text-base font-poppins z-[999] bg-black focus:outline-none'
         onClose={() => setIsOpen(false)}
+        className='relative font-poppins z-[999]'
       >
-        <DialogBackdrop className='fixed inset-0 backdrop-blur-xs bg-black/30' />
+        <DialogBackdrop className='fixed inset-0 bg-black/30 backdrop-blur-sm' />
         <div className='fixed inset-0 z-[999] w-screen overflow-y-auto'>
           <div className='flex min-h-full items-center justify-center p-4'>
-            <DialogPanel className='w-full relative max-w-[800px] rounded-2xl bg-white p-8'>
+            <DialogPanel className='w-full max-w-2xl bg-white rounded-2xl p-8 relative'>
               <div
+                className='absolute right-4 top-4 cursor-pointer transition-all duration-150 p-2 hover:bg-v2 rounded-full'
                 onClick={() => setIsOpen(false)}
-                className='absolute cursor-pointer right-6 top-6 rounded-full flex justify-center items-center w-10 h-10 bg-v2 z-[9999]'
               >
                 <X />
               </div>
 
-              <DialogTitle as='h3' className='text-2xl font-medium'>
-                Create New Portfolio
+              <DialogTitle as='h3' className='text-2xl font-semibold mb-4'>
+                {isEditMode ? 'Edit Portfolio' : 'Create New Portfolio'}
               </DialogTitle>
 
-              <form onSubmit={handleSubmit} className='mt-4'>
-                <div className='grid gap-6 mt-8'>
-                  {/* Title */}
-                  <div>
-                    <Label htmlFor='title'>Project Title</Label>
-                    <Input
-                      id='title'
-                      value={title}
-                      onChange={(e) => {
-                        setTitle(e.target.value);
-                        clearError('title');
-                      }}
-                      className={`h-12 w-full px-4 rounded-lg mt-3 bg-v2 ${
-                        formErrors.title
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                      placeholder='e.g. Portfolio Website'
-                    />
-                    {formErrors.title && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.title}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Description */}
-                  <div>
-                    <Label htmlFor='description'>Project Description</Label>
-                    <Textarea
-                      id='description'
-                      value={description}
-                      onChange={(e) => {
-                        setDescription(e.target.value);
-                        clearError('description');
-                      }}
-                      placeholder='Describe your project'
-                      className={`h-[150px] mt-3 bg-v2 rounded-lg ${
-                        formErrors.description
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                    />
-                    {formErrors.description && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.description}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Image URL */}
-                  <div>
-                    <Label htmlFor='imageUrl'>Image URL</Label>
-                    <Input
-                      id='imageUrl'
-                      value={imageUrl}
-                      onChange={(e) => {
-                        setImageUrl(e.target.value);
-                        clearError('imageUrl');
-                      }}
-                      className={`h-12 bg-v2 px-4 mt-3 rounded-lg w-full ${
-                        formErrors.imageUrl
-                          ? 'border-red-500 border'
-                          : 'border-none'
-                      }`}
-                      placeholder='https://example.com/image.jpg'
-                    />
-                    {formErrors.imageUrl && (
-                      <p className='text-sm text-red-500 mt-1'>
-                        {formErrors.imageUrl}
-                      </p>
-                    )}
-                  </div>
+              <form
+                onSubmit={handleSubmit((data) => mutation.mutate(data))}
+                className='space-y-6'
+              >
+                {/* Optional: File Upload */}
+                <div className='w-full'>
+                  <FileUpload className='w-full' />
                 </div>
 
-                <div className='border-t mt-5 border-gray-200'>
-                  <Button
-                    type='submit'
-                    className='bg-v9 mt-5 hover:bg-v9/80 text-base cursor-pointer text-white px-4 h-12 w-full rounded-lg'
-                    disabled={mutation.isPending}
-                  >
-                    {mutation.isPending ? 'Submitting...' : 'Submit Project'}
-                  </Button>
-                </div>
+                {/* Dynamic Form Fields */}
+                {formFields.map((field) => (
+                  <div key={field.name}>
+                    <Label htmlFor={field.name}>{field.label}</Label>
+
+                    {field.type === 'textarea' ? (
+                      <Textarea
+                        className='mt-3 bg-v2 h-[100px] shadow-none'
+                        id={field.name}
+                        {...register(field.name)}
+                        name={field.name}
+                      />
+                    ) : (
+                      <Input
+                        className='h-10 mt-3 shadow-none bg-v2'
+                        id={field.name}
+                        type='text'
+                        {...register(field.name)}
+                        name={field.name}
+                      />
+                    )}
+
+                    {errors[field.name] && (
+                      <p className='text-red-500 text-sm mt-1'>
+                        {errors[field.name]?.message}
+                      </p>
+                    )}
+                  </div>
+                ))}
+
+                <Button
+                  type='submit'
+                  className='bg-v9 w-full text-white h-10 rounded-lg mt-2'
+                  disabled={mutation.isPending}
+                >
+                  {mutation.isPending ? (
+                    isEditMode ? (
+                      <ShimmerText text='Updating...' />
+                    ) : (
+                      <ShimmerText text='Submitting...' />
+                    )
+                  ) : isEditMode ? (
+                    'Update'
+                  ) : (
+                    'Submit'
+                  )}
+                </Button>
               </form>
             </DialogPanel>
           </div>
         </div>
       </Dialog>
-    </>
+    </div>
   );
 }

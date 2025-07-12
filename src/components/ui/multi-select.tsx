@@ -33,6 +33,24 @@ interface MultiSelectProps {
   disabled?: boolean;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const frameworks: Option[] = [
+  { value: 'react', label: 'React' },
+  { value: 'next.js', label: 'Next.js' },
+  { value: 'vue.js', label: 'Vue.js' },
+  { value: 'nuxt.js', label: 'Nuxt.js' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'sveltekit', label: 'SvelteKit' },
+  { value: 'solidjs', label: 'SolidJS' },
+  { value: 'remix', label: 'Remix' },
+  { value: 'astro', label: 'Astro' },
+  { value: 'ember.js', label: 'Ember.js' },
+  { value: 'qwik', label: 'Qwik' },
+  { value: 'nestjs', label: 'NestJS' },
+  { value: 'fastify', label: 'Fastify' },
+];
+
 export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
   (
     {
@@ -88,7 +106,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
               aria-expanded={open}
               aria-disabled={disabled}
               className={cn(
-                'flex w-full min-h-12 h-auto items-center justify-between rounded-md border border-input border-none px-3 py-2 text-sm bg-v2 ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+                'flex w-full min-h-10 h-auto items-center justify-between rounded-md border border-input border-none px-3 py-2 text-sm bg-v2 ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
                 disabled && 'opacity-50 cursor-not-allowed',
                 !disabled &&
                   'cursor-pointer hover:bg-accent hover:text-accent-foreground'
