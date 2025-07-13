@@ -1,11 +1,10 @@
-'use client';
-
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '../ui/button';
 import Banner from './Banner';
 import imagePlaceholder from '@/assets/images/common/image-placeholder.jpg';
 import CreatePortfolio from './CreatePortfolio';
 import { toast } from 'sonner';
+import { ProjectCardSkeleton } from './ProjectCardSkeleton';
 
 interface Project {
   id: string | number;
@@ -34,19 +33,6 @@ const deleteProject = async (id: string) => {
   if (!res.ok) throw new Error('Failed to delete project');
   return res.json();
 };
-
-/* ---------------- skeleton card ---------------- */
-const SkeletonCard = () => (
-  <article className='grid sm:grid-cols-12 gap-6 items-center animate-pulse'>
-    <div className='sm:col-span-8 flex flex-col gap-4 max-w-xl'>
-      <div className='h-6 w-2/3 rounded bg-v2' />
-      <div className='h-4 w-full rounded bg-v2' />
-      <div className='h-4 w-5/6 rounded bg-v2' />
-      <div className='h-10 w-24 rounded-full bg-v2' />
-    </div>
-    <div className='aspect-video sm:col-span-4 w-full rounded-2xl bg-v2' />
-  </article>
-);
 
 /* ---------------- component ---------------- */
 export default function Portfolio() {
@@ -84,7 +70,9 @@ export default function Portfolio() {
         <section className='space-y-0 divide-y-1 divide-blue-100'>
           {/* Skeletons */}
           {isLoading &&
-            Array.from({ length: 3 }).map((_, i) => <SkeletonCard key={i} />)}
+            Array.from({ length: 3 }).map((_, i) => (
+              <ProjectCardSkeleton key={i} />
+            ))}
 
           {/* Real data */}
           {data
@@ -93,15 +81,23 @@ export default function Portfolio() {
             ?.map((project) => (
               <article
                 key={project.id}
-                className='flex flex-col-reverse lg:flex-row gap-5 md:gap-8 py-4 justify-between items-center'
+                className='flex flex-col-reverse lg:flex-row gap-5 md:gap-8 py-4 justify-between items-start lg:items-center'
               >
                 {/* text */}
-                <div className='md:h-[150px] justify-between flex flex-col items-start gap-4'>
+                <div className='md:h-[150px] w-full flex flex-col justify-between items-start gap-4'>
                   <div>
-                    <h2 className='text-lg sm:text-xl font-semibold line-clamp-1'>
+                    <h2
+                      className='text-lg sm:text-xl font-semibold line-clamp-1'
+                      style={{ overflowWrap: 'anywhere' }}
+                      title={project.title}
+                    >
                       {project.title}
                     </h2>
-                    <p className='text-sm mt-1 text-gray-500 line-clamp-2'>
+                    <p
+                      style={{ overflowWrap: 'anywhere' }}
+                      className='text-sm mt-1 text-gray-500 line-clamp-2'
+                      title={project.description}
+                    >
                       {project.description}
                     </p>
                   </div>
