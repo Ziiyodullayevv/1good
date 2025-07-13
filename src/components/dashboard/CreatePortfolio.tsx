@@ -142,24 +142,21 @@ export default function CreatePortfolio({
         <DialogBackdrop className='fixed inset-0 bg-black/30 backdrop-blur-sm' />
         <div className='fixed inset-0 z-[999] w-screen p-4 sm:overflow-y-auto'>
           <div className='flex min-h-full items-center justify-center'>
-            <DialogPanel className='w-full relative max-h-[600px] overflow-y-auto max-w-2xl bg-white rounded-2xl md:p-8'>
-              <div className='flex sticky px-4 pt-4 pb-2 items-center z-[9999] left-0 right-0 top-0 bg-white justify-between'>
-                <DialogTitle as='h3' className='text-2xl font-semibold mb-4'>
+            <DialogPanel className='w-full relative max-h-[600px] sm:max-h-[100%] overflow-y-auto max-w-2xl bg-white rounded-2xl sm:p-8'>
+              <div className='flex sm:mb-4 sticky sm:static border-b sm:border-none p-4 sm:p-0 items-center z-[9999] left-0 right-0 top-0 bg-white justify-between'>
+                <DialogTitle as='h3' className='text-2xl font-semibold'>
                   {isEditMode ? 'Edit Portfolio' : 'Create New Portfolio'}
                 </DialogTitle>
 
                 <div
-                  className='flex justify-center relative -top-2 -right-2 items-center cursor-pointer transition-all w-10 h-10 duration-150 shrink-0 hover:bg-v2 rounded-full'
+                  className='flex justify-center relative -right-1.5 items-center cursor-pointer transition-all w-10 h-10 duration-150 shrink-0 hover:bg-v2 rounded-full'
                   onClick={() => setIsOpen(false)}
                 >
                   <X />
                 </div>
               </div>
-              <form
-                onSubmit={handleSubmit((data) => mutation.mutate(data))}
-                className=''
-              >
-                <div className='px-4 space-y-5'>
+              <form onSubmit={handleSubmit((data) => mutation.mutate(data))}>
+                <div className='p-4 sm:p-0 space-y-5'>
                   {/* Optional: File Upload */}
                   <div className='w-full'>
                     <FileUpload className='w-full' />
@@ -196,7 +193,7 @@ export default function CreatePortfolio({
                   ))}
                 </div>
 
-                <div className='sticky bottom-0 bg-white p-4'>
+                <div className='sticky sm:static sm:mt-4 border-t sm:border-none bottom-0 bg-white p-4 sm:p-0'>
                   <Button
                     type='submit'
                     className='bg-v9 w-full text-white h-10 rounded-lg mt-2'
