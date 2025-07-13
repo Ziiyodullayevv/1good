@@ -140,76 +140,81 @@ export default function CreatePortfolio({
         className='relative font-poppins z-[999]'
       >
         <DialogBackdrop className='fixed inset-0 bg-black/30 backdrop-blur-sm' />
-        <div className='fixed inset-0 z-[999] w-screen overflow-y-auto'>
-          <div className='flex min-h-full items-center justify-center p-4'>
-            <DialogPanel className='w-full max-w-2xl bg-white rounded-2xl p-8 relative'>
-              <div
-                className='absolute right-4 top-4 cursor-pointer transition-all duration-150 p-2 hover:bg-v2 rounded-full'
-                onClick={() => setIsOpen(false)}
-              >
-                <X />
+        <div className='fixed inset-0 z-[999] w-screen p-4 sm:overflow-y-auto'>
+          <div className='flex min-h-full items-center justify-center'>
+            <DialogPanel className='w-full relative max-h-[600px] overflow-y-auto max-w-2xl bg-white rounded-2xl md:p-8'>
+              <div className='flex sticky px-4 pt-4 pb-2 items-center z-[9999] left-0 right-0 top-0 bg-white justify-between'>
+                <DialogTitle as='h3' className='text-2xl font-semibold mb-4'>
+                  {isEditMode ? 'Edit Portfolio' : 'Create New Portfolio'}
+                </DialogTitle>
+
+                <div
+                  className='flex justify-center relative -top-2 -right-2 items-center cursor-pointer transition-all w-10 h-10 duration-150 shrink-0 hover:bg-v2 rounded-full'
+                  onClick={() => setIsOpen(false)}
+                >
+                  <X />
+                </div>
               </div>
-
-              <DialogTitle as='h3' className='text-2xl font-semibold mb-4'>
-                {isEditMode ? 'Edit Portfolio' : 'Create New Portfolio'}
-              </DialogTitle>
-
               <form
                 onSubmit={handleSubmit((data) => mutation.mutate(data))}
-                className='space-y-6'
+                className=''
               >
-                {/* Optional: File Upload */}
-                <div className='w-full'>
-                  <FileUpload className='w-full' />
+                <div className='px-4 space-y-5'>
+                  {/* Optional: File Upload */}
+                  <div className='w-full'>
+                    <FileUpload className='w-full' />
+                  </div>
+
+                  {/* Dynamic Form Fields */}
+                  {formFields.map((field) => (
+                    <div key={field.name}>
+                      <Label htmlFor={field.name}>{field.label}</Label>
+
+                      {field.type === 'textarea' ? (
+                        <Textarea
+                          className='mt-3 bg-v2 h-[100px] shadow-none'
+                          id={field.name}
+                          {...register(field.name)}
+                          name={field.name}
+                        />
+                      ) : (
+                        <Input
+                          className='h-10 mt-3 shadow-none bg-v2'
+                          id={field.name}
+                          type='text'
+                          {...register(field.name)}
+                          name={field.name}
+                        />
+                      )}
+
+                      {errors[field.name] && (
+                        <p className='text-red-500 text-sm mt-1'>
+                          {errors[field.name]?.message}
+                        </p>
+                      )}
+                    </div>
+                  ))}
                 </div>
 
-                {/* Dynamic Form Fields */}
-                {formFields.map((field) => (
-                  <div key={field.name}>
-                    <Label htmlFor={field.name}>{field.label}</Label>
-
-                    {field.type === 'textarea' ? (
-                      <Textarea
-                        className='mt-3 bg-v2 h-[100px] shadow-none'
-                        id={field.name}
-                        {...register(field.name)}
-                        name={field.name}
-                      />
+                <div className='sticky bottom-0 bg-white p-4'>
+                  <Button
+                    type='submit'
+                    className='bg-v9 w-full text-white h-10 rounded-lg mt-2'
+                    disabled={mutation.isPending}
+                  >
+                    {mutation.isPending ? (
+                      isEditMode ? (
+                        <ShimmerText text='Updating...' />
+                      ) : (
+                        <ShimmerText text='Submitting...' />
+                      )
+                    ) : isEditMode ? (
+                      'Update'
                     ) : (
-                      <Input
-                        className='h-10 mt-3 shadow-none bg-v2'
-                        id={field.name}
-                        type='text'
-                        {...register(field.name)}
-                        name={field.name}
-                      />
+                      'Submit'
                     )}
-
-                    {errors[field.name] && (
-                      <p className='text-red-500 text-sm mt-1'>
-                        {errors[field.name]?.message}
-                      </p>
-                    )}
-                  </div>
-                ))}
-
-                <Button
-                  type='submit'
-                  className='bg-v9 w-full text-white h-10 rounded-lg mt-2'
-                  disabled={mutation.isPending}
-                >
-                  {mutation.isPending ? (
-                    isEditMode ? (
-                      <ShimmerText text='Updating...' />
-                    ) : (
-                      <ShimmerText text='Submitting...' />
-                    )
-                  ) : isEditMode ? (
-                    'Update'
-                  ) : (
-                    'Submit'
-                  )}
-                </Button>
+                  </Button>
+                </div>
               </form>
             </DialogPanel>
           </div>

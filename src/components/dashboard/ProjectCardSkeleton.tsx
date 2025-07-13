@@ -2,7 +2,7 @@ export function ProjectCardSkeleton() {
   return (
     <article className='flex flex-col-reverse lg:flex-row gap-5 md:gap-8 py-4 justify-between items-stretch animate-pulse'>
       {/* Text qismi */}
-      <div className='h-[200px] lg:h-[190px] justify-between flex flex-col items-start gap-4 w-full'>
+      <div className='h-[100px] lg:h-[190px] justify-between flex flex-col items-start gap-4 w-full'>
         <header className='w-full'>
           <div className='h-6 w-2/3 bg-v2 rounded-md mb-2' />
           <div className='h-4 w-full bg-v2 rounded-md mb-1' />
