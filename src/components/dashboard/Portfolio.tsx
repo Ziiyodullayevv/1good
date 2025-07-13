@@ -93,7 +93,7 @@ export default function Portfolio() {
             ?.map((project) => (
               <article
                 key={project.id}
-                className='grid sm:grid-flow-col bg-v2 p-4 rounded-2xl direction-rtl sm:grid-cols-12 gap-5 items-center'
+                className='grid sm:grid-flow-col bg-v9/5 p-4 rounded-2xl direction-rtl sm:grid-cols-12 gap-5 items-center'
               >
                 {/* text */}
                 <div className='sm:col-span-8 h-full justify-between flex flex-col items-start gap-4 max-w-xl'>

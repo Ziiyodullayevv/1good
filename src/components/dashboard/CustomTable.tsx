@@ -126,7 +126,7 @@ export default function CustomTable() {
             data.map((order) => (
               <TableRow key={order.id}>
                 <TableCell className='!w-[250px] whitespace-normal'>
-                  {order.title}
+                  {order.title.slice(0, 100)}...
                 </TableCell>
                 {order.clientName && (
                   <TableCell className='whitespace-nowrap text-gray-500'>
