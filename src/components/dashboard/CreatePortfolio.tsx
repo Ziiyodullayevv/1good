@@ -128,7 +128,7 @@ export default function CreatePortfolio({
           'cursor-pointer',
           isEditMode
             ? 'bg-v9 h-8 text-white px-3 min-w-[80px] rounded-md'
-            : 'bg-v9 hover:bg-v9/80 text-white px-4 h-10 rounded-lg'
+            : 'bg-v9 hover:bg-v9/80 h-8 text-sm sm:text-base text-white px-4 sm:h-10 rounded-lg'
         )}
       >
         {buttonText}

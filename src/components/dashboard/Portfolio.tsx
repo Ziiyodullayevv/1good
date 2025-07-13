@@ -74,14 +74,14 @@ export default function Portfolio() {
 
   return (
     <div className='bg-white text-base min-h-[calc(100vh-72px)] sm:min-h-[calc(100vh-80px)] rounded-xl overflow-hidden'>
-      <Banner title='My Portfolio' buttonText='Add New Portfolio' />
+      <Banner title='Portfolio' buttonText='Add Portfolio' />
 
-      <div className='sm:p-8'>
+      <div className='px-4 sm:px-8 sm:py-4'>
         {isError && (
           <p className='text-red-500'>Something went wrong while loading.</p>
         )}
 
-        <section className='space-y-8'>
+        <section className='space-y-0 divide-y-1 divide-blue-100'>
           {/* Skeletons */}
           {isLoading &&
             Array.from({ length: 3 }).map((_, i) => <SkeletonCard key={i} />)}
@@ -93,18 +93,18 @@ export default function Portfolio() {
             ?.map((project) => (
               <article
                 key={project.id}
-                className='grid sm:grid-flow-col bg-v9/5 p-4 rounded-2xl direction-rtl sm:grid-cols-12 gap-5 items-center'
+                className='flex flex-col-reverse lg:flex-row gap-5 md:gap-8 py-4 justify-between items-center'
               >
                 {/* text */}
-                <div className='sm:col-span-8 h-full justify-between flex flex-col items-start gap-4 max-w-xl'>
-                  <header>
-                    <h2 className='text-xl font-semibold line-clamp-1'>
+                <div className='md:h-[150px] justify-between flex flex-col items-start gap-4'>
+                  <div>
+                    <h2 className='text-lg sm:text-xl font-semibold line-clamp-1'>
                       {project.title}
                     </h2>
-                    <p className='text-sm mt-1 text-gray-500 line-clamp-3'>
+                    <p className='text-sm mt-1 text-gray-500 line-clamp-2'>
                       {project.description}
                     </p>
-                  </header>
+                  </div>
 
                   <div className='flex gap-2'>
                     <CreatePortfolio
@@ -135,7 +135,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* image */}
-                <figure className='aspect-video sm:col-span-4 rounded-lg overflow-hidden bg-gray-200 w-full'>
+                <figure className='shrink-0 bg-blue-400 border sm:col-span-4 rounded-lg overflow-hidden w-full h-[200px] sm:h-[280px] lg:h-[190px] lg:w-[300px]'>
                   <img
                     src={project.image}
                     onError={(e) => {
