@@ -13,6 +13,18 @@ import TalentProfilePage from '../components/talents/TalentSingle';
 import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardPage from '../pages/DashboardPage';
 import TalentPage from '../pages/TalentPage';
+import MyProjects from '../components/dashboard/MyProjects';
+import Contracts from '../components/dashboard/Contracts';
+import Settings from '../components/dashboard/Settings';
+import Analytics from '../components/dashboard/Analytics';
+import Messages from '../components/dashboard/Messages';
+import CreditsPage from '../pages/CreditsPage';
+// import CreditsLayout from '../layouts/CreditsLayout';
+// import ApplyForClient from '../components/credits/ApplyForClient';
+import OrderPage from '../pages/OrderPage';
+import OrderSinglePage from '../pages/OrderSinglePage';
+import OrderLayout from '../layouts/OrderLayout';
+import Portfolio from '../components/dashboard/Portfolio';
 // import SignUp from '../components/SignUp';
 
 export const router = createBrowserRouter([
@@ -47,14 +59,6 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <TalentPage /> },
       { path: ':slug', element: <TalentProfilePage /> },
-      // {
-      //   path: 'signup',
-      //   element: <SignUp />,
-      // },
-      // {
-      //   path: 'signin',
-      //   element: <SignIn />,
-      // },
     ],
   },
   {
@@ -66,25 +70,41 @@ export const router = createBrowserRouter([
         element: <DashboardPage />,
       },
       {
+        path: 'portfolio',
+        element: <Portfolio />,
+      },
+      {
         path: 'my-projects',
-        element: <div>A1</div>,
+        element: <MyProjects />,
       },
       {
         path: 'analytics',
-        element: <div>A2</div>,
+        element: <Analytics />,
       },
       {
         path: 'messages',
-        element: <div>A3</div>,
+        element: <Messages />,
       },
       {
         path: 'contracts',
-        element: <div>A4</div>,
+        element: <Contracts />,
+      },
+      {
+        path: 'credits',
+        element: <CreditsPage />,
       },
       {
         path: 'settings',
-        element: <div>A5</div>,
+        element: <Settings />,
       },
+    ],
+  },
+  {
+    path: '/order',
+    element: <OrderLayout />,
+    children: [
+      { index: true, element: <OrderPage /> },
+      { path: ':slug', element: <OrderSinglePage /> },
     ],
   },
 ]);
