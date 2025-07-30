@@ -4,8 +4,8 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import MobileMenu from './MobileMenu';
 import { useEffect, useState } from 'react';
-import { cn } from '../lib/utils';
-import AuthModal from '../features/auth/components/authModal';
+import { cn } from '@/lib/utils';
+import AuthModal from '@/features/auth/components/AuthModal';
 
 export default function MainNavigation() {
   const [scrolled, setScrolled] = useState(false);
