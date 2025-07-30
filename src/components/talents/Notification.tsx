@@ -7,8 +7,8 @@ export default function Notification() {
       <Menu>
         <MenuButton className='relative'>
           <span className='inline-block right-0 top-0 rounded-full absolute w-3 h-3 bg-red-500'></span>
-          <div className='h-[38px] cursor-pointer flex justify-center items-center bg-v2 w-[38px] overflow-hidden rounded-full'>
-            <Bell className='size-4.5' />
+          <div className='h-[35px] cursor-pointer flex justify-center items-center bg-v2 w-[35px] overflow-hidden rounded-full'>
+            <Bell className='size-4' />
           </div>
         </MenuButton>
 

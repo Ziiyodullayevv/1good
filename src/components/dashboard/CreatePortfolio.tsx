@@ -5,20 +5,22 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { portfolioSchema, PortfolioFormData } from '@/lib/zodSchemas';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { message } from 'antd';
-import FileUpload from '../ui/fileUpload';
-import { cn } from '../../lib/utils';
+// import FileUpload from '../ui/fileUpload';
+import { cn } from '@/lib/utils';
 import ShimmerText from '../ui/shimmerText';
+import api from '@/lib/axios';
+import { MultiSelect, skills } from '../ui/multi-select';
+import { useAuth } from '../../context/AuthContext';
 
 interface CreatePortfolioProps {
   buttonText: string;
@@ -33,13 +35,13 @@ export default function CreatePortfolio({
 }: CreatePortfolioProps) {
   const [isOpen, setIsOpen] = useState(false);
   const queryClient = useQueryClient();
-  const [messageApi, contextHolder] = message.useMessage();
-
   const isEditMode = Boolean(initialData?.id);
+  const { user } = useAuth();
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
   } = useForm<PortfolioFormData>({
@@ -47,43 +49,43 @@ export default function CreatePortfolio({
     defaultValues: initialData || {
       title: '',
       description: '',
-      imageUrl: '',
+      imageURL: '',
+      link: '',
+      skills: [],
     },
   });
 
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: isEditMode
-        ? 'Portfolio successfully updated!'
-        : 'Portfolio successfully created!',
-    });
-  };
+  // 🔁 initialData o'zgarganda formani yangilash
+  useEffect(() => {
+    if (initialData) {
+      reset(initialData);
+    } else {
+      reset({
+        title: '',
+        description: '',
+        imageURL: '',
+        link: '',
+        skills: [],
+      });
+    }
+  }, [initialData, reset]);
+
+  const success = isEditMode
+    ? 'Portfolio successfully updated!'
+    : 'Portfolio successfully created!';
 
   const createProject = async (data: PortfolioFormData) => {
-    const res = await fetch(
-      'https://673870e84eb22e24fca7ef0c.mockapi.io/api/v1/portfolio',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }
-    );
-    if (!res.ok) throw new Error('Failed to create portfolio');
-    return res.json();
+    const res = await api.post('portfolio', data);
+    if (res.status < 200 || res.status >= 300)
+      throw new Error('Failed to create portfolio');
+    return res.data;
   };
 
   const updateProject = async (data: PortfolioFormData & { id: string }) => {
-    const res = await fetch(
-      `https://673870e84eb22e24fca7ef0c.mockapi.io/api/v1/portfolio/${data.id}`,
-      {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }
-    );
-    if (!res.ok) throw new Error('Failed to update portfolio');
-    return res.json();
+    const res = await api.put(`portfolio/${data.id}`, data);
+    if (res.status < 200 || res.status >= 300)
+      throw new Error('Failed to update portfolio');
+    return res.data;
   };
 
   const mutation = useMutation({
@@ -94,11 +96,11 @@ export default function CreatePortfolio({
       return createProject(data);
     },
     onSuccess: () => {
-      success();
-      queryClient.invalidateQueries({ queryKey: ['projects'] });
+      toast.success(success);
+      queryClient.invalidateQueries({ queryKey: ['portfolio'] });
       setIsOpen(false);
-      reset();
-      onSuccess?.(); // parentga bildirish
+      reset(); // formani tozalash
+      onSuccess?.();
     },
     onError: (error: unknown) => {
       const message =
@@ -116,12 +118,12 @@ export default function CreatePortfolio({
   }[] = [
     { name: 'title', label: 'Project Title', type: 'text' },
     { name: 'description', label: 'Description', type: 'textarea' },
-    { name: 'imageUrl', label: 'Image URL', type: 'text' },
+    { name: 'imageURL', label: 'Image URL', type: 'text' },
+    { name: 'link', label: 'Project Link', type: 'text' },
   ];
 
   return (
     <div className='font-poppins'>
-      {contextHolder}
       <Button
         onClick={() => setIsOpen(true)}
         className={cn(
@@ -155,13 +157,13 @@ export default function CreatePortfolio({
                   <X />
                 </div>
               </div>
-              <form onSubmit={handleSubmit((data) => mutation.mutate(data))}>
-                <div className='p-4 sm:p-0 space-y-5'>
-                  {/* Optional: File Upload */}
-                  <div className='w-full'>
-                    <FileUpload className='w-full' />
-                  </div>
 
+              <form
+                onSubmit={handleSubmit((data) =>
+                  mutation.mutate({ ...data, user_id: user?.id })
+                )}
+              >
+                <div className='p-4 sm:p-0 space-y-5'>
                   {/* Dynamic Form Fields */}
                   {formFields.map((field) => (
                     <div key={field.name}>
@@ -191,6 +193,27 @@ export default function CreatePortfolio({
                       )}
                     </div>
                   ))}
+                </div>
+
+                <div className='mt-5'>
+                  <Label htmlFor='skills'>Skills</Label>
+                  <Controller
+                    name='skills'
+                    control={control}
+                    render={({ field }) => (
+                      <MultiSelect
+                        options={skills}
+                        selected={field.value}
+                        onChange={field.onChange}
+                        className='mt-2 h-10 w-full'
+                      />
+                    )}
+                  />
+                  {errors.skills && (
+                    <p className='text-red-500 text-sm mt-1'>
+                      {errors.skills.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className='sticky sm:static sm:mt-4 border-t sm:border-none bottom-0 bg-white p-4 sm:p-0'>

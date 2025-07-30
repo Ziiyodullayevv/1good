@@ -1,11 +1,11 @@
-import { NavLink, useNavigate } from 'react-router';
-import { Button } from './ui/button';
+import { NavLink } from 'react-router';
 import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import MobileMenu from './MobileMenu';
 import { useEffect, useState } from 'react';
 import { cn } from '../lib/utils';
+import AuthModal from '../features/auth/components/authModal';
 
 export default function MainNavigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,7 +19,6 @@ export default function MainNavigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigate = useNavigate();
   const { t } = useTranslation('common');
   return (
     <header
@@ -78,18 +77,8 @@ export default function MainNavigation() {
           </nav>
 
           <div className='hidden md:flex justify-start gap-3'>
-            {/* <Button
-              onClick={() => navigate('auth')}
-              className='h-12 rounded-xl bg-transparent text-black shadow-none hover:bg-transparent text-base px-2 cursor-pointer'
-            >
-              Log in
-            </Button> */}
-            <Button
-              onClick={() => navigate('coming-soon')}
-              className='h-12 rounded-xl text-base px-5 cursor-pointer'
-            >
-              {t('auth')}
-            </Button>
+            <AuthModal isLogin={true} />
+            <AuthModal />
             <LanguageSwitcher />
           </div>
 

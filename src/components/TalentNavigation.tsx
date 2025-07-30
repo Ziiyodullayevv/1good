@@ -1,7 +1,8 @@
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 import logo from '@/assets/images/common/logo-dark.svg';
 import Notification from './talents/Notification';
 import MobileNavigation from './talents/MobileNavigation';
+import Menu from './talents/ProfileMenu';
 
 export default function TalentNavigation() {
   return (
@@ -35,15 +36,7 @@ export default function TalentNavigation() {
           <div className='flex gap-3 items-center'>
             <Notification />
 
-            <Link to={'/dashboard'}>
-              <div className='h-[38px] bg-v2 w-[38px] overflow-hidden rounded-full'>
-                <img
-                  className='w-full'
-                  src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjDGMp734S91sDuUFqL51_xRTXS15iiRoHew&s'
-                  alt='avatar'
-                />
-              </div>
-            </Link>
+            <Menu />
           </div>
         </div>
       </div>
