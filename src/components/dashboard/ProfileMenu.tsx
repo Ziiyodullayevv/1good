@@ -23,18 +23,18 @@ export default function ProfileMenu() {
       <Menu>
         <MenuButton className='relative focus-visible:outline-none cursor-pointer'>
           {isLoading ? (
-            <Skeleton className='w-[35px] h-[35px] rounded-full' />
+            <Skeleton className='w-[38px] h-[38px] rounded-lg' />
           ) : (
-            <Avatar className='w-[35px] h-[35px] rounded-full'>
-              <AvatarImage src={data?.avatarUrl} />
-              <AvatarFallback className='text-sm font-medium'>
+            <Avatar className='w-[38px] h-[38px] rounded-lg'>
+              <AvatarImage className='rounded-lg' src={data?.avatarUrl} />
+              <AvatarFallback className='rounded-lg text-sm font-medium'>
                 {initials}
               </AvatarFallback>
             </Avatar>
           )}
         </MenuButton>
 
-        {/* Menu faqat data mavjud va loading tugaganda ko'rsatiladi */}
+        {/* Menu faqat data mavjud bo'lganda ko'rsatiladi */}
         {data && !isLoading && (
           <MenuItems
             transition
@@ -44,10 +44,10 @@ export default function ProfileMenu() {
             {/* Profile Link */}
             <Link
               to='/dashboard'
-              className='flex pb-5 items-center gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors -m-2 mb-3'
+              className='flex pb-5 items-center gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors'
             >
-              <Avatar className='w-[60px] h-[60px] rounded-full'>
-                <AvatarImage src={data?.avatarUrl} />
+              <Avatar className='w-[60px] rounded-full h-[60px]'>
+                <AvatarImage src={data.avatarUrl} />
                 <AvatarFallback className='text-lg font-medium'>
                   {initials}
                 </AvatarFallback>

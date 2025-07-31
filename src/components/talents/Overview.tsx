@@ -1,46 +1,57 @@
 import { Rate } from 'antd';
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 
-const skills = [
-  'Graphic Design',
-  'Branding',
-  'Illustration',
-  'Adobe Creative Suite',
-  'Logo Design',
-  'Visual Communication',
-];
+interface OverviewProps {
+  data: {
+    title?: string;
+    bio?: string;
+    skills?: string[];
+    firstName?: string;
+    lastName?: string;
+    location?: string;
+  };
+}
 
-export default function Overview() {
+export default function Overview({ data }: OverviewProps) {
   return (
     <div>
       {/* About part  */}
-      <div className='my-5'>
-        <h2 className='text-base md:text-2xl font-semibold'>About</h2>
-        <p className='text-sm'>
-          Experienced graphic designer specializing in branding and
-          illustration. Passionate about creating visually appealing and
-          effective designs that meet client needs. Proficient in Adobe Creative
-          Suite and committed to delivering high-quality work on time.
-        </p>
-      </div>
+      {data?.title && (
+        <div className='my-5'>
+          <h2 className='text-base line-clamp-6 md:text-2xl font-semibold'>
+            About
+          </h2>
+          <p className='text-sm'>{data?.title || ''}</p>
+        </div>
+      )}
+
+      {data?.bio && (
+        <div className='my-5'>
+          <h2 className='text-base line-clamp-6 md:text-2xl font-semibold'>
+            Bio
+          </h2>
+          <p className='text-sm'>{data?.bio || ''}</p>
+        </div>
+      )}
 
       {/* Skills part  */}
-      <div className='my-5 flex flex-col gap-3'>
-        <h2 className='text-base md:text-2xl font-semibold'>Skills</h2>
-        <div className='flex flex-wrap max-w-[500px] gap-1 md:gap-3'>
-          {skills.map((skill, index) => (
-            <span
-              key={index}
-              className='text-sm text-gray-700 bg-v2 px-3 py-2 rounded-full font-normal'
-            >
-              {skill}
-            </span>
-          ))}
+      {data?.skills?.length !== 0 && (
+        <div className='my-5 flex flex-col gap-3'>
+          <h2 className='text-base md:text-2xl font-semibold'>Skills</h2>
+          <div className='flex flex-wrap max-w-[500px] gap-1 md:gap-3'>
+            {data.skills?.map((skill, index) => (
+              <span
+                key={index}
+                className='text-sm text-gray-700 bg-v2 px-3 py-2 rounded-full font-normal'
+              >
+                {skill}
+              </span>
+            )) || <p className='text-sm text-gray-500'>No skills listed</p>}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Client Reviews  */}
-
       <div className='my-5'>
         <h2 className='text-base md:text-2xl font-semibold'>Client Reviews</h2>
 

@@ -1,6 +1,7 @@
 // src/context/AuthContext.tsx
 import { createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface User {
   id: string;
@@ -46,11 +47,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     Cookies.set('user', JSON.stringify(userData), { expires: 7 });
   };
 
+  const queryClient = useQueryClient();
+
   const logout = () => {
     setUser(null);
     setToken(null);
     Cookies.remove('token');
     Cookies.remove('user');
+
+    queryClient.removeQueries({ queryKey: ['user'] });
   };
 
   return (

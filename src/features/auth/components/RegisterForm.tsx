@@ -15,10 +15,12 @@ import {
 import { toast } from 'sonner';
 import { useAuth } from '@/context/AuthContext';
 import { AuthStepProps } from '../types';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function RegisterForm({ step, setStep }: AuthStepProps) {
   const { login } = useAuth();
 
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -35,8 +37,8 @@ export default function RegisterForm({ step, setStep }: AuthStepProps) {
     if (!data.role) return;
     mutate(data, {
       onSuccess: (data) => {
+        queryClient.invalidateQueries({ queryKey: ['user'] });
         login(data.user, data.token);
-
         toast.success(`Welcome, ${data.user.firstName}!`);
       },
       onError: (error) => {

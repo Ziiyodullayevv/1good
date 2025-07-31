@@ -2,7 +2,7 @@ import { NavLink } from 'react-router';
 import logo from '@/assets/images/common/logo-dark.svg';
 import Notification from './talents/Notification';
 import MobileNavigation from './talents/MobileNavigation';
-import Menu from './talents/ProfileMenu';
+import ProfileMenu from './talents/ProfileMenu';
 
 export default function TalentNavigation() {
   return (
@@ -36,7 +36,7 @@ export default function TalentNavigation() {
           <div className='flex gap-3 items-center'>
             <Notification />
 
-            <Menu />
+            <ProfileMenu />
           </div>
         </div>
       </div>

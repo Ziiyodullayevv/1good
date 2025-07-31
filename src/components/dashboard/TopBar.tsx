@@ -2,8 +2,10 @@ import { Bell, Search } from 'lucide-react';
 import CloseIcon from '../../assets/svgs/CloseIcon';
 import { cn } from '../../lib/utils';
 import { Input } from '../ui/input';
-import { Link } from 'react-router';
 import HamburgerIcon from '../../assets/svgs/HamburgerIcon';
+import { useUser } from '../../hooks/useUser';
+import ProfileMenu from './ProfileMenu';
+import { Skeleton } from '../ui/skeleton';
 
 type Props = {
   isSidebarOpen: boolean;
@@ -16,6 +18,8 @@ export default function TopBar({
   scrolled,
   setIsSidebarOpen,
 }: Props) {
+  const { data, isLoading } = useUser();
+
   return (
     <div
       className={cn(
@@ -38,29 +42,40 @@ export default function TopBar({
           <HamburgerIcon className='block md:hidden' />
         </div>
 
-        <h2
+        {/* Welcome message with skeleton */}
+        <div
           className={cn(
             'transition-all hidden md:block font-medium duration-300',
             isSidebarOpen ? 'ml-[-46px]' : 'ml-0'
           )}
         >
-          Welcome, Umar
-        </h2>
+          {isLoading ? (
+            <Skeleton className='h-5 w-32' />
+          ) : (
+            <span>Welcome, {data?.firstName}</span>
+          )}
+        </div>
       </div>
 
       {/* Right  */}
       <div className='flex gap-2'>
-        <div className='relative hidden md:flex items-center'>
-          <Search className='absolute ml-2 text-gray-500 size-4' />
-          <Input
-            className={cn(
-              'h-[38px] min-w-[250px] transition-all duration-300 pl-7 shadow-none bg-white border-none',
-              scrolled ? 'bg-v2' : undefined
-            )}
-            placeholder='Search'
-          />
-        </div>
+        {/* Search Input */}
+        {isLoading ? (
+          <Skeleton className='h-[38px] text-white min-w-[250px] rounded-lg' />
+        ) : (
+          <div className='relative hidden md:flex items-center'>
+            <Search className='absolute ml-2 text-gray-500 size-4' />
+            <Input
+              className={cn(
+                'h-[38px] min-w-[250px] transition-all duration-300 pl-7 shadow-none bg-white border-none',
+                scrolled ? 'bg-v2' : undefined
+              )}
+              placeholder='Search'
+            />
+          </div>
+        )}
 
+        {/* Notification Button */}
         <button
           className={cn(
             'h-[38px] hover:bg-v9/10 group w-[38px] shrink-0 cursor-pointer flex justify-center items-center bg-white rounded-md',
@@ -69,16 +84,9 @@ export default function TopBar({
         >
           <Bell className='size-4.5 group-hover:text-v9' />
         </button>
-        <Link
-          to={'/'}
-          className='cursor-pointer shrink-0 rounded-md overflow-hidden h-[38px] w-[38px] hover:bg-blue-500'
-        >
-          <img
-            className='w-full h-full object-fill'
-            src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D'
-            alt=''
-          />
-        </Link>
+
+        {/* Profile Menu - o'zining ichida skeleton bor */}
+        <ProfileMenu />
       </div>
     </div>
   );
