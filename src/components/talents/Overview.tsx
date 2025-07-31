@@ -1,62 +1,67 @@
 import { Rate } from 'antd';
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 
-export default function Overview() {
+interface OverviewProps {
+  data: {
+    title?: string;
+    bio?: string;
+    skills?: string[];
+    firstName?: string;
+    lastName?: string;
+    location?: string;
+  };
+}
+
+export default function Overview({ data }: OverviewProps) {
   return (
     <div>
       {/* About part  */}
-      <div className='my-5'>
-        <h2 className='text-2xl font-semibold'>About</h2>
-        <p>
-          Experienced graphic designer specializing in branding and
-          illustration. Passionate about creating visually appealing and
-          effective designs that meet client needs. Proficient in Adobe Creative
-          Suite and committed to delivering high-quality work on time.
-        </p>
-      </div>
+      {data?.title && (
+        <div className='my-5'>
+          <h2 className='text-base line-clamp-6 md:text-2xl font-semibold'>
+            About
+          </h2>
+          <p className='text-sm'>{data?.title || ''}</p>
+        </div>
+      )}
+
+      {data?.bio && (
+        <div className='my-5'>
+          <h2 className='text-base line-clamp-6 md:text-2xl font-semibold'>
+            Bio
+          </h2>
+          <p className='text-sm'>{data?.bio || ''}</p>
+        </div>
+      )}
 
       {/* Skills part  */}
-      <div className='my-5 flex flex-col gap-3'>
-        <h2 className='text-2xl font-semibold'>Skills</h2>
-        <div className='flex flex-wrap gap-3'>
-          <span className='bg-v2 px-3 py-1 rounded-full font-normal'>
-            Graphic Design
-          </span>
-
-          <span className='bg-v2 px-3 py-1 rounded-full font-normal'>
-            Branding
-          </span>
-
-          <span className='bg-v2 px-3 py-1 rounded-full font-normal'>
-            Illustration
-          </span>
-
-          <span className='bg-v2 px-3 py-1 rounded-full font-normal'>
-            Adobe Creative Suite
-          </span>
-
-          <span className='bg-v2 px-3 py-1 rounded-full font-normal'>
-            Logo Design
-          </span>
-
-          <span className='bg-v2 px-3 py-1 rounded-full font-normal'>
-            Visual Communication
-          </span>
+      {data?.skills?.length !== 0 && (
+        <div className='my-5 flex flex-col gap-3'>
+          <h2 className='text-base md:text-2xl font-semibold'>Skills</h2>
+          <div className='flex flex-wrap max-w-[500px] gap-1 md:gap-3'>
+            {data.skills?.map((skill, index) => (
+              <span
+                key={index}
+                className='text-sm text-gray-700 bg-v2 px-3 py-2 rounded-full font-normal'
+              >
+                {skill}
+              </span>
+            )) || <p className='text-sm text-gray-500'>No skills listed</p>}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Client Reviews  */}
-
       <div className='my-5'>
-        <h2 className='text-2xl font-semibold'>Client Reviews</h2>
+        <h2 className='text-base md:text-2xl font-semibold'>Client Reviews</h2>
 
         <div className='flex'>
           <div>
-            <h3 className='text-3xl mt-5 font-bold'>4.8</h3>
+            <h3 className='text-2xl md:text-3xl mt-5 font-bold'>4.8</h3>
             <div className='my-2'>
               <Rate className='!text-lg' disabled defaultValue={4} />
             </div>
-            <p>25 reviews</p>
+            <p className='text-sm md:text-base'>25 reviews</p>
           </div>
         </div>
 
@@ -73,7 +78,9 @@ export default function Overview() {
               </div>
               <div>
                 <h4 className='font-semibold'>Jamshid A.</h4>
-                <p className='text-gray-500'>2 months ago</p>
+                <p className='text-gray-500 text-xs md:text-base'>
+                  2 months ago
+                </p>
               </div>
             </div>
 
@@ -81,13 +88,13 @@ export default function Overview() {
               <Rate className='!text-lg' disabled defaultValue={5} />
             </div>
 
-            <p>
+            <p className='text-sm md:text-base'>
               Aisha delivered exceptional work, exceeding my expectations. Her
               creativity and attention to detail are commendable. I highly
               recommend her for any graphic design project.
             </p>
 
-            <div className='flex gap-3 text-gray-500 my-5'>
+            <div className='flex text-sm md:text-base gap-3 text-gray-500 my-5'>
               <div className='flex gap-2 items-center'>
                 <ThumbsUp className='size-5' />
                 <span>3</span>
@@ -111,7 +118,9 @@ export default function Overview() {
               </div>
               <div>
                 <h4 className='font-semibold'>Nargiza S.</h4>
-                <p className='text-gray-500'>4 months ago</p>
+                <p className='text-gray-500 text-xs md:text-base'>
+                  4 months ago
+                </p>
               </div>
             </div>
 
@@ -119,13 +128,13 @@ export default function Overview() {
               <Rate className='!text-lg' disabled defaultValue={5} />
             </div>
 
-            <p>
+            <p className='text-sm'>
               Aisha delivered exceptional work, exceeding my expectations. Her
               creativity and attention to detail are commendable. I highly
               recommend her for any graphic design project.
             </p>
 
-            <div className='flex gap-3 text-gray-500 my-5'>
+            <div className='flex text-sm md:text-base gap-3 text-gray-500 my-5'>
               <div className='flex gap-2 items-center'>
                 <ThumbsUp className='size-5' />
                 <span>3</span>
