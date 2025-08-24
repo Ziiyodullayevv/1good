@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
-import { XIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import XIcon from '../../assets/svgs/XIcon';
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot='sheet' {...props} />;
@@ -70,8 +70,8 @@ function SheetContent({
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className='ring-offset-background cursor-pointer  absolute top-5 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none'>
-          <XIcon className='size-6' />
+        <SheetPrimitive.Close className='cursor-pointer absolute top-3.5 right-3 rounded-xs opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none'>
+          <XIcon className='size-5' />
           <span className='sr-only'>Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
@@ -83,7 +83,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot='sheet-header'
-      className={cn('flex flex-col gap-1.5 p-4', className)}
+      className={cn('flex flex-col gap-1.5 p-3', className)}
       {...props}
     />
   );

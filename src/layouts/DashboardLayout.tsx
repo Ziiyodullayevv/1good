@@ -5,9 +5,10 @@ import { Outlet } from 'react-router';
 import TopBar from '../components/dashboard/TopBar';
 
 export default function Layout() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // scrolled control
   useEffect(() => {
     const element = document.querySelector('.topbar');
     if (!element) return;
@@ -26,15 +27,22 @@ export default function Layout() {
     };
   }, []);
 
+  // mobile-desktop isSidebarOpen controller
+
+  useEffect(() => {
+    const isMobile = window.innerWidth > 1024;
+    setIsSidebarOpen(isMobile);
+  }, []);
+
   return (
     <div className='flex relative font-poppins min-h-screen'>
-      <Sidebar onClose={() => setIsSidebarOpen(false)} />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
       <div
         className={cn(
-          'transition-all duration-300 topbar overflow-auto bg-v2',
+          'transition-all topbar duration-300 overflow-auto bg-v2',
           isSidebarOpen
-            ? 'w-[calc(100%-260px)] top-0 right-0 bottom-0 absolute'
+            ? ' w-full md:w-[calc(100%-260px)] top-0 right-0 bottom-0 absolute'
             : 'w-full h-full top-0 right-0 bottom-0 absolute'
         )}
       >
@@ -46,7 +54,7 @@ export default function Layout() {
         />
 
         {/* Main content */}
-        <main className='px-5 pb-5 max-w-[1440px] mx-auto'>
+        <main className='px-3 md:px-5 pb-3 md:pb-5 max-w-[1440px] mx-auto'>
           <Outlet />
         </main>
       </div>

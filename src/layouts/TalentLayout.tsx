@@ -1,17 +1,19 @@
-import { Outlet } from 'react-router';
-import AuthNavigation from '../components/ui/AuthNavigation';
-import Footer from '../components/Footer';
+import { Outlet, useLocation } from 'react-router';
+import TalentNavigation from '../components/TalentNavigation';
+import TalentFooter from '../components/footers/TalentFooter';
 
 export default function TalentLayout() {
+  const { pathname } = useLocation();
+
   return (
-    <div className='bg-v7'>
-      <AuthNavigation className='flex-row-reverse' />
+    <div className='text-base font-poppins'>
+      <TalentNavigation />
 
       <main className='min-h-[calc(100vh-200px)]'>
         <Outlet />
       </main>
 
-      <Footer />
+      {pathname !== '/talent/messages' && <TalentFooter />}
     </div>
   );
 }

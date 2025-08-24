@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import {
@@ -7,141 +9,505 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
+import Banner from './Banner';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Textarea } from '../ui/textarea';
+import { useUser } from '../../hooks/useUser';
+import api from '../../lib/axios';
+import { Button } from '../ui/button';
+import { Skeleton } from '../ui/skeleton';
+import { useAuth } from '../../context/AuthContext';
+import { User } from '@/types/User'; // User type-ni import qiling
+
+// O'zbekiston mintaqalari
+const uzbekistanRegions = [
+  { value: 'tashkent-city', label: 'Toshkent shahri' },
+  { value: 'tashkent', label: 'Toshkent viloyati' },
+  { value: 'andijan', label: 'Andijon viloyati' },
+  { value: 'bukhara', label: 'Buxoro viloyati' },
+  { value: 'fergana', label: "Farg'ona viloyati" },
+  { value: 'jizzakh', label: 'Jizzax viloyati' },
+  { value: 'kashkadarya', label: 'Qashqadaryo viloyati' },
+  { value: 'khorezm', label: 'Xorazm viloyati' },
+  { value: 'namangan', label: 'Namangan viloyati' },
+  { value: 'navoi', label: 'Navoiy viloyati' },
+  { value: 'samarkand', label: 'Samarqand viloyati' },
+  { value: 'sirdarya', label: 'Sirdaryo viloyati' },
+  { value: 'surkhandarya', label: 'Surxondaryo viloyati' },
+  { value: 'karakalpakstan', label: "Qoraqalpog'iston Respublikasi" },
+];
 
 export default function Dashboard() {
+  const { data, isError, isLoading, refetch } = useUser();
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [showContent, setShowContent] = useState(false);
+
+  const { register, handleSubmit, reset, watch, control } = useForm<User>({
+    defaultValues: {
+      id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      avatarUrl: '',
+      title: '',
+      bio: '',
+      hourlyRate: '',
+      role: 'client',
+      skills: [],
+      location: '',
+    },
+  });
+
+  // Minimum loading time uchun
+  useEffect(() => {
+    if (!isLoading && data) {
+      // Ma'lumot kelgandan keyin kamida 800ms kutish
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 800);
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowContent(false);
+    }
+  }, [isLoading, data]);
+
+  // Formga data yuklash
+  useEffect(() => {
+    if (data) {
+      reset({
+        id: data.id || '',
+        firstName: data.firstName || '',
+        lastName: data.lastName || '',
+        email: data.email || '',
+        avatarUrl: data.avatarUrl || '',
+        title: data.title || '',
+        bio: data.bio || '',
+        hourlyRate: data.hourlyRate || '',
+        role: data.role || 'client',
+        skills: data.skills || [],
+        location: data.location || '',
+      });
+    }
+  }, [data, reset]);
+
+  const { login, token } = useAuth();
+
+  const onSubmit = async (formValues: User) => {
+    setIsSaving(true);
+    setSaveError(null);
+
+    try {
+      const res = await api.put('user/me', formValues);
+
+      // Turli xil response strukturalarini tekshirish
+      let updatedUser: User;
+
+      if (res.data.data) {
+        updatedUser = res.data.data as User;
+      } else if (res.data.user) {
+        updatedUser = res.data.user as User;
+      } else if (res.data) {
+        updatedUser = res.data as User;
+      } else {
+        // Agar API dan user qaytmasa, form ma'lumotlarini ishlatish
+        updatedUser = formValues;
+      }
+
+      // Cookie va context-ni yangilash - faqat kerakli ma'lumotlar
+      if (token && updatedUser) {
+        const essentialUserData: User = {
+          id: updatedUser.id,
+          firstName: updatedUser.firstName,
+          lastName: updatedUser.lastName,
+          role: updatedUser.role,
+          email: updatedUser.email || data?.email || '',
+          avatarUrl: updatedUser.avatarUrl || data?.avatarUrl || '',
+          title: updatedUser.title || data?.title || '',
+          bio: updatedUser.bio || data?.bio || '',
+          hourlyRate: updatedUser.hourlyRate || data?.hourlyRate || '',
+          skills: updatedUser.skills || data?.skills || [],
+          location: updatedUser.location || data?.location || '',
+        };
+
+        login(essentialUserData, token);
+      }
+
+      setIsEditing(false);
+      await refetch();
+    } catch (error) {
+      console.error('Update error', error);
+
+      // Type-safe error handling
+      let errorMessage = "Ma'lumotlarni saqlashda xatolik yuz berdi";
+
+      if (error && typeof error === 'object' && 'response' in error) {
+        const axiosError = error as {
+          response?: { data?: { message?: string } };
+        };
+        if (axiosError.response?.data?.message) {
+          errorMessage = axiosError.response.data.message;
+        }
+      }
+
+      setSaveError(errorMessage);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleEditClick = () => {
+    if (isEditing) {
+      // Agar editing holatida bo'lsa, formni submit qil
+      handleSubmit(onSubmit)();
+    } else {
+      // Agar editing holatida emas bo'lsa, edit rejimini yoq
+      setSaveError(null); // Errorni tozalash
+      setIsEditing(true);
+    }
+  };
+
+  const handleCancelClick = () => {
+    // Formni asl holatiga qaytarish
+    if (data) {
+      reset({
+        id: data.id || '',
+        firstName: data.firstName || '',
+        lastName: data.lastName || '',
+        email: data.email || '',
+        avatarUrl: data.avatarUrl || '',
+        title: data.title || '',
+        bio: data.bio || '',
+        hourlyRate: data.hourlyRate || '',
+        role: data.role || 'client',
+        skills: data.skills || [],
+        location: data.location || '',
+      });
+    }
+    setSaveError(null); // Errorni tozalash
+    setIsEditing(false);
+  };
+
+  if (isLoading || !data || !showContent) {
+    return (
+      <section className='text-base'>
+        <div className='bg-white rounded-xl overflow-hidden'>
+          <Banner />
+          <div className='p-4 sm:p-8 min-h-[calc(100vh-72px)]'>
+            {/* Header Skeleton */}
+            <div className='col-span-2 mb-8 flex items-center justify-between gap-4'>
+              <div className='flex items-center gap-4'>
+                <Skeleton className='w-21 h-21 md:w-25 md:h-25 rounded-full' />
+                <div className='flex flex-col gap-2'>
+                  <Skeleton className='h-6 w-48' />
+                  <Skeleton className='h-4 w-64' />
+                  <Skeleton className='h-8 w-20' />
+                </div>
+              </div>
+              <Skeleton className='h-10 w-20 hidden sm:block' />
+            </div>
+
+            {/* Form Fields Skeleton */}
+            <div className='grid sm:grid-cols-2 gap-6'>
+              {/* First Name */}
+              <div>
+                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* Last Name */}
+              <div>
+                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* Email */}
+              <div>
+                <Skeleton className='h-4 w-16 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* Avatar URL */}
+              <div>
+                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* About Me */}
+              <div>
+                <Skeleton className='h-4 w-20 mb-3' />
+                <Skeleton className='h-25 w-full' />
+              </div>
+
+              {/* Short Bio */}
+              <div>
+                <Skeleton className='h-4 w-20 mb-3' />
+                <Skeleton className='h-25 w-full' />
+              </div>
+
+              {/* Role */}
+              <div>
+                <Skeleton className='h-4 w-12 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* Skills */}
+              <div>
+                <Skeleton className='h-4 w-16 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* Location */}
+              <div>
+                <Skeleton className='h-4 w-20 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+
+              {/* Hourly Rate */}
+              <div>
+                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-10 w-full' />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+  if (isError) return <div>Error loading user data</div>;
+
   return (
     <section className='text-base'>
       <div className='bg-white rounded-xl overflow-hidden'>
-        {/* Banner  */}
-        <div className='h-25 overflow-hidden'>
-          <img
-            className='w-full'
-            src='/profile-banner.jpg'
-            alt='profile banner'
-          />
-        </div>
+        <Banner />
 
-        {/* Main  */}
-        <div className='p-8'>
-          {/* Profile  */}
-          <div className='flex items-center justify-between gap-4'>
-            <div className='flex items-center gap-4'>
-              <span className='w-25 overflow-hidden shrink-0 bg-v9/40 inline-block rounded-full h-25'>
-                <img
-                  src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D'
-                  alt='user'
-                />
-              </span>
-              <div>
-                <h2 className='text-xl font-medium'>Alexa Rawles</h2>
-                <span className='text-sm text-gray-400'>
-                  alexarawles@gmail.com
-                </span>
+        <div className='p-4 sm:p-8 min-h-[calc(100vh-72px)]'>
+          <form
+            className='grid sm:grid-cols-2 gap-6'
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className='sm:flex col-span-2 items-center mb-8 justify-between gap-4'>
+              {/* Error message */}
+              {saveError && (
+                <div className='col-span-2 mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm'>
+                  {saveError}
+                </div>
+              )}
+
+              <div className='flex items-center gap-4'>
+                <Avatar className='w-21 h-21 md:w-25 overflow-hidden shrink-0 bg-v9/40 inline-block rounded-full md:h-25'>
+                  <AvatarImage src={watch('avatarUrl')} />
+                  <AvatarFallback className='text-2xl'>
+                    {(data?.firstName?.[0] || '') + (data?.lastName?.[0] || '')}
+                  </AvatarFallback>
+                </Avatar>
+                <div className='flex flex-col items-start gap-1 md:gap-2'>
+                  <h2 className='text-base md:text-xl leading-5 font-medium'>
+                    {(data?.firstName || '') + ' ' + (data?.lastName || '')}
+                  </h2>
+                  <span className='text-xs leading-2 md:text-sm text-gray-400'>
+                    {data?.email || ''}
+                  </span>
+                  <div className='flex gap-2 mt-2'>
+                    <Button
+                      type='button'
+                      onClick={handleEditClick}
+                      disabled={isSaving}
+                      className='h-8 text-sm md:text-base md:hidden sm:block bg-v9 text-white px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                    >
+                      {isSaving ? (
+                        <div className='flex items-center gap-2'>
+                          <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
+                          Saving...
+                        </div>
+                      ) : isEditing ? (
+                        'Save'
+                      ) : (
+                        'Edit'
+                      )}
+                    </Button>
+                    {isEditing && (
+                      <Button
+                        type='button'
+                        onClick={handleCancelClick}
+                        disabled={isSaving}
+                        variant='outline'
+                        className='h-8 text-sm md:text-base md:hidden sm:block px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                      >
+                        Cancel
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className='flex gap-2'>
+                <Button
+                  type='button'
+                  onClick={handleEditClick}
+                  disabled={isSaving}
+                  className='h-10 hidden sm:block bg-v9 text-white px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                >
+                  {isSaving ? (
+                    <div className='flex items-center gap-2'>
+                      <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
+                      Saving...
+                    </div>
+                  ) : isEditing ? (
+                    'Save'
+                  ) : (
+                    'Edit'
+                  )}
+                </Button>
+                {isEditing && (
+                  <Button
+                    type='button'
+                    onClick={handleCancelClick}
+                    disabled={isSaving}
+                    variant='outline'
+                    className='h-10 hidden sm:block px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                  >
+                    Cancel
+                  </Button>
+                )}
               </div>
             </div>
 
-            <button className='h-10 bg-v9 text-white px-6 rounded-lg cursor-pointer'>
-              Edit
-            </button>
-          </div>
-
-          {/* Form  */}
-          <div className='grid grid-cols-2 gap-6 mt-8'>
             <div>
-              <Label htmlFor='full-name'>Full Name</Label>
+              <Label htmlFor='first-name'>First Name</Label>
               <Input
-                id='full-name'
-                className='h-12 mt-3 bg-v2 border-none shadow-none'
+                id='first-name'
+                disabled={!isEditing}
+                {...register('firstName')}
+                className='h-10 placeholder:text-sm  mt-3 bg-v2 border-none shadow-none'
                 placeholder='Your First Name'
               />
             </div>
 
             <div>
-              <Label htmlFor='nick-name'>Nick Name</Label>
+              <Label htmlFor='last-name'>Last Name</Label>
               <Input
-                id='nick-name'
-                className='h-12 mt-3 bg-v2 border-none shadow-none'
-                placeholder='Your First Name'
+                id='last-name'
+                disabled={!isEditing}
+                {...register('lastName')}
+                className='h-10 placeholder:text-sm  mt-3 bg-v2 border-none shadow-none'
+                placeholder='Your Last Name'
               />
             </div>
 
             <div>
-              <Label>Gender</Label>
-              <Select>
-                <SelectTrigger className='!h-12 !rounded-lg w-full mt-3 bg-v2 border-none shadow-none'>
-                  <SelectValue placeholder='Theme' />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value='light'>Light</SelectItem>
-                  <SelectItem value='dark'>Dark</SelectItem>
-                  <SelectItem value='system'>System</SelectItem>
-                </SelectContent>
-              </Select>
+              <Label htmlFor='email'>Gmail</Label>
+              <Input
+                id='email'
+                disabled={!isEditing}
+                {...register('email')}
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                placeholder='you@example.com'
+              />
             </div>
 
             <div>
-              <Label>Country</Label>
-              <Select>
-                <SelectTrigger className='!h-12 !rounded-lg w-full mt-3 bg-v2 border-none shadow-none'>
-                  <SelectValue placeholder='Theme' />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value='light'>Light</SelectItem>
-                  <SelectItem value='dark'>Dark</SelectItem>
-                  <SelectItem value='system'>System</SelectItem>
-                </SelectContent>
-              </Select>
+              <Label htmlFor='avatar'>Avatar URL</Label>
+              <Input
+                id='avatar'
+                disabled={!isEditing}
+                {...register('avatarUrl')}
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                placeholder='https://...'
+              />
             </div>
 
             <div>
-              <Label>Language</Label>
-              <Select>
-                <SelectTrigger className='!h-12 !rounded-lg w-full mt-3 bg-v2 border-none shadow-none'>
-                  <SelectValue placeholder='Theme' />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value='light'>Light</SelectItem>
-                  <SelectItem value='dark'>Dark</SelectItem>
-                  <SelectItem value='system'>System</SelectItem>
-                </SelectContent>
-              </Select>
+              <Label htmlFor='about-me'>About Me</Label>
+              <Textarea
+                id='about-me'
+                disabled={!isEditing}
+                {...register('title')}
+                className='h-25 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+              />
             </div>
 
             <div>
-              <Label>Time Zone</Label>
-              <Select>
-                <SelectTrigger className='!h-12 !rounded-lg w-full mt-3 bg-v2 border-none shadow-none'>
-                  <SelectValue placeholder='Theme' />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value='light'>Light</SelectItem>
-                  <SelectItem value='dark'>Dark</SelectItem>
-                  <SelectItem value='system'>System</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* Footer  */}
-          <div className='mt-8 text-lg font-medium'>
-            <h2>My email Address</h2>
-            <div className='mt-5 flex items-center gap-4'>
-              <span className='flex justify-center items-center w-12 h-12 bg-v9/10 rounded-full'>
-                <img src='/sms.svg' alt='' />
-              </span>
-
-              <div>
-                <h3 className='font-normal'>alexarawles@gmail.com</h3>
-                <span className='text-gray-400 font-normal text-sm'>
-                  1 month ago
-                </span>
-              </div>
+              <Label htmlFor='short-bio'>Short Bio</Label>
+              <Textarea
+                id='short-bio'
+                disabled={!isEditing}
+                {...register('bio')}
+                className='h-25 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+              />
             </div>
 
-            <button className='h-11 my-8 font-normal text-base cursor-pointer rounded-lg bg-v9/10 text-v9 px-4'>
-              +Add Email Address
-            </button>
-          </div>
+            <div>
+              <Label>Role</Label>
+              <Controller
+                name='role'
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    disabled={!isEditing || isSaving}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  >
+                    <SelectTrigger className='!h-10 !rounded-lg w-full mt-3 bg-v2 border-none shadow-none'>
+                      <SelectValue placeholder='Select Role' />
+                    </SelectTrigger>
+                    <SelectContent className='font-poppins rounded-lg'>
+                      <SelectItem className='h-10' value='client'>
+                        Client
+                      </SelectItem>
+                      <SelectItem className='h-10' value='freelancer'>
+                        Freelancer
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+            </div>
+
+            <div>
+              <Label>Location</Label>
+              <Controller
+                name='location'
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    disabled={!isEditing || isSaving}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  >
+                    <SelectTrigger className='!h-10 !rounded-lg w-full mt-3 bg-v2 border-none shadow-none'>
+                      <SelectValue placeholder='Mintaqani tanlang' />
+                    </SelectTrigger>
+                    <SelectContent className='font-poppins rounded-lg max-h-60 overflow-y-auto'>
+                      {uzbekistanRegions.map((region) => (
+                        <SelectItem
+                          key={region.value}
+                          className='h-10'
+                          value={region.value}
+                        >
+                          {region.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor='hourly-rate'>Hourly Rate</Label>
+              <Input
+                id='hourly-rate'
+                type='number'
+                disabled={!isEditing}
+                {...register('hourlyRate')}
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                placeholder='100'
+              />
+            </div>
+          </form>
         </div>
       </div>
     </section>
