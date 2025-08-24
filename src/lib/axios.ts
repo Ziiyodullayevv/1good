@@ -1,16 +1,15 @@
-// src/lib/axiosInstance.ts
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, // .env fayldan API manzili
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL, //or /api with proxy server;
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 // Har bir so‘rovdan oldin token qo‘shish
-axiosInstance.interceptors.request.use((config) => {
+api.interceptors.request.use((config) => {
   const token = Cookies.get('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -18,4 +17,4 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-export default axiosInstance;
+export default api;

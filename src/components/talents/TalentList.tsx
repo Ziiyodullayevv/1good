@@ -75,7 +75,6 @@ const fetchUsers = async (
     users = response.data;
     total = users.length;
   } else {
-    // Agar data object ichida array bo'lsa, uni topishga harakat qilish
     const possibleArrays = Object.values(response.data).filter(Array.isArray);
     if (possibleArrays.length > 0) {
       users = possibleArrays[0] as User[];
@@ -83,15 +82,9 @@ const fetchUsers = async (
     }
   }
 
-  console.log('📊 Parsed users count:', users.length);
-  console.log('📊 Total available:', total);
-  console.log('📊 Current page:', filters.page);
-
   // Page-based pagination uchun hasMore hisoblash
   const totalPages = Math.ceil(total / filters.limit);
   const hasMore = filters.page < totalPages;
-  console.log('📊 Total pages:', totalPages);
-  console.log('🔄 Has more:', hasMore);
 
   return {
     data: users,
@@ -121,23 +114,15 @@ export default function TalentList({ filters }: Props) {
   } = useInfiniteQuery({
     queryKey: ['users', filters.name, filters.role, filters.sortOrder], // offset ni queryKey dan olib tashladik
     queryFn: ({ pageParam = 1 }) => {
-      // Page 1 dan boshlanadi
-      console.log('🎯 Query function called with pageParam:', pageParam);
       const queryFilters = { ...filters, page: pageParam as number };
-      console.log('🎯 Final queryFilters:', queryFilters);
       return fetchUsers(queryFilters);
     },
     getNextPageParam: (lastPage, allPages) => {
-      console.log('🔍 getNextPageParam called');
-      console.log('🔍 lastPage:', lastPage);
-      console.log('🔍 allPages length:', allPages.length);
-
       const typedLastPage = lastPage as {
         data: User[];
         hasMore: boolean;
         total: number;
       };
-      console.log('🔍 lastPage hasMore:', typedLastPage.hasMore);
 
       if (!typedLastPage.hasMore) {
         console.log('❌ No more pages available');
@@ -175,12 +160,6 @@ export default function TalentList({ filters }: Props) {
     data?.pages.flatMap(
       (page) => (page as { data: User[]; hasMore: boolean; total: number }).data
     ) || [];
-
-  // Debug logging
-  console.log('🎭 Current data pages:', data?.pages?.length || 0);
-  console.log('🎭 All users flattened:', allUsers.length);
-  console.log('🎭 Has next page:', hasNextPage);
-  console.log('🎭 Is fetching next page:', isFetchingNextPage);
 
   // Har bir sahifani alohida ko'rsatish
   data?.pages?.forEach((page, index) => {

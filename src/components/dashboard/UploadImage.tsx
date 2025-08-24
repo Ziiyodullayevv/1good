@@ -4,7 +4,7 @@ import { Upload, message } from 'antd';
 import type { UploadProps } from 'antd';
 
 type FileType =
-  NonNullable<UploadProps['beforeUpload']> extends (file: infer F) => any
+  NonNullable<UploadProps['beforeUpload']> extends (file: infer F) => unknown
     ? F
     : never;
 

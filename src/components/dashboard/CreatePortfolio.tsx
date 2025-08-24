@@ -82,7 +82,7 @@ export default function CreatePortfolio({
   };
 
   const updateProject = async (data: PortfolioFormData & { id: string }) => {
-    const res = await api.put(`portfolio/${data.id}`, data);
+    const res = await api.put(`/portfolio/${data.id}`, data);
     if (res.status < 200 || res.status >= 300)
       throw new Error('Failed to update portfolio');
     return res.data;

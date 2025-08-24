@@ -5,8 +5,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Link } from 'react-router';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useUser } from '../../hooks/useUser';
+import { cn } from '../../lib/utils';
 
-export default function ProfileMenu() {
+export default function ProfileMenu({ scrolled }: { scrolled: boolean }) {
   const { logout } = useAuth();
   const { data, isError, isLoading } = useUser();
 
@@ -25,9 +26,14 @@ export default function ProfileMenu() {
           {isLoading ? (
             <Skeleton className='w-[38px] h-[38px] rounded-lg' />
           ) : (
-            <Avatar className='w-[38px] h-[38px] rounded-lg'>
+            <Avatar className={cn('w-[38px] h-[38px] rounded-lg')}>
               <AvatarImage className='rounded-lg' src={data?.avatarUrl} />
-              <AvatarFallback className='rounded-lg text-sm font-medium'>
+              <AvatarFallback
+                className={cn(
+                  'rounded-lg text-sm bg-white font-medium',
+                  scrolled ? 'bg-v2 transition-all duration-300' : undefined
+                )}
+              >
                 {initials}
               </AvatarFallback>
             </Avatar>

@@ -8,14 +8,17 @@ import {
 } from '@/components/ui/select';
 import { Input } from '../ui/input';
 import TalentList from './TalentList';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Talent() {
+  const { user } = useAuth();
+
   const [filters, setFilters] = useState({
     name: '',
-    role: '',
+    role: user?.role === 'client' ? 'freelancer' : 'client', // ✅ user roliga qarab qarama-qarshi rol
     sortOrder: '',
     limit: 10,
-    page: 1, // offset o'rniga page
+    page: 1,
   });
 
   // Debounced search
@@ -33,19 +36,11 @@ export default function Talent() {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  const handleRoleChange = (value: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      role: value === 'all' ? '' : value,
-      page: 1, // Filter o'zgarganda 1-sahifaga qaytish
-    }));
-  };
-
   const handleSortOrderChange = (value: string) => {
     setFilters((prev) => ({
       ...prev,
       sortOrder: value,
-      page: 1, // Sort o'zgarganda 1-sahifaga qaytish
+      page: 1,
     }));
   };
 
@@ -58,31 +53,11 @@ export default function Talent() {
       <div className='section-container'>
         <div className='flex flex-col'>
           <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 justify-between'>
-            <h2 className='text-2xl font-semibold'>Talents</h2>
+            <h2 className='text-2xl capitalize font-semibold'>
+              {user?.role === 'client' ? 'Find Freelancers' : 'Find Clients'}
+            </h2>
             <div className='flex overflow-auto gap-2 sm:gap-5'>
-              {/* Role Filter */}
-              <Select
-                onValueChange={handleRoleChange}
-                value={filters.role || 'all'}
-              >
-                <SelectTrigger className='shadow-none border !rounded-lg text-black min-w-[120px]'>
-                  <SelectValue
-                    className='placeholder:text-gray-500 text-base'
-                    placeholder='Role'
-                  />
-                </SelectTrigger>
-                <SelectContent
-                  className='font-poppins'
-                  align='end'
-                  side='bottom'
-                >
-                  <SelectItem value='all'>All</SelectItem>
-                  <SelectItem value='client'>Client</SelectItem>
-                  <SelectItem value='freelancer'>Freelancer</SelectItem>
-                </SelectContent>
-              </Select>
-
-              {/* Sort Order Filter */}
+              {/* ✅ Faqat sort order qoldi */}
               <Select
                 onValueChange={handleSortOrderChange}
                 value={filters.sortOrder}
@@ -114,7 +89,7 @@ export default function Talent() {
           />
         </div>
 
-        {/* TalentList componentiga faqat filters ni beramiz */}
+        {/* ✅ TalentList endi user roliga qarab filtrlanadi */}
         <TalentList filters={filters} />
       </div>
     </section>

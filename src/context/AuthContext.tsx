@@ -2,12 +2,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useQueryClient } from '@tanstack/react-query';
-
-interface User {
-  id: string;
-  firstName: string;
-  role: 'freelancer' | 'client';
-}
+import { User } from '@/types/User';
 
 interface AuthContextType {
   user: User | null;
@@ -30,10 +25,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (storedToken && storedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
         setToken(storedToken);
-      } catch {
+      } catch (error) {
+        console.error('Error parsing stored user:', error);
         Cookies.remove('user');
+        Cookies.remove('token');
       }
     }
 
@@ -41,10 +39,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = (userData: User, token: string) => {
+    // State-ni yangilash
     setUser(userData);
     setToken(token);
-    Cookies.set('token', token, { expires: 7 });
-    Cookies.set('user', JSON.stringify(userData), { expires: 7 });
+
+    // Cookie-larga saqlash
+    try {
+      Cookies.set('token', token, { expires: 7, path: '/', sameSite: 'lax' });
+      Cookies.set('user', JSON.stringify(userData), {
+        expires: 7,
+        path: '/',
+        sameSite: 'lax',
+      });
+    } catch (error) {
+      console.error('Error setting cookies:', error);
+    }
+
+    // Backup: localStorage-ga ham saqlash
+    try {
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(userData));
+    } catch (error) {
+      console.error('Error setting localStorage:', error);
+    }
   };
 
   const queryClient = useQueryClient();
@@ -52,8 +69,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
-    Cookies.remove('token');
-    Cookies.remove('user');
+
+    // Cookie-larni tozalash
+    Cookies.remove('token', { path: '/' });
+    Cookies.remove('user', { path: '/' });
+
+    // localStorage-ni ham tozalash
+    try {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+    } catch (error) {
+      console.error('Error removing from localStorage:', error);
+    }
 
     queryClient.removeQueries({ queryKey: ['user'] });
   };

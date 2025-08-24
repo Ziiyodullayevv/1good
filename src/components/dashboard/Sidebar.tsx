@@ -7,12 +7,16 @@ import {
   FileText,
   Folder,
   MessageCircle,
+  SendToBack,
   Settings,
   UserRoundPen,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import XIcon from '@/assets/svgs/XIcon';
+import { useAuth } from '../../context/AuthContext';
+
+type Role = 'client' | 'freelancer';
 
 const navItems = [
   {
@@ -20,55 +24,69 @@ const navItems = [
     label: 'Profile',
     icon: <UserRoundPen className='size-4.5' />,
     exact: true,
+    roles: ['client', 'freelancer'] as Role[],
   },
   {
     to: 'portfolio',
     label: 'Portfolio',
     icon: <BriefcaseBusiness className='size-4.5' />,
+    roles: ['freelancer'] as Role[],
   },
   {
     to: 'my-projects',
-    label: 'My Projects',
+    label: 'My Order',
     icon: <Folder className='size-4.5' />,
+    roles: ['client'] as Role[],
+  },
+  {
+    to: 'contract',
+    label: 'Contracts',
+    icon: <FileText className='size-4.5' />,
+    roles: ['client', 'freelancer'] as Role[],
+  },
+  {
+    to: 'submission',
+    label: 'Submission',
+    icon: <SendToBack className='size-4.5' />,
+    roles: ['client', 'freelancer'] as Role[],
   },
   {
     to: 'analytics',
     label: 'Analytics',
     icon: <ChartPie className='size-4.5' />,
+    roles: ['client', 'freelancer'] as Role[],
   },
   {
     to: 'messages',
     label: 'Messages',
     icon: <MessageCircle className='size-4.5' />,
+    roles: ['client', 'freelancer'] as Role[],
   },
   {
     to: 'credits',
     label: 'Credits',
     icon: <CreditCard className='size-4.5' />,
-  },
-  {
-    to: 'contracts',
-    label: 'Contracts',
-    icon: <FileText className='size-4.5' />,
+    roles: ['client', 'freelancer'] as Role[],
   },
   {
     to: 'settings',
     label: 'Settings',
     icon: <Settings className='size-4.5' />,
+    roles: ['client', 'freelancer'] as Role[],
   },
 ];
 
-export default function Sidebar({
-  onClose,
-  isOpen,
-}: {
+interface SidebarProps {
   onClose: () => void;
   isOpen: boolean;
-}) {
+}
+
+export default function Sidebar({ onClose, isOpen }: SidebarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
-    const element = document.querySelector('.sitebar');
+    const element = document.querySelector('.sidebar') as HTMLElement;
     if (!element) return;
 
     const handleScroll = () => {
@@ -76,8 +94,6 @@ export default function Sidebar({
     };
 
     element.addEventListener('scroll', handleScroll);
-
-    // Initial check
     handleScroll();
 
     return () => {
@@ -90,6 +106,10 @@ export default function Sidebar({
       onClose();
     }
   };
+
+  const filteredNavItems = navItems.filter((item) =>
+    user?.role ? item.roles.includes(user.role as Role) : true
+  );
 
   return (
     <>
@@ -124,10 +144,9 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* Sidebar menyu yoki linklar */}
         <ul className='p-4'>
-          {navItems.map(({ to, label, icon, exact }, index) => (
-            <li key={index}>
+          {filteredNavItems.map(({ to, label, icon, exact }, index) => (
+            <li key={`${to}-${index}`}>
               <NavLink
                 to={to}
                 end={exact}

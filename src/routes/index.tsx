@@ -10,7 +10,6 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardPage from '../pages/DashboardPage';
 import TalentPage from '../pages/TalentPage';
 import MyProjects from '../components/dashboard/MyProjects';
-import Contracts from '../components/dashboard/Contracts';
 import Settings from '../components/dashboard/Settings';
 import Analytics from '../components/dashboard/Analytics';
 import Messages from '../components/dashboard/Messages';
@@ -22,6 +21,11 @@ import Portfolio from '../components/dashboard/Portfolio';
 
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import Submission from '../pages/Submission';
+import SubmissionDetails from '../pages/SubmissionDetails';
+import InBoxPage from '../features/messages/pages/InBoxPage';
+import ContractPage from '../pages/ContractPage';
+import ContractDetails from '../pages/ContractDetails';
 
 export const router = createBrowserRouter([
   {
@@ -52,9 +56,18 @@ export const router = createBrowserRouter([
           { path: 'my-projects', element: <MyProjects /> },
           { path: 'analytics', element: <Analytics /> },
           { path: 'messages', element: <Messages /> },
-          { path: 'contracts', element: <Contracts /> },
+          { path: 'contract', element: <ContractPage /> },
           { path: 'credits', element: <CreditsPage /> },
           { path: 'settings', element: <Settings /> },
+          { path: 'submission', element: <Submission /> },
+          {
+            path: 'submission/:submissionSlug',
+            element: <SubmissionDetails />,
+          },
+          {
+            path: 'contract/:contractSlug',
+            element: <ContractDetails />,
+          },
         ],
       },
       {
@@ -71,6 +84,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <TalentPage /> },
           { path: ':slug', element: <TalentProfilePage /> },
+          { path: 'messages', element: <InBoxPage /> },
         ],
       },
     ],

@@ -16,7 +16,7 @@ export const projectSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   summary: z.string().min(1, 'Summary is required'),
   deadline: z.date({ error: 'Deadline is required' }),
-  skills: z.array(z.string()).min(1, 'At least one skill is required'),
+  skillsRequired: z.array(z.string()).min(1, 'At least one skill is required'),
 });
 
 export type ProjectFormData = z.infer<typeof projectSchema>;

@@ -1,11 +1,12 @@
-import { Bell, Search } from 'lucide-react';
 import CloseIcon from '../../assets/svgs/CloseIcon';
 import { cn } from '../../lib/utils';
-import { Input } from '../ui/input';
 import HamburgerIcon from '../../assets/svgs/HamburgerIcon';
 import { useUser } from '../../hooks/useUser';
 import ProfileMenu from './ProfileMenu';
 import { Skeleton } from '../ui/skeleton';
+import { Link } from 'react-router';
+import Notification from '../talents/Notification';
+import MessagePopover from '../../features/messages/components/MessagePopover';
 
 type Props = {
   isSidebarOpen: boolean;
@@ -58,35 +59,23 @@ export default function TopBar({
       </div>
 
       {/* Right  */}
-      <div className='flex gap-2'>
-        {/* Search Input */}
-        {isLoading ? (
-          <Skeleton className='h-[38px] text-white min-w-[250px] rounded-lg' />
-        ) : (
-          <div className='relative hidden md:flex items-center'>
-            <Search className='absolute ml-2 text-gray-500 size-4' />
-            <Input
-              className={cn(
-                'h-[38px] min-w-[250px] transition-all duration-300 pl-7 shadow-none bg-white border-none',
-                scrolled ? 'bg-v2' : undefined
-              )}
-              placeholder='Search'
-            />
-          </div>
-        )}
+      <div className='flex gap-2 items-center'>
+        {/* client or freelancer */}
+        <div className='mr-5 text-base'>
+          {data?.role === 'client' ? (
+            <Link to={'/talent'}>Freelancer</Link>
+          ) : (
+            <Link to={'/order'}>Orders</Link>
+          )}
+        </div>
+
+        <MessagePopover scrolled={scrolled} />
 
         {/* Notification Button */}
-        <button
-          className={cn(
-            'h-[38px] hover:bg-v9/10 group w-[38px] shrink-0 cursor-pointer flex justify-center items-center bg-white rounded-md',
-            scrolled ? 'bg-v2 transition-all duration-300' : undefined
-          )}
-        >
-          <Bell className='size-4.5 group-hover:text-v9' />
-        </button>
+        <Notification scrolled={scrolled} />
 
         {/* Profile Menu - o'zining ichida skeleton bor */}
-        <ProfileMenu />
+        <ProfileMenu scrolled={scrolled} />
       </div>
     </div>
   );

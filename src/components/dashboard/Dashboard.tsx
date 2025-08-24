@@ -16,20 +16,8 @@ import { useUser } from '../../hooks/useUser';
 import api from '../../lib/axios';
 import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
-
-// Form data interface
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  avatarUrl: string;
-  title: string;
-  bio: string;
-  hourlyRate: string;
-  role: string;
-  skills: string[];
-  location: string;
-}
+import { useAuth } from '../../context/AuthContext';
+import { User } from '@/types/User'; // User type-ni import qiling
 
 // O'zbekiston mintaqalari
 const uzbekistanRegions = [
@@ -56,8 +44,9 @@ export default function Dashboard() {
   const [saveError, setSaveError] = useState<string | null>(null);
   const [showContent, setShowContent] = useState(false);
 
-  const { register, handleSubmit, reset, watch, control } = useForm({
+  const { register, handleSubmit, reset, watch, control } = useForm<User>({
     defaultValues: {
+      id: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -65,7 +54,7 @@ export default function Dashboard() {
       title: '',
       bio: '',
       hourlyRate: '',
-      role: '',
+      role: 'client',
       skills: [],
       location: '',
     },
@@ -89,6 +78,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (data) {
       reset({
+        id: data.id || '',
         firstName: data.firstName || '',
         lastName: data.lastName || '',
         email: data.email || '',
@@ -96,34 +86,72 @@ export default function Dashboard() {
         title: data.title || '',
         bio: data.bio || '',
         hourlyRate: data.hourlyRate || '',
-        role: data.role || '',
+        role: data.role || 'client',
         skills: data.skills || [],
         location: data.location || '',
       });
     }
   }, [data, reset]);
 
-  const onSubmit = async (formValues: FormData) => {
+  const { login, token } = useAuth();
+
+  const onSubmit = async (formValues: User) => {
     setIsSaving(true);
     setSaveError(null);
 
     try {
-      await api.put('user/me', formValues);
+      const res = await api.put('user/me', formValues);
+
+      // Turli xil response strukturalarini tekshirish
+      let updatedUser: User;
+
+      if (res.data.data) {
+        updatedUser = res.data.data as User;
+      } else if (res.data.user) {
+        updatedUser = res.data.user as User;
+      } else if (res.data) {
+        updatedUser = res.data as User;
+      } else {
+        // Agar API dan user qaytmasa, form ma'lumotlarini ishlatish
+        updatedUser = formValues;
+      }
+
+      // Cookie va context-ni yangilash - faqat kerakli ma'lumotlar
+      if (token && updatedUser) {
+        const essentialUserData: User = {
+          id: updatedUser.id,
+          firstName: updatedUser.firstName,
+          lastName: updatedUser.lastName,
+          role: updatedUser.role,
+          email: updatedUser.email || data?.email || '',
+          avatarUrl: updatedUser.avatarUrl || data?.avatarUrl || '',
+          title: updatedUser.title || data?.title || '',
+          bio: updatedUser.bio || data?.bio || '',
+          hourlyRate: updatedUser.hourlyRate || data?.hourlyRate || '',
+          skills: updatedUser.skills || data?.skills || [],
+          location: updatedUser.location || data?.location || '',
+        };
+
+        login(essentialUserData, token);
+      }
+
       setIsEditing(false);
-      refetch();
+      await refetch();
     } catch (error) {
       console.error('Update error', error);
-      
+
       // Type-safe error handling
       let errorMessage = "Ma'lumotlarni saqlashda xatolik yuz berdi";
-      
+
       if (error && typeof error === 'object' && 'response' in error) {
-        const axiosError = error as { response?: { data?: { message?: string } } };
+        const axiosError = error as {
+          response?: { data?: { message?: string } };
+        };
         if (axiosError.response?.data?.message) {
           errorMessage = axiosError.response.data.message;
         }
       }
-      
+
       setSaveError(errorMessage);
     } finally {
       setIsSaving(false);
@@ -145,6 +173,7 @@ export default function Dashboard() {
     // Formni asl holatiga qaytarish
     if (data) {
       reset({
+        id: data.id || '',
         firstName: data.firstName || '',
         lastName: data.lastName || '',
         email: data.email || '',
@@ -152,8 +181,9 @@ export default function Dashboard() {
         title: data.title || '',
         bio: data.bio || '',
         hourlyRate: data.hourlyRate || '',
-        role: data.role || '',
+        role: data.role || 'client',
         skills: data.skills || [],
+        location: data.location || '',
       });
     }
     setSaveError(null); // Errorni tozalash

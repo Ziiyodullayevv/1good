@@ -9,12 +9,14 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://89.169.2.238:9000/api/v1/', // bu yerda backend manziling bo‘ladi
+        target: 'https://1good-backend.uz',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false, // agar HTTPS sertifikati self-signed bo‘lsa
+        rewrite: (path) => path.replace(/^\/api/, '/api/v1'),
       },
     },
   },
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

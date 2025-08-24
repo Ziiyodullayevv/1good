@@ -1,8 +1,10 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import TalentNavigation from '../components/TalentNavigation';
 import TalentFooter from '../components/footers/TalentFooter';
 
 export default function TalentLayout() {
+  const { pathname } = useLocation();
+
   return (
     <div className='text-base font-poppins'>
       <TalentNavigation />
@@ -11,7 +13,7 @@ export default function TalentLayout() {
         <Outlet />
       </main>
 
-      <TalentFooter />
+      {pathname !== '/talent/messages' && <TalentFooter />}
     </div>
   );
 }
