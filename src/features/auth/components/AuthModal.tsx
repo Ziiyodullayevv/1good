@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 import ResetPassword from './ResetPassword';
+import { X } from 'lucide-react';
 
 const STEP = {
   REGISTER: 1,
@@ -18,18 +19,15 @@ export default function AuthModal({ isLogin }: { isLogin?: boolean }) {
   const [step, setStep] = useState(STEP.REGISTER);
 
   function open() {
-    // isLogin bo'yicha boshlang'ich step
     setStep(isLogin ? STEP.LOGIN : STEP.REGISTER);
     setIsOpen(true);
   }
 
   function close() {
     setIsOpen(false);
-    // modal yopilganda stepni qayta boshlash
     setStep(isLogin ? STEP.LOGIN : STEP.REGISTER);
   }
 
-  // body scroll block
   if (typeof window !== 'undefined') {
     document.body.style.overflow = isOpen ? 'visible' : '';
   }
@@ -40,8 +38,8 @@ export default function AuthModal({ isLogin }: { isLogin?: boolean }) {
         onClick={open}
         className={cn(
           isLogin
-            ? 'h-10 text-base bg-transparent text-black hover:bg-v2 cursor-pointer shadow-none'
-            : 'h-10 text-base cursor-pointer'
+            ? 'h-12 text-base bg-v2 text-black hover:bg-v2 rounded-lg cursor-pointer shadow-none'
+            : 'h-12 rounded-lg text-base cursor-pointer'
         )}
       >
         {isLogin ? 'Sign In' : 'Join'}
@@ -50,25 +48,38 @@ export default function AuthModal({ isLogin }: { isLogin?: boolean }) {
       <Dialog
         open={isOpen}
         as='div'
-        className='relative z-[9999]'
+        className='relative font-poppins z-[9999]'
         onClose={close}
       >
         <DialogBackdrop className='fixed inset-0 bg-black/40' />
-        <div className='fixed inset-0 z-[9999] w-screen'>
-          <div className='flex min-h-full items-center justify-center p-4'>
+        <div className='fixed inset-0 z-[9999] w-screen sm:px-4 sm:overflow-y-auto'>
+          <div className='flex min-h-full items-center justify-center'>
             <DialogPanel
               transition
-              className='w-full font-poppins h-[min(90vh,645px)] max-h-[645px] overflow-hidden max-w-[900px] transition duration-200 ease-in-out [--anchor-gap:--spacing(5)] data-closed:-translate-y-3 data-closed:opacity-0 rounded-xl bg-white'
+              className='w-full absolute sm:static top-0 bottom-0 ring-0 left-0 overflow-hidden font-poppins sm:max-w-[900px] sm:h-[min(90vh,645px)] sm:max-h-[645px]
+              transition duration-300 ease-out [--anchor-gap:--spacing(5)] 
+              data-closed:-translate-y-4 data-closed:opacity-0 data-closed:scale-95
+              sm:rounded-2xl bg-white shadow-2xl border border-gray-100
+              mx-auto sm:my-4 sm:mx-4 flex flex-col'
             >
-              <div className='grid grid-cols-2 h-full'>
-                <div className='h-full bg-v2 overflow-y-auto'>
+              <div className='grid grid-cols-1 md:grid-cols-2 h-full'>
+                {/* Left image – faqat md dan boshlab ko‘rinadi */}
+                <div className='hidden md:block h-full bg-v2 overflow-y-auto'>
                   <img
                     className='w-full h-full object-cover'
                     src='https://ramp.com/assets/images/versus/versus-glossier.webp'
                     alt='Signup visual'
                   />
                 </div>
-                <div className='flex flex-col justify-between gap-5 overflow-y-auto py-8 px-10'>
+
+                {/* Right content */}
+                <div className='flex flex-col justify-between gap-5 overflow-y-auto py-6 sm:py-8 px-6 sm:px-10'>
+                  <button
+                    onClick={close}
+                    className='md:hidden absolute right-6 top-6'
+                  >
+                    <X />
+                  </button>
                   <div>
                     {step === STEP.REGISTER && (
                       <RegisterForm step={step} setStep={setStep} />

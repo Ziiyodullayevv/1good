@@ -17,7 +17,7 @@ import api from '../../lib/axios';
 import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
 import { useAuth } from '../../context/AuthContext';
-import { User } from '@/types/User'; // User type-ni import qiling
+import { User } from '@/types/User';
 
 // O'zbekiston mintaqalari
 const uzbekistanRegions = [
@@ -63,11 +63,9 @@ export default function Dashboard() {
   // Minimum loading time uchun
   useEffect(() => {
     if (!isLoading && data) {
-      // Ma'lumot kelgandan keyin kamida 800ms kutish
       const timer = setTimeout(() => {
         setShowContent(true);
       }, 800);
-
       return () => clearTimeout(timer);
     } else {
       setShowContent(false);
@@ -102,9 +100,7 @@ export default function Dashboard() {
     try {
       const res = await api.put('user/me', formValues);
 
-      // Turli xil response strukturalarini tekshirish
       let updatedUser: User;
-
       if (res.data.data) {
         updatedUser = res.data.data as User;
       } else if (res.data.user) {
@@ -112,11 +108,9 @@ export default function Dashboard() {
       } else if (res.data) {
         updatedUser = res.data as User;
       } else {
-        // Agar API dan user qaytmasa, form ma'lumotlarini ishlatish
         updatedUser = formValues;
       }
 
-      // Cookie va context-ni yangilash - faqat kerakli ma'lumotlar
       if (token && updatedUser) {
         const essentialUserData: User = {
           id: updatedUser.id,
@@ -131,7 +125,6 @@ export default function Dashboard() {
           skills: updatedUser.skills || data?.skills || [],
           location: updatedUser.location || data?.location || '',
         };
-
         login(essentialUserData, token);
       }
 
@@ -139,10 +132,7 @@ export default function Dashboard() {
       await refetch();
     } catch (error) {
       console.error('Update error', error);
-
-      // Type-safe error handling
       let errorMessage = "Ma'lumotlarni saqlashda xatolik yuz berdi";
-
       if (error && typeof error === 'object' && 'response' in error) {
         const axiosError = error as {
           response?: { data?: { message?: string } };
@@ -151,7 +141,6 @@ export default function Dashboard() {
           errorMessage = axiosError.response.data.message;
         }
       }
-
       setSaveError(errorMessage);
     } finally {
       setIsSaving(false);
@@ -160,17 +149,14 @@ export default function Dashboard() {
 
   const handleEditClick = () => {
     if (isEditing) {
-      // Agar editing holatida bo'lsa, formni submit qil
       handleSubmit(onSubmit)();
     } else {
-      // Agar editing holatida emas bo'lsa, edit rejimini yoq
-      setSaveError(null); // Errorni tozalash
+      setSaveError(null);
       setIsEditing(true);
     }
   };
 
   const handleCancelClick = () => {
-    // Formni asl holatiga qaytarish
     if (data) {
       reset({
         id: data.id || '',
@@ -186,7 +172,7 @@ export default function Dashboard() {
         location: data.location || '',
       });
     }
-    setSaveError(null); // Errorni tozalash
+    setSaveError(null);
     setIsEditing(false);
   };
 
@@ -195,77 +181,56 @@ export default function Dashboard() {
       <section className='text-base'>
         <div className='bg-white rounded-xl overflow-hidden'>
           <Banner />
-          <div className='p-4 sm:p-8 min-h-[calc(100vh-72px)]'>
-            {/* Header Skeleton */}
-            <div className='col-span-2 mb-8 flex items-center justify-between gap-4'>
+          <div className='p-4 sm:p-6 md:p-8 min-h-[calc(100vh-72px)]'>
+            <div className='col-span-2 mb-6 sm:mb-8 flex flex-wrap items-center justify-between gap-4'>
               <div className='flex items-center gap-4'>
-                <Skeleton className='w-21 h-21 md:w-25 md:h-25 rounded-full' />
+                <Skeleton className='w-16 h-16 sm:w-21 sm:h-21 md:w-25 md:h-25 rounded-full' />
                 <div className='flex flex-col gap-2'>
-                  <Skeleton className='h-6 w-48' />
-                  <Skeleton className='h-4 w-64' />
-                  <Skeleton className='h-8 w-20' />
+                  <Skeleton className='h-6 w-40 sm:w-48' />
+                  <Skeleton className='h-4 w-56 sm:w-64' />
+                  <Skeleton className='h-8 w-16 sm:w-20' />
                 </div>
               </div>
-              <Skeleton className='h-10 w-20 hidden sm:block' />
+              <Skeleton className='h-9 sm:h-10 w-16 sm:w-20 hidden sm:block' />
             </div>
 
-            {/* Form Fields Skeleton */}
-            <div className='grid sm:grid-cols-2 gap-6'>
-              {/* First Name */}
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
               <div>
-                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-4 w-20 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* Last Name */}
               <div>
-                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-4 w-20 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* Email */}
               <div>
                 <Skeleton className='h-4 w-16 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* Avatar URL */}
               <div>
-                <Skeleton className='h-4 w-24 mb-3' />
+                <Skeleton className='h-4 w-20 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* About Me */}
               <div>
                 <Skeleton className='h-4 w-20 mb-3' />
-                <Skeleton className='h-25 w-full' />
+                <Skeleton className='h-24 sm:h-25 w-full' />
               </div>
-
-              {/* Short Bio */}
               <div>
                 <Skeleton className='h-4 w-20 mb-3' />
-                <Skeleton className='h-25 w-full' />
+                <Skeleton className='h-24 sm:h-25 w-full' />
               </div>
-
-              {/* Role */}
               <div>
                 <Skeleton className='h-4 w-12 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* Skills */}
               <div>
                 <Skeleton className='h-4 w-16 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* Location */}
               <div>
                 <Skeleton className='h-4 w-20 mb-3' />
                 <Skeleton className='h-10 w-full' />
               </div>
-
-              {/* Hourly Rate */}
               <div>
                 <Skeleton className='h-4 w-24 mb-3' />
                 <Skeleton className='h-10 w-full' />
@@ -283,39 +248,38 @@ export default function Dashboard() {
       <div className='bg-white rounded-xl overflow-hidden'>
         <Banner />
 
-        <div className='p-4 sm:p-8 min-h-[calc(100vh-72px)]'>
+        <div className='p-4 sm:p-6 md:p-8 min-h-[calc(100vh-72px)]'>
           <form
-            className='grid sm:grid-cols-2 gap-6'
+            className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className='sm:flex col-span-2 items-center mb-8 justify-between gap-4'>
-              {/* Error message */}
+            <div className='sm:flex col-span-1 sm:col-span-2 items-center mb-6 sm:mb-8 justify-between gap-4 flex-wrap'>
               {saveError && (
-                <div className='col-span-2 mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm'>
+                <div className='col-span-1 sm:col-span-2 mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm w-full'>
                   {saveError}
                 </div>
               )}
 
-              <div className='flex items-center gap-4'>
-                <Avatar className='w-21 h-21 md:w-25 overflow-hidden shrink-0 bg-v9/40 inline-block rounded-full md:h-25'>
+              <div className='flex items-center gap-4 flex-wrap'>
+                <Avatar className='w-16 h-16 sm:w-21 sm:h-21 md:w-25 md:h-25 overflow-hidden shrink-0 bg-v9/40 inline-block rounded-full'>
                   <AvatarImage src={watch('avatarUrl')} />
-                  <AvatarFallback className='text-2xl'>
+                  <AvatarFallback className='text-xl sm:text-2xl uppercase'>
                     {(data?.firstName?.[0] || '') + (data?.lastName?.[0] || '')}
                   </AvatarFallback>
                 </Avatar>
                 <div className='flex flex-col items-start gap-1 md:gap-2'>
-                  <h2 className='text-base md:text-xl leading-5 font-medium'>
+                  <h2 className='text-base capitalize sm:text-lg md:text-xl leading-5 font-medium'>
                     {(data?.firstName || '') + ' ' + (data?.lastName || '')}
                   </h2>
-                  <span className='text-xs leading-2 md:text-sm text-gray-400'>
+                  <span className='text-xs leading-2 sm:text-sm text-gray-400 break-all'>
                     {data?.email || ''}
                   </span>
-                  <div className='flex gap-2 mt-2'>
+                  <div className='flex gap-2 mt-2 flex-wrap'>
                     <Button
                       type='button'
                       onClick={handleEditClick}
                       disabled={isSaving}
-                      className='h-8 text-sm md:text-base md:hidden sm:block bg-v9 text-white px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                      className='h-8 text-xs sm:text-sm md:text-base md:hidden sm:block bg-v9 text-white px-4 sm:px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
                     >
                       {isSaving ? (
                         <div className='flex items-center gap-2'>
@@ -334,7 +298,7 @@ export default function Dashboard() {
                         onClick={handleCancelClick}
                         disabled={isSaving}
                         variant='outline'
-                        className='h-8 text-sm md:text-base md:hidden sm:block px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                        className='h-8 text-xs sm:text-sm md:text-base md:hidden sm:block px-4 sm:px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
                       >
                         Cancel
                       </Button>
@@ -343,12 +307,12 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className='flex gap-2'>
+              <div className='flex gap-2 flex-wrap'>
                 <Button
                   type='button'
                   onClick={handleEditClick}
                   disabled={isSaving}
-                  className='h-10 hidden sm:block bg-v9 text-white px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                  className='h-9 sm:h-10 hidden sm:block bg-v9 text-white px-4 sm:px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
                 >
                   {isSaving ? (
                     <div className='flex items-center gap-2'>
@@ -367,7 +331,7 @@ export default function Dashboard() {
                     onClick={handleCancelClick}
                     disabled={isSaving}
                     variant='outline'
-                    className='h-10 hidden sm:block px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
+                    className='h-9 sm:h-10 hidden sm:block px-4 sm:px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed'
                   >
                     Cancel
                   </Button>
@@ -381,7 +345,7 @@ export default function Dashboard() {
                 id='first-name'
                 disabled={!isEditing}
                 {...register('firstName')}
-                className='h-10 placeholder:text-sm  mt-3 bg-v2 border-none shadow-none'
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
                 placeholder='Your First Name'
               />
             </div>
@@ -392,7 +356,7 @@ export default function Dashboard() {
                 id='last-name'
                 disabled={!isEditing}
                 {...register('lastName')}
-                className='h-10 placeholder:text-sm  mt-3 bg-v2 border-none shadow-none'
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
                 placeholder='Your Last Name'
               />
             </div>
@@ -403,7 +367,7 @@ export default function Dashboard() {
                 id='email'
                 disabled={!isEditing}
                 {...register('email')}
-                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
                 placeholder='you@example.com'
               />
             </div>
@@ -414,7 +378,7 @@ export default function Dashboard() {
                 id='avatar'
                 disabled={!isEditing}
                 {...register('avatarUrl')}
-                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
                 placeholder='https://...'
               />
             </div>
@@ -425,7 +389,7 @@ export default function Dashboard() {
                 id='about-me'
                 disabled={!isEditing}
                 {...register('title')}
-                className='h-25 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                className='h-24 sm:h-25 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
               />
             </div>
 
@@ -435,11 +399,11 @@ export default function Dashboard() {
                 id='short-bio'
                 disabled={!isEditing}
                 {...register('bio')}
-                className='h-25 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                className='h-24 sm:h-25 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
               />
             </div>
 
-            <div>
+            {/* <div>
               <Label>Role</Label>
               <Controller
                 name='role'
@@ -464,7 +428,7 @@ export default function Dashboard() {
                   </Select>
                 )}
               />
-            </div>
+            </div> */}
 
             <div>
               <Label>Location</Label>
@@ -503,7 +467,7 @@ export default function Dashboard() {
                 type='number'
                 disabled={!isEditing}
                 {...register('hourlyRate')}
-                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none'
+                className='h-10 placeholder:text-sm mt-3 bg-v2 border-none shadow-none w-full'
                 placeholder='100'
               />
             </div>

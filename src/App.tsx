@@ -2,7 +2,7 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { RouterProvider } from 'react-router';
 import { Toaster } from '@/components/ui/sonner.tsx';
-import {router} from "@/routes";
+import { router } from './routes';
 
 export default function App() {
   return (

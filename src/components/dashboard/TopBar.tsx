@@ -53,7 +53,15 @@ export default function TopBar({
           {isLoading ? (
             <Skeleton className='h-5 w-32' />
           ) : (
-            <span>Welcome, {data?.firstName}</span>
+            <span className='capitalize'>Welcome, {data?.firstName}</span>
+          )}
+        </div>
+
+        <div className='ml-4 text-base block sm:hidden'>
+          {data?.role === 'client' ? (
+            <Link to={'/talent'}>Freelancers</Link>
+          ) : (
+            <Link to={'/order'}>Orders</Link>
           )}
         </div>
       </div>
@@ -61,7 +69,7 @@ export default function TopBar({
       {/* Right  */}
       <div className='flex gap-2 items-center'>
         {/* client or freelancer */}
-        <div className='mr-5 text-base'>
+        <div className='mr-5 text-base hidden sm:inline-block'>
           {data?.role === 'client' ? (
             <Link to={'/talent'}>Freelancer</Link>
           ) : (
@@ -69,10 +77,10 @@ export default function TopBar({
           )}
         </div>
 
-        <MessagePopover scrolled={scrolled} />
-
-        {/* Notification Button */}
-        <Notification scrolled={scrolled} />
+        <div className='flex items-center'>
+          <MessagePopover />
+          <Notification />
+        </div>
 
         {/* Profile Menu - o'zining ichida skeleton bor */}
         <ProfileMenu scrolled={scrolled} />

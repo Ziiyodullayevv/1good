@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
 
   return (
     <Popover className='relative'>
-      <PopoverButton className='h-10 w-[50px] flex justify-center items-center cursor-pointer bg-v5 border-none rounded-lg'>
+      <PopoverButton className='h-12 w-[50px] flex justify-center items-center cursor-pointer hover:bg-v2 border-none rounded-lg'>
         <Languages className='size-5' />
       </PopoverButton>
 

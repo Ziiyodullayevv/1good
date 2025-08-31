@@ -11,7 +11,7 @@ export default function MyProjects() {
   return (
     <div className='bg-white text-base min-h-[calc(100vh-72px)] sm:min-h-[calc(100vh-80px)] rounded-xl overflow-hidden'>
       <div>
-        <Banner title='My Projects' buttonText='Create New Project' />
+        <Banner title='My Projects' buttonText='Create Project' />
 
         {/* Project Lists */}
         <div className='sm:p-8'>

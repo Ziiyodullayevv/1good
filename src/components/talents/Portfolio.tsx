@@ -42,7 +42,8 @@ const projects = [
   },
 ];
 
-export default function Portfolio() {
+export default function Portfolio({ userId }: { userId: string }) {
+  console.log(userId);
   return (
     <div className='container-auth my-7'>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>

@@ -5,28 +5,30 @@ import { Mail } from 'lucide-react';
 import { Link, useLocation } from 'react-router'; // ✅ react-router uchun to‘g‘ri
 import { cn } from '../../../lib/utils';
 
-export default function MessagePopover({ scrolled }: { scrolled?: boolean }) {
+export default function MessagePopover() {
   const { pathname } = useLocation();
   const isDashboard = pathname.startsWith('/dashboard');
 
   const button = !isDashboard ? (
     <MenuButton className='relative'>
-      <span className='inline-block right-0 top-0 rounded-full absolute w-3 h-3 bg-red-500'></span>
-      <div className='h-[35px] cursor-pointer flex justify-center items-center bg-v2 w-[35px] overflow-hidden rounded-full'>
+      <div className='h-[35px] cursor-pointer relative flex justify-center items-center hover:bg-v2 w-[35px] overflow-hidden rounded-sm'>
         <Mail className='size-4' />
+        <span className='inline-block right-1.5 top-1.5 rounded-full absolute w-2 h-2 bg-red-500'></span>
       </div>
     </MenuButton>
   ) : (
     <MenuButton
       className={cn(
-        'h-[38px] hover:bg-v9/10 group w-[38px] shrink-0 cursor-pointer flex justify-center items-center bg-white rounded-md',
-        scrolled ? 'bg-v2 transition-all duration-300' : undefined
+        'h-[38px] hover:bg-v9/10 group w-[38px] shrink-0 cursor-pointer flex justify-center items-center rounded-md'
       )}
     >
-      <Mail className='size-4.5 group-hover:text-v9' />
+      <div className='h-[35px] relative flex justify-center items-center w-[35px] overflow-hidden rounded-lg'>
+        <Mail className='size-4.5 group-hover:text-v9' />
+        <span className='inline-block right-1.5 top-1.5 rounded-full absolute w-2 h-2 bg-red-500'></span>
+      </div>
     </MenuButton>
   );
-  
+
   return (
     <div>
       <Menu>

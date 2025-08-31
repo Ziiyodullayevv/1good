@@ -77,9 +77,9 @@ export default function MainNavigation() {
           </nav>
 
           <div className='hidden md:flex justify-start gap-3'>
+            <LanguageSwitcher />
             <AuthModal isLogin={true} />
             <AuthModal />
-            <LanguageSwitcher />
           </div>
 
           <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>
