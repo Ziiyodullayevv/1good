@@ -23,7 +23,6 @@ const NotFoundPage = lazy(() => import('../pages/NotfoudPage'));
 const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 const Portfolio = lazy(() => import('../components/dashboard/Portfolio'));
 const MyProjects = lazy(() => import('../components/dashboard/MyProjects'));
-const Analytics = lazy(() => import('../components/dashboard/Analytics'));
 const Messages = lazy(() => import('../components/dashboard/Messages'));
 const Settings = lazy(() => import('../components/dashboard/Settings'));
 const Submission = lazy(() => import('../pages/Submission'));
@@ -53,6 +52,7 @@ const PageLoader = () => (
 
 // Wrapper component for lazy loaded routes
 import { ReactNode } from 'react';
+import Analytics from '@/components/dashboard/Analytics';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const LazyWrapper = ({ children }: { children: ReactNode }) => (

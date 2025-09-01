@@ -7,7 +7,11 @@ import { Skeleton } from '../ui/skeleton';
 import { Link } from 'react-router';
 import Notification from '../talents/Notification';
 import MessagePopover from '../../features/messages/components/MessagePopover';
-
+import { Menu } from 'lucide-react';
+import { motion } from 'motion/react';
+import { useState } from 'react';
+import MobileNavigation from '@/components/talents/MobileNavigation';
+import logo from '@/assets/images/common/logo-dark.svg';
 type Props = {
   isSidebarOpen: boolean;
   setIsSidebarOpen: (value: boolean) => void;
@@ -20,6 +24,7 @@ export default function TopBar({
   setIsSidebarOpen,
 }: Props) {
   const { data, isLoading } = useUser();
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
   return (
     <div
@@ -33,7 +38,7 @@ export default function TopBar({
         <div
           onClick={() => setIsSidebarOpen(true)}
           className={cn(
-            'hover:bg-v9/10 bg-white group shrink-0 rounded-sm flex justify-center items-center h-[38px] w-[38px] font-bold cursor-pointer transition-all ease-in-out transform',
+            'hover:bg-v9/10 bg-white hidden md:flex group shrink-0 rounded-sm justify-center items-center h-[38px] w-[38px] font-bold cursor-pointer transition-all ease-in-out transform',
             isSidebarOpen
               ? 'opacity-100 scale-0 pointer-events-none'
               : 'opacity-100 duration-500 scale-100'
@@ -42,6 +47,10 @@ export default function TopBar({
           <CloseIcon className='hidden md:block group-hover:text-v9' />
           <HamburgerIcon className='block md:hidden' />
         </div>
+
+        <Link to={'/talent'} className='md:hidden'>
+          <img className='w-[70px]' src={logo} alt='' />
+        </Link>
 
         {/* Welcome message with skeleton */}
         <div
@@ -56,20 +65,12 @@ export default function TopBar({
             <span className='capitalize'>Welcome, {data?.firstName}</span>
           )}
         </div>
-
-        <div className='ml-4 text-base block sm:hidden'>
-          {data?.role === 'client' ? (
-            <Link to={'/talent'}>Freelancers</Link>
-          ) : (
-            <Link to={'/order'}>Orders</Link>
-          )}
-        </div>
       </div>
 
       {/* Right  */}
       <div className='flex gap-2 items-center'>
         {/* client or freelancer */}
-        <div className='mr-5 text-base hidden sm:inline-block'>
+        <div className='mr-5 text-base hidden md:inline-block'>
           {data?.role === 'client' ? (
             <Link to={'/talent'}>Freelancer</Link>
           ) : (
@@ -77,14 +78,36 @@ export default function TopBar({
           )}
         </div>
 
-        <div className='flex items-center'>
-          <MessagePopover />
-          <Notification />
+        <div className='items-center gap-2 hidden md:flex'>
+          <div className='flex items-center'>
+            <MessagePopover />
+            <Notification />
+          </div>
+
+          {/* Profile Menu - o'zining ichida skeleton bor */}
+          <ProfileMenu scrolled={scrolled} />
         </div>
 
-        {/* Profile Menu - o'zining ichida skeleton bor */}
-        <ProfileMenu scrolled={scrolled} />
+        <div className='flex items-center gap-4'>
+          <div className='md:hidden'>
+            <motion.button
+              onClick={() => setIsNavigationOpen(true)}
+              className='p-2 text-foreground hover:text-muted-foreground transition-colors'
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Menu size={20} />
+            </motion.button>
+          </div>
+        </div>
       </div>
+      <MobileNavigation
+        isOpen={isNavigationOpen}
+        onClose={() => setIsNavigationOpen(false)}
+      />
     </div>
   );
 }

@@ -42,7 +42,7 @@ export default function Layout() {
         className={cn(
           'transition-all topbar duration-300 overflow-auto bg-v2',
           isSidebarOpen
-            ? ' w-full md:w-[calc(100%-260px)] top-0 right-0 bottom-0 absolute'
+            ? 'w-[calc(100%-260px)] top-0 right-0 bottom-0 absolute'
             : 'w-full h-full top-0 right-0 bottom-0 absolute'
         )}
       >

@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from '@/context/AuthContext';
 import { toast } from 'sonner';
 import { LoginFormValues, loginSchema } from '../schema/loginSchema';
-import { useLogin } from '../hooks/useLogin';
+import { useLogin } from '@/features/auth/hooks/useLogin';
 
 export default function LoginForm({ step, setStep }: AuthStepProps) {
   const { login } = useAuth();
