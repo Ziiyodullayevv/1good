@@ -8,7 +8,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <RouterProvider router={router} />
-      <Toaster theme='light' richColors position='top-right' />
+      <Toaster theme='light' richColors position='bottom-right' />
     </HelmetProvider>
   );
 }
