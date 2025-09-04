@@ -162,7 +162,7 @@ const CreateProject = forwardRef<HTMLButtonElement, Props>(
           <button
             ref={ref}
             onClick={() => setIsOpen(true)}
-            className='bg-v9 px-4 h-10 rounded-lg text-white'
+            className='bg-v9 hover:bg-v9/80 h-9 text-sm sm:text-base text-white px-4 sm:h-10 rounded-lg'
           >
             {buttonText}
           </button>

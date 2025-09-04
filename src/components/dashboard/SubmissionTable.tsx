@@ -13,7 +13,10 @@ import { Empty, Result } from 'antd';
 import { GeneralTooltip } from '../ui/generalTooltip';
 import api from '@/lib/axios';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime'; // ✅ qo‘shildi
 import { useNavigate } from 'react-router';
+
+dayjs.extend(relativeTime); // ✅ plagin ulash
 
 type Submission = {
   _id: string;
@@ -49,6 +52,17 @@ const SkeletonRow = () => (
   </TableRow>
 );
 
+// ✅ Yordamchi funksiyalar: invalid sana bo'lsa chiroyli fallback
+const formatDate = (dateStr?: string) => {
+  const d = dayjs(dateStr);
+  return d.isValid() ? d.format('MMM DD, YYYY') : '—';
+};
+
+const relativeFromNow = (dateStr?: string) => {
+  const d = dayjs(dateStr);
+  return d.isValid() ? d.fromNow() : '';
+};
+
 export default function SubmissionTable({
   statusFilter,
 }: {
@@ -73,14 +87,14 @@ export default function SubmissionTable({
           ? '/submission'
           : `/submission?status=${statusFilter}`;
       const res = await api.get(url);
-      return res.data.submissions; // ✅ to‘g‘ri massivni qaytaramiz
+      return res.data.submissions as Submission[]; // ✅ massiv qaytadi
     },
     retry: false,
   });
 
   if (isError) {
     const err = error as unknown as { status?: number };
-    const statusCode = (err.status ?? 500) as 404 | 500 | 403;
+    const statusCode = (err?.status ?? 500) as 404 | 500 | 403;
 
     return (
       <Result
@@ -131,7 +145,7 @@ export default function SubmissionTable({
                   >
                     {submission.order.title}
                   </p>
-                  {submission.order.budget && (
+                  {submission.order.budget !== undefined && (
                     <p className='text-xs text-gray-500 mt-1'>
                       Budget: ${submission.order.budget.toLocaleString()}
                     </p>
@@ -141,11 +155,9 @@ export default function SubmissionTable({
 
               <TableCell className='whitespace-nowrap text-gray-500'>
                 <div className='flex flex-col'>
-                  <span>
-                    {dayjs(submission.order.deadline).format('MMM DD, YYYY')}
-                  </span>
+                  <span>{formatDate(submission.order.deadline)}</span>
                   <span className='text-xs text-gray-400'>
-                    {dayjs(submission.order.deadline).fromNow()}
+                    {relativeFromNow(submission.order.deadline)}
                   </span>
                 </div>
               </TableCell>

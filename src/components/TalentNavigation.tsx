@@ -53,10 +53,10 @@ export default function TalentNavigation() {
           </div>
 
           <div className='flex items-center gap-4'>
-            <div className='sm:hidden'>
+            <div className='sm:hidden flex items-center'>
               <motion.button
                 onClick={() => setIsNavigationOpen(true)}
-                className='p-2 text-foreground hover:text-muted-foreground transition-colors'
+                className='text-foreground hover:text-muted-foreground transition-colors'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0, x: 20 }}

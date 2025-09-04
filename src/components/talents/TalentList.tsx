@@ -4,7 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '../ui/badge';
 import { useRef, useCallback } from 'react';
-import api from '../../lib/axios'; // Assuming you have axios instance
+import api from '../../lib/axios'; // axios instance
 import { Empty } from 'antd';
 
 type User = {
@@ -26,19 +26,19 @@ type Filters = {
   role: string;
   sortOrder: string;
   limit: number;
-  page: number; // offset o'rniga page
+  page: number;
 };
 
 type Props = {
   filters: Filters;
 };
 
-// Build query string from filters
+// Build query string
 const buildQueryString = (filters: Filters) => {
   const params = new URLSearchParams();
 
   if (filters.limit) params.append('limit', filters.limit.toString());
-  if (filters.page) params.append('page', filters.page.toString()); // offset o'rniga page
+  if (filters.page) params.append('page', filters.page.toString());
   if (filters.sortOrder) params.append('sortOrder', filters.sortOrder);
   if (filters.name) params.append('name', filters.name);
   if (filters.role) params.append('role', filters.role);
@@ -51,17 +51,13 @@ const fetchUsers = async (
 ): Promise<{ data: User[]; hasMore: boolean; total: number }> => {
   const queryString = buildQueryString(filters);
   console.log('🚀 Fetch request - URL:', `/user?${queryString}`);
-  console.log('🚀 Fetch request - Filters:', filters);
 
   const response = await api.get(`/user?${queryString}`);
-
-  // API response struktura tekshirish
   console.log('📥 API Response full:', response.data);
 
   let users: User[] = [];
   let total = 0;
 
-  // Agar data.users, data.data, yoki data.results formatida kelsa
   if (response.data.users) {
     users = response.data.users;
     total = response.data.total || users.length;
@@ -82,7 +78,6 @@ const fetchUsers = async (
     }
   }
 
-  // Page-based pagination uchun hasMore hisoblash
   const totalPages = Math.ceil(total / filters.limit);
   const hasMore = filters.page < totalPages;
 
@@ -112,7 +107,7 @@ export default function TalentList({ filters }: Props) {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ['users', filters.name, filters.role, filters.sortOrder], // offset ni queryKey dan olib tashladik
+    queryKey: ['users', filters.name, filters.role, filters.sortOrder],
     queryFn: ({ pageParam = 1 }) => {
       const queryFilters = { ...filters, page: pageParam as number };
       return fetchUsers(queryFilters);
@@ -129,16 +124,15 @@ export default function TalentList({ filters }: Props) {
         return undefined;
       }
 
-      const nextPage = allPages.length + 1; // Keyingi sahifa raqami
+      const nextPage = allPages.length + 1;
       console.log('✅ Next page will be:', nextPage);
       return nextPage;
     },
-    initialPageParam: 1, // 1-sahifadan boshlanadi
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    initialPageParam: 1,
+    staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
   });
 
-  // Intersection Observer for infinite scroll
   const lastElementRef = useCallback(
     (node: HTMLDivElement) => {
       if (isLoading) return;
@@ -155,17 +149,10 @@ export default function TalentList({ filters }: Props) {
     [isLoading, hasNextPage, isFetchingNextPage, fetchNextPage]
   );
 
-  // Flatten all pages data
   const allUsers =
     data?.pages.flatMap(
       (page) => (page as { data: User[]; hasMore: boolean; total: number }).data
     ) || [];
-
-  // Har bir sahifani alohida ko'rsatish
-  data?.pages?.forEach((page, index) => {
-    const typedPage = page as { data: User[]; hasMore: boolean; total: number };
-    console.log(`📄 Page ${index}:`, typedPage.data.length, 'users');
-  });
 
   if (isError) {
     return (
@@ -200,26 +187,28 @@ export default function TalentList({ filters }: Props) {
         ? Array.from({ length: 9 }).map((_, i) => (
             <div
               key={i}
-              className='bg-white flex flex-col gap-6 rounded-xl p-5 shadow'
+              className='bg-white flex flex-col gap-6 rounded-xl p-5 shadow min-h-[300px] border'
             >
               {/* Header Skeleton */}
               <div className='flex justify-between gap-3'>
-                <div className='flex flex-col gap-2'>
-                  <Skeleton className='h-6 w-32' />
-                  <Skeleton className='h-4 w-24' />
+                <div className='flex flex-col gap-2 flex-1'>
+                  <Skeleton className='h-6 w-32 bg-v2/40 rounded-md' />
+                  <Skeleton className='h-4 w-24 bg-v2/40 rounded-md' />
                 </div>
-                <Skeleton className='h-14 w-14 rounded-full' />
+                <Skeleton className='h-14 w-14 rounded-full bg-v2/50' />
               </div>
 
               {/* Content Skeleton */}
-              <div className='flex flex-col gap-3'>
-                <Skeleton className='h-4 w-full' />
+              <div className='flex flex-col gap-3 mt-2'>
+                <Skeleton className='h-4 w-3/4 bg-v2/40 rounded-md' />
+
                 <div className='flex flex-wrap gap-2'>
-                  <Skeleton className='h-6 w-20 rounded-full' />
-                  <Skeleton className='h-6 w-24 rounded-full' />
-                  <Skeleton className='h-6 w-16 rounded-full' />
+                  <Skeleton className='h-6 w-20 rounded-full bg-v2/30' />
+                  <Skeleton className='h-6 w-24 rounded-full bg-v2/30' />
+                  <Skeleton className='h-6 w-16 rounded-full bg-v2/30' />
                 </div>
-                <Skeleton className='h-6 w-28 rounded-full' />
+
+                <Skeleton className='h-6 w-28 rounded-full bg-v2/40' />
               </div>
             </div>
           ))
@@ -228,7 +217,7 @@ export default function TalentList({ filters }: Props) {
               onClick={() =>
                 handleClick(user.firstName, user.lastName, user._id)
               }
-              key={`${user._id}-${index}`} // Unique key for each item
+              key={`${user._id}-${index}`}
               className='bg-white flex min-h-[300px] border flex-col justify-between gap-6 rounded-xl p-5 cursor-pointer hover:bg-v8 hover:shadow-md transition-all duration-300'
               ref={index === allUsers.length - 1 ? lastElementRef : null}
             >

@@ -38,8 +38,8 @@ export default function AuthModal({ isLogin }: { isLogin?: boolean }) {
         onClick={open}
         className={cn(
           isLogin
-            ? 'h-12 text-base bg-v2 text-black hover:bg-v2 rounded-lg cursor-pointer shadow-none'
-            : 'h-12 rounded-lg text-base cursor-pointer'
+            ? 'sm:h-12 text-black bg-transparent hover:bg-transparent text-base sm:bg-v2 sm:hover:bg-v2 rounded-lg cursor-pointer shadow-none'
+            : 'sm:h-12 rounded-lg text-base cursor-pointer'
         )}
       >
         {isLogin ? 'Sign In' : 'Join'}

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { Textarea } from '../ui/textarea';
 import { Input } from '../ui/input';
 import api from '../../lib/axios';
@@ -6,6 +6,8 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 type Order = {
   _id: string;
@@ -22,59 +24,68 @@ type Order = {
 const Skeleton = () => (
   <section className='my-10'>
     <div className='section-container mx-auto animate-pulse space-y-8'>
+      {/* Back button */}
+      <div className='h-6 sm:h-7 bg-v2 rounded w-20'></div>
+
       {/* Title */}
-      <div className='h-12 bg-v2 rounded w-1/2'></div>
+      <div className='h-10 sm:h-12 bg-v2 rounded-md w-2/3 sm:w-1/2'></div>
+
       {/* Summary */}
       <div className='space-y-3'>
-        <div className='h-5 bg-v2 rounded w-full'></div>
-        <div className='h-5 bg-v2 rounded w-full'></div>
-        <div className='h-5 bg-v2 rounded w-5/6'></div>
+        <div className='h-4 sm:h-5 bg-v2 rounded w-full'></div>
+        <div className='h-4 sm:h-5 bg-v2 rounded w-5/6'></div>
+        <div className='h-4 sm:h-5 bg-v2 rounded w-4/6'></div>
       </div>
+
       {/* Project Details Header */}
-      <div className='h-8 bg-v2 rounded w-1/4'></div>
+      <div className='h-7 sm:h-8 bg-v2 rounded w-1/3 sm:w-1/4'></div>
+
       {/* Description & Budget */}
-      <div className='grid grid-cols-2 gap-5'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10'>
         <div>
-          <div className='h-5 bg-v2 rounded w-3/4 mb-3'></div>
+          <div className='h-5 bg-v2 rounded w-1/2 mb-3'></div>
           <div className='space-y-2'>
             <div className='h-4 bg-v2 rounded w-full'></div>
-            <div className='h-4 bg-v2 rounded w-full'></div>
-            <div className='h-4 bg-v2 rounded w-4/5'></div>
+            <div className='h-4 bg-v2 rounded w-11/12'></div>
+            <div className='h-4 bg-v2 rounded w-3/4'></div>
           </div>
         </div>
         <div>
-          <div className='h-5 bg-v2 rounded w-1/2 mb-3'></div>
-          <div className='h-6 bg-v2 rounded w-1/3'></div>
+          <div className='h-5 bg-v2 rounded w-1/3 mb-3'></div>
+          <div className='h-6 bg-v2 rounded w-1/2'></div>
         </div>
       </div>
+
       {/* Deadline & Status */}
-      <div className='grid grid-cols-2 gap-5'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10'>
         <div>
           <div className='h-5 bg-v2 rounded w-1/3 mb-3'></div>
-          <div className='h-8 bg-v2 rounded w-24'></div>
+          <div className='h-8 bg-v2 rounded w-28'></div>
         </div>
         <div>
           <div className='h-5 bg-v2 rounded w-1/4 mb-3'></div>
-          <div className='h-8 bg-v2 rounded w-24'></div>
+          <div className='h-8 bg-v2 rounded w-28'></div>
         </div>
       </div>
+
       {/* Skills Required */}
       <div>
-        <div className='h-5 bg-v2 rounded w-1/3 mb-3'></div>
+        <div className='h-5 bg-v2 rounded w-1/4 mb-3'></div>
         <div className='flex flex-wrap gap-3'>
-          <div className='h-7 bg-v2 rounded w-20'></div>
-          <div className='h-7 bg-v2 rounded w-16'></div>
-          <div className='h-7 bg-v2 rounded w-24'></div>
-          <div className='h-7 bg-v2 rounded w-14'></div>
-          <div className='h-7 bg-v2 rounded w-20'></div>
+          <div className='h-6 sm:h-7 bg-v2 rounded w-16 sm:w-20'></div>
+          <div className='h-6 sm:h-7 bg-v2 rounded w-14 sm:w-16'></div>
+          <div className='h-6 sm:h-7 bg-v2 rounded w-20 sm:w-24'></div>
+          <div className='h-6 sm:h-7 bg-v2 rounded w-12 sm:w-14'></div>
+          <div className='h-6 sm:h-7 bg-v2 rounded w-16 sm:w-20'></div>
         </div>
       </div>
+
       {/* Submit Proposal */}
       <div>
-        <div className='h-8 bg-v2 rounded w-1/4 mb-5'></div>
-        <div className='h-40 bg-v2 rounded max-w-[500px]'></div>
-        <div className='h-12 bg-v2 rounded max-w-[500px] mt-5'></div>
-        <div className='h-12 bg-v2 rounded max-w-[200px] mt-6'></div>
+        <div className='h-7 sm:h-8 bg-v2 rounded w-1/3 sm:w-1/4 mb-5'></div>
+        <div className='h-32 sm:h-40 bg-v2 rounded max-w-full sm:max-w-[500px]'></div>
+        <div className='h-11 sm:h-12 bg-v2 rounded max-w-full sm:max-w-[500px] mt-5'></div>
+        <div className='h-11 sm:h-12 bg-v2 rounded max-w-[180px] sm:max-w-[200px] mt-6'></div>
       </div>
     </div>
   </section>
@@ -82,6 +93,7 @@ const Skeleton = () => (
 
 export default function OrderSingle() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const id = slug?.split('-').pop();
 
   const [message, setMessage] = useState('');
@@ -151,14 +163,23 @@ export default function OrderSingle() {
   return (
     <section className='my-10'>
       <div className='section-container mx-auto'>
+        {/* Back button */}
+        <Button
+          onClick={() => navigate(-1)}
+          className='flex items-center gap-2 cursor-pointer font-normal bg-black mb-6'
+        >
+          <ArrowLeft className='siz-4 sm:h-5 sm:w-5' />
+          Back
+        </Button>
+
         <div>
-          <h1 className='text-4xl font-semibold'>{order?.title}</h1>
+          <h1 className='text-2xl sm:text-3xl font-semibold'>{order?.title}</h1>
           <p className='mt-4 whitespace-pre-line'>{order?.summary}</p>
         </div>
 
-        <h4 className='my-5 text-2xl font-semibold'>Project Details</h4>
+        <h4 className='my-5 text-xl font-semibold'>Project Details</h4>
 
-        <div className='grid grid-cols-2 border-t py-8 border-gray-300 gap-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 border-t py-8 border-gray-300 gap-5'>
           <div className='max-w-[500px]'>
             <h5 className='text-gray-500'>Description</h5>
             <p className='whitespace-pre-line'>{order?.description}</p>
@@ -170,7 +191,7 @@ export default function OrderSingle() {
           </div>
         </div>
 
-        <div className='grid grid-cols-2 border-t py-8 border-gray-300 gap-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 border-t py-8 border-gray-300 gap-5'>
           <div>
             <h5 className='text-gray-500'>Deadline</h5>
             <span
@@ -194,7 +215,7 @@ export default function OrderSingle() {
           </div>
         </div>
 
-        <div className='grid grid-cols-2 border-t py-8 border-gray-300 gap-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 border-t py-8 border-gray-300 gap-5'>
           <div>
             <h5 className='text-gray-500'>Skills Required</h5>
             <div className='flex flex-wrap gap-2 mt-2 max-w-[450px]'>
@@ -211,9 +232,9 @@ export default function OrderSingle() {
         </div>
 
         <div className='my-10'>
-          <h4 className='text-2xl font-semibold'>Submit a Proposal</h4>
+          <h4 className='text-xl font-semibold'>Submit a Proposal</h4>
           <Textarea
-            className='my-5 shadow-none min-h-[200px] max-w-[500px]'
+            className='my-5 shadow-none min-h-[200px] max-w-full sm:max-w-[500px]'
             placeholder='Your proposal details here...'
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -221,7 +242,7 @@ export default function OrderSingle() {
 
           <Input
             id='bid-amount'
-            className='h-12 placeholder:text-sm sm:placeholder:text-base mt-3 max-w-[500px] shadow-none'
+            className='h-12 placeholder:text-sm sm:placeholder:text-base mt-3 max-w-full sm:max-w-[500px] shadow-none'
             placeholder='Your bid amount'
             type='number'
             min={0}

@@ -45,7 +45,7 @@ export default function ProfileMenu({ scrolled }: { scrolled: boolean }) {
           <MenuItems
             transition
             anchor='bottom end'
-            className='w-[300px] divide-y font-poppins p-4 mt-2 shadow-2xl origin-top-right rounded-xl border border-white/5 bg-white text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:--spacing(1)] focus:outline-none data-closed:scale-95 data-closed:opacity-0'
+            className='w-[300px] z-[1000] divide-y font-poppins p-4 mt-2 shadow-2xl origin-top-right rounded-xl border border-white/5 bg-white text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:--spacing(1)] focus:outline-none data-closed:scale-95 data-closed:opacity-0'
           >
             {/* Profile Link */}
             <Link

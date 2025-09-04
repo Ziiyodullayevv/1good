@@ -15,6 +15,10 @@ import CreateProject from './CreateProject';
 import { toast } from 'sonner';
 import api from '@/lib/axios';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+// ✅ relativeTime plugin ulash
+dayjs.extend(relativeTime);
 
 type Order = {
   _id: string;
@@ -28,15 +32,14 @@ type Order = {
   skills?: string[];
 };
 
-const SkeletonRow = () => (
+// ✅ SkeletonRow ustunlar sonini dinamik qilish
+const SkeletonRow = ({ columns }: { columns: number }) => (
   <TableRow>
-    {Array(5)
-      .fill(null)
-      .map((_, i) => (
-        <TableCell key={i}>
-          <div className='h-4 bg-v2 animate-pulse rounded w-full' />
-        </TableCell>
-      ))}
+    {Array.from({ length: columns }).map((_, i) => (
+      <TableCell key={i}>
+        <div className='h-4 bg-v2 animate-pulse rounded w-full' />
+      </TableCell>
+    ))}
   </TableRow>
 );
 
@@ -52,7 +55,7 @@ export default function CustomTable({
 }) {
   const queryClient = useQueryClient();
 
-  // ✅ Backend filter bilan ma'lumot olish
+  // ✅ Ma’lumotlarni olish
   const {
     data = [],
     isLoading,
@@ -93,12 +96,16 @@ export default function CustomTable({
     );
   }
 
+  // ✅ Ustunlar sonini aniqlash (Client ustuni mavjud bo‘lsa +1)
+  const hasClientColumn = data.some((o) => o.clientName);
+  const columnCount = 4 + (hasClientColumn ? 1 : 0);
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Project Title</TableHead>
-          {data.some((o) => o.clientName) && <TableHead>Client</TableHead>}
+          {hasClientColumn && <TableHead>Client</TableHead>}
           <TableHead>Deadline</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Actions</TableHead>
@@ -106,12 +113,18 @@ export default function CustomTable({
       </TableHeader>
 
       <TableBody>
+        {/* ✅ Skeleton to‘g‘ri ustunlar soni bilan chiqadi */}
         {isLoading &&
-          Array.from({ length: 5 }).map((_, i) => <SkeletonRow key={i} />)}
+          Array.from({ length: 5 }).map((_, i) => (
+            <SkeletonRow key={i} columns={columnCount} />
+          ))}
 
         {!isLoading && data.length === 0 && (
           <TableRow>
-            <TableCell colSpan={5} className='text-center py-8 text-gray-500'>
+            <TableCell
+              colSpan={columnCount}
+              className='text-center py-8 text-gray-500'
+            >
               Ma’lumot mavjud emas
             </TableCell>
           </TableRow>
@@ -120,6 +133,7 @@ export default function CustomTable({
         {!isLoading &&
           data.map((order) => (
             <TableRow key={order._id}>
+              {/* Project Title */}
               <TableCell className='!w-[250px] truncate first-letter:uppercase whitespace-normal'>
                 <div className='max-w-[300px]'>
                   <p className='truncate capitalize' title={order.title}>
@@ -133,6 +147,14 @@ export default function CustomTable({
                 </div>
               </TableCell>
 
+              {/* Client (faqat mavjud bo‘lsa) */}
+              {hasClientColumn && (
+                <TableCell className='whitespace-nowrap text-gray-500'>
+                  {order.clientName ?? '-'}
+                </TableCell>
+              )}
+
+              {/* Deadline */}
               <TableCell className='whitespace-nowrap text-gray-500'>
                 <div className='flex flex-col'>
                   <span>{dayjs(order.deadline).format('MMM DD, YYYY')}</span>
@@ -142,6 +164,7 @@ export default function CustomTable({
                 </div>
               </TableCell>
 
+              {/* Status */}
               <TableCell className='whitespace-nowrap'>
                 {(() => {
                   let bg = '';
@@ -175,8 +198,10 @@ export default function CustomTable({
                 })()}
               </TableCell>
 
+              {/* Actions */}
               <TableCell className='whitespace-nowrap'>
                 <div className='flex gap-2'>
+                  {/* Edit */}
                   <GeneralTooltip content='Edit'>
                     <CreateProject
                       buttonText='Update'
@@ -192,6 +217,7 @@ export default function CustomTable({
                     />
                   </GeneralTooltip>
 
+                  {/* Delete */}
                   <GeneralTooltip content='Delete'>
                     <Button
                       aria-label='Delete project'
@@ -211,6 +237,7 @@ export default function CustomTable({
                     </Button>
                   </GeneralTooltip>
 
+                  {/* View */}
                   <GeneralTooltip content='View'>
                     <Button
                       aria-label='View project'

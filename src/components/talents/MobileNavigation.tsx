@@ -35,7 +35,7 @@ const publicLinks = [
 
 const clientLinks = [
   { label: 'Freelancers', path: '/talent' },
-  { label: 'My Orders', path: '/my-orders' },
+  { label: 'Orders', path: '/order' },
 ];
 
 const freelancerLinks = [
@@ -46,8 +46,9 @@ const freelancerLinks = [
 const dashboardLinks = [
   { label: 'Profile', path: '/dashboard' },
   { label: 'Portfolio', path: '/dashboard/portfolio', role: 'freelancer' },
+  { label: 'My Orders', path: '/dashboard/my-projects', role: 'client' },
   { label: 'Contracts', path: '/dashboard/contract' },
-  { label: 'Submissions', path: '/dashboard/submission', role: 'freelancer' },
+  { label: 'Submissions', path: '/dashboard/submission' },
   { label: 'Analytics', path: '/dashboard/analytics' },
   { label: 'Credits', path: '/dashboard/credits' },
   { label: 'Settings', path: '/dashboard/settings' },
@@ -96,47 +97,49 @@ export default function MobileNavigation({
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
           >
             {/* Header */}
-            <div className='border-b border-border p-6 flex items-center justify-between'>
-              {isLoading && (
-                <div className='flex items-center gap-3'>
-                  <Skeleton className='size-12 rounded-full' />
-                  <div className='flex-1'>
-                    <Skeleton className='h-4 w-32 mb-2' />
-                    <Skeleton className='h-3 w-48' />
-                  </div>
-                </div>
-              )}
-
-              {!isLoading && !data && (
+            <div className='border-b border-border p-6 flex items-center justify-between relative'>
+              {!user && (
                 <div className='flex gap-2'>
                   <AuthModal isLogin={true} />
                   <AuthModal />
                 </div>
               )}
 
-              {!isLoading && !!data && (
-                <div
-                  onClick={() => handleClick('/dashboard')}
-                  className='flex items-center gap-3 cursor-pointer'
-                >
-                  <Avatar className='size-12 rounded-full'>
-                    <AvatarImage src={data?.avatarUrl} alt='User Avatar' />
-                    <AvatarFallback>{initials}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className='font-medium capitalize'>
-                      {data?.firstName} {data?.lastName}
+              {!!user && (
+                <>
+                  {isLoading ? (
+                    <div className='flex items-center gap-3'>
+                      <Skeleton className='size-12 rounded-full bg-v2' />
+                      <div className='flex flex-col gap-2'>
+                        <Skeleton className='h-4 w-32 rounded-md bg-v2' />
+                        <Skeleton className='h-3 w-24 rounded-md bg-v2' />
+                      </div>
                     </div>
-                    <div className='text-sm text-muted-foreground'>
-                      {data?.email}
+                  ) : (
+                    <div
+                      onClick={() => handleClick('/dashboard')}
+                      className='flex items-center gap-3 cursor-pointer'
+                    >
+                      <Avatar className='size-12 rounded-full'>
+                        <AvatarImage src={data?.avatarUrl} alt='User Avatar' />
+                        <AvatarFallback>{initials}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <div className='font-medium capitalize'>
+                          {data?.firstName} {data?.lastName}
+                        </div>
+                        <div className='text-sm text-muted-foreground'>
+                          {data?.email}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  )}
+                </>
               )}
 
               <button
                 onClick={onClose}
-                className='p-2 rounded-full hover:bg-muted transition-colors'
+                className='p-2 absolute right-4 top-4 rounded-sm hover:bg-muted transition-colors'
               >
                 <X size={20} />
               </button>
@@ -145,7 +148,7 @@ export default function MobileNavigation({
             {/* Navigation */}
             <div className='flex-1 overflow-y-auto p-6 space-y-6'>
               {/* Public links */}
-              {!isLoading && !data && (
+              {!user && (
                 <div className='space-y-4'>
                   {publicLinks.map((link) => (
                     <motion.div
@@ -162,10 +165,10 @@ export default function MobileNavigation({
               )}
 
               {/* Authenticated links */}
-              {!isLoading && !!data && (
+              {!!user && (
                 <div className='space-y-4'>
                   <motion.div
-                    onClick={() => handleClick('/messages')}
+                    onClick={() => handleClick('/talent/messages')}
                     className='flex items-center justify-between py-2 cursor-pointer hover:text-muted-foreground'
                     whileHover={{ x: 4 }}
                   >
@@ -230,9 +233,9 @@ export default function MobileNavigation({
               <Accordion type='single' collapsible>
                 <AccordionItem value='languages'>
                   <AccordionTrigger>
-                    <div className='flex items-center gap-2 text-sm font-medium text-muted-foreground'>
-                      <Globe size={16} />
+                    <div className='flex items-center gap-2 text-sm font-medium'>
                       Languages
+                      <Globe size={16} />
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
@@ -274,17 +277,19 @@ export default function MobileNavigation({
               </Accordion>
 
               {/* Logout */}
-              <motion.div
-                onClick={() => {
-                  logout();
-                  onClose();
-                }}
-                className='flex items-center justify-between py-2 text-red-600 cursor-pointer hover:text-red-700 border-t pt-4 mt-4'
-                whileHover={{ x: 4 }}
-              >
-                <span>Logout</span>
-                <ChevronRight size={16} />
-              </motion.div>
+              {!!user && (
+                <motion.div
+                  onClick={() => {
+                    logout();
+                    onClose();
+                  }}
+                  className='flex items-center justify-between py-2 text-red-600 cursor-pointer hover:text-red-700 border-t pt-4 mt-4'
+                  whileHover={{ x: 4 }}
+                >
+                  <span>Logout</span>
+                  <ChevronRight size={16} />
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </motion.div>

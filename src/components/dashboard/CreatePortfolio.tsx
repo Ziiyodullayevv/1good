@@ -19,7 +19,7 @@ import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import api from '@/lib/axios';
 import { MultiSelect, skills } from '../ui/multi-select';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 interface CreatePortfolioProps {
   buttonText: string;

@@ -141,21 +141,40 @@ export default function OrderList({ filters }: Props) {
   }
 
   return (
-    <div className='mt-5 text-base grid gap-5 grid-cols-2'>
+    <div className='mt-5 text-base grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2'>
       {isLoading
         ? Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className='bg-white rounded-xl p-5 shadow-none border animate-pulse flex flex-col gap-5'
+              className='bg-white rounded-xl p-4 sm:p-5 border shadow-sm flex flex-col gap-4 sm:gap-5'
             >
-              <Skeleton className='h-6 w-3/4 rounded-md' />
-              <Skeleton className='h-4 w-1/2 rounded-md' />
-              <div className='flex gap-2 flex-wrap mt-3'>
-                <Skeleton className='h-6 w-24 rounded-full' />
-                <Skeleton className='h-6 w-20 rounded-full' />
-                <Skeleton className='h-6 w-28 rounded-full' />
+              {/* Title */}
+              <Skeleton className='h-6 w-3/4 rounded-md bg-v2/40' />
+              {/* Price + Level */}
+              <div className='flex gap-8'>
+                <div className='flex flex-col gap-2'>
+                  <Skeleton className='h-5 w-16 rounded-md bg-v2/40' />
+                  <Skeleton className='h-3 w-14 rounded-md bg-v2/30' />
+                </div>
+                <div className='flex flex-col gap-2'>
+                  <Skeleton className='h-5 w-20 rounded-md bg-v2/40' />
+                  <Skeleton className='h-3 w-16 rounded-md bg-v2/30' />
+                </div>
               </div>
-              <Skeleton className='h-9 w-28 rounded-md mt-4' />
+              {/* Summary */}
+              <Skeleton className='h-4 w-full rounded-md bg-v2/30' />
+              <Skeleton className='h-4 w-5/6 rounded-md bg-v2/30' />
+              {/* Skills */}
+              <div className='flex gap-2 flex-wrap mt-2 sm:mt-3'>
+                <Skeleton className='h-6 w-24 rounded-full bg-v2/30' />
+                <Skeleton className='h-6 w-20 rounded-full bg-v2/30' />
+                <Skeleton className='h-6 w-28 rounded-full bg-v2/30' />
+              </div>
+              {/* Footer */}
+              <div className='flex items-center justify-between mt-4'>
+                <Skeleton className='h-8 w-24 rounded-lg bg-v2/40' />
+                <Skeleton className='h-4 w-16 rounded-md bg-v2/30' />
+              </div>
             </div>
           ))
         : allOrders.map((order, index) => (
@@ -163,15 +182,15 @@ export default function OrderList({ filters }: Props) {
               ref={index === allOrders.length - 1 ? lastElementRef : null}
               onClick={() => handleClick(order.title, order._id)}
               key={`${order._id}-${index}`}
-              className='bg-white flex flex-col justify-between rounded-xl p-5 cursor-pointer border shadow-none transition-all duration-300'
+              className='bg-white flex flex-col justify-between rounded-xl p-4 sm:p-5 cursor-pointer border shadow-sm transition-all duration-300 hover:shadow-md'
             >
               <div>
-                <h2 className='font-medium first-letter:uppercase line-clamp-2 text-lg leading-6 hover:text-v9'>
+                <h2 className='font-medium first-letter:uppercase line-clamp-2 text-base sm:text-lg leading-6 hover:text-v9'>
                   {order.title}
                 </h2>
-                <div className='flex my-5 gap-8'>
+                <div className='flex my-4 sm:my-5 gap-5 sm:gap-8'>
                   <div>
-                    <h5 className='first-letter:uppercase font-medium text-base'>
+                    <h5 className='first-letter:uppercase font-medium text-sm sm:text-base'>
                       ${order.budget}
                     </h5>
                     <p className='text-gray-400 first-letter:uppercase text-xs'>
@@ -179,7 +198,7 @@ export default function OrderList({ filters }: Props) {
                     </p>
                   </div>
                   <div>
-                    <h5 className='font-medium first-letter:uppercase text-base'>
+                    <h5 className='font-medium first-letter:uppercase text-sm sm:text-base'>
                       Export
                     </h5>
                     <p className='text-xs first-letter:uppercase text-gray-400'>
@@ -187,27 +206,27 @@ export default function OrderList({ filters }: Props) {
                     </p>
                   </div>
                 </div>
-                <p className='my-4 first-letter:uppercase line-clamp-2 text-base'>
+                <p className='my-3 sm:my-4 first-letter:uppercase line-clamp-2 text-sm sm:text-base'>
                   {order.summary}
                 </p>
               </div>
               <div>
-                <div className='my-5 flex flex-wrap gap-2 text-gray-700'>
+                <div className='my-4 sm:my-5 flex flex-wrap gap-2 text-gray-700'>
                   {Array.isArray(order.skillsRequired) &&
                     order.skillsRequired.map((skill, idx) => (
                       <span
                         key={idx}
-                        className='bg-v2 first-letter:uppercase capitalize text-xs px-3 py-2.5 rounded-full'
+                        className='bg-v2 first-letter:uppercase capitalize text-xs px-2.5 sm:px-3 py-2 rounded-full'
                       >
                         {skill}
                       </span>
                     ))}
                 </div>
                 <div className='flex items-end justify-between'>
-                  <button className='h-9 text-sm cursor-pointer hover:opacity-90 px-4 bg-v9 text-white rounded-lg'>
+                  <button className='h-8 sm:h-9 text-xs sm:text-sm cursor-pointer hover:opacity-90 px-3 sm:px-4 bg-v9 text-white rounded-lg'>
                     See more
                   </button>
-                  <p className='text-sm text-gray-500'>
+                  <p className='text-xs sm:text-sm text-gray-500'>
                     {dayjs(order.createdAt).fromNow()}
                   </p>
                 </div>

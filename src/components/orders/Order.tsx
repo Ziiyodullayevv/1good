@@ -19,7 +19,7 @@ export default function Order() {
   };
 
   return (
-    <section className='py-10 bg-v2'>
+    <section className='py-10 min-h-screen bg-v2'>
       <div className='section-container'>
         <div className='flex flex-col'>
           <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 justify-between'>
