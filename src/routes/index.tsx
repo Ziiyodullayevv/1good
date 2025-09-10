@@ -26,7 +26,9 @@ const MyProjects = lazy(() => import('../components/dashboard/MyProjects'));
 const Messages = lazy(() => import('../components/dashboard/Messages'));
 const Settings = lazy(() => import('../components/dashboard/Settings'));
 const Submission = lazy(() => import('../pages/Submission'));
-const SubmissionDetails = lazy(() => import('../pages/SubmissionDetails'));
+const SubmissionDetailsPage = lazy(
+  () => import('../pages/SubmissionDetailsPage')
+);
 const ContractPage = lazy(() => import('../pages/ContractPage'));
 const ContractDetails = lazy(() => import('../pages/ContractDetails'));
 const CreditsPage = lazy(() => import('../pages/CreditsPage'));
@@ -190,7 +192,7 @@ export const router = createBrowserRouter([
             path: 'submission/:submissionSlug',
             element: (
               <LazyWrapper>
-                <SubmissionDetails />
+                <SubmissionDetailsPage />
               </LazyWrapper>
             ),
           },

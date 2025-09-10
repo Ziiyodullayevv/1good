@@ -58,6 +58,8 @@ export default function ContractTable({
   statusFilter: string;
 }) {
   const navigate = useNavigate();
+  const formatDate = (dateString: string) =>
+    dayjs(dateString).format('MMMM D, YYYY');
 
   const { data, isLoading, isError, error, refetch } = useQuery<{
     total: number;
@@ -138,18 +140,13 @@ export default function ContractTable({
                 </div>
               </TableCell>
 
-              <TableCell className='whitespace-nowrap text-gray-500'>
+              <TableCell className='whitespace-nowrap capitalize text-gray-500'>
                 {contract.clientId.firstName} {contract.clientId.lastName}
               </TableCell>
 
               <TableCell className='whitespace-nowrap text-gray-500'>
                 <div className='flex flex-col'>
-                  <span>
-                    {dayjs(contract.agreedDeadline).format('MMM DD, YYYY')}
-                  </span>
-                  <span className='text-xs text-gray-400'>
-                    {dayjs(contract.agreedDeadline).fromNow()}
-                  </span>
+                  <span>{formatDate(contract.agreedDeadline)}</span>
                 </div>
               </TableCell>
 

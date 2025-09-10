@@ -84,6 +84,8 @@ export default function ContractDetails() {
     },
   });
 
+  console.log(contract);
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending':
@@ -165,10 +167,10 @@ export default function ContractDetails() {
             {/* Info */}
             <div className='bg-gray-50 rounded-2xl border border-gray-100 p-8'>
               <h2 className='text-2xl font-bold text-gray-900 mb-2'>
-                {contract?.scopeOfWork ?? 'No scope provided'}
+                {contract?.orderId?.title ?? 'No scope provided'}
               </h2>
 
-              <div className='flex flex-wrap gap-3 mb-6'>
+              <div className='flex flex-wrap mt-6 gap-3 mb-6'>
                 <div
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${getStatusColor(
                     contract?.status ?? ''
