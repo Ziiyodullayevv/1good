@@ -1,13 +1,17 @@
-import { NavLink, useNavigate } from 'react-router';
-import { Button } from './ui/button';
+import { NavLink } from 'react-router';
 import Logo from './Logo';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import MobileMenu from './MobileMenu';
 import { useEffect, useState } from 'react';
-import { cn } from '../lib/utils';
+import { cn } from '@/lib/utils';
+import AuthModal from '@/features/auth/components/AuthModal';
+import { Menu } from 'lucide-react';
+import { motion } from 'motion/react';
+import MobileNavigation from '@/components/talents/MobileNavigation';
 
 export default function MainNavigation() {
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,7 +23,6 @@ export default function MainNavigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigate = useNavigate();
   const { t } = useTranslation('common');
   return (
     <header
@@ -78,26 +81,31 @@ export default function MainNavigation() {
           </nav>
 
           <div className='hidden md:flex justify-start gap-3'>
-            {/* <Button
-              onClick={() => navigate('auth')}
-              className='h-12 rounded-xl bg-transparent text-black shadow-none hover:bg-transparent text-base px-2 cursor-pointer'
-            >
-              Log in
-            </Button> */}
-            <Button
-              onClick={() => navigate('coming-soon')}
-              className='h-12 rounded-xl text-base px-5 cursor-pointer'
-            >
-              {t('auth')}
-            </Button>
             <LanguageSwitcher />
+            <AuthModal isLogin={true} />
+            <AuthModal />
           </div>
 
           <div className='h-full gap-4 flex md:hidden items-center xl:hidden'>
-            <MobileMenu />
+            {/* <MobileMenu /> */}
+            <motion.button
+              onClick={() => setIsNavigationOpen(true)}
+              className='text-foreground hover:text-muted-foreground transition-colors'
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Menu size={20} />
+            </motion.button>
           </div>
         </div>
       </div>
+      <MobileNavigation
+        isOpen={isNavigationOpen}
+        onClose={() => setIsNavigationOpen(false)}
+      />
     </header>
   );
 }
